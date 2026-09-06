@@ -1,6 +1,20 @@
 {
   "calls": [
     {
+      "id": "call_1788719723757",
+      "tableNo": "MASA 07",
+      "serviceType": "Garson",
+      "time": "21:35",
+      "timestamp": 1788719723757
+    },
+    {
+      "id": "call_1788719705258",
+      "tableNo": "MASA 07",
+      "serviceType": "Hesap İste (Kredi Kartı)",
+      "time": "21:35",
+      "timestamp": 1788719705258
+    },
+    {
       "id": "call_1788718906840",
       "tableNo": "MASA 07",
       "serviceType": "Hesap İste (Kredi Kartı)",
@@ -55,6 +69,66 @@
     }
   ],
   "orders": [
+    {
+      "id": "ord_1788720256510",
+      "tableNo": "MASA 07",
+      "items": [
+        {
+          "id": "firinda-kuzu-incik",
+          "name": "Fırında Kuzu İncik",
+          "price": 680,
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 680,
+      "time": "21:44",
+      "timestamp": 1788720256511,
+      "status": "hazirlaniyor"
+    },
+    {
+      "id": "ord_1788719867736",
+      "tableNo": "MASA 05",
+      "items": [
+        {
+          "id": "patlican-kuzu-incik",
+          "name": "Patlıcan Yatağında Kuzu İncik",
+          "price": 670,
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 670,
+      "time": "21:37",
+      "timestamp": 1788719867739,
+      "status": "hazirlaniyor"
+    },
+    {
+      "id": "ord_1788719697811",
+      "tableNo": "MASA 07",
+      "items": [
+        {
+          "id": "kuzu-haslama",
+          "name": "Kuzu Haşlama",
+          "price": 670,
+          "quantity": 1
+        },
+        {
+          "id": "acik-ayran",
+          "name": "Yayık Açık Ayran",
+          "price": 75,
+          "quantity": 2
+        },
+        {
+          "id": "fistikli-kadayif",
+          "name": "Diyarbakır Burma Kadayıf",
+          "price": 430,
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 1250,
+      "time": "21:34",
+      "timestamp": 1788719697811,
+      "status": "hazirlaniyor"
+    },
     {
       "id": "ord_1788719218777",
       "tableNo": "MASA 05",
@@ -225,7 +299,7 @@
       "isLocked": false
     },
     "firinda-kuzu-incik": {
-      "count": 25,
+      "count": 24,
       "isUnlimited": false,
       "isLocked": false
     },
@@ -245,7 +319,7 @@
       "isLocked": false
     },
     "kuzu-haslama": {
-      "count": 25,
+      "count": 24,
       "isUnlimited": false,
       "isLocked": false
     },
@@ -260,7 +334,7 @@
       "isLocked": false
     },
     "patlican-kuzu-incik": {
-      "count": 16,
+      "count": 15,
       "isUnlimited": false,
       "isLocked": false
     },
@@ -340,7 +414,7 @@
       "isLocked": false
     },
     "fistikli-kadayif": {
-      "count": 50,
+      "count": 49,
       "isUnlimited": false,
       "isLocked": false
     },

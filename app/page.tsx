@@ -1585,10 +1585,27 @@ export default function VexmoKineticBerosPage() {
           style={{ opacity: act2Opacity, scale: act2Scale, pointerEvents: act2PointerEvents }}
           className="absolute inset-0 w-full h-full flex flex-col justify-between p-4 sm:p-10 lg:p-14 pt-20 sm:pt-24 bg-[#080706] touch-pan-y"
         >
-          {/* Karanlık Volkanik Taş Zemin & Odaklanmış Stüdyo Spotlight */}
-          <div className="absolute inset-0 -z-10 bg-[#080706]">
+          {/* Karanlık Volkanik Taş Zemin & Sıcak Kehribar ve Gün Işığı Ambiyansı */}
+          <div className="absolute inset-0 -z-10 bg-[#070504] pointer-events-none overflow-hidden">
+            {/* Tepe Merkez: Sarkıt Lamba Sıcak Kehribar Işık Huzmesi */}
             <div
-              className="absolute inset-0 pointer-events-none"
+              className="absolute inset-0 pointer-events-none -z-10"
+              style={{
+                background:
+                  "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(217, 119, 6, 0.18), transparent 70%)",
+              }}
+            />
+            {/* Sol Cephe Pencere Gün Işığı (Window Daylight Rim) */}
+            <div
+              className="absolute inset-y-0 left-0 w-1/2 pointer-events-none -z-10"
+              style={{
+                background:
+                  "linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0%, transparent 40%)",
+              }}
+            />
+            {/* Merkez Odaklanmış Stüdyo Spotlight */}
+            <div
+              className="absolute inset-0 pointer-events-none -z-10"
               style={{
                 background:
                   "radial-gradient(circle at 50% 45%, rgba(212,175,55,0.09) 0%, rgba(255,255,255,0.02) 40%, transparent 75%)",
@@ -1608,7 +1625,7 @@ export default function VexmoKineticBerosPage() {
                     onClick={() => handleSelectCategory(cat.slug)}
                     className={`px-3.5 py-1.5 rounded-full whitespace-nowrap font-mono text-[10px] sm:text-[11px] tracking-wider transition-all duration-300 flex-shrink-0 ${
                       isCatActive
-                        ? "bg-[#d4af37] text-[#080706] font-semibold shadow-[0_0_15px_rgba(212,175,55,0.4)]"
+                        ? "bg-[#e2b34a] text-[#080706] font-semibold shadow-[0_0_15px_rgba(226,179,74,0.45)]"
                         : "bg-white/5 text-white/60 hover:text-white hover:bg-white/10 border border-white/10"
                     }`}
                   >
@@ -1713,6 +1730,15 @@ export default function VexmoKineticBerosPage() {
                 transformStyle: "preserve-3d",
               }}
             >
+              {/* 3D Tepsi Arkası (Aura Glow): Dönen tepsiyi öne çıkaran sıcak kehribar/altın arka ışık */}
+              <div
+                className="absolute inset-0 m-auto w-[360px] sm:w-[520px] h-[360px] sm:h-[520px] pointer-events-none -z-10 rounded-full"
+                style={{
+                  background:
+                    "radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.12), transparent 60%)",
+                }}
+              />
+
               {/* Coverflow 3D Cards Stack */}
               <div
                 className="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing pointer-events-none"
@@ -1755,12 +1781,12 @@ export default function VexmoKineticBerosPage() {
                         if (isLeft) handlePrevDish();
                         if (isRight) handleNextDish();
                       }}
-                      className={`absolute inset-0 m-auto w-full max-w-[340px] sm:max-w-xl md:max-w-2xl h-[380px] sm:h-[440px] rounded-[32px] p-6 sm:p-8 flex flex-col items-center justify-between select-none shadow-[0_30px_90px_rgba(0,0,0,0.98)] border-2 border-[#d4af37]/40 ${
+                      className={`absolute inset-0 m-auto w-full max-w-[340px] sm:max-w-xl md:max-w-2xl h-[380px] sm:h-[440px] rounded-[32px] p-6 sm:p-8 flex flex-col items-center justify-between select-none shadow-[0_30px_90px_rgba(0,0,0,0.98)] border-2 border-[#e2b34a]/40 ${
                         isActive
-                          ? "ring-1 ring-[#d4af37]/35 z-30 pointer-events-auto"
+                          ? "ring-1 ring-[#e2b34a]/40 z-30 pointer-events-auto shadow-[0_0_25px_rgba(212,175,55,0.15)]"
                           : isFar
                           ? "pointer-events-none z-0"
-                          : "hover:border-[#d4af37]/60 cursor-pointer z-10"
+                          : "hover:border-[#e2b34a]/60 cursor-pointer z-10"
                       }`}
                       style={{
                         transformStyle: "preserve-3d",
@@ -1950,8 +1976,8 @@ export default function VexmoKineticBerosPage() {
                           </span>
                         ) : (
                           <span
-                            className="text-[#d4af37] font-serif text-base sm:text-xl font-medium tracking-tight"
-                            style={{ textShadow: "0 0 15px rgba(212,175,55,0.6)" }}
+                            className="text-[#e2b34a] font-serif text-base sm:text-xl font-medium tracking-tight"
+                            style={{ textShadow: "0 0 15px rgba(226,179,74,0.6)" }}
                           >
                             {dish.price}
                           </span>
@@ -1971,12 +1997,12 @@ export default function VexmoKineticBerosPage() {
                 </span>
                 <div
                   className={`font-serif text-4xl sm:text-5xl font-light tracking-tight transition-all duration-500 ${
-                    isDishOutOfStock(activeDish?.id) ? "text-red-400/80" : "text-[#d4af37]"
+                    isDishOutOfStock(activeDish?.id) ? "text-red-400/80" : "text-[#e2b34a]"
                   }`}
                   style={{
                     textShadow:
                       revealStep === "landed" && !isDishOutOfStock(activeDish?.id)
-                        ? "0 0 20px rgba(212,175,55,0.7)"
+                        ? "0 0 25px rgba(226,179,74,0.75)"
                         : "none",
                   }}
                 >
