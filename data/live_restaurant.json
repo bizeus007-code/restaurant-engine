@@ -1,0 +1,363 @@
+{
+  "calls": [
+    {
+      "id": "call_1788718906840",
+      "tableNo": "MASA 07",
+      "serviceType": "Hesap İste (Kredi Kartı)",
+      "time": "21:21",
+      "timestamp": 1788718906841
+    },
+    {
+      "id": "call_1788718710656",
+      "tableNo": "MASA 05",
+      "serviceType": "Garson",
+      "time": "21:18",
+      "timestamp": 1788718710659
+    },
+    {
+      "id": "call_1788717083952",
+      "tableNo": "MASA 05",
+      "serviceType": "Garson",
+      "time": "20:51",
+      "timestamp": 1788717083956
+    },
+    {
+      "id": "call_1788712470269",
+      "tableNo": "MASA 07",
+      "serviceType": "Garson",
+      "time": "19:34",
+      "timestamp": 1788712470269
+    },
+    {
+      "id": "call_1788712460815",
+      "tableNo": "MASA 07",
+      "serviceType": "Hesap İste (Kredi Kartı)",
+      "time": "19:34",
+      "timestamp": 1788712460815
+    },
+    {
+      "id": "call_1788711970010",
+      "tableNo": "MASA 09",
+      "serviceType": "Hesap İste (Kredi Kartı)",
+      "time": "19:26",
+      "timestamp": 1788711970018
+    }
+  ],
+  "resolvedCalls": [
+    {
+      "id": "call_1788715554294",
+      "tableNo": "MASA 05",
+      "serviceType": "Garson",
+      "time": "20:25",
+      "timestamp": 1788715554302,
+      "durationSec": 11,
+      "resolvedAt": 1788715564968
+    }
+  ],
+  "orders": [
+    {
+      "id": "ord_1788719218777",
+      "tableNo": "MASA 05",
+      "items": [
+        {
+          "id": "patlican-kuzu-incik",
+          "name": "Patlıcan Yatağında Kuzu İncik",
+          "price": 670,
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 670,
+      "time": "21:26",
+      "timestamp": 1788719218780,
+      "status": "hazirlaniyor"
+    },
+    {
+      "id": "ord_1788718710802",
+      "tableNo": "MASA 05",
+      "items": [
+        {
+          "id": "special-kuzu-sirt",
+          "name": "Beroş Special Kuzu Sırt",
+          "price": 725,
+          "quantity": 2
+        },
+        {
+          "id": "acik-ayran",
+          "name": "Yayık Açık Ayran",
+          "price": 75,
+          "quantity": 2
+        }
+      ],
+      "totalAmount": 1600,
+      "time": "21:18",
+      "timestamp": 1788718710802,
+      "status": "hazirlaniyor"
+    },
+    {
+      "id": "ord_1788718399136",
+      "tableNo": "MASA 07",
+      "items": [
+        {
+          "id": "patlican-kuzu-incik",
+          "name": "Patlıcan Yatağında Kuzu İncik",
+          "price": 670,
+          "quantity": 1
+        },
+        {
+          "id": "acik-ayran",
+          "name": "Yayık Açık Ayran",
+          "price": 75,
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 745,
+      "time": "21:13",
+      "timestamp": 1788718399136,
+      "status": "hazirlaniyor"
+    },
+    {
+      "id": "ord_1788717083963",
+      "tableNo": "MASA 05",
+      "items": [
+        {
+          "id": "special-kuzu-sirt",
+          "name": "Beroş Special Kuzu Sırt",
+          "price": 725,
+          "quantity": 2
+        },
+        {
+          "id": "acik-ayran",
+          "name": "Yayık Açık Ayran",
+          "price": 75,
+          "quantity": 2
+        }
+      ],
+      "totalAmount": 1600,
+      "time": "20:51",
+      "timestamp": 1788717083964,
+      "status": "hazirlaniyor"
+    },
+    {
+      "id": "ord_1788715970097",
+      "tableNo": "MASA 07",
+      "items": [
+        {
+          "id": "patlican-kuzu-incik",
+          "name": "Patlıcan Yatağında Kuzu İncik",
+          "price": 670,
+          "quantity": 1
+        },
+        {
+          "id": "acik-ayran",
+          "name": "Yayık Açık Ayran",
+          "price": 75,
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 745,
+      "time": "20:32",
+      "timestamp": 1788715970097,
+      "status": "hazirlaniyor"
+    },
+    {
+      "id": "ord_1788715554312",
+      "tableNo": "MASA 05",
+      "items": [
+        {
+          "id": "sur-usulu-sac-tava",
+          "name": "Sur Usulü Hakiki Sac Tava",
+          "price": 800,
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 800,
+      "time": "20:25",
+      "timestamp": 1788715554312,
+      "status": "hazirlaniyor"
+    },
+    {
+      "id": "ord_1788713136505",
+      "tableNo": "MASA 07",
+      "items": [
+        {
+          "id": "patlican-kuzu-incik",
+          "name": "Patlıcan Yatağında Kuzu İncik",
+          "price": 670,
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 670,
+      "time": "19:45",
+      "timestamp": 1788713136508,
+      "status": "hazirlaniyor"
+    },
+    {
+      "id": "ord_1788711973344",
+      "tableNo": "MASA 09",
+      "items": [
+        {
+          "id": "special-kuzu-sirt",
+          "name": "Beroş Special Kuzu Sırt",
+          "price": 725,
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 725,
+      "time": "19:26",
+      "timestamp": 1788711973345,
+      "status": "hazirlaniyor"
+    }
+  ],
+  "inventory": {
+    "special-kuzu-sirt": {
+      "count": 35,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "sur-kuzu-kol-dolmasi": {
+      "count": 15,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "ayvali-kavurma": {
+      "count": 30,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "firinda-kuzu-incik": {
+      "count": 25,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "kekikli-kuzu-budu": {
+      "count": 20,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "kuzu-gerdan": {
+      "count": 20,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "kuzu-greaten": {
+      "count": 20,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "kuzu-haslama": {
+      "count": 25,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "firin-agzi": {
+      "count": 35,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "diyarbakir-kavurma": {
+      "count": 40,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "patlican-kuzu-incik": {
+      "count": 16,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "firin-guvec": {
+      "count": 30,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "kusbasi-kasarli-pide": {
+      "count": 100,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "kusbasi-pide": {
+      "count": 100,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "kiymali-yumurtali-pide": {
+      "count": 100,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "findik-lahmacun": {
+      "count": 250,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "kasarli-pide": {
+      "count": 80,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "sur-usulu-sac-tava": {
+      "count": 59,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "beros-tavuk-special": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "kori-soslu-tavuk": {
+      "count": 40,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "ispanak-tavuk-bonfile": {
+      "count": 40,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "mumbar": {
+      "count": 30,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "icli-kofte": {
+      "count": 150,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "talas-boregi": {
+      "count": 60,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "kase-yogurt": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "fistikli-baklava": {
+      "count": 45,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "fistikli-kadayif": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "acik-ayran": {
+      "count": 500,
+      "isUnlimited": true,
+      "isLocked": false
+    },
+    "kutu-mesrubat": {
+      "count": 300,
+      "isUnlimited": true,
+      "isLocked": false
+    },
+    "turk-kahvesi": {
+      "count": 500,
+      "isUnlimited": true,
+      "isLocked": false
+    }
+  }
+}

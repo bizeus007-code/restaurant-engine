@@ -1,0 +1,72 @@
+<USER_REQUEST>
+ROL: Kıdemli Full-Stack Creative Developer & UI/UX Mimarı.
+GÖREV: Sitedeki mevcut çalışan scroll mantığını, fizik motorunu, coverflow akışını, dokunmatik kontrolleri ve sayfa ayarlarını KESİNLİKLE BOZMADAN; 
+1. Verilen QRall bağlantısındaki (`view.qrall.co`) canlı menü verilerini terminalden çekip ayıklamak ve `app/page.tsx` içindeki `DISHES` dizisini doğrudan bu GERÇEK verilerle oluşturmak (ASLA ezbere, uydurma veya sahte ürün yazılmayacak),
+2. Menü kartını 2. görseldeki otantik el oyması ahşap/bazalt tepsi görünümüne kavuşturmak,
+3. Giriş ve çıkış sahnelerini Beroş Restaurant'ın resmi web sitesindeki (`berosrestaurant.com`) gerçek kurumsal metinlerle güncellemek.
+
+---
+
+### KURAL: HİÇBİR KOD MEKANİĞİ VEYA ANİMASYON AYARI BOZULMAYACAK
+- `useScroll`, `useTransform`, yay fizikleri (`stiffness`, `damping`), coverflow 3D katmanları, swipe mantığı, sepet/rezervasyon state'leri ve PM2 konfigürasyonu AYNEN KORUNACAK.
+- Yalnızca menü veritabanı (`DISHES`), kartın CSS/Tailwind stil sınıfları ve metin içerikleri güncellenecektir.
+
+---
+
+### 1. ADIM: QRALL LİNKİNDEN CANLI MENÜ VERİLERİNİ ÇEK VE AYIKLA (BASH / NODE SCRIPT)
+Terminalde aşağıdaki Node.js betiğini çalıştırarak Beroş Restaurant'ın QRall menüsündeki tüm gerçek kategorileri, ürün adlarını, açıklamalarını, fiyatlarını ve görsellerini çekip `scratch/qrall-menu.json` dosyasına kaydet:
+
+```bash
+mkdir -p scratch
+
+node -e '
+const https = require("https");
+const fs = require("fs");
+
+const targetUrl = "[https://view.qrall.co/tr/categories?tenantId=3a17ab56-5e5c-eb02-fbd8-5d5462e53f13&menu=3a17ab56-71f1-d4f3-6f76-1fd1d8aa9402&channelId=3a17ab56-616b-5213-d3df-231483a5fe8d](https://view.qrall.co/tr/categories?tenantId=3a17ab56-5e5c-eb02-fbd8-5d5462e53f13&menu=3a17ab56-71f1-d4f3-6f76-1fd1d8aa9402&channelId=3a17ab56-616b-5213-d3df-231483a5fe8d)";
+
+https.get(targetUrl, { headers: { "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)" } }, (res) => 
+<truncated 3597 bytes>
+ü:** `AŞAĞI KAYDIRIN ↓`
+
+---
+
+### 5. ADIM: ÇIKIŞ SAHNESİ (KAPANIŞ — SONUNCU EKRAN GÜNCELLEMESİ)
+Mevcut kesilmeyen geniş açı taş kemer kapı ve üstündeki ışıldayan BEROŞ tabelası aynen kalacak; metinler resmi sitenin kurumsal diliyle zenginleştirilecek:
+
+- **Orijinal Tabela Işığı:** Kemerin üzerindeki BEROŞ tabelasının kehribar taş aurası ve buz mavisi neon parıltısı KORUNACAK.
+- **Başlık & Veda Metni:**
+  * Üst Başlık: `SUR / DİYARBAKIR`
+  * Başlık (Zarif Serif): `Şehrin Ruhunu Taşıyan Bir Sofra Deneyimi`
+  * Alt Başlık: `Sizi Ağırlamaktan Onur Duyduk`
+  * Paragraf: *"Gelenekten beslenen mutfağımızı, Sur'un tarihi atmosferinde çağdaş bir sunum anlayışı ve özenli servisle buluşturduk. Tarihi konak kapımız sizlere her zaman açık."*
+- **Açık Adres & Künye:**
+  `Camii Nebi Mah. İnönü Cad. No: 12 Sur / Diyarbakır • Beroş Restaurant`
+- **Alt Butonlar (Dokunulmayacak):**
+  * `[@berosrestoran]` (Instagram Resmi Hesap)
+  * `[WhatsApp Rezervasyon]`
+  * `[Telefon (0538 697 63 53)]`
+  * `[Harita Yol Tarifi]`
+  * `[Yukarı Çık ↑]`
+
+---
+
+### 6. ADIM: DERLE VE CANLI SERVİSİ YENİDEN BAŞLAT
+`app/page.tsx` dosyasını çekilen gerçek verilerle güncelle, sıfır TypeScript hatası ile derle ve PM2 servisini yeniden başlat:
+```bash
+npm run build && npx pm2 restart ar-menu
+```
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-09-06T01:48:52+03:00.
+
+The user's current state is as follows:
+Active Document: /Users/mesa/ar-cinema-menu/app/page.tsx (LANGUAGE_UNSPECIFIED)
+Cursor is on line: 1419
+Other open documents:
+- /Users/mesa/ar-cinema-menu/components/three-dish-stage.tsx (LANGUAGE_UNSPECIFIED)
+- /Users/mesa/ar-cinema-menu/components/steam-effect.tsx (LANGUAGE_UNSPECIFIED)
+- /Users/mesa/ar-cinema-menu/components/pop-up-dish-card.tsx (LANGUAGE_UNSPECIFIED)
+- /Users/mesa/ar-cinema-menu/next.config.ts (LANGUAGE_UNSPECIFIED)
+- /Users/mesa/ar-cinema-menu/components/ar-spatial-viewer.tsx (LANGUAGE_UNSPECIFIED)
+</ADDITIONAL_METADATA>

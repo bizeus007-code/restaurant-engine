@@ -1,0 +1,661 @@
+{
+  "id": "3a17ab56-73da-c207-9d3d-a5460566b81f",
+  "translations": [
+    {
+      "name": "SPECİALLER",
+      "description": "",
+      "isDeleted": false,
+      "languageCode": "tr"
+    }
+  ],
+  "files": [
+    {
+      "id": "3a1a8be9-8056-56d3-d805-61048cb2d04d",
+      "fileId": "3a1a8be9-8054-ef73-50c6-ec9a148cee06",
+      "filePath": "https://cdn.adisyo.com/mahrezcategoryphotos/314964_48624.jpg?202305100401",
+      "isDefault": false,
+      "type": null,
+      "isCompressed": false
+    },
+    {
+      "id": "3a1b20ab-7527-2024-a086-47a95c265c55",
+      "fileId": "3a1b20ab-7527-5d72-fdf2-974c5afdbb8f",
+      "filePath": "https://cdn.adisyo.com/mahrezcategoryphotos/314964_48624.jpg?202305100401",
+      "isDefault": false,
+      "type": null,
+      "isCompressed": false
+    },
+    {
+      "id": "3a1bd086-aa52-6e21-968e-99f9edeb57a8",
+      "fileId": "3a1bd086-aa52-a67e-ae4f-fa0002b8e4b6",
+      "filePath": "https://cdn.adisyo.com/mahrezcategoryphotos/314964_48624.jpg?202305100401",
+      "isDefault": false,
+      "type": null,
+      "isCompressed": false
+    },
+    {
+      "id": "3a1cf526-632e-9c49-1408-2403741721ae",
+      "fileId": "3a1cf526-632e-ff67-bcd5-66b060dcf2f1",
+      "filePath": "https://cdn.adisyo.com/mahrezcategoryphotos/314964_48624.jpg?202305100401",
+      "isDefault": false,
+      "type": null,
+      "isCompressed": false
+    },
+    {
+      "id": "3a1d27f1-9ef5-52f2-a820-18a5d8efe766",
+      "fileId": "3a1d27f1-9ef4-75d0-6180-9ab484a42285",
+      "filePath": "https://cdn.adisyo.com/mahrezcategoryphotos/314964_48624.jpg?202305100401",
+      "isDefault": false,
+      "type": null,
+      "isCompressed": false
+    },
+    {
+      "id": "3a1d27f7-c7db-39ee-9d32-bfe34a1486b9",
+      "fileId": "3a1d27f7-c7db-c4cb-c58a-d566ff978457",
+      "filePath": "https://cdn.adisyo.com/mahrezcategoryphotos/314964_48624.jpg?202305100401",
+      "isDefault": false,
+      "type": null,
+      "isCompressed": false
+    },
+    {
+      "id": "3a1d2807-873d-4cb6-ef6c-d39b9a3b9446",
+      "fileId": "3a1d2807-873d-2761-e9de-c89d4fb9cce4",
+      "filePath": "https://cdn.adisyo.com/mahrezcategoryphotos/314964_48624.jpg?202305100401",
+      "isDefault": false,
+      "type": null,
+      "isCompressed": false
+    },
+    {
+      "id": "3a1da8bc-0dd9-131d-448b-49dd3436aaf4",
+      "fileId": "3a1da8bc-0dd9-8f31-e656-66cdfebbba43",
+      "filePath": "https://cdn.adisyo.com/mahrezcategoryphotos/314964_48624.jpg?202305100401",
+      "isDefault": false,
+      "type": null,
+      "isCompressed": false
+    },
+    {
+      "id": "3a1dbe8c-30a7-af67-f7d9-fad7b7c9458b",
+      "fileId": "3a1dbe8c-30a7-b94e-26a9-8a1111c13a32",
+      "filePath": "https://cdn.adisyo.com/mahrezcategoryphotos/314964_48624.jpg?202305100401",
+      "isDefault": false,
+      "type": null,
+      "isCompressed": false
+    },
+    {
+      "id": "3a1dd81e-3a51-a99f-dba5-eb15c2e62003",
+      "fileId": "3a1dd81e-3a51-b0eb-907a-92289feefee0",
+      "filePath": "https://cdn.adisyo.com/mahrezcategoryphotos/314964_48624.jpg?202305100401",
+      "isDefault": false,
+      "type": null,
+      "isCompressed": false
+    },
+    {
+      "id": "3a1de6f6-aa4a-33b7-ab07-9143afc85d4e",
+      "fileId": "3a1de6f6-aa4a-976f-9263-f701817efeba",
+      "filePath": "https://cdn.adisyo.com/mahrezcategoryphotos/314964_48624.jpg?202305100401",
+      "isDefault": false,
+      "type": null,
+      "isCompressed": false
+    },
+    {
+      "id": "3a1ed398-d21b-d0b1-42ec-a6dcffa29abe",
+      "fileId": "3a1ed398-d21b-10ed-6e14-13f95f8ee0e5",
+      "filePath": "https://cdn.adisyo.com/mahrezcategoryphotos/314964_48624.jpg?202305100401",
+      "isDefault": false,
+      "type": null,
+      "isCompressed": false
+    }
+  ],
+  "productCount": 15,
+  "products": [
+    {
+      "id": "3a17ab56-73f8-423e-8706-274375540b2d",
+      "translations": [
+        {
+          "name": "BEROŞ USULÜ ACILI BONFİLE",
+          "description": "",
+          "isDeleted": false,
+          "languageCode": "tr"
+        }
+      ],
+      "prices": [
+        {
+          "id": null,
+          "priceListId": null,
+          "currencyCode": "TRY",
+          "taxRate": 10,
+          "price": 910
+        }
+      ],
+      "discounts": [],
+      "hasMultipleVariant": false,
+      "hasAdditionals": false,
+      "hasSuggestedVariants": false,
+      "baseVariantId": "3a17ab56-740a-ed4e-d64c-58877d28413b",
+      "files": [
+        {
+          "id": "3a1ed398-d2d5-0f23-6874-b0ebad032687",
+          "fileId": "3a1ed398-d2d5-c972-1b33-f0e53bd65dc6",
+          "filePath": "https://cdn.adisyo.com/mahrezphotos/3655276_48624_20230508013151.jpg",
+          "isDefault": true,
+          "type": 1,
+          "isCompressed": false
+        }
+      ],
+      "colorCode": null,
+      "attributes": [],
+      "isStockAvailable": true,
+      "variantType": 0
+    },
+    {
+      "id": "3a17ab56-7420-be6f-e94a-2c17be9fcb49",
+      "translations": [
+        {
+          "name": "BEROŞ USULÜ LOqUM BONFİLE",
+          "description": "",
+          "isDeleted": false,
+          "languageCode": "tr"
+        }
+      ],
+      "prices": [
+        {
+          "id": null,
+          "priceListId": null,
+          "currencyCode": "TRY",
+          "taxRate": 10,
+          "price": 920
+        }
+      ],
+      "discounts": [],
+      "hasMultipleVariant": false,
+      "hasAdditionals": false,
+      "hasSuggestedVariants": false,
+      "baseVariantId": "3a17ab56-742b-5fce-7ad0-de1dd4abc208",
+      "files": [
+        {
+          "id": "3a1ed398-d2de-e2ce-c94c-96361cd1b724",
+          "fileId": "3a1ed398-d2de-519d-8db3-821fcdc22cd4",
+          "filePath": "https://cdn.adisyo.com/mahrezphotos/3655277_48624_20230508013116.jpg",
+          "isDefault": true,
+          "type": 1,
+          "isCompressed": false
+        }
+      ],
+      "colorCode": null,
+      "attributes": [],
+      "isStockAvailable": true,
+      "variantType": 0
+    },
+    {
+      "id": "3a17ab56-7448-7862-f51f-f15d41ae2c66",
+      "translations": [
+        {
+          "name": "Loqum BONFİLE",
+          "description": "",
+          "isDeleted": false,
+          "languageCode": "tr"
+        }
+      ],
+      "prices": [
+        {
+          "id": null,
+          "priceListId": null,
+          "currencyCode": "TRY",
+          "taxRate": 10,
+          "price": 900
+        }
+      ],
+      "discounts": [],
+      "hasMultipleVariant": false,
+      "hasAdditionals": false,
+      "hasSuggestedVariants": false,
+      "baseVariantId": "3a17ab56-744c-9474-8391-95bb3cd1822f",
+      "files": [
+        {
+          "id": "3a1ed398-d2ed-d717-a7b8-de42dcd9dd9a",
+          "fileId": "3a1ed398-d2ed-4b95-e398-ed9a9a3e999a",
+          "filePath": "https://cdn.adisyo.com/mahrezphotos/3655280_48624_20230508012926.jpg",
+          "isDefault": true,
+          "type": 1,
+          "isCompressed": false
+        }
+      ],
+      "colorCode": null,
+      "attributes": [],
+      "isStockAvailable": true,
+      "variantType": 0
+    },
+    {
+      "id": "3a17ab56-7460-e61e-f1a8-b1d434721271",
+      "translations": [
+        {
+          "name": "PATATES YATAĞINDA BONFİLE",
+          "description": "",
+          "isDeleted": false,
+          "languageCode": "tr"
+        }
+      ],
+      "prices": [
+        {
+          "id": null,
+          "priceListId": null,
+          "currencyCode": "TRY",
+          "taxRate": 10,
+          "price": 910
+        }
+      ],
+      "discounts": [],
+      "hasMultipleVariant": false,
+      "hasAdditionals": false,
+      "hasSuggestedVariants": false,
+      "baseVariantId": "3a17ab56-7465-bd4c-e361-1805174061e4",
+      "files": [
+        {
+          "id": "3a1ed398-d2f6-5909-c7ab-628fa605bdbb",
+          "fileId": "3a1ed398-d2f6-8a6e-f232-120391d8558a",
+          "filePath": "https://cdn.adisyo.com/mahrezphotos/3655281_48624_20230508015124.jpg",
+          "isDefault": true,
+          "type": 1,
+          "isCompressed": false
+        }
+      ],
+      "colorCode": null,
+      "attributes": [],
+      "isStockAvailable": true,
+      "variantType": 0
+    },
+    {
+      "id": "3a17ab56-7479-823f-6690-0655c78799ab",
+      "translations": [
+        {
+          "name": "BEROŞ SPECİAL 1 ",
+          "description": "",
+          "isDeleted": false,
+          "languageCode": "tr"
+        }
+      ],
+      "prices": [
+        {
+          "id": null,
+          "priceListId": null,
+          "currencyCode": "TRY",
+          "taxRate": 10,
+          "price": 845
+        }
+      ],
+      "discounts": [],
+      "hasMultipleVariant": false,
+      "hasAdditionals": false,
+      "hasSuggestedVariants": false,
+      "baseVariantId": "3a17ab56-747e-dad1-0360-b706b7c74700",
+      "files": [
+        {
+          "id": "3a1ed398-d2fe-8805-f10b-46b47b2cd155",
+          "fileId": "3a1ed398-d2fe-00b0-ffd4-b8e5b86d4d9b",
+          "filePath": "https://cdn.adisyo.com/mahrezphotos/3655385_48624_20230508014734.jpg",
+          "isDefault": true,
+          "type": 1,
+          "isCompressed": false
+        }
+      ],
+      "colorCode": null,
+      "attributes": [],
+      "isStockAvailable": true,
+      "variantType": 0
+    },
+    {
+      "id": "3a17ab56-7492-1259-e525-6e9babd9bc05",
+      "translations": [
+        {
+          "name": "ÖZEL SİPARİŞ KABURGA ",
+          "description": "",
+          "isDeleted": false,
+          "languageCode": "tr"
+        }
+      ],
+      "prices": [
+        {
+          "id": null,
+          "priceListId": null,
+          "currencyCode": "TRY",
+          "taxRate": 10,
+          "price": 1650
+        }
+      ],
+      "discounts": [],
+      "hasMultipleVariant": false,
+      "hasAdditionals": false,
+      "hasSuggestedVariants": false,
+      "baseVariantId": "3a17ab56-7496-ea57-c14d-8a002c2b2393",
+      "files": [
+        {
+          "id": "3a1ed398-d308-24cd-0150-7c2c13a1cc0d",
+          "fileId": "3a1ed398-d308-92f4-ee5a-3a5e65a24813",
+          "filePath": "https://cdn.adisyo.com/mahrezphotos/3655386_48624_20230508014710.jpg",
+          "isDefault": true,
+          "type": 1,
+          "isCompressed": false
+        }
+      ],
+      "colorCode": null,
+      "attributes": [],
+      "isStockAvailable": true,
+      "variantType": 0
+    },
+    {
+      "id": "3a17ab56-74ab-013a-d8e5-c1ee90057d74",
+      "translations": [
+        {
+          "name": "ÇÖKERTME ",
+          "description": "",
+          "isDeleted": false,
+          "languageCode": "tr"
+        }
+      ],
+      "prices": [
+        {
+          "id": null,
+          "priceListId": null,
+          "currencyCode": "TRY",
+          "taxRate": 10,
+          "price": 845
+        }
+      ],
+      "discounts": [],
+      "hasMultipleVariant": false,
+      "hasAdditionals": false,
+      "hasSuggestedVariants": false,
+      "baseVariantId": "3a17ab56-74b0-1868-6e9d-7092afec2c5f",
+      "files": [
+        {
+          "id": "3a1ed398-d310-0482-2fe3-4b7e99f05432",
+          "fileId": "3a1ed398-d310-4148-fab8-30454ae1af09",
+          "filePath": "https://cdn.adisyo.com/mahrezphotos/3655473_48624_20230508014655.jpg",
+          "isDefault": true,
+          "type": 1,
+          "isCompressed": false
+        }
+      ],
+      "colorCode": null,
+      "attributes": [],
+      "isStockAvailable": true,
+      "variantType": 0
+    },
+    {
+      "id": "3a17ab56-74f0-a807-f26b-db8f7300c86e",
+      "translations": [
+        {
+          "name": "KABAK MEFTUNE",
+          "description": "",
+          "isDeleted": false,
+          "languageCode": "tr"
+        }
+      ],
+      "prices": [
+        {
+          "id": null,
+          "priceListId": null,
+          "currencyCode": "TRY",
+          "taxRate": 10,
+          "price": 0
+        }
+      ],
+      "discounts": [],
+      "hasMultipleVariant": false,
+      "hasAdditionals": false,
+      "hasSuggestedVariants": false,
+      "baseVariantId": "3a17ab56-74f5-289b-4c54-6440ee9fcfe7",
+      "files": [
+        {
+          "id": "3a1ed398-d31e-8fe2-bfc6-8adb424e5be2",
+          "fileId": "3a1ed398-d31e-a638-598e-f5278ff609af",
+          "filePath": "https://cdn.adisyo.com/mahrezphotos/3655509_48624_20230508014505.jpg",
+          "isDefault": true,
+          "type": 1,
+          "isCompressed": false
+        }
+      ],
+      "colorCode": null,
+      "attributes": [],
+      "isStockAvailable": true,
+      "variantType": 0
+    },
+    {
+      "id": "3a17ab56-750c-86d5-641d-7968dcb51b2d",
+      "translations": [
+        {
+          "name": "KREMALI Loqum BONFİLE",
+          "description": "",
+          "isDeleted": false,
+          "languageCode": "tr"
+        }
+      ],
+      "prices": [
+        {
+          "id": null,
+          "priceListId": null,
+          "currencyCode": "TRY",
+          "taxRate": 10,
+          "price": 925
+        }
+      ],
+      "discounts": [],
+      "hasMultipleVariant": false,
+      "hasAdditionals": false,
+      "hasSuggestedVariants": false,
+      "baseVariantId": "3a17ab56-7514-8885-9f84-ffff6d502775",
+      "files": [
+        {
+          "id": "3a1ed398-d327-7272-0a1d-31602222ac27",
+          "fileId": "3a1ed398-d327-c213-6dd1-0cf9634532d4",
+          "filePath": "https://cdn.adisyo.com/mahrezphotos/3655536_48624_20230508014409.jpg",
+          "isDefault": true,
+          "type": 1,
+          "isCompressed": false
+        }
+      ],
+      "colorCode": null,
+      "attributes": [],
+      "isStockAvailable": true,
+      "variantType": 0
+    },
+    {
+      "id": "3a17ab56-7528-3c96-819d-930ae8635812",
+      "translations": [
+        {
+          "name": "BEEF STRAGONOF",
+          "description": "",
+          "isDeleted": false,
+          "languageCode": "tr"
+        }
+      ],
+      "prices": [
+        {
+          "id": null,
+          "priceListId": null,
+          "currencyCode": "TRY",
+          "taxRate": 10,
+          "price": 820
+        }
+      ],
+      "discounts": [],
+      "hasMultipleVariant": false,
+      "hasAdditionals": false,
+      "hasSuggestedVariants": false,
+      "baseVariantId": "3a17ab56-752d-ce01-807d-06e3a7128ebc",
+      "files": [
+        {
+          "id": "3a1ed398-d32f-f35a-38fe-b3cd4ecd226c",
+          "fileId": "3a1ed398-d32f-d6cc-0e2d-2dbfa26c1a40",
+          "filePath": "https://cdn.adisyo.com/mahrezphotos/3655384_48624_20230508014802.jpg",
+          "isDefault": true,
+          "type": 1,
+          "isCompressed": false
+        }
+      ],
+      "colorCode": null,
+      "attributes": [],
+      "isStockAvailable": true,
+      "variantType": 0
+    },
+    {
+      "id": "3a17ab56-753f-7f3d-25d7-70165c39198c",
+      "translations": [
+        {
+          "name": "BEROŞ SPECİAL 2 ",
+          "description": "",
+          "isDeleted": false,
+          "languageCode": "tr"
+        }
+      ],
+      "prices": [
+        {
+          "id": null,
+          "priceListId": null,
+          "currencyCode": "TRY",
+          "taxRate": 10,
+          "price": 910
+        }
+      ],
+      "discounts": [],
+      "hasMultipleVariant": false,
+      "hasAdditionals": false,
+      "hasSuggestedVariants": false,
+      "baseVariantId": "3a17ab56-7549-48a8-1053-e2eb49db854a",
+      "files": [
+        {
+          "id": "3a1ed398-d338-6114-584d-249c8a798980",
+          "fileId": "3a1ed398-d338-a93f-97bf-add600534af7",
+          "filePath": "https://cdn.adisyo.com/mahrezphotos/3655469_48624_20230508014825.jpg",
+          "isDefault": true,
+          "type": 1,
+          "isCompressed": false
+        }
+      ],
+      "colorCode": null,
+      "attributes": [],
+      "isStockAvailable": true,
+      "variantType": 0
+    },
+    {
+      "id": "3a17ab56-755c-d31d-aa98-a1a4864c0efb",
+      "translations": [
+        {
+          "name": "1,5 PORSİYON LOqUM BONFİLE ",
+          "description": "",
+          "isDeleted": false,
+          "languageCode": "tr"
+        }
+      ],
+      "prices": [
+        {
+          "id": null,
+          "priceListId": null,
+          "currencyCode": "TRY",
+          "taxRate": 10,
+          "price": 1290
+        }
+      ],
+      "discounts": [],
+      "hasMultipleVariant": false,
+      "hasAdditionals": false,
+      "hasSuggestedVariants": false,
+      "baseVariantId": "3a17ab56-7560-99ff-ee57-7c51f66ddea6",
+      "files": [],
+      "colorCode": null,
+      "attributes": [],
+      "isStockAvailable": true,
+      "variantType": 0
+    },
+    {
+      "id": "3a17ab56-7598-6f42-d337-347900e7f13d",
+      "translations": [
+        {
+          "name": "1,5 PORSİYON BEROŞ USULU ACILI BONFİLE",
+          "description": "",
+          "isDeleted": false,
+          "languageCode": "tr"
+        }
+      ],
+      "prices": [
+        {
+          "id": null,
+          "priceListId": null,
+          "currencyCode": "TRY",
+          "taxRate": 10,
+          "price": 1310
+        }
+      ],
+      "discounts": [],
+      "hasMultipleVariant": false,
+      "hasAdditionals": false,
+      "hasSuggestedVariants": false,
+      "baseVariantId": "3a17ab56-759c-5db8-d6bb-6eaa7cbd0248",
+      "files": [],
+      "colorCode": null,
+      "attributes": [],
+      "isStockAvailable": true,
+      "variantType": 0
+    },
+    {
+      "id": "3a17ab56-75b0-4759-be66-8c8dbf8e0cde",
+      "translations": [
+        {
+          "name": "1.5 PORSİYON BEROŞ SPECİAL 1",
+          "description": "",
+          "isDeleted": false,
+          "languageCode": "tr"
+        }
+      ],
+      "prices": [
+        {
+          "id": null,
+          "priceListId": null,
+          "currencyCode": "TRY",
+          "taxRate": 10,
+          "price": 1250
+        }
+      ],
+      "discounts": [],
+      "hasMultipleVariant": false,
+      "hasAdditionals": false,
+      "hasSuggestedVariants": false,
+      "baseVariantId": "3a17ab56-75b5-b803-243f-fe25536e1b42",
+      "files": [],
+      "colorCode": null,
+      "attributes": [],
+      "isStockAvailable": true,
+      "variantType": 0
+    },
+    {
+      "id": "3a17ab56-75c7-aa45-7e95-1e9645d6ad1f",
+      "translations": [
+        {
+          "name": "1.5 PORSİYON BEROŞ SPECİAL 2",
+          "description": "",
+          "isDeleted": false,
+          "languageCode": "tr"
+        }
+      ],
+      "prices": [
+        {
+          "id": null,
+          "priceListId": null,
+          "currencyCode": "TRY",
+          "taxRate": 10,
+          "price": 1310
+        }
+      ],
+      "discounts": [],
+      "hasMultipleVariant": false,
+      "hasAdditionals": false,
+      "hasSuggestedVariants": false,
+      "baseVariantId": "3a17ab56-75cc-5ea3-235a-3470a2dcd440",
+      "files": [],
+      "colorCode": null,
+      "attributes": [],
+      "isStockAvailable": true,
+      "variantType": 0
+    }
+  ]
+}

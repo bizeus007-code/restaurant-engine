@@ -1,0 +1,2646 @@
+{
+  "fetchedAt": "2026-09-05T23:00:49.838Z",
+  "totalCategories": 11,
+  "totalProducts": 128,
+  "categories": [
+    {
+      "id": "3a17ab56-73da-c207-9d3d-a5460566b81f",
+      "name": "SPECİALLER",
+      "productCount": 15,
+      "products": [
+        {
+          "id": "3a17ab56-73f8-423e-8706-274375540b2d",
+          "category": "SPECİALLER",
+          "name": "BEROŞ USULÜ ACILI BONFİLE",
+          "description": "",
+          "price": 910,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655276_48624_20230508013151.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7420-be6f-e94a-2c17be9fcb49",
+          "category": "SPECİALLER",
+          "name": "BEROŞ USULÜ LOqUM BONFİLE",
+          "description": "",
+          "price": 920,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655277_48624_20230508013116.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7448-7862-f51f-f15d41ae2c66",
+          "category": "SPECİALLER",
+          "name": "Loqum BONFİLE",
+          "description": "",
+          "price": 900,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655280_48624_20230508012926.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7460-e61e-f1a8-b1d434721271",
+          "category": "SPECİALLER",
+          "name": "PATATES YATAĞINDA BONFİLE",
+          "description": "",
+          "price": 910,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655281_48624_20230508015124.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7479-823f-6690-0655c78799ab",
+          "category": "SPECİALLER",
+          "name": "BEROŞ SPECİAL 1 ",
+          "description": "",
+          "price": 845,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655385_48624_20230508014734.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7492-1259-e525-6e9babd9bc05",
+          "category": "SPECİALLER",
+          "name": "ÖZEL SİPARİŞ KABURGA ",
+          "description": "",
+          "price": 1650,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655386_48624_20230508014710.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-74ab-013a-d8e5-c1ee90057d74",
+          "category": "SPECİALLER",
+          "name": "ÇÖKERTME ",
+          "description": "",
+          "price": 845,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655473_48624_20230508014655.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-74f0-a807-f26b-db8f7300c86e",
+          "category": "SPECİALLER",
+          "name": "KABAK MEFTUNE",
+          "description": "",
+          "price": 0,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655509_48624_20230508014505.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-750c-86d5-641d-7968dcb51b2d",
+          "category": "SPECİALLER",
+          "name": "KREMALI Loqum BONFİLE",
+          "description": "",
+          "price": 925,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655536_48624_20230508014409.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7528-3c96-819d-930ae8635812",
+          "category": "SPECİALLER",
+          "name": "BEEF STRAGONOF",
+          "description": "",
+          "price": 820,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655384_48624_20230508014802.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-753f-7f3d-25d7-70165c39198c",
+          "category": "SPECİALLER",
+          "name": "BEROŞ SPECİAL 2 ",
+          "description": "",
+          "price": 910,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655469_48624_20230508014825.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-755c-d31d-aa98-a1a4864c0efb",
+          "category": "SPECİALLER",
+          "name": "1,5 PORSİYON LOqUM BONFİLE ",
+          "description": "",
+          "price": 1290,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7598-6f42-d337-347900e7f13d",
+          "category": "SPECİALLER",
+          "name": "1,5 PORSİYON BEROŞ USULU ACILI BONFİLE",
+          "description": "",
+          "price": 1310,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-75b0-4759-be66-8c8dbf8e0cde",
+          "category": "SPECİALLER",
+          "name": "1.5 PORSİYON BEROŞ SPECİAL 1",
+          "description": "",
+          "price": 1250,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-75c7-aa45-7e95-1e9645d6ad1f",
+          "category": "SPECİALLER",
+          "name": "1.5 PORSİYON BEROŞ SPECİAL 2",
+          "description": "",
+          "price": 1310,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        }
+      ]
+    },
+    {
+      "id": "3a17ab56-767d-dd5b-9c1a-afed6010a898",
+      "name": "YÖRESEL",
+      "productCount": 33,
+      "products": [
+        {
+          "id": "3a1b20ab-771a-ef17-a98c-f63c9dfbc7b8",
+          "category": "YÖRESEL",
+          "name": "ETSİZ SEBZE YEMEĞİ",
+          "description": "",
+          "price": 475,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a1de6f6-acc3-18ff-5c12-6058bbee5a5a",
+          "category": "YÖRESEL",
+          "name": "KEÇİ KAVURMASI",
+          "description": "",
+          "price": 0,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a1dbe8c-34fb-9ab6-7d0e-567491fec855",
+          "category": "YÖRESEL",
+          "name": "EKŞİLİ KÖFTE",
+          "description": "",
+          "price": 0,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a1da8bc-0fe2-ade5-8d04-5a737cde6a9e",
+          "category": "YÖRESEL",
+          "name": "FIRIN KEBABI",
+          "description": "",
+          "price": 0,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-768d-fa57-2ab1-a50a790127d6",
+          "category": "YÖRESEL",
+          "name": "AYVALI KAVURMA",
+          "description": "",
+          "price": 725,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655037_48624_20230508013654.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-76a5-631f-b8f9-59c9f0b14acf",
+          "category": "YÖRESEL",
+          "name": "BEROŞ SPECİAL KUZU SIRT",
+          "description": "",
+          "price": 725,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655040_48624_20230508013641.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-76bd-168e-0ff1-5e85171e0b64",
+          "category": "YÖRESEL",
+          "name": "FIRINDA KUZU İNCİK",
+          "description": "",
+          "price": 680,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655041_48624_20230508013618.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-76d4-ec9e-e990-f7a2bba5d0c4",
+          "category": "YÖRESEL",
+          "name": "KEKİKLİ KUZU BUDU",
+          "description": "",
+          "price": 670,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655042_48624_20230508013747.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-76ea-c217-a8e5-18e7932c0d63",
+          "category": "YÖRESEL",
+          "name": "KUZU GERDAN ",
+          "description": "",
+          "price": 670,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655043_48624_20230508013815.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7704-c331-a0d1-ffba55f0bdb2",
+          "category": "YÖRESEL",
+          "name": "KUZU GREATEN",
+          "description": "",
+          "price": 680,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655047_48624_20230508013829.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-771c-83b4-4aa2-1c5e540af05c",
+          "category": "YÖRESEL",
+          "name": "KUZU HAŞLAMA",
+          "description": "",
+          "price": 670,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655048_48624_20230508013851.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-773e-ff70-be81-4ea4040c6be6",
+          "category": "YÖRESEL",
+          "name": "FIRIN AĞZI ",
+          "description": "",
+          "price": 680,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655059_48624_20230508014011.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-775a-911f-22a1-ef0a4cfebdd6",
+          "category": "YÖRESEL",
+          "name": "DİYARBAKIR KAVURMA",
+          "description": "",
+          "price": 660,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655064_48624_20230511101208.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7776-e85f-2c3a-28e90864959f",
+          "category": "YÖRESEL",
+          "name": "PATLICAN YATAĞINDA KUZU İNCİK",
+          "description": "",
+          "price": 670,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655053_48624_20230508013718.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-778d-fd31-b0e4-ddb4164c17cf",
+          "category": "YÖRESEL",
+          "name": "FIRINDA GERDAN",
+          "description": "",
+          "price": 670,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655054_48624_20230508013559.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-77a5-c387-3e16-b998a7a3d46e",
+          "category": "YÖRESEL",
+          "name": "KOL DOLMASI 2 KİŞİLİK",
+          "description": "",
+          "price": 1300,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655062_48624_20230508013506.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-77bd-55c4-4200-3c139d4f3809",
+          "category": "YÖRESEL",
+          "name": "FIRIN GÜVEÇ",
+          "description": "",
+          "price": 480,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655063_48624_20230508013450.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-77de-0892-7667-5a4e3729bfe4",
+          "category": "YÖRESEL",
+          "name": "AŞÇI TABAĞI",
+          "description": "",
+          "price": 985,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-77f9-78a9-143d-72e86484fd4d",
+          "category": "YÖRESEL",
+          "name": "PİLAV ÜSTÜ TANDIR",
+          "description": "",
+          "price": 685,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7820-3688-4a47-093fd6e47b9e",
+          "category": "YÖRESEL",
+          "name": "AZ KAVURMA ",
+          "description": "",
+          "price": 410,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7844-a09f-c7cd-4170c121babc",
+          "category": "YÖRESEL",
+          "name": "AZ TANDIR",
+          "description": "",
+          "price": 410,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7860-f201-bcd8-d90400392513",
+          "category": "YÖRESEL",
+          "name": "AZ GÜVEÇ",
+          "description": "",
+          "price": 300,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7878-524a-cc94-596c2f52903d",
+          "category": "YÖRESEL",
+          "name": "PİLAV ÜSTÜ KUZU KOL DOLMASI",
+          "description": "",
+          "price": 690,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7891-f3fb-2a2f-54a3b1b178d9",
+          "category": "YÖRESEL",
+          "name": "SADE TANDIR ",
+          "description": "",
+          "price": 560,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-78b2-4e8b-0fa5-4cac8e95e670",
+          "category": "YÖRESEL",
+          "name": "BEĞENDİLİ TANDIR",
+          "description": "",
+          "price": 670,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-78ca-488f-59a9-ca174e8c52ff",
+          "category": "YÖRESEL",
+          "name": "3 KİŞİLİK KOL DOLMASI",
+          "description": "",
+          "price": 1980,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-78e0-f9b0-f1c6-9db3e8401e5c",
+          "category": "YÖRESEL",
+          "name": "KURU FASULYE PİLAV",
+          "description": "",
+          "price": 550,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-78f7-27d1-b59f-ea8beb40d3ac",
+          "category": "YÖRESEL",
+          "name": "PATATES YATAĞINDA KUZU İNCİK",
+          "description": "",
+          "price": 670,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-790e-5c1e-1ac9-30f3304f1489",
+          "category": "YÖRESEL",
+          "name": "KUZU İNCİK",
+          "description": "",
+          "price": 670,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-794e-4801-4e74-e912f041a708",
+          "category": "YÖRESEL",
+          "name": "AZ KURU FASULYE",
+          "description": "",
+          "price": 300,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-79e0-c3a0-72da-fa43a6b8ec3e",
+          "category": "YÖRESEL",
+          "name": "CANLI MÜZİK BEDELİ",
+          "description": "",
+          "price": 0,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a1a8559-59a3-7766-0dc1-4837950feab1",
+          "category": "YÖRESEL",
+          "name": "KEMİKSİZ KABURGA DOLMASI",
+          "description": "",
+          "price": 0,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a1a8559-5a37-a96c-4410-d8ea6e5650b6",
+          "category": "YÖRESEL",
+          "name": "KİREMİT GÜVEÇ",
+          "description": "",
+          "price": 480,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        }
+      ]
+    },
+    {
+      "id": "3a17ab56-71f8-49d1-a101-270a35cc36be",
+      "name": "ARA SICAKLAR ",
+      "productCount": 21,
+      "products": [
+        {
+          "id": "3a1b20ab-75f7-105f-10e2-c776f5ce3734",
+          "category": "ARA SICAKLAR ",
+          "name": "CACIK",
+          "description": "",
+          "price": 230,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a218014-3042-4849-4d54-fa38ed9e5cf9",
+          "category": "ARA SICAKLAR ",
+          "name": "AZ BULGUR PİLAVI",
+          "description": "",
+          "price": 85,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a1ed398-d2ac-598e-0dcc-0677b24e10f1",
+          "category": "ARA SICAKLAR ",
+          "name": "1 ADET TALAŞ BÖREĞİ",
+          "description": "",
+          "price": 75,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a1bd086-aacc-30d3-8064-4aac5b9e4a5c",
+          "category": "ARA SICAKLAR ",
+          "name": "AZ MUMBAR",
+          "description": "",
+          "price": 285,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a1cf526-63e5-1d10-729e-2421ddf9b2ac",
+          "category": "ARA SICAKLAR ",
+          "name": "SİGARA BÖREĞİ 1 ADET",
+          "description": "",
+          "price": 0,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7208-50ea-35a4-16ef704b3b2f",
+          "category": "ARA SICAKLAR ",
+          "name": "MUMBAR",
+          "description": "",
+          "price": 480,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3654901_48624_20230508012419.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7221-2d60-4fc5-aeec24150131",
+          "category": "ARA SICAKLAR ",
+          "name": "İÇLİ KÖFTE ",
+          "description": "",
+          "price": 80,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3654902_48624_20230508012350.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7238-81bf-cfa8-d1615f93ffcd",
+          "category": "ARA SICAKLAR ",
+          "name": "AZ İÇ PİLAV",
+          "description": "",
+          "price": 100,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7251-9426-793a-33cbb3270fa5",
+          "category": "ARA SICAKLAR ",
+          "name": "TALAŞ BÖREĞİ",
+          "description": "",
+          "price": 220,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655031_48624_20230512061454.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-726b-6a8f-1672-c58b8b9e77f0",
+          "category": "ARA SICAKLAR ",
+          "name": "MUMBAR 1 ADET",
+          "description": "",
+          "price": 85,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3656845_48624_20230512061529.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7283-6c2b-0e6e-525b5e387a1b",
+          "category": "ARA SICAKLAR ",
+          "name": "SADE PİLAV",
+          "description": "",
+          "price": 130,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3658502_48624_20230512061622.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-729a-913a-98be-0b9afe21e8ef",
+          "category": "ARA SICAKLAR ",
+          "name": "PATATES CİPS",
+          "description": "",
+          "price": 220,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3658505_48624_20230512061440.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-72b2-e138-2a8b-7ed24bdeb550",
+          "category": "ARA SICAKLAR ",
+          "name": "DOLMA (TEK)",
+          "description": "",
+          "price": 80,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-72c9-6bb9-c055-0db65b0ffec6",
+          "category": "ARA SICAKLAR ",
+          "name": "AZ PİLAV",
+          "description": "",
+          "price": 95,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-72e4-4272-d1cd-55769e0d08ef",
+          "category": "ARA SICAKLAR ",
+          "name": "İÇ PİLAV",
+          "description": "",
+          "price": 145,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-72fb-890c-3040-8b7408faa388",
+          "category": "ARA SICAKLAR ",
+          "name": "ÇORBA ",
+          "description": "",
+          "price": 0,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655472_48624_20230508014844.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7318-deb9-8a55-fd3d44f87d75",
+          "category": "ARA SICAKLAR ",
+          "name": "YOĞURTLU ISPANAK",
+          "description": "",
+          "price": 275,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7330-9926-7b4d-e9e5d3b7a93c",
+          "category": "ARA SICAKLAR ",
+          "name": "BULGUR PİLAVI",
+          "description": "",
+          "price": 130,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7389-1438-df32-e1ae44076958",
+          "category": "ARA SICAKLAR ",
+          "name": "1 PORSİYON DOLMA",
+          "description": "",
+          "price": 300,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a1a8559-205e-ea22-2eb9-7d1dc67592c4",
+          "category": "ARA SICAKLAR ",
+          "name": "KIZARTMA TABAĞI",
+          "description": "",
+          "price": 300,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-73ab-386a-93ea-25a079e3a7d2",
+          "category": "ARA SICAKLAR ",
+          "name": "ÇİĞKÖFTE",
+          "description": "",
+          "price": 350,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        }
+      ]
+    },
+    {
+      "id": "3a17ab56-7f90-9564-8911-13104a58c1f0",
+      "name": "FIRIN ÜRÜNLERİ",
+      "productCount": 12,
+      "products": [
+        {
+          "id": "3a1b20ab-7818-62a4-4c79-e68af9b777dd",
+          "category": "FIRIN ÜRÜNLERİ",
+          "name": "KUŞBAŞI KAŞARLI PİDE 1,5 PORSİYON",
+          "description": "",
+          "price": 850,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7fa1-62e8-024d-75b58292cfcc",
+          "category": "FIRIN ÜRÜNLERİ",
+          "name": "1 PORSİYON LAHMACUN",
+          "description": "",
+          "price": 500,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7fba-c891-ab63-0a396972cda0",
+          "category": "FIRIN ÜRÜNLERİ",
+          "name": "KUŞBAŞI KAŞARLI PİDE ",
+          "description": "",
+          "price": 595,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/4375359_48624_20231109122811.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7fd1-c467-d6dd-8c927439ccd3",
+          "category": "FIRIN ÜRÜNLERİ",
+          "name": "KUŞBAŞI PİDE",
+          "description": "",
+          "price": 570,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/4375357_48624_20231109122733.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7fe9-1777-5ea4-caef1a189ae1",
+          "category": "FIRIN ÜRÜNLERİ",
+          "name": "KIYMALI YUMURTALI PİDE",
+          "description": "",
+          "price": 535,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/4375365_48624_20231109122841.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-8001-4e3e-e228-56ebb74bdf59",
+          "category": "FIRIN ÜRÜNLERİ",
+          "name": "BEROŞ USULÜ LAHMACUN",
+          "description": "",
+          "price": 520,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-8019-6c1c-2d63-a283d7298197",
+          "category": "FIRIN ÜRÜNLERİ",
+          "name": "KAVURMALI KAŞARLI PİDE",
+          "description": "",
+          "price": 650,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-8030-f8a2-f9ed-b0c2936024dc",
+          "category": "FIRIN ÜRÜNLERİ",
+          "name": "1,5 PORSİYON KUŞBAŞILI PİDE",
+          "description": "",
+          "price": 750,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/4375663_48624_20231109123825.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-8048-1baf-385b-17d23de1e45b",
+          "category": "FIRIN ÜRÜNLERİ",
+          "name": "1 ADET LAHMACUN",
+          "description": "",
+          "price": 130,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-8060-c7fd-5500-defed503b63f",
+          "category": "FIRIN ÜRÜNLERİ",
+          "name": "FINDIK LAHMACUN",
+          "description": "",
+          "price": 85,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/4391983_48624_20231109122251.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-8078-2e9f-f2c4-e21f915c0dae",
+          "category": "FIRIN ÜRÜNLERİ",
+          "name": "KAŞARLI PİDE",
+          "description": "",
+          "price": 560,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/4394392_48624_20231109122226.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-808f-0b80-47f7-785b9c4deb88",
+          "category": "FIRIN ÜRÜNLERİ",
+          "name": "ISPANAKLI KAŞARLI PİDE",
+          "description": "",
+          "price": 540,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        }
+      ]
+    },
+    {
+      "id": "3a17ab56-8099-073e-cab3-882f45b9c163",
+      "name": "SAC TAVA ÜRÜNLERİ",
+      "productCount": 3,
+      "products": [
+        {
+          "id": "3a17ab56-80a8-9dbd-3aad-5e27eeb1b686",
+          "category": "SAC TAVA ÜRÜNLERİ",
+          "name": "SAC TAVA",
+          "description": "",
+          "price": 800,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/4394416_48624_20231109122117.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-80c3-d271-9b69-dc172b91d929",
+          "category": "SAC TAVA ÜRÜNLERİ",
+          "name": "BİR BUÇUK SAC TAVA",
+          "description": "",
+          "price": 1180,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-80e9-18c8-9ba0-68ce170c3487",
+          "category": "SAC TAVA ÜRÜNLERİ",
+          "name": "duble sac tava",
+          "description": "",
+          "price": 1550,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        }
+      ]
+    },
+    {
+      "id": "3a17ab56-75f5-4d43-80d8-c739ab670a88",
+      "name": "TAVUK ÇEŞİTLERİ",
+      "productCount": 5,
+      "products": [
+        {
+          "id": "3a17ab56-760f-dfc2-a035-825a01d28527",
+          "category": "TAVUK ÇEŞİTLERİ",
+          "name": "BEROŞ TAVUK SPECİAL",
+          "description": "",
+          "price": 590,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655261_48624_20230508013419.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7628-365f-e713-9914e9a85e7c",
+          "category": "TAVUK ÇEŞİTLERİ",
+          "name": "KÖRİ SOSLU TAVUK",
+          "description": "",
+          "price": 550,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655264_48624_20230508013326.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7641-2bb6-5a63-da5026a622c5",
+          "category": "TAVUK ÇEŞİTLERİ",
+          "name": "ISPANAK YATAĞINDA TAVUK BONFİLE",
+          "description": "",
+          "price": 570,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655269_48624_20230512063642.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-765a-2afc-065c-bff72238ee19",
+          "category": "TAVUK ÇEŞİTLERİ",
+          "name": "KREMALI MANTARLI TAVUK",
+          "description": "",
+          "price": 550,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7671-afb9-06d1-9ae6f9941203",
+          "category": "TAVUK ÇEŞİTLERİ",
+          "name": " BEROŞ USULÜ ACILI TAVUK",
+          "description": "",
+          "price": 540,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        }
+      ]
+    },
+    {
+      "id": "3a17ab56-7bb1-2ae0-3f01-c8c3cf4675a8",
+      "name": "TATLILAR",
+      "productCount": 10,
+      "products": [
+        {
+          "id": "3a1da8bc-1068-1c9e-d052-a69edddf4beb",
+          "category": "TATLILAR",
+          "name": "YAŞ PASTA",
+          "description": "",
+          "price": 0,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7be6-6bf4-988e-69f162cbc592",
+          "category": "TATLILAR",
+          "name": "FISTIKLI KADAYIF",
+          "description": "",
+          "price": 430,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3672488_48624_20230511113426.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7c07-b4ae-e9c8-5efa3876c25c",
+          "category": "TATLILAR",
+          "name": "FISTIKLI BAKLAVA",
+          "description": "",
+          "price": 450,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3672485_48624_20230512061943.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7c29-57c5-353c-1c7035721a23",
+          "category": "TATLILAR",
+          "name": "KÜNEFE",
+          "description": "",
+          "price": 0,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7c4a-0740-e2c1-0c3b139d1e30",
+          "category": "TATLILAR",
+          "name": "AZ PORSİYON TATLI",
+          "description": "",
+          "price": 220,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7c6b-b7bb-b3f5-250ae981b748",
+          "category": "TATLILAR",
+          "name": "DONDURMA TOP",
+          "description": "",
+          "price": 0,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7c8b-a9e5-cba2-e6b638690751",
+          "category": "TATLILAR",
+          "name": "KATMER",
+          "description": "",
+          "price": 0,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7cad-63c5-224e-7bc96543444f",
+          "category": "TATLILAR",
+          "name": "FISTIK SARMA",
+          "description": "",
+          "price": 490,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7ccb-0680-61c9-1d4567fcd8be",
+          "category": "TATLILAR",
+          "name": "SOĞUK BAKLAVA",
+          "description": "",
+          "price": 400,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7cf3-15ee-2d7d-dceb22ff8b40",
+          "category": "TATLILAR",
+          "name": "KABAK TATLISI",
+          "description": "",
+          "price": 0,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        }
+      ]
+    },
+    {
+      "id": "3a17ab56-7b93-a5d9-9872-38b8e0b27f56",
+      "name": "SOĞUKLAR",
+      "productCount": 4,
+      "products": [
+        {
+          "id": "3a1b20ab-777d-ed6c-069f-8e427c718324",
+          "category": "SOĞUKLAR",
+          "name": "SERPME KAHVALTI",
+          "description": "",
+          "price": 0,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a1cf526-6599-d958-553e-1a8f60664f6e",
+          "category": "SOĞUKLAR",
+          "name": "KAŞIK SALATASI",
+          "description": "",
+          "price": 250,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a218014-3098-cf2e-792a-7b1c140135a5",
+          "category": "SOĞUKLAR",
+          "name": "KAHVALTI TABAĞI",
+          "description": "",
+          "price": 350,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7ba4-5001-1ca6-bc83a9eb63c8",
+          "category": "SOĞUKLAR",
+          "name": "KASE YOĞURT",
+          "description": "",
+          "price": 220,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3658518_48624_20230510040855.jpg",
+          "isStockAvailable": true
+        }
+      ]
+    },
+    {
+      "id": "3a17ab56-7a19-b6d6-1d14-5a1e6eb31f69",
+      "name": "SOĞUK İÇECEKLER",
+      "productCount": 18,
+      "products": [
+        {
+          "id": "3a17ab56-7a2b-8cc1-ff99-424c4e19f5f7",
+          "category": "SOĞUK İÇECEKLER",
+          "name": "KUTU  FANTA",
+          "description": "",
+          "price": 80,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655670_48624_20230511102051.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7a44-21e0-a69e-7bb8ff311515",
+          "category": "SOĞUK İÇECEKLER",
+          "name": "KUTU KOLA ",
+          "description": "",
+          "price": 80,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655679_48624_20230511102020.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7a5b-72bf-f606-8b01dda9107a",
+          "category": "SOĞUK İÇECEKLER",
+          "name": "ŞİŞE KOLA",
+          "description": "",
+          "price": 80,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655680_48624_20230511101941.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7a72-acec-109a-316ff31c5160",
+          "category": "SOĞUK İÇECEKLER",
+          "name": "KAPALI AYRAN",
+          "description": "",
+          "price": 0,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655681_48624_20230511112515.jpg",
+          "isStockAvailable": false
+        },
+        {
+          "id": "3a17ab56-7a8a-a1f0-f6b7-a8e55f27393f",
+          "category": "SOĞUK İÇECEKLER",
+          "name": "AÇIK AYRAN ",
+          "description": "",
+          "price": 75,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655682_48624_20230511101814.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7aa1-e918-75da-dab10410dc82",
+          "category": "SOĞUK İÇECEKLER",
+          "name": "SPRİTE",
+          "description": "",
+          "price": 80,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655683_48624_20230511101732.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7ab8-67f4-8abf-31758cdbf989",
+          "category": "SOĞUK İÇECEKLER",
+          "name": "KÜÇÜK SU ",
+          "description": "",
+          "price": 35,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655687_48624_20230511112712.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7ad0-0185-bef8-84d93f7b5f22",
+          "category": "SOĞUK İÇECEKLER",
+          "name": "CAPPY",
+          "description": "",
+          "price": 80,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3655690_48624_20230511112620.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7aeb-82ac-acb7-f4aeddf60705",
+          "category": "SOĞUK İÇECEKLER",
+          "name": "FUSE TEA",
+          "description": "",
+          "price": 80,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3656954_48624_20230511102121.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7b03-ac19-105c-921f2fa787e7",
+          "category": "SOĞUK İÇECEKLER",
+          "name": "SADE SODA",
+          "description": "",
+          "price": 75,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3656955_48624_20230511112822.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7b23-1a62-6655-59eaf1571822",
+          "category": "SOĞUK İÇECEKLER",
+          "name": "ŞİŞE FANTA",
+          "description": "",
+          "price": 75,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3658215_48624_20230511102232.jpg",
+          "isStockAvailable": false
+        },
+        {
+          "id": "3a17ab56-7b3a-4c00-0287-7f5a638ab367",
+          "category": "SOĞUK İÇECEKLER",
+          "name": "ŞALGAM",
+          "description": "",
+          "price": 75,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7b53-6084-3f3e-8a4c1cee46ea",
+          "category": "SOĞUK İÇECEKLER",
+          "name": "BÜYÜK SU",
+          "description": "",
+          "price": 0,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": false
+        },
+        {
+          "id": "3a17ab56-7b6b-2d53-40cf-f8f804c9b3ac",
+          "category": "SOĞUK İÇECEKLER",
+          "name": "LİMONLU SODA",
+          "description": "",
+          "price": 75,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7b88-b24d-b069-bb971af5c626",
+          "category": "SOĞUK İÇECEKLER",
+          "name": "KUTU KOLA ZERO",
+          "description": "",
+          "price": 80,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a18a72d-fb85-087c-b54f-88715e58ca4d",
+          "category": "SOĞUK İÇECEKLER",
+          "name": "LİMONATA",
+          "description": "",
+          "price": 0,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a1909c7-e948-77e4-61b3-4378b8298238",
+          "category": "SOĞUK İÇECEKLER",
+          "name": "extra",
+          "description": "",
+          "price": 0,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a1a8559-6e3e-d940-5eb0-878cef8fa424",
+          "category": "SOĞUK İÇECEKLER",
+          "name": "CHURCHİLL",
+          "description": "",
+          "price": 100,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        }
+      ]
+    },
+    {
+      "id": "3a17ab56-7cfd-c3f2-0334-677b565d5cca",
+      "name": "SICAK İÇECEKLER",
+      "productCount": 4,
+      "products": [
+        {
+          "id": "3a17ab56-7d0e-160e-a9e9-f7d3447d5ed6",
+          "category": "SICAK İÇECEKLER",
+          "name": "ÇAY ",
+          "description": "",
+          "price": 0,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3672458_48624_20230512062313.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7d5e-393a-325d-bfb30e931be9",
+          "category": "SICAK İÇECEKLER",
+          "name": "NESCAFE ",
+          "description": "",
+          "price": 0,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3672460_48624_20230512062155.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7db4-899d-17ee-12f292481d33",
+          "category": "SICAK İÇECEKLER",
+          "name": "TÜRK KAHVESİ ",
+          "description": "",
+          "price": 0,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3672461_48624_20230512062111.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7df6-ada0-cf98-0a5438a72abc",
+          "category": "SICAK İÇECEKLER",
+          "name": "SOĞUK BAKLAVA",
+          "description": "",
+          "price": 400,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        }
+      ]
+    },
+    {
+      "id": "3a17ab56-7ed2-9468-f168-72d1fb93fffe",
+      "name": "ÇOCUK MENÜSÜ",
+      "productCount": 3,
+      "products": [
+        {
+          "id": "3a17ab56-7ee3-4e38-1284-e18b69cca1e1",
+          "category": "ÇOCUK MENÜSÜ",
+          "name": "IZGARA KÖFTE",
+          "description": "",
+          "price": 550,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3995865_48624_20231109124623.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a17ab56-7f82-e172-b4b9-1d3cdbb28648",
+          "category": "ÇOCUK MENÜSÜ",
+          "name": "TAVUK NUGGET",
+          "description": "",
+          "price": 510,
+          "currency": "TRY",
+          "image": "https://cdn.adisyo.com/mahrezphotos/3995892_48624_20231109123721.jpg",
+          "isStockAvailable": true
+        },
+        {
+          "id": "3a18a72e-07c2-a913-ca4b-09cb7554dd5c",
+          "category": "ÇOCUK MENÜSÜ",
+          "name": "1,5 IZGARA KÖFTE",
+          "description": "",
+          "price": 750,
+          "currency": "TRY",
+          "image": "",
+          "isStockAvailable": true
+        }
+      ]
+    }
+  ],
+  "allProducts": [
+    {
+      "id": "3a17ab56-73f8-423e-8706-274375540b2d",
+      "category": "SPECİALLER",
+      "name": "BEROŞ USULÜ ACILI BONFİLE",
+      "description": "",
+      "price": 910,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655276_48624_20230508013151.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7420-be6f-e94a-2c17be9fcb49",
+      "category": "SPECİALLER",
+      "name": "BEROŞ USULÜ LOqUM BONFİLE",
+      "description": "",
+      "price": 920,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655277_48624_20230508013116.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7448-7862-f51f-f15d41ae2c66",
+      "category": "SPECİALLER",
+      "name": "Loqum BONFİLE",
+      "description": "",
+      "price": 900,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655280_48624_20230508012926.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7460-e61e-f1a8-b1d434721271",
+      "category": "SPECİALLER",
+      "name": "PATATES YATAĞINDA BONFİLE",
+      "description": "",
+      "price": 910,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655281_48624_20230508015124.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7479-823f-6690-0655c78799ab",
+      "category": "SPECİALLER",
+      "name": "BEROŞ SPECİAL 1 ",
+      "description": "",
+      "price": 845,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655385_48624_20230508014734.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7492-1259-e525-6e9babd9bc05",
+      "category": "SPECİALLER",
+      "name": "ÖZEL SİPARİŞ KABURGA ",
+      "description": "",
+      "price": 1650,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655386_48624_20230508014710.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-74ab-013a-d8e5-c1ee90057d74",
+      "category": "SPECİALLER",
+      "name": "ÇÖKERTME ",
+      "description": "",
+      "price": 845,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655473_48624_20230508014655.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-74f0-a807-f26b-db8f7300c86e",
+      "category": "SPECİALLER",
+      "name": "KABAK MEFTUNE",
+      "description": "",
+      "price": 0,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655509_48624_20230508014505.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-750c-86d5-641d-7968dcb51b2d",
+      "category": "SPECİALLER",
+      "name": "KREMALI Loqum BONFİLE",
+      "description": "",
+      "price": 925,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655536_48624_20230508014409.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7528-3c96-819d-930ae8635812",
+      "category": "SPECİALLER",
+      "name": "BEEF STRAGONOF",
+      "description": "",
+      "price": 820,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655384_48624_20230508014802.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-753f-7f3d-25d7-70165c39198c",
+      "category": "SPECİALLER",
+      "name": "BEROŞ SPECİAL 2 ",
+      "description": "",
+      "price": 910,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655469_48624_20230508014825.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-755c-d31d-aa98-a1a4864c0efb",
+      "category": "SPECİALLER",
+      "name": "1,5 PORSİYON LOqUM BONFİLE ",
+      "description": "",
+      "price": 1290,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7598-6f42-d337-347900e7f13d",
+      "category": "SPECİALLER",
+      "name": "1,5 PORSİYON BEROŞ USULU ACILI BONFİLE",
+      "description": "",
+      "price": 1310,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-75b0-4759-be66-8c8dbf8e0cde",
+      "category": "SPECİALLER",
+      "name": "1.5 PORSİYON BEROŞ SPECİAL 1",
+      "description": "",
+      "price": 1250,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-75c7-aa45-7e95-1e9645d6ad1f",
+      "category": "SPECİALLER",
+      "name": "1.5 PORSİYON BEROŞ SPECİAL 2",
+      "description": "",
+      "price": 1310,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a1b20ab-771a-ef17-a98c-f63c9dfbc7b8",
+      "category": "YÖRESEL",
+      "name": "ETSİZ SEBZE YEMEĞİ",
+      "description": "",
+      "price": 475,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a1de6f6-acc3-18ff-5c12-6058bbee5a5a",
+      "category": "YÖRESEL",
+      "name": "KEÇİ KAVURMASI",
+      "description": "",
+      "price": 0,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a1dbe8c-34fb-9ab6-7d0e-567491fec855",
+      "category": "YÖRESEL",
+      "name": "EKŞİLİ KÖFTE",
+      "description": "",
+      "price": 0,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a1da8bc-0fe2-ade5-8d04-5a737cde6a9e",
+      "category": "YÖRESEL",
+      "name": "FIRIN KEBABI",
+      "description": "",
+      "price": 0,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-768d-fa57-2ab1-a50a790127d6",
+      "category": "YÖRESEL",
+      "name": "AYVALI KAVURMA",
+      "description": "",
+      "price": 725,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655037_48624_20230508013654.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-76a5-631f-b8f9-59c9f0b14acf",
+      "category": "YÖRESEL",
+      "name": "BEROŞ SPECİAL KUZU SIRT",
+      "description": "",
+      "price": 725,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655040_48624_20230508013641.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-76bd-168e-0ff1-5e85171e0b64",
+      "category": "YÖRESEL",
+      "name": "FIRINDA KUZU İNCİK",
+      "description": "",
+      "price": 680,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655041_48624_20230508013618.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-76d4-ec9e-e990-f7a2bba5d0c4",
+      "category": "YÖRESEL",
+      "name": "KEKİKLİ KUZU BUDU",
+      "description": "",
+      "price": 670,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655042_48624_20230508013747.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-76ea-c217-a8e5-18e7932c0d63",
+      "category": "YÖRESEL",
+      "name": "KUZU GERDAN ",
+      "description": "",
+      "price": 670,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655043_48624_20230508013815.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7704-c331-a0d1-ffba55f0bdb2",
+      "category": "YÖRESEL",
+      "name": "KUZU GREATEN",
+      "description": "",
+      "price": 680,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655047_48624_20230508013829.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-771c-83b4-4aa2-1c5e540af05c",
+      "category": "YÖRESEL",
+      "name": "KUZU HAŞLAMA",
+      "description": "",
+      "price": 670,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655048_48624_20230508013851.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-773e-ff70-be81-4ea4040c6be6",
+      "category": "YÖRESEL",
+      "name": "FIRIN AĞZI ",
+      "description": "",
+      "price": 680,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655059_48624_20230508014011.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-775a-911f-22a1-ef0a4cfebdd6",
+      "category": "YÖRESEL",
+      "name": "DİYARBAKIR KAVURMA",
+      "description": "",
+      "price": 660,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655064_48624_20230511101208.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7776-e85f-2c3a-28e90864959f",
+      "category": "YÖRESEL",
+      "name": "PATLICAN YATAĞINDA KUZU İNCİK",
+      "description": "",
+      "price": 670,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655053_48624_20230508013718.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-778d-fd31-b0e4-ddb4164c17cf",
+      "category": "YÖRESEL",
+      "name": "FIRINDA GERDAN",
+      "description": "",
+      "price": 670,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655054_48624_20230508013559.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-77a5-c387-3e16-b998a7a3d46e",
+      "category": "YÖRESEL",
+      "name": "KOL DOLMASI 2 KİŞİLİK",
+      "description": "",
+      "price": 1300,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655062_48624_20230508013506.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-77bd-55c4-4200-3c139d4f3809",
+      "category": "YÖRESEL",
+      "name": "FIRIN GÜVEÇ",
+      "description": "",
+      "price": 480,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655063_48624_20230508013450.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-77de-0892-7667-5a4e3729bfe4",
+      "category": "YÖRESEL",
+      "name": "AŞÇI TABAĞI",
+      "description": "",
+      "price": 985,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-77f9-78a9-143d-72e86484fd4d",
+      "category": "YÖRESEL",
+      "name": "PİLAV ÜSTÜ TANDIR",
+      "description": "",
+      "price": 685,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7820-3688-4a47-093fd6e47b9e",
+      "category": "YÖRESEL",
+      "name": "AZ KAVURMA ",
+      "description": "",
+      "price": 410,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7844-a09f-c7cd-4170c121babc",
+      "category": "YÖRESEL",
+      "name": "AZ TANDIR",
+      "description": "",
+      "price": 410,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7860-f201-bcd8-d90400392513",
+      "category": "YÖRESEL",
+      "name": "AZ GÜVEÇ",
+      "description": "",
+      "price": 300,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7878-524a-cc94-596c2f52903d",
+      "category": "YÖRESEL",
+      "name": "PİLAV ÜSTÜ KUZU KOL DOLMASI",
+      "description": "",
+      "price": 690,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7891-f3fb-2a2f-54a3b1b178d9",
+      "category": "YÖRESEL",
+      "name": "SADE TANDIR ",
+      "description": "",
+      "price": 560,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-78b2-4e8b-0fa5-4cac8e95e670",
+      "category": "YÖRESEL",
+      "name": "BEĞENDİLİ TANDIR",
+      "description": "",
+      "price": 670,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-78ca-488f-59a9-ca174e8c52ff",
+      "category": "YÖRESEL",
+      "name": "3 KİŞİLİK KOL DOLMASI",
+      "description": "",
+      "price": 1980,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-78e0-f9b0-f1c6-9db3e8401e5c",
+      "category": "YÖRESEL",
+      "name": "KURU FASULYE PİLAV",
+      "description": "",
+      "price": 550,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-78f7-27d1-b59f-ea8beb40d3ac",
+      "category": "YÖRESEL",
+      "name": "PATATES YATAĞINDA KUZU İNCİK",
+      "description": "",
+      "price": 670,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-790e-5c1e-1ac9-30f3304f1489",
+      "category": "YÖRESEL",
+      "name": "KUZU İNCİK",
+      "description": "",
+      "price": 670,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-794e-4801-4e74-e912f041a708",
+      "category": "YÖRESEL",
+      "name": "AZ KURU FASULYE",
+      "description": "",
+      "price": 300,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-79e0-c3a0-72da-fa43a6b8ec3e",
+      "category": "YÖRESEL",
+      "name": "CANLI MÜZİK BEDELİ",
+      "description": "",
+      "price": 0,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a1a8559-59a3-7766-0dc1-4837950feab1",
+      "category": "YÖRESEL",
+      "name": "KEMİKSİZ KABURGA DOLMASI",
+      "description": "",
+      "price": 0,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a1a8559-5a37-a96c-4410-d8ea6e5650b6",
+      "category": "YÖRESEL",
+      "name": "KİREMİT GÜVEÇ",
+      "description": "",
+      "price": 480,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a1b20ab-75f7-105f-10e2-c776f5ce3734",
+      "category": "ARA SICAKLAR ",
+      "name": "CACIK",
+      "description": "",
+      "price": 230,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a218014-3042-4849-4d54-fa38ed9e5cf9",
+      "category": "ARA SICAKLAR ",
+      "name": "AZ BULGUR PİLAVI",
+      "description": "",
+      "price": 85,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a1ed398-d2ac-598e-0dcc-0677b24e10f1",
+      "category": "ARA SICAKLAR ",
+      "name": "1 ADET TALAŞ BÖREĞİ",
+      "description": "",
+      "price": 75,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a1bd086-aacc-30d3-8064-4aac5b9e4a5c",
+      "category": "ARA SICAKLAR ",
+      "name": "AZ MUMBAR",
+      "description": "",
+      "price": 285,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a1cf526-63e5-1d10-729e-2421ddf9b2ac",
+      "category": "ARA SICAKLAR ",
+      "name": "SİGARA BÖREĞİ 1 ADET",
+      "description": "",
+      "price": 0,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7208-50ea-35a4-16ef704b3b2f",
+      "category": "ARA SICAKLAR ",
+      "name": "MUMBAR",
+      "description": "",
+      "price": 480,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3654901_48624_20230508012419.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7221-2d60-4fc5-aeec24150131",
+      "category": "ARA SICAKLAR ",
+      "name": "İÇLİ KÖFTE ",
+      "description": "",
+      "price": 80,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3654902_48624_20230508012350.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7238-81bf-cfa8-d1615f93ffcd",
+      "category": "ARA SICAKLAR ",
+      "name": "AZ İÇ PİLAV",
+      "description": "",
+      "price": 100,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7251-9426-793a-33cbb3270fa5",
+      "category": "ARA SICAKLAR ",
+      "name": "TALAŞ BÖREĞİ",
+      "description": "",
+      "price": 220,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655031_48624_20230512061454.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-726b-6a8f-1672-c58b8b9e77f0",
+      "category": "ARA SICAKLAR ",
+      "name": "MUMBAR 1 ADET",
+      "description": "",
+      "price": 85,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3656845_48624_20230512061529.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7283-6c2b-0e6e-525b5e387a1b",
+      "category": "ARA SICAKLAR ",
+      "name": "SADE PİLAV",
+      "description": "",
+      "price": 130,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3658502_48624_20230512061622.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-729a-913a-98be-0b9afe21e8ef",
+      "category": "ARA SICAKLAR ",
+      "name": "PATATES CİPS",
+      "description": "",
+      "price": 220,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3658505_48624_20230512061440.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-72b2-e138-2a8b-7ed24bdeb550",
+      "category": "ARA SICAKLAR ",
+      "name": "DOLMA (TEK)",
+      "description": "",
+      "price": 80,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-72c9-6bb9-c055-0db65b0ffec6",
+      "category": "ARA SICAKLAR ",
+      "name": "AZ PİLAV",
+      "description": "",
+      "price": 95,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-72e4-4272-d1cd-55769e0d08ef",
+      "category": "ARA SICAKLAR ",
+      "name": "İÇ PİLAV",
+      "description": "",
+      "price": 145,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-72fb-890c-3040-8b7408faa388",
+      "category": "ARA SICAKLAR ",
+      "name": "ÇORBA ",
+      "description": "",
+      "price": 0,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655472_48624_20230508014844.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7318-deb9-8a55-fd3d44f87d75",
+      "category": "ARA SICAKLAR ",
+      "name": "YOĞURTLU ISPANAK",
+      "description": "",
+      "price": 275,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7330-9926-7b4d-e9e5d3b7a93c",
+      "category": "ARA SICAKLAR ",
+      "name": "BULGUR PİLAVI",
+      "description": "",
+      "price": 130,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7389-1438-df32-e1ae44076958",
+      "category": "ARA SICAKLAR ",
+      "name": "1 PORSİYON DOLMA",
+      "description": "",
+      "price": 300,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a1a8559-205e-ea22-2eb9-7d1dc67592c4",
+      "category": "ARA SICAKLAR ",
+      "name": "KIZARTMA TABAĞI",
+      "description": "",
+      "price": 300,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-73ab-386a-93ea-25a079e3a7d2",
+      "category": "ARA SICAKLAR ",
+      "name": "ÇİĞKÖFTE",
+      "description": "",
+      "price": 350,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a1b20ab-7818-62a4-4c79-e68af9b777dd",
+      "category": "FIRIN ÜRÜNLERİ",
+      "name": "KUŞBAŞI KAŞARLI PİDE 1,5 PORSİYON",
+      "description": "",
+      "price": 850,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7fa1-62e8-024d-75b58292cfcc",
+      "category": "FIRIN ÜRÜNLERİ",
+      "name": "1 PORSİYON LAHMACUN",
+      "description": "",
+      "price": 500,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7fba-c891-ab63-0a396972cda0",
+      "category": "FIRIN ÜRÜNLERİ",
+      "name": "KUŞBAŞI KAŞARLI PİDE ",
+      "description": "",
+      "price": 595,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/4375359_48624_20231109122811.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7fd1-c467-d6dd-8c927439ccd3",
+      "category": "FIRIN ÜRÜNLERİ",
+      "name": "KUŞBAŞI PİDE",
+      "description": "",
+      "price": 570,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/4375357_48624_20231109122733.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7fe9-1777-5ea4-caef1a189ae1",
+      "category": "FIRIN ÜRÜNLERİ",
+      "name": "KIYMALI YUMURTALI PİDE",
+      "description": "",
+      "price": 535,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/4375365_48624_20231109122841.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-8001-4e3e-e228-56ebb74bdf59",
+      "category": "FIRIN ÜRÜNLERİ",
+      "name": "BEROŞ USULÜ LAHMACUN",
+      "description": "",
+      "price": 520,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-8019-6c1c-2d63-a283d7298197",
+      "category": "FIRIN ÜRÜNLERİ",
+      "name": "KAVURMALI KAŞARLI PİDE",
+      "description": "",
+      "price": 650,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-8030-f8a2-f9ed-b0c2936024dc",
+      "category": "FIRIN ÜRÜNLERİ",
+      "name": "1,5 PORSİYON KUŞBAŞILI PİDE",
+      "description": "",
+      "price": 750,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/4375663_48624_20231109123825.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-8048-1baf-385b-17d23de1e45b",
+      "category": "FIRIN ÜRÜNLERİ",
+      "name": "1 ADET LAHMACUN",
+      "description": "",
+      "price": 130,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-8060-c7fd-5500-defed503b63f",
+      "category": "FIRIN ÜRÜNLERİ",
+      "name": "FINDIK LAHMACUN",
+      "description": "",
+      "price": 85,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/4391983_48624_20231109122251.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-8078-2e9f-f2c4-e21f915c0dae",
+      "category": "FIRIN ÜRÜNLERİ",
+      "name": "KAŞARLI PİDE",
+      "description": "",
+      "price": 560,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/4394392_48624_20231109122226.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-808f-0b80-47f7-785b9c4deb88",
+      "category": "FIRIN ÜRÜNLERİ",
+      "name": "ISPANAKLI KAŞARLI PİDE",
+      "description": "",
+      "price": 540,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-80a8-9dbd-3aad-5e27eeb1b686",
+      "category": "SAC TAVA ÜRÜNLERİ",
+      "name": "SAC TAVA",
+      "description": "",
+      "price": 800,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/4394416_48624_20231109122117.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-80c3-d271-9b69-dc172b91d929",
+      "category": "SAC TAVA ÜRÜNLERİ",
+      "name": "BİR BUÇUK SAC TAVA",
+      "description": "",
+      "price": 1180,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-80e9-18c8-9ba0-68ce170c3487",
+      "category": "SAC TAVA ÜRÜNLERİ",
+      "name": "duble sac tava",
+      "description": "",
+      "price": 1550,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-760f-dfc2-a035-825a01d28527",
+      "category": "TAVUK ÇEŞİTLERİ",
+      "name": "BEROŞ TAVUK SPECİAL",
+      "description": "",
+      "price": 590,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655261_48624_20230508013419.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7628-365f-e713-9914e9a85e7c",
+      "category": "TAVUK ÇEŞİTLERİ",
+      "name": "KÖRİ SOSLU TAVUK",
+      "description": "",
+      "price": 550,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655264_48624_20230508013326.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7641-2bb6-5a63-da5026a622c5",
+      "category": "TAVUK ÇEŞİTLERİ",
+      "name": "ISPANAK YATAĞINDA TAVUK BONFİLE",
+      "description": "",
+      "price": 570,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655269_48624_20230512063642.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-765a-2afc-065c-bff72238ee19",
+      "category": "TAVUK ÇEŞİTLERİ",
+      "name": "KREMALI MANTARLI TAVUK",
+      "description": "",
+      "price": 550,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7671-afb9-06d1-9ae6f9941203",
+      "category": "TAVUK ÇEŞİTLERİ",
+      "name": " BEROŞ USULÜ ACILI TAVUK",
+      "description": "",
+      "price": 540,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a1da8bc-1068-1c9e-d052-a69edddf4beb",
+      "category": "TATLILAR",
+      "name": "YAŞ PASTA",
+      "description": "",
+      "price": 0,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7be6-6bf4-988e-69f162cbc592",
+      "category": "TATLILAR",
+      "name": "FISTIKLI KADAYIF",
+      "description": "",
+      "price": 430,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3672488_48624_20230511113426.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7c07-b4ae-e9c8-5efa3876c25c",
+      "category": "TATLILAR",
+      "name": "FISTIKLI BAKLAVA",
+      "description": "",
+      "price": 450,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3672485_48624_20230512061943.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7c29-57c5-353c-1c7035721a23",
+      "category": "TATLILAR",
+      "name": "KÜNEFE",
+      "description": "",
+      "price": 0,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7c4a-0740-e2c1-0c3b139d1e30",
+      "category": "TATLILAR",
+      "name": "AZ PORSİYON TATLI",
+      "description": "",
+      "price": 220,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7c6b-b7bb-b3f5-250ae981b748",
+      "category": "TATLILAR",
+      "name": "DONDURMA TOP",
+      "description": "",
+      "price": 0,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7c8b-a9e5-cba2-e6b638690751",
+      "category": "TATLILAR",
+      "name": "KATMER",
+      "description": "",
+      "price": 0,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7cad-63c5-224e-7bc96543444f",
+      "category": "TATLILAR",
+      "name": "FISTIK SARMA",
+      "description": "",
+      "price": 490,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7ccb-0680-61c9-1d4567fcd8be",
+      "category": "TATLILAR",
+      "name": "SOĞUK BAKLAVA",
+      "description": "",
+      "price": 400,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7cf3-15ee-2d7d-dceb22ff8b40",
+      "category": "TATLILAR",
+      "name": "KABAK TATLISI",
+      "description": "",
+      "price": 0,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a1b20ab-777d-ed6c-069f-8e427c718324",
+      "category": "SOĞUKLAR",
+      "name": "SERPME KAHVALTI",
+      "description": "",
+      "price": 0,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a1cf526-6599-d958-553e-1a8f60664f6e",
+      "category": "SOĞUKLAR",
+      "name": "KAŞIK SALATASI",
+      "description": "",
+      "price": 250,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a218014-3098-cf2e-792a-7b1c140135a5",
+      "category": "SOĞUKLAR",
+      "name": "KAHVALTI TABAĞI",
+      "description": "",
+      "price": 350,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7ba4-5001-1ca6-bc83a9eb63c8",
+      "category": "SOĞUKLAR",
+      "name": "KASE YOĞURT",
+      "description": "",
+      "price": 220,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3658518_48624_20230510040855.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7a2b-8cc1-ff99-424c4e19f5f7",
+      "category": "SOĞUK İÇECEKLER",
+      "name": "KUTU  FANTA",
+      "description": "",
+      "price": 80,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655670_48624_20230511102051.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7a44-21e0-a69e-7bb8ff311515",
+      "category": "SOĞUK İÇECEKLER",
+      "name": "KUTU KOLA ",
+      "description": "",
+      "price": 80,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655679_48624_20230511102020.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7a5b-72bf-f606-8b01dda9107a",
+      "category": "SOĞUK İÇECEKLER",
+      "name": "ŞİŞE KOLA",
+      "description": "",
+      "price": 80,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655680_48624_20230511101941.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7a72-acec-109a-316ff31c5160",
+      "category": "SOĞUK İÇECEKLER",
+      "name": "KAPALI AYRAN",
+      "description": "",
+      "price": 0,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655681_48624_20230511112515.jpg",
+      "isStockAvailable": false
+    },
+    {
+      "id": "3a17ab56-7a8a-a1f0-f6b7-a8e55f27393f",
+      "category": "SOĞUK İÇECEKLER",
+      "name": "AÇIK AYRAN ",
+      "description": "",
+      "price": 75,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655682_48624_20230511101814.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7aa1-e918-75da-dab10410dc82",
+      "category": "SOĞUK İÇECEKLER",
+      "name": "SPRİTE",
+      "description": "",
+      "price": 80,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655683_48624_20230511101732.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7ab8-67f4-8abf-31758cdbf989",
+      "category": "SOĞUK İÇECEKLER",
+      "name": "KÜÇÜK SU ",
+      "description": "",
+      "price": 35,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655687_48624_20230511112712.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7ad0-0185-bef8-84d93f7b5f22",
+      "category": "SOĞUK İÇECEKLER",
+      "name": "CAPPY",
+      "description": "",
+      "price": 80,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3655690_48624_20230511112620.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7aeb-82ac-acb7-f4aeddf60705",
+      "category": "SOĞUK İÇECEKLER",
+      "name": "FUSE TEA",
+      "description": "",
+      "price": 80,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3656954_48624_20230511102121.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7b03-ac19-105c-921f2fa787e7",
+      "category": "SOĞUK İÇECEKLER",
+      "name": "SADE SODA",
+      "description": "",
+      "price": 75,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3656955_48624_20230511112822.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7b23-1a62-6655-59eaf1571822",
+      "category": "SOĞUK İÇECEKLER",
+      "name": "ŞİŞE FANTA",
+      "description": "",
+      "price": 75,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3658215_48624_20230511102232.jpg",
+      "isStockAvailable": false
+    },
+    {
+      "id": "3a17ab56-7b3a-4c00-0287-7f5a638ab367",
+      "category": "SOĞUK İÇECEKLER",
+      "name": "ŞALGAM",
+      "description": "",
+      "price": 75,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7b53-6084-3f3e-8a4c1cee46ea",
+      "category": "SOĞUK İÇECEKLER",
+      "name": "BÜYÜK SU",
+      "description": "",
+      "price": 0,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": false
+    },
+    {
+      "id": "3a17ab56-7b6b-2d53-40cf-f8f804c9b3ac",
+      "category": "SOĞUK İÇECEKLER",
+      "name": "LİMONLU SODA",
+      "description": "",
+      "price": 75,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7b88-b24d-b069-bb971af5c626",
+      "category": "SOĞUK İÇECEKLER",
+      "name": "KUTU KOLA ZERO",
+      "description": "",
+      "price": 80,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a18a72d-fb85-087c-b54f-88715e58ca4d",
+      "category": "SOĞUK İÇECEKLER",
+      "name": "LİMONATA",
+      "description": "",
+      "price": 0,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a1909c7-e948-77e4-61b3-4378b8298238",
+      "category": "SOĞUK İÇECEKLER",
+      "name": "extra",
+      "description": "",
+      "price": 0,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a1a8559-6e3e-d940-5eb0-878cef8fa424",
+      "category": "SOĞUK İÇECEKLER",
+      "name": "CHURCHİLL",
+      "description": "",
+      "price": 100,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7d0e-160e-a9e9-f7d3447d5ed6",
+      "category": "SICAK İÇECEKLER",
+      "name": "ÇAY ",
+      "description": "",
+      "price": 0,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3672458_48624_20230512062313.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7d5e-393a-325d-bfb30e931be9",
+      "category": "SICAK İÇECEKLER",
+      "name": "NESCAFE ",
+      "description": "",
+      "price": 0,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3672460_48624_20230512062155.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7db4-899d-17ee-12f292481d33",
+      "category": "SICAK İÇECEKLER",
+      "name": "TÜRK KAHVESİ ",
+      "description": "",
+      "price": 0,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3672461_48624_20230512062111.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7df6-ada0-cf98-0a5438a72abc",
+      "category": "SICAK İÇECEKLER",
+      "name": "SOĞUK BAKLAVA",
+      "description": "",
+      "price": 400,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7ee3-4e38-1284-e18b69cca1e1",
+      "category": "ÇOCUK MENÜSÜ",
+      "name": "IZGARA KÖFTE",
+      "description": "",
+      "price": 550,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3995865_48624_20231109124623.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a17ab56-7f82-e172-b4b9-1d3cdbb28648",
+      "category": "ÇOCUK MENÜSÜ",
+      "name": "TAVUK NUGGET",
+      "description": "",
+      "price": 510,
+      "currency": "TRY",
+      "image": "https://cdn.adisyo.com/mahrezphotos/3995892_48624_20231109123721.jpg",
+      "isStockAvailable": true
+    },
+    {
+      "id": "3a18a72e-07c2-a913-ca4b-09cb7554dd5c",
+      "category": "ÇOCUK MENÜSÜ",
+      "name": "1,5 IZGARA KÖFTE",
+      "description": "",
+      "price": 750,
+      "currency": "TRY",
+      "image": "",
+      "isStockAvailable": true
+    }
+  ]
+}

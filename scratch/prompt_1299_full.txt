@@ -1,0 +1,140 @@
+<USER_REQUEST>
+ROL: Kıdemli Full-Stack Creative Developer & UI/UX Mimarı.
+GÖREV: Sitedeki mevcut çalışan scroll mantığını, fizik motorunu, coverflow akışını, dokunmatik kontrolleri ve sayfa ayarlarını KESİNLİKLE BOZMADAN; 
+1. Verilen QRall bağlantısındaki (`view.qrall.co`) canlı menü verilerini terminalden çekip ayıklamak ve `app/page.tsx` içindeki `DISHES` dizisini doğrudan bu GERÇEK verilerle oluşturmak (ASLA ezbere, uydurma veya sahte ürün yazılmayacak),
+2. Menü kartını 2. görseldeki otantik el oyması ahşap/bazalt tepsi görünümüne kavuşturmak,
+3. Giriş ve çıkış sahnelerini Beroş Restaurant'ın resmi web sitesindeki (`berosrestaurant.com`) gerçek kurumsal metinlerle güncellemek.
+
+---
+
+### KURAL: HİÇBİR KOD MEKANİĞİ VEYA ANİMASYON AYARI BOZULMAYACAK
+- `useScroll`, `useTransform`, yay fizikleri (`stiffness`, `damping`), coverflow 3D katmanları, swipe mantığı, sepet/rezervasyon state'leri ve PM2 konfigürasyonu AYNEN KORUNACAK.
+- Yalnızca menü veritabanı (`DISHES`), kartın CSS/Tailwind stil sınıfları ve metin içerikleri güncellenecektir.
+
+---
+
+### 1. ADIM: QRALL LİNKİNDEN CANLI MENÜ VERİLERİNİ ÇEK VE AYIKLA (BASH / NODE SCRIPT)
+Terminalde aşağıdaki Node.js betiğini çalıştırarak Beroş Restaurant'ın QRall menüsündeki tüm gerçek kategorileri, ürün adlarını, açıklamalarını, fiyatlarını ve görsellerini çekip `scratch/qrall-menu.json` dosyasına kaydet:
+
+```bash
+mkdir -p scratch
+
+node -e '
+const https = require("https");
+const fs = require("fs");
+
+const targetUrl = "[https://view.qrall.co/tr/categories?tenantId=3a17ab56-5e5c-eb02-fbd8-5d5462e53f13&menu=3a17ab56-71f1-d4f3-6f76-1fd1d8aa9402&channelId=3a17ab56-616b-5213-d3df-231483a5fe8d](https://view.qrall.co/tr/categories?tenantId=3a17ab56-5e5c-eb02-fbd8-5d5462e53f13&menu=3a17ab56-71f1-d4f3-6f76-1fd1d8aa9402&channelId=3a17ab56-616b-5213-d3df-231483a5fe8d)";
+
+https.get(targetUrl, { headers: { "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)" } }, (res) => {
+  let html = "";
+  res.on("data", chunk => html += chunk);
+  res.on("end", async () => {
+    // 1. Next.js __NEXT_DATA__ JSON kontrolü
+    const nextDataMatch = html.match(/<script id="__NEXT_DATA__" type="application\/json">([^<]+)<\/script>/);
+    if (nextDataMatch) {
+      try {
+        const nextData = JSON.parse(nextDataMatch[1]);
+        const pageProps = nextData.props?.pageProps || {};
+        fs.writeFileSync("scratch/qrall-menu.json", JSON.stringify(pageProps, null, 2));
+        console.log("QRall Menü Verisi __NEXT_DATA__ üzerinden başarıyla çıkarıldı.");
+        return;
+      } catch (e) {
+        console.log("JSON parse hatası:", e.message);
+      }
+    }
+
+    // 2. Yedek API veya HTML Ayrıştırma
+    console.log("HTML uzunluğu:", html.length);
+    fs.writeFileSync("scratch/qrall-raw.html", html);
+    console.log("Ham HTML scratch/qrall-raw.html dosyasına yazıldı.");
+  });
+}).on("error", err => {
+  console.error("QRall veri çekme hatası:", err.message);
+});
+'
+```
+
+---
+
+### 2. ADIM: `DISHES` VERİTABANINI YALNIZCA ÇEKİLEN GERÇEK VERİLERLE DOLDUR
+- `scratch/qrall-menu.json` içinden ayıklanan gerçek ürünleri doğrudan `app/page.tsx` içindeki `DISHES` dizisine aktar.
+- **KATI KURAL:** Kesinlikle elle uydurulmuş, sahte veya ezbere lezzet yazılmayacak. Linkten hangi ürün adı, hangi açıklama, hangi fiyat ve hangi görsel geldiyse birebir o aktarılacak.
+- Eğer QRall sayfasında görseller dinamik URL olarak geliyorsa bu orijinal URL'leri kullan; tescilli mavi tabak için varsa `/dish-blue-plate.png` görselini koru.
+
+---
+
+### 3. ADIM: MENÜ KARTINI 2. GÖRSELDEKİ OTANTİK TEPSİ ESTETİĞİNE DÖNÜŞTÜR
+Mevcut akış, coverflow sırası, buhar efekti ve butonlar KORUNARAK; kartın görüntüsü otantik el oyması servis tablası estetiğine kavuşturulacak:
+
+- **Otantik Ahşap & Bazalt Tepsi Dokusu (Kart Zemini):**
+  * Düz siyah kart yerine; derin ceviz ve Sur bazalt taşı dokulu zemin (`bg-gradient-to-b from-[#1e1713] via-[#140f0c] to-[#0a0806]`).
+  * İnce altın varak kakma dış çerçeve (`border border-[#d4af37]/40 shadow-[0_25px_60px_rgba(0,0,0,0.95)]`).
+  * Kartın dört köşesine zarif altın varak oryantal motif kavisleri.
+- **İç Oyuk / Tabak Yuvası (Görseldeki Gibi):**
+  * Ortadaki tabak yuvasına derin el oyması ahşap havşa efekti ver:
+    `box-shadow: inset 0 16px 30px rgba(0,0,0,0.98), inset 0 2px 8px rgba(212,175,55,0.25), 0 0 25px rgba(212,175,55,0.15)`.
+  * Halkanın çevresine ince işlemeli altın varak çember deseni (`border-2 border-[#d4af37]/30 rounded-full`).
+- **Tabak ve Buhar:**
+  * Çekilen gerçek yemek görselleri bu oyuğa oturacak.
+  * Masaya tok oturma hissi ve canlı buhar (`SteamEffect intensity="high"`) tütmeye devam edecek.
+  * Tepsinin kenarına altın varak kazıma efektiyle gerçek fiyat kabartması (`text-shadow: 0 0 15px rgba(212,175,55,0.6)`).
+
+---
+
+### 4. ADIM: GİRİŞ SAHNESİ (HERO — SONDAN İKİNCİ EKRAN GÜNCELLEMESİ)
+Mevcut asil tipografik düzeni koruyarak, resmi sitedeki (`berosrestaurant.com`) orijinal felsefe metinlerini yerleştir:
+
+- **Üst Etiket:** `SUR / DİYARBAKIR • M.Ö. 3000 • MASA 07`
+- **Ana Başlık (Büyük Editoryal Serif):**
+  ```
+  MEZOPOTAMYA'NIN
+  BİNLERCE YILLIK
+  LEZZET MİRASI
+  ```
+- **Alt Metin (Orijinal Siteden Birebir):**
+  *"Ateşin, baharatın ve ustalığın buluştuğu yerdeyiz. Gelenekten ilham alıyor, çağdaş bir sofrada modern sunum ve ustalıkla fark yaratıyoruz."*
+- **İmza Notu:**
+  `Beroş Diyarbakır • Her masa özeldir, her tabak bir imza taşır.`
+- **Scroll İndikatörü:** `AŞAĞI KAYDIRIN ↓`
+
+---
+
+### 5. ADIM: ÇIKIŞ SAHNESİ (KAPANIŞ — SONUNCU EKRAN GÜNCELLEMESİ)
+Mevcut kesilmeyen geniş açı taş kemer kapı ve üstündeki ışıldayan BEROŞ tabelası aynen kalacak; metinler resmi sitenin kurumsal diliyle zenginleştirilecek:
+
+- **Orijinal Tabela Işığı:** Kemerin üzerindeki BEROŞ tabelasının kehribar taş aurası ve buz mavisi neon parıltısı KORUNACAK.
+- **Başlık & Veda Metni:**
+  * Üst Başlık: `SUR / DİYARBAKIR`
+  * Başlık (Zarif Serif): `Şehrin Ruhunu Taşıyan Bir Sofra Deneyimi`
+  * Alt Başlık: `Sizi Ağırlamaktan Onur Duyduk`
+  * Paragraf: *"Gelenekten beslenen mutfağımızı, Sur'un tarihi atmosferinde çağdaş bir sunum anlayışı ve özenli servisle buluşturduk. Tarihi konak kapımız sizlere her zaman açık."*
+- **Açık Adres & Künye:**
+  `Camii Nebi Mah. İnönü Cad. No: 12 Sur / Diyarbakır • Beroş Restaurant`
+- **Alt Butonlar (Dokunulmayacak):**
+  * `[@berosrestoran]` (Instagram Resmi Hesap)
+  * `[WhatsApp Rezervasyon]`
+  * `[Telefon (0538 697 63 53)]`
+  * `[Harita Yol Tarifi]`
+  * `[Yukarı Çık ↑]`
+
+---
+
+### 6. ADIM: DERLE VE CANLI SERVİSİ YENİDEN BAŞLAT
+`app/page.tsx` dosyasını çekilen gerçek verilerle güncelle, sıfır TypeScript hatası ile derle ve PM2 servisini yeniden başlat:
+```bash
+npm run build && npx pm2 restart ar-menu
+```
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-09-06T01:48:52+03:00.
+
+The user's current state is as follows:
+Active Document: /Users/mesa/ar-cinema-menu/app/page.tsx (LANGUAGE_UNSPECIFIED)
+Cursor is on line: 1419
+Other open documents:
+- /Users/mesa/ar-cinema-menu/components/three-dish-stage.tsx (LANGUAGE_UNSPECIFIED)
+- /Users/mesa/ar-cinema-menu/components/steam-effect.tsx (LANGUAGE_UNSPECIFIED)
+- /Users/mesa/ar-cinema-menu/components/pop-up-dish-card.tsx (LANGUAGE_UNSPECIFIED)
+- /Users/mesa/ar-cinema-menu/next.config.ts (LANGUAGE_UNSPECIFIED)
+- /Users/mesa/ar-cinema-menu/components/ar-spatial-viewer.tsx (LANGUAGE_UNSPECIFIED)
+</ADDITIONAL_METADATA>
