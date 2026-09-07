@@ -2,40 +2,31 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
-const dataFilePath = path.join(process.cwd(), "data", "live_restaurant.json");
-
-function getStore() {
+const file = path.join(process.cwd(), "data", "live_restaurant.json");
+const getDb = () => {
   try {
-    return JSON.parse(fs.readFileSync(dataFilePath, "utf8"));
+    return JSON.parse(fs.readFileSync(file, "utf8"));
   } catch {
-    return { calls: [], orders: [], inventory: {} };
+    return { calls: [], resolvedCalls: [], orders: [], inventory: {} };
   }
-}
-
-function saveStore(data: any) {
-  fs.writeFileSync(dataFilePath, JSON.stringify(data, null, 2), "utf8");
-}
+};
+const saveDb = (d: any) => fs.writeFileSync(file, JSON.stringify(d, null, 2), "utf8");
 
 export async function GET() {
-  const store = getStore();
-  return NextResponse.json(store.inventory || {});
+  return NextResponse.json(getDb().inventory || {});
 }
 
 export async function POST(req: Request) {
-  const body = await req.json();
-  const store = getStore();
-  store.inventory = store.inventory || {};
-
-  const { dishId, count, isUnlimited, isLocked } = body;
-  if (dishId) {
-    store.inventory[dishId] = {
-      count: typeof count === "number" ? Math.max(0, count) : (store.inventory[dishId]?.count ?? 50),
-      isUnlimited: typeof isUnlimited === "boolean" ? isUnlimited : (store.inventory[dishId]?.isUnlimited ?? false),
-      isLocked: typeof isLocked === "boolean" ? isLocked : (store.inventory[dishId]?.isLocked ?? false)
-    };
-    saveStore(store);
+  const { dishId, count, isLocked, isUnlimited } = await req.json();
+  const db = getDb();
+  db.inventory = db.inventory || {};
+  if (!db.inventory[dishId]) {
+    db.inventory[dishId] = { count: 50, isUnlimited: false, isLocked: false };
   }
-
-  return NextResponse.json({ success: true, inventory: store.inventory });
+  if (count !== undefined) db.inventory[dishId].count = Math.max(0, count);
+  if (isLocked !== undefined) db.inventory[dishId].isLocked = isLocked;
+  if (isUnlimited !== undefined) db.inventory[dishId].isUnlimited = isUnlimited;
+  saveDb(db);
+  return NextResponse.json({ success: true, item: db.inventory[dishId] });
 }
 

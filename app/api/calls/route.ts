@@ -2,55 +2,48 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
-const dataFilePath = path.join(process.cwd(), "data", "live_restaurant.json");
-
-function getStore() {
+const file = path.join(process.cwd(), "data", "live_restaurant.json");
+const getDb = () => {
   try {
-    return JSON.parse(fs.readFileSync(dataFilePath, "utf8"));
+    return JSON.parse(fs.readFileSync(file, "utf8"));
   } catch {
     return { calls: [], resolvedCalls: [], orders: [], inventory: {} };
   }
-}
-
-function saveStore(data: any) {
-  fs.writeFileSync(dataFilePath, JSON.stringify(data, null, 2), "utf8");
-}
+};
+const saveDb = (d: any) => fs.writeFileSync(file, JSON.stringify(d, null, 2), "utf8");
 
 export async function GET() {
-  const store = getStore();
-  return NextResponse.json(store.calls || []);
+  return NextResponse.json(getDb().calls || []);
 }
 
 export async function POST(req: Request) {
-  const body = await req.json();
-  const store = getStore();
-  const newCall = {
+  const { tableNo, serviceType } = await req.json();
+  const db = getDb();
+  const call = {
     id: "call_" + Date.now(),
-    tableNo: body.tableNo || "MASA 07",
-    serviceType: body.serviceType || "Garson",
+    tableNo: tableNo || "MASA 07",
+    serviceType: serviceType || "Garson",
     time: new Date().toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" }),
-    timestamp: Date.now(),
+    timestamp: Date.now()
   };
-  store.calls = [newCall, ...(store.calls || [])].slice(0, 50);
-  saveStore(store);
-  return NextResponse.json({ success: true, call: newCall });
+  db.calls = [call, ...(db.calls || [])].slice(0, 60);
+  saveDb(db);
+  return NextResponse.json({ success: true, call });
 }
 
 export async function DELETE(req: Request) {
-  const { searchParams } = new URL(req.url);
-  const id = searchParams.get("id");
-  const store = getStore();
+  const id = new URL(req.url).searchParams.get("id");
+  const db = getDb();
   if (id) {
-    const callToResolve = (store.calls || []).find((c: any) => c.id === id);
-    if (callToResolve) {
-      const responseDurationSec = Math.round((Date.now() - (callToResolve.timestamp || Date.now())) / 1000);
-      store.resolvedCalls = [
-        { ...callToResolve, durationSec: responseDurationSec, resolvedAt: Date.now() },
-        ...(store.resolvedCalls || [])
-      ].slice(0, 100);
+    const c = (db.calls || []).find((x: any) => x.id === id);
+    if (c) {
+      db.resolvedCalls = [
+        { ...c, durationSec: Math.round((Date.now() - c.timestamp) / 1000), resolvedAt: Date.now() },
+        ...(db.resolvedCalls || [])
+      ].slice(0, 150);
     }
-    store.calls = (store.calls || []).filter((c: any) => c.id !== id);
-    saveStore(store);
+    db.calls = (db.calls || []).filter((x: any) => x.id !== id);
+    saveDb(db);
   }
   return NextResponse.json({ success: true });
 }

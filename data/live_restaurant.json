@@ -1,295 +1,229 @@
 {
-  "calls": [
-    {
-      "id": "call_1788719723757",
-      "tableNo": "MASA 07",
-      "serviceType": "Garson",
-      "time": "21:35",
-      "timestamp": 1788719723757
-    },
-    {
-      "id": "call_1788719705258",
-      "tableNo": "MASA 07",
-      "serviceType": "Hesap İste (Kredi Kartı)",
-      "time": "21:35",
-      "timestamp": 1788719705258
-    },
-    {
-      "id": "call_1788718906840",
-      "tableNo": "MASA 07",
-      "serviceType": "Hesap İste (Kredi Kartı)",
-      "time": "21:21",
-      "timestamp": 1788718906841
-    },
-    {
-      "id": "call_1788718710656",
-      "tableNo": "MASA 05",
-      "serviceType": "Garson",
-      "time": "21:18",
-      "timestamp": 1788718710659
-    },
-    {
-      "id": "call_1788717083952",
-      "tableNo": "MASA 05",
-      "serviceType": "Garson",
-      "time": "20:51",
-      "timestamp": 1788717083956
-    },
-    {
-      "id": "call_1788712470269",
-      "tableNo": "MASA 07",
-      "serviceType": "Garson",
-      "time": "19:34",
-      "timestamp": 1788712470269
-    },
-    {
-      "id": "call_1788712460815",
-      "tableNo": "MASA 07",
-      "serviceType": "Hesap İste (Kredi Kartı)",
-      "time": "19:34",
-      "timestamp": 1788712460815
-    },
-    {
-      "id": "call_1788711970010",
-      "tableNo": "MASA 09",
-      "serviceType": "Hesap İste (Kredi Kartı)",
-      "time": "19:26",
-      "timestamp": 1788711970018
-    }
-  ],
+  "calls": [],
   "resolvedCalls": [
     {
-      "id": "call_1788715554294",
-      "tableNo": "MASA 05",
-      "serviceType": "Garson",
-      "time": "20:25",
-      "timestamp": 1788715554302,
-      "durationSec": 11,
-      "resolvedAt": 1788715564968
+      "id": "call_1788801677524",
+      "tableNo": "MASA 08",
+      "serviceType": "Hesap İste",
+      "time": "20:21",
+      "timestamp": 1788801677526,
+      "durationSec": 0,
+      "resolvedAt": 1788801677561
     }
   ],
   "orders": [
     {
-      "id": "ord_1788720256510",
-      "tableNo": "MASA 07",
+      "id": "ord_1788801677538",
+      "tableNo": "MASA 08",
       "items": [
         {
-          "id": "firinda-kuzu-incik",
-          "name": "Fırında Kuzu İncik",
-          "price": 680,
-          "quantity": 1
-        }
-      ],
-      "totalAmount": 680,
-      "time": "21:44",
-      "timestamp": 1788720256511,
-      "status": "hazirlaniyor"
-    },
-    {
-      "id": "ord_1788719867736",
-      "tableNo": "MASA 05",
-      "items": [
-        {
-          "id": "patlican-kuzu-incik",
-          "name": "Patlıcan Yatağında Kuzu İncik",
-          "price": 670,
-          "quantity": 1
-        }
-      ],
-      "totalAmount": 670,
-      "time": "21:37",
-      "timestamp": 1788719867739,
-      "status": "hazirlaniyor"
-    },
-    {
-      "id": "ord_1788719697811",
-      "tableNo": "MASA 07",
-      "items": [
-        {
-          "id": "kuzu-haslama",
-          "name": "Kuzu Haşlama",
-          "price": 670,
-          "quantity": 1
+          "id": "sur-usulu-sac-tava",
+          "name": "Sur Usulü Sac Tava",
+          "price": 800,
+          "quantity": 2
         },
         {
           "id": "acik-ayran",
           "name": "Yayık Açık Ayran",
           "price": 75,
           "quantity": 2
+        }
+      ],
+      "totalAmount": 1750,
+      "time": "20:21",
+      "timestamp": 1788801677538,
+      "status": "kapandi",
+      "paymentMethod": "Kredi Kartı",
+      "closedAt": 1788801677551
+    },
+    {
+      "id": "ord_1788801542547",
+      "tableNo": "MASA 10",
+      "items": [
+        {
+          "id": "special-kuzu-sirt",
+          "name": "Beroş Special Kuzu Sırt",
+          "price": 850,
+          "quantity": 1
         },
         {
           "id": "fistikli-kadayif",
           "name": "Diyarbakır Burma Kadayıf",
           "price": 430,
           "quantity": 1
+        },
+        {
+          "id": "acik-ayran",
+          "name": "Hakiki Yayık Açık Ayran",
+          "price": 75,
+          "quantity": 2
         }
       ],
-      "totalAmount": 1250,
-      "time": "21:34",
-      "timestamp": 1788719697811,
-      "status": "hazirlaniyor"
+      "totalAmount": 1430,
+      "time": "20:19",
+      "timestamp": 1788801542547,
+      "status": "hazirlaniyor",
+      "paymentMethod": null
     },
     {
-      "id": "ord_1788719218777",
-      "tableNo": "MASA 05",
+      "id": "ord_1788801532087",
+      "tableNo": "MASA 12",
       "items": [
         {
-          "id": "patlican-kuzu-incik",
-          "name": "Patlıcan Yatağında Kuzu İncik",
-          "price": 670,
+          "id": "eksili-kofte",
+          "name": "Ekşili Köfte",
+          "price": 480,
           "quantity": 1
         }
       ],
-      "totalAmount": 670,
-      "time": "21:26",
-      "timestamp": 1788719218780,
-      "status": "hazirlaniyor"
+      "totalAmount": 480,
+      "time": "20:18",
+      "timestamp": 1788801532091,
+      "status": "hazirlaniyor",
+      "paymentMethod": null
     },
     {
-      "id": "ord_1788718710802",
-      "tableNo": "MASA 05",
+      "id": "ord_1788801147248",
+      "tableNo": "MASA 10",
       "items": [
         {
           "id": "special-kuzu-sirt",
           "name": "Beroş Special Kuzu Sırt",
-          "price": 725,
-          "quantity": 2
+          "price": 850,
+          "quantity": 1
+        },
+        {
+          "id": "fistikli-kadayif",
+          "name": "Diyarbakır Burma Kadayıf",
+          "price": 430,
+          "quantity": 1
         },
         {
           "id": "acik-ayran",
-          "name": "Yayık Açık Ayran",
+          "name": "Hakiki Yayık Açık Ayran",
           "price": 75,
           "quantity": 2
         }
       ],
-      "totalAmount": 1600,
-      "time": "21:18",
-      "timestamp": 1788718710802,
-      "status": "hazirlaniyor"
+      "totalAmount": 1430,
+      "time": "20:12",
+      "timestamp": 1788801147249,
+      "status": "hazirlaniyor",
+      "paymentMethod": null
     },
     {
-      "id": "ord_1788718399136",
-      "tableNo": "MASA 07",
+      "id": "ord_1788801138770",
+      "tableNo": "MASA 12",
       "items": [
         {
-          "id": "patlican-kuzu-incik",
-          "name": "Patlıcan Yatağında Kuzu İncik",
-          "price": 670,
-          "quantity": 1
-        },
-        {
-          "id": "acik-ayran",
-          "name": "Yayık Açık Ayran",
-          "price": 75,
+          "id": "eksili-kofte",
+          "name": "Ekşili Köfte",
+          "price": 480,
           "quantity": 1
         }
       ],
-      "totalAmount": 745,
-      "time": "21:13",
-      "timestamp": 1788718399136,
-      "status": "hazirlaniyor"
+      "totalAmount": 480,
+      "time": "20:12",
+      "timestamp": 1788801138774,
+      "status": "hazirlaniyor",
+      "paymentMethod": null
     },
     {
-      "id": "ord_1788717083963",
-      "tableNo": "MASA 05",
+      "id": "ord_1788800929207",
+      "tableNo": "MASA 10",
       "items": [
         {
           "id": "special-kuzu-sirt",
           "name": "Beroş Special Kuzu Sırt",
-          "price": 725,
-          "quantity": 2
+          "price": 850,
+          "quantity": 1
         },
         {
-          "id": "acik-ayran",
-          "name": "Yayık Açık Ayran",
-          "price": 75,
-          "quantity": 2
-        }
-      ],
-      "totalAmount": 1600,
-      "time": "20:51",
-      "timestamp": 1788717083964,
-      "status": "hazirlaniyor"
-    },
-    {
-      "id": "ord_1788715970097",
-      "tableNo": "MASA 07",
-      "items": [
-        {
-          "id": "patlican-kuzu-incik",
-          "name": "Patlıcan Yatağında Kuzu İncik",
-          "price": 670,
+          "id": "fistikli-kadayif",
+          "name": "Diyarbakır Burma Kadayıf",
+          "price": 430,
           "quantity": 1
         },
         {
           "id": "acik-ayran",
-          "name": "Yayık Açık Ayran",
+          "name": "Hakiki Yayık Açık Ayran",
           "price": 75,
-          "quantity": 1
+          "quantity": 2
         }
       ],
-      "totalAmount": 745,
-      "time": "20:32",
-      "timestamp": 1788715970097,
-      "status": "hazirlaniyor"
+      "totalAmount": 1430,
+      "time": "20:08",
+      "timestamp": 1788800929207,
+      "status": "hazirlaniyor",
+      "paymentMethod": null
     },
     {
-      "id": "ord_1788715554312",
-      "tableNo": "MASA 05",
+      "id": "ord_1788800920966",
+      "tableNo": "MASA 12",
       "items": [
         {
-          "id": "sur-usulu-sac-tava",
-          "name": "Sur Usulü Hakiki Sac Tava",
-          "price": 800,
+          "id": "eksili-kofte",
+          "name": "Ekşili Köfte",
+          "price": 480,
           "quantity": 1
         }
       ],
-      "totalAmount": 800,
-      "time": "20:25",
-      "timestamp": 1788715554312,
-      "status": "hazirlaniyor"
+      "totalAmount": 480,
+      "time": "20:08",
+      "timestamp": 1788800920970,
+      "status": "hazirlaniyor",
+      "paymentMethod": null
     },
     {
-      "id": "ord_1788713136505",
-      "tableNo": "MASA 07",
+      "id": "ord_1788799285725",
+      "tableNo": "MASA 12",
       "items": [
         {
-          "id": "patlican-kuzu-incik",
-          "name": "Patlıcan Yatağında Kuzu İncik",
-          "price": 670,
+          "id": "firin-guvec",
+          "name": "Fırın Güveç",
+          "price": 480,
           "quantity": 1
         }
       ],
-      "totalAmount": 670,
-      "time": "19:45",
-      "timestamp": 1788713136508,
-      "status": "hazirlaniyor"
+      "totalAmount": 480,
+      "time": "19:41",
+      "timestamp": 1788799285725,
+      "status": "hazirlaniyor",
+      "paymentMethod": null
     },
     {
-      "id": "ord_1788711973344",
-      "tableNo": "MASA 09",
+      "id": "ord_1788799241084",
+      "tableNo": "MASA 10",
       "items": [
         {
           "id": "special-kuzu-sirt",
           "name": "Beroş Special Kuzu Sırt",
-          "price": 725,
+          "price": 850,
           "quantity": 1
+        },
+        {
+          "id": "fistikli-kadayif",
+          "name": "Diyarbakır Burma Kadayıf",
+          "price": 430,
+          "quantity": 1
+        },
+        {
+          "id": "acik-ayran",
+          "name": "Hakiki Yayık Açık Ayran",
+          "price": 75,
+          "quantity": 2
         }
       ],
-      "totalAmount": 725,
-      "time": "19:26",
-      "timestamp": 1788711973345,
-      "status": "hazirlaniyor"
+      "totalAmount": 1430,
+      "time": "19:40",
+      "timestamp": 1788799241089,
+      "status": "hazirlaniyor",
+      "paymentMethod": null
     }
   ],
   "inventory": {
     "special-kuzu-sirt": {
-      "count": 35,
-      "isUnlimited": false,
-      "isLocked": false
-    },
-    "sur-kuzu-kol-dolmasi": {
-      "count": 15,
+      "count": 36,
       "isUnlimited": false,
       "isLocked": false
     },
@@ -298,78 +232,478 @@
       "isUnlimited": false,
       "isLocked": false
     },
-    "firinda-kuzu-incik": {
-      "count": 24,
-      "isUnlimited": false,
-      "isLocked": false
-    },
-    "kekikli-kuzu-budu": {
-      "count": 20,
+    "sur-usulu-sac-tava": {
+      "count": 58,
       "isUnlimited": false,
       "isLocked": false
     },
     "kuzu-gerdan": {
-      "count": 20,
+      "count": 25,
       "isUnlimited": false,
       "isLocked": false
     },
-    "kuzu-greaten": {
-      "count": 20,
+    "firinda-kuzu-incik": {
+      "count": 25,
       "isUnlimited": false,
       "isLocked": false
     },
     "kuzu-haslama": {
-      "count": 24,
+      "count": 20,
       "isUnlimited": false,
       "isLocked": false
     },
-    "firin-agzi": {
-      "count": 35,
-      "isUnlimited": false,
-      "isLocked": false
-    },
-    "diyarbakir-kavurma": {
-      "count": 40,
-      "isUnlimited": false,
-      "isLocked": false
-    },
-    "patlican-kuzu-incik": {
+    "sur-kuzu-kol-dolmasi": {
       "count": 15,
       "isUnlimited": false,
       "isLocked": false
     },
     "firin-guvec": {
+      "count": 34,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "mumbar": {
+      "count": 25,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "karisik-izgara": {
       "count": 30,
       "isUnlimited": false,
       "isLocked": false
     },
+    "kuzu-sis": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "adana-kebap": {
+      "count": 60,
+      "isUnlimited": false,
+      "isLocked": false
+    },
     "kusbasi-kasarli-pide": {
-      "count": 100,
-      "isUnlimited": false,
-      "isLocked": false
-    },
-    "kusbasi-pide": {
-      "count": 100,
-      "isUnlimited": false,
-      "isLocked": false
-    },
-    "kiymali-yumurtali-pide": {
-      "count": 100,
-      "isUnlimited": false,
-      "isLocked": false
-    },
-    "findik-lahmacun": {
-      "count": 250,
-      "isUnlimited": false,
-      "isLocked": false
-    },
-    "kasarli-pide": {
       "count": 80,
       "isUnlimited": false,
       "isLocked": false
     },
-    "sur-usulu-sac-tava": {
-      "count": 59,
+    "kavurmali-pide": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "lahmacun": {
+      "count": 150,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "tavuk-sac-tava": {
+      "count": 40,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "krema-mantarli-tavuk": {
+      "count": 35,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "korili-tavuk": {
+      "count": 30,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "tavuk-sis": {
+      "count": 45,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "kelle-paca": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "mercimek-corbasi": {
+      "count": 100,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "icli-kofte": {
+      "count": 80,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "meze-tabagi": {
+      "count": 40,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "kuru-dolma": {
+      "count": 40,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "bostana-salatasi": {
+      "count": 60,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "gavurdagi-salatasi": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "hellim-salata": {
+      "count": 40,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "fistikli-kadayif": {
+      "count": 56,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "fistikli-baklava": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "kunefe": {
+      "count": 40,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "firin-sutlac": {
+      "count": 40,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "acik-ayran": {
+      "count": 500,
+      "isUnlimited": true,
+      "isLocked": false
+    },
+    "meyan-serbeti": {
+      "count": 100,
+      "isUnlimited": true,
+      "isLocked": false
+    },
+    "reyhan-serbeti": {
+      "count": 100,
+      "isUnlimited": true,
+      "isLocked": false
+    },
+    "turk-kahvesi": {
+      "count": 500,
+      "isUnlimited": true,
+      "isLocked": false
+    },
+    "menengic-kahvesi": {
+      "count": 300,
+      "isUnlimited": true,
+      "isLocked": false
+    },
+    "portakal-suyu": {
+      "count": 80,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "kol-dolmasi-2-kisilik": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "asci-tabagi": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "keci-kavurmasi": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "pilav-ustu-kol-dolmasi": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "pilav-ustu-tandir": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "firin-agzi": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "patlican-yataginda-incik": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "firinda-gerdan": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "kekikli-kuzu-budu": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "kuzu-graten": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "diyarbakir-kavurma": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "sade-tandir": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "eksili-kofte": {
+      "count": 47,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "etsiz-sebze-yemegi": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "az-kavurma": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "az-tandir": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "az-guvec": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "beros-acili-bonfile": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "beros-loqum-bonfile": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "loqum-bonfile": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "patates-yataginda-bonfile": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "beros-special-1": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "ozel-siparis-kaburga": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "cokertme": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "kabak-meftune": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "kremali-loqum-bonfile": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "beef-stragonof": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "kusbasi-pide": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "kiymali-yumurtali-pide": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "findik-lahmacun": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "kasarli-pide": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "ispanak-yataginda-tavuk": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "kremali-mantarli-tavuk": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "acili-tavuk": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "talas-boregi": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "patates-cips": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "sade-pilav": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "fistik-sarma": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "soguk-baklava": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "kabak-tatlisi": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "dondurma-top": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "serpme-kahvalti": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "kahvalti-tabagi": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "kasik-salatasi": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "kase-yogurt": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "salgam": {
+      "count": 200,
+      "isUnlimited": true,
+      "isLocked": false
+    },
+    "limonata": {
+      "count": 200,
+      "isUnlimited": true,
+      "isLocked": false
+    },
+    "kutu-kola": {
+      "count": 200,
+      "isUnlimited": true,
+      "isLocked": false
+    },
+    "kutu-fanta": {
+      "count": 200,
+      "isUnlimited": true,
+      "isLocked": false
+    },
+    "sise-kola": {
+      "count": 200,
+      "isUnlimited": true,
+      "isLocked": false
+    },
+    "sprite": {
+      "count": 200,
+      "isUnlimited": true,
+      "isLocked": false
+    },
+    "sade-soda": {
+      "count": 200,
+      "isUnlimited": true,
+      "isLocked": false
+    },
+    "cay": {
+      "count": 200,
+      "isUnlimited": true,
+      "isLocked": false
+    },
+    "izgara-kofte": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "tavuk-nugget": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "beros-usulu-loqum-bonfile": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "beros-usulu-acili-bonfile": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "sac-tava": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "pide-1-5-kusbasili": {
+      "count": 50,
+      "isUnlimited": false,
+      "isLocked": false
+    },
+    "corba": {
+      "count": 50,
       "isUnlimited": false,
       "isLocked": false
     },
@@ -379,56 +713,16 @@
       "isLocked": false
     },
     "kori-soslu-tavuk": {
-      "count": 40,
-      "isUnlimited": false,
-      "isLocked": false
-    },
-    "ispanak-tavuk-bonfile": {
-      "count": 40,
-      "isUnlimited": false,
-      "isLocked": false
-    },
-    "mumbar": {
-      "count": 30,
-      "isUnlimited": false,
-      "isLocked": false
-    },
-    "icli-kofte": {
-      "count": 150,
-      "isUnlimited": false,
-      "isLocked": false
-    },
-    "talas-boregi": {
-      "count": 60,
-      "isUnlimited": false,
-      "isLocked": false
-    },
-    "kase-yogurt": {
       "count": 50,
       "isUnlimited": false,
       "isLocked": false
     },
-    "fistikli-baklava": {
-      "count": 45,
+    "beros-usulu-acili-tavuk": {
+      "count": 50,
       "isUnlimited": false,
-      "isLocked": false
-    },
-    "fistikli-kadayif": {
-      "count": 49,
-      "isUnlimited": false,
-      "isLocked": false
-    },
-    "acik-ayran": {
-      "count": 500,
-      "isUnlimited": true,
       "isLocked": false
     },
     "kutu-mesrubat": {
-      "count": 300,
-      "isUnlimited": true,
-      "isLocked": false
-    },
-    "turk-kahvesi": {
       "count": 500,
       "isUnlimited": true,
       "isLocked": false

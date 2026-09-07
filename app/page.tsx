@@ -30,6 +30,8 @@ import {
   Sparkles,
   Layers,
   MapPin,
+  Clock,
+  ShieldAlert,
 } from "lucide-react";
 import SteamEffect from "@/components/steam-effect";
 import { ArSpatialViewer, type Dish } from "@/components/ar-spatial-viewer";
@@ -78,39 +80,46 @@ const RESTAURANT_CONFIG = {
   address: "Camii Nebi Mah. İnönü Cad. No: 12 Sur / Diyarbakır"
 };
 
-interface MenuItem {
+export interface MenuItem {
   id: string;
   category: string;
-  categorySlug: "yoresel" | "tas-firin" | "sac-tava" | "tavuk" | "ara-sicak" | "tatli" | "icecek";
+  categorySlug: string;
   name: string;
   subtitle: string;
   frenchTitle?: string;
   price: string;
   priceNum: number;
-  calories: string;
-  portion: string;
-  prepTime: string;
-  temperature: string;
-  chefNote: string;
-  dishImage: string;
+  image: string;
+  calories?: string;
+  prepTime?: string;
+  servingTemp?: string;
+  temperature?: string;
+  description: string;
+  desc?: string;
+  chefNote?: string;
+  dishImage?: string;
   isTransparentPng?: boolean;
   isBluePlate?: boolean;
+  portion?: string;
   courseNumber?: string;
   meatIngredient?: string;
   garnishIngredient?: string;
+  allergens?: string | string[];
 }
 
 const CATEGORIES = [
-  { slug: "yoresel", label: "YÖRESEL LEZZETLER" },
-  { slug: "tas-firin", label: "TAŞ FIRIN & PİDE" },
-  { slug: "sac-tava", label: "SAC TAVA" },
-  { slug: "tavuk", label: "TAVUK ÇEŞİTLERİ" },
-  { slug: "ara-sicak", label: "ARA SICAK & MEZE" },
-  { slug: "tatli", label: "TATLILAR" },
-  { slug: "icecek", label: "İÇECEKLER" },
-] as const;
+  { id: "yoresel", slug: "yoresel", label: "YÖRESEL" },
+  { id: "spesiyaller", slug: "spesiyaller", label: "SPESİYALLER" },
+  { id: "tas-firin", slug: "tas-firin", label: "TAŞ FIRIN & PİDE" },
+  { id: "ara-sicak", slug: "ara-sicak", label: "ARA SICAKLAR" },
+  { id: "tavuk", slug: "tavuk", label: "TAVUK ÇEŞİTLERİ" },
+  { id: "cocuk", slug: "cocuk", label: "ÇOCUK MENÜSÜ" },
+  { id: "tatli", slug: "tatli", label: "TATLILAR" },
+  { id: "soguklar", slug: "soguklar", label: "SOĞUKLAR & MEZE" },
+  { id: "icecekler", slug: "icecekler", label: "İÇECEKLER" },
+];
 
-type CategorySlug = (typeof CATEGORIES)[number]["slug"];
+export type CategorySlug = string;
 
 type Language = "TR" | "EN" | "AR";
 
@@ -195,814 +204,1274 @@ const TRANSLATIONS = {
 const CATEGORY_NAMES: Record<Language, Record<string, string>> = {
   TR: {
     yoresel: "YÖRESEL LEZZETLER",
+    spesiyaller: "SPESİYALLER",
     "tas-firin": "TAŞ FIRIN & PİDE",
-    "sac-tava": "SAC TAVA",
+    "ara-sicak": "ARA SICAKLAR",
     tavuk: "TAVUK ÇEŞİTLERİ",
-    "ara-sicak": "ARA SICAK & MEZE",
+    cocuk: "ÇOCUK MENÜSÜ",
     tatli: "TATLILAR",
-    icecek: "İÇECEKLER",
+    soguklar: "SOĞUKLAR & MEZE",
+    icecekler: "İÇECEKLER",
   },
   EN: {
-    yoresel: "TRADITIONAL SPECIALS",
-    "tas-firin": "STONE OVEN & PIDA",
-    "sac-tava": "IRON SHEET PAN",
-    tavuk: "CHICKEN DELICACIES",
-    "ara-sicak": "HOT STARTERS & MEZZE",
+    yoresel: "TRADITIONAL",
+    spesiyaller: "SPECIALS",
+    "tas-firin": "STONE OVEN & PIDE",
+    "ara-sicak": "WARM STARTERS",
+    tavuk: "CHICKEN VARIETIES",
+    cocuk: "KIDS MENU",
     tatli: "DESSERTS",
-    icecek: "BEVERAGES",
+    soguklar: "COLD MEZZE",
+    icecekler: "BEVERAGES",
   },
   AR: {
     yoresel: "أطباق تقليدية",
+    spesiyaller: "المميزات",
     "tas-firin": "فرن الحجر والفطائر",
-    "sac-tava": "صاج مقلي",
+    "ara-sicak": "المقبلات الساخنة",
     tavuk: "أطباق الدجاج",
-    "ara-sicak": "مقبلات ومقبلات ساخنة",
+    cocuk: "قائمة الأطفال",
     tatli: "حلويات",
-    icecek: "مشروبات",
+    soguklar: "المقبلات الباردة",
+    icecekler: "مشروبات",
   },
 };
 
 const DISHES: MenuItem[] = [
   {
-    "id": "special-kuzu-sirt",
-    "category": "YÖRESEL LEZZETLER",
+    "id": "kol-dolmasi-2-kisilik",
+    "category": "Yöresel",
     "categorySlug": "yoresel",
-    "name": "Beroş Special Kuzu Sırt",
-    "subtitle": "Mavi Sırlı Çini Tabakta • Meşe Odununda Pişirim • Dağ Kekiği",
-    "frenchTitle": "Selle d'Agneau Rôtie au Four Traditionnel",
-    "price": "₺ 725",
-    "priceNum": 725,
-    "calories": "690 kcal",
-    "portion": "320g / Tek Kişilik",
-    "prepTime": "15 dk",
-    "temperature": "74°C",
-    "chefNote": "Karacadağ meralarında beslenen körpe kuzunun sırt eti, taş fırında meşe közünde ağır ağır pişirilir. Sur kültürünün kobalt mavisi çini tabağında köz köy biberiyle servis edilir.",
-    "dishImage": "/dish-blue-plate.png",
-    "isTransparentPng": true,
-    "isBluePlate": true,
-    "courseNumber": "01",
-    "meatIngredient": "Körpe Kuzu Sırt",
-    "garnishIngredient": "Köz Biber & Kekik"
-  },
-  {
-    "id": "sur-kuzu-kol-dolmasi",
-    "category": "YÖRESEL LEZZETLER",
-    "categorySlug": "yoresel",
-    "name": "Sur Kuzu Kol Dolması (2 Kişilik)",
-    "subtitle": "Tarihi Konak Reçetesi • Bademli Kuş Üzümlü İç Pilav • 5 Saat Fırınlama",
-    "frenchTitle": "Épaule d'Agneau Farcie à l'Ancienne",
+    "name": "Kol Dolması (2 Kişilik)",
+    "subtitle": "12 saat kısık ateşte demlenen bütün kuzu kol dolması, bademli iç pilav ile bakır sahanda.",
+    "description": "12 saat kısık ateşte demlenen bütün kuzu kol dolması, bademli iç pilav ile bakır sahanda.",
+    "desc": "12 saat kısık ateşte demlenen bütün kuzu kol dolması, bademli iç pilav ile bakır sahanda.",
+    "chefNote": "12 saat kısık ateşte demlenen bütün kuzu kol dolması, bademli iç pilav ile bakır sahanda.",
     "price": "₺ 1.300",
     "priceNum": 1300,
-    "calories": "920 kcal",
-    "portion": "650g / Paylaşımlı",
-    "prepTime": "20 dk",
-    "temperature": "70°C",
-    "chefNote": "Diyarbakır konaklarının asırlık baş tacı. Kuzu kolu özenle dikilerek içi kavrulmuş yerli badem, kuş üzümü ve taze Sur reyhanlı pirinçle doldurulur.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3655062_48624_20230508013506.jpg",
-    "courseNumber": "02",
-    "meatIngredient": "Fırın Kuzu Kol",
-    "garnishIngredient": "Bademli İç Pilav"
+    "image": "/dishes/kol-dolmasi.png",
+    "dishImage": "/dishes/kol-dolmasi.png",
+    "calories": "1450 kcal",
+    "prepTime": "35 dk",
+    "allergens": "Kuruyemiş (Badem)",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
   },
   {
-    "id": "ayvali-kavurma",
-    "category": "YÖRESEL LEZZETLER",
+    "id": "asci-tabagi",
+    "category": "Yöresel",
     "categorySlug": "yoresel",
-    "name": "Diyarbakır Ayvalı Kavurma",
-    "subtitle": "Karamelize Ayva Dilimleri • Bakır Sahanda Demleme",
-    "frenchTitle": "Sauté d'Agneau Traditionnel aux Coings",
-    "price": "₺ 725",
-    "priceNum": 725,
-    "calories": "610 kcal",
-    "portion": "300g",
-    "prepTime": "14 dk",
-    "temperature": "76°C",
-    "chefNote": "Kuzu eti ve kış ayvalarının tatlı-ekşi dengesiyle bakır sahanda meşe közünde demlenen Diyarbakır saray mutfağı klasiği.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3655037_48624_20230508013654.jpg",
-    "courseNumber": "03",
-    "meatIngredient": "Kavrulmuş Kuzu",
-    "garnishIngredient": "Karamelize Ayva"
+    "name": "Aşçı Tabağı",
+    "subtitle": "Tandır, kuzu incik, kol dolması ve pilavdan oluşan zengin konak seçkisi.",
+    "description": "Tandır, kuzu incik, kol dolması ve pilavdan oluşan zengin konak seçkisi.",
+    "desc": "Tandır, kuzu incik, kol dolması ve pilavdan oluşan zengin konak seçkisi.",
+    "chefNote": "Tandır, kuzu incik, kol dolması ve pilavdan oluşan zengin konak seçkisi.",
+    "price": "₺ 985",
+    "priceNum": 985,
+    "image": "/dishes/asci-tabagi.png",
+    "dishImage": "/dishes/asci-tabagi.png",
+    "calories": "1150 kcal",
+    "prepTime": "20 dk",
+    "allergens": "Gluten",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "keci-kavurmasi",
+    "category": "Yöresel",
+    "categorySlug": "yoresel",
+    "name": "Keçi Kavurması",
+    "subtitle": "Taş fırında ağır ateşte pişen yöresel keçi kavurması.",
+    "description": "Taş fırında ağır ateşte pişen yöresel keçi kavurması.",
+    "desc": "Taş fırında ağır ateşte pişen yöresel keçi kavurması.",
+    "chefNote": "Taş fırında ağır ateşte pişen yöresel keçi kavurması.",
+    "price": "₺ 720",
+    "priceNum": 720,
+    "image": "/dishes/keci-kavurmasi.png",
+    "dishImage": "/dishes/keci-kavurmasi.png",
+    "calories": "650 kcal",
+    "prepTime": "20 dk",
+    "allergens": "Doğal Et (Alerjensiz)",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "pilav-ustu-kol-dolmasi",
+    "category": "Yöresel",
+    "categorySlug": "yoresel",
+    "name": "Pilav Üstü Kuzu Kol Dolması",
+    "subtitle": "Bademli iç pilav üzerinde servis edilen kuzu kol eti.",
+    "description": "Bademli iç pilav üzerinde servis edilen kuzu kol eti.",
+    "desc": "Bademli iç pilav üzerinde servis edilen kuzu kol eti.",
+    "chefNote": "Bademli iç pilav üzerinde servis edilen kuzu kol eti.",
+    "price": "₺ 690",
+    "priceNum": 690,
+    "image": "/dishes/pilav-ustu-kol-dolmasi.png",
+    "dishImage": "/dishes/pilav-ustu-kol-dolmasi.png",
+    "calories": "820 kcal",
+    "prepTime": "15 dk",
+    "allergens": "Kuruyemiş (Badem), Gluten",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "pilav-ustu-tandir",
+    "category": "Yöresel",
+    "categorySlug": "yoresel",
+    "name": "Pilav Üstü Tandır",
+    "subtitle": "Taş fırında pişen kuzu tandır eti, tane pirinç pilavı ile.",
+    "description": "Taş fırında pişen kuzu tandır eti, tane pirinç pilavı ile.",
+    "desc": "Taş fırında pişen kuzu tandır eti, tane pirinç pilavı ile.",
+    "chefNote": "Taş fırında pişen kuzu tandır eti, tane pirinç pilavı ile.",
+    "price": "₺ 685",
+    "priceNum": 685,
+    "image": "/dishes/pilav-ustu-tandir.png",
+    "dishImage": "/dishes/pilav-ustu-tandir.png",
+    "calories": "780 kcal",
+    "prepTime": "15 dk",
+    "allergens": "Gluten",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
   },
   {
     "id": "firinda-kuzu-incik",
-    "category": "YÖRESEL LEZZETLER",
+    "category": "Yöresel",
     "categorySlug": "yoresel",
     "name": "Fırında Kuzu İncik",
-    "subtitle": "Ağır Ateşte Kendi İlik Suyu ve Kök Sebzelerle Fırınlama",
-    "frenchTitle": "Souris d'Agneau Confite au Four de Pierre",
+    "subtitle": "Fırınlanmış kök sebzeler ve ilikli et sosu ile ağır pişirim.",
+    "description": "Fırınlanmış kök sebzeler ve ilikli et sosu ile ağır pişirim.",
+    "desc": "Fırınlanmış kök sebzeler ve ilikli et sosu ile ağır pişirim.",
+    "chefNote": "Fırınlanmış kök sebzeler ve ilikli et sosu ile ağır pişirim.",
     "price": "₺ 680",
     "priceNum": 680,
-    "calories": "680 kcal",
-    "portion": "380g",
-    "prepTime": "15 dk",
+    "image": "/dishes/firinda-kuzu-incik.png",
+    "dishImage": "/dishes/firinda-kuzu-incik.png",
+    "calories": "710 kcal",
+    "prepTime": "20 dk",
+    "allergens": "Alerjensiz",
     "temperature": "75°C",
-    "chefNote": "Kuzu inciği taş fırında kendi ilik suyu ve taze kök sebzelerle 4 saat ağır ateşte lokum kıvamına getirilir.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3655041_48624_20230508013618.jpg",
-    "courseNumber": "04",
-    "meatIngredient": "Kemikli İncik",
-    "garnishIngredient": "Kök Sebzeler"
-  },
-  {
-    "id": "kekikli-kuzu-budu",
-    "category": "YÖRESEL LEZZETLER",
-    "categorySlug": "yoresel",
-    "name": "Kekikli Kuzu Budu",
-    "subtitle": "Karacadağ Dağ Kekiği • Meşe Fırınlama",
-    "frenchTitle": "Gigot d'Agneau Rôti au Thym Sauvage",
-    "price": "₺ 670",
-    "priceNum": 670,
-    "calories": "660 kcal",
-    "portion": "350g",
-    "prepTime": "15 dk",
-    "temperature": "74°C",
-    "chefNote": "Dağ kekiği ile marine edilmiş körpe kuzu but eti, tandır fırınında dinlendirilerek servis edilir.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3655042_48624_20230508013747.jpg",
-    "courseNumber": "05",
-    "meatIngredient": "Tandır Kuzu But",
-    "garnishIngredient": "Karacadağ Kekiği"
-  },
-  {
-    "id": "kuzu-gerdan",
-    "category": "YÖRESEL LEZZETLER",
-    "categorySlug": "yoresel",
-    "name": "Kuzu Gerdan",
-    "subtitle": "Kemik Suyunda Ağır Demleme • Şefin İmzası",
-    "frenchTitle": "Collet d'Agneau Braisé au Bouillon d'Os",
-    "price": "₺ 670",
-    "priceNum": 670,
-    "calories": "640 kcal",
-    "portion": "340g",
-    "prepTime": "12 dk",
-    "temperature": "75°C",
-    "chefNote": "Lif lif ayrılan kuzu gerdan eti, geleneksel baharat harmanı ile bakır tencerede demlendirilir.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3655043_48624_20230508013815.jpg",
-    "courseNumber": "06",
-    "meatIngredient": "Demleme Gerdan",
-    "garnishIngredient": "Şifalı Et Suyu"
-  },
-  {
-    "id": "kuzu-greaten",
-    "category": "YÖRESEL LEZZETLER",
-    "categorySlug": "yoresel",
-    "name": "Kuzu Greaten",
-    "subtitle": "Özel Fırın Sosu • Yöresel Karacadağ Peyniri",
-    "frenchTitle": "Gratin d'Agneau au Fromage de Karacadağ",
-    "price": "₺ 680",
-    "priceNum": 680,
-    "calories": "700 kcal",
-    "portion": "330g",
-    "prepTime": "15 dk",
-    "temperature": "78°C",
-    "chefNote": "Fırınlanmış kuzu eti dilimleri üzerine eritilmiş yöresel Karacadağ peyniri dokunuşu.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3655047_48624_20230508013829.jpg",
-    "courseNumber": "07",
-    "meatIngredient": "Fırın Kuzu Eti",
-    "garnishIngredient": "Eritme Peynir"
-  },
-  {
-    "id": "kuzu-haslama",
-    "category": "YÖRESEL LEZZETLER",
-    "categorySlug": "yoresel",
-    "name": "Kuzu Haşlama",
-    "subtitle": "Taze Kök Sebzeler • Şifalı İlikli Et Suyu",
-    "frenchTitle": "Pot-au-Feu d'Agneau aux Légumes de Saison",
-    "price": "₺ 670",
-    "priceNum": 670,
-    "calories": "580 kcal",
-    "portion": "350g",
-    "prepTime": "10 dk",
-    "temperature": "80°C",
-    "chefNote": "Taze patates, havuç ve arpacık soğan ile kısık ateşte demlenen asırlık konak reçetesi.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3655048_48624_20230508013851.jpg",
-    "courseNumber": "08",
-    "meatIngredient": "İlikli Kuzu Eti",
-    "garnishIngredient": "Taze Patates & Havuç"
+    "servingTemp": "75°C"
   },
   {
     "id": "firin-agzi",
-    "category": "YÖRESEL LEZZETLER",
+    "category": "Yöresel",
     "categorySlug": "yoresel",
     "name": "Fırın Ağzı",
-    "subtitle": "Tepsi Kebabı Usulü • Sarımsaklı Köy Biberi Harcı",
-    "frenchTitle": "Viande d'Agneau au Four de Braise",
+    "subtitle": "Kuzu eti, sarımsak ve biberle tepside nar gibi kızartılan Diyarbakır klasiği.",
+    "description": "Kuzu eti, sarımsak ve biberle tepside nar gibi kızartılan Diyarbakır klasiği.",
+    "desc": "Kuzu eti, sarımsak ve biberle tepside nar gibi kızartılan Diyarbakır klasiği.",
+    "chefNote": "Kuzu eti, sarımsak ve biberle tepside nar gibi kızartılan Diyarbakır klasiği.",
     "price": "₺ 680",
     "priceNum": 680,
-    "calories": "720 kcal",
-    "portion": "360g",
-    "prepTime": "16 dk",
-    "temperature": "82°C",
-    "chefNote": "Kuzu pirzola ve kaburga parçalarının sarımsak ve biberle tepside 450 derece fırın ağzında mühürlenmesi.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3655059_48624_20230508014011.jpg",
-    "courseNumber": "09",
-    "meatIngredient": "Pirzola & Kaburga",
-    "garnishIngredient": "Sarımsaklı Köy Biberi"
+    "image": "/dishes/firin-agzi.png",
+    "dishImage": "/dishes/firin-agzi.png",
+    "calories": "740 kcal",
+    "prepTime": "25 dk",
+    "allergens": "Alerjensiz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
   },
   {
-    "id": "diyarbakir-kavurma",
-    "category": "YÖRESEL LEZZETLER",
-    "categorySlug": "yoresel",
-    "name": "Diyarbakır Kavurma",
-    "subtitle": "Kendi Yağında 6 Saat Kısık Ateş Kavurması",
-    "frenchTitle": "Confit d'Agneau Traditionnel de Diyarbakır",
-    "price": "₺ 660",
-    "priceNum": 660,
-    "calories": "690 kcal",
-    "portion": "300g",
-    "prepTime": "10 dk",
-    "temperature": "76°C",
-    "chefNote": "Katkısız, sadece kuzu eti ve kaya tuzu ile bakır kazanda pişirilen geleneksel Diyarbakır lezzeti.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3655064_48624_20230511101208.jpg",
-    "courseNumber": "10",
-    "meatIngredient": "Kazan Kavurması",
-    "garnishIngredient": "Kaya Tuzu & Biber"
-  },
-  {
-    "id": "patlican-kuzu-incik",
-    "category": "YÖRESEL LEZZETLER",
+    "id": "patlican-yataginda-incik",
+    "category": "Yöresel",
     "categorySlug": "yoresel",
     "name": "Patlıcan Yatağında Kuzu İncik",
-    "subtitle": "Köz Patlıcan Söğürmesi • Fırın Kuzu İncik",
-    "frenchTitle": "Souris d'Agneau sur Lit d'Aubergines Fumées",
+    "subtitle": "Közlenmiş patlıcan beğendi üzerinde yumuşacık kuzu incik.",
+    "description": "Közlenmiş patlıcan beğendi üzerinde yumuşacık kuzu incik.",
+    "desc": "Közlenmiş patlıcan beğendi üzerinde yumuşacık kuzu incik.",
+    "chefNote": "Közlenmiş patlıcan beğendi üzerinde yumuşacık kuzu incik.",
     "price": "₺ 670",
     "priceNum": 670,
-    "calories": "670 kcal",
-    "portion": "380g",
-    "prepTime": "15 dk",
-    "temperature": "74°C",
-    "chefNote": "Sur bazaltında közlenmiş patlıcan yatağında lokum kıvamında kuzu incik sunumu.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3655053_48624_20230508013718.jpg",
-    "courseNumber": "11",
-    "meatIngredient": "Kuzu İncik",
-    "garnishIngredient": "Köz Patlıcan"
+    "image": "/dishes/patlicanli-incik.png",
+    "dishImage": "/dishes/patlicanli-incik.png",
+    "calories": "680 kcal",
+    "prepTime": "20 dk",
+    "allergens": "Laktoz (Süt/Tereyağı)",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
   },
   {
     "id": "firinda-gerdan",
-    "category": "YÖRESEL LEZZETLER",
+    "category": "Yöresel",
     "categorySlug": "yoresel",
     "name": "Fırında Gerdan",
-    "subtitle": "Meşe Fırınında Ağır Ateş Gerdan Kebabı",
-    "frenchTitle": "Collet d'Agneau Rôti au Four à Bois",
+    "subtitle": "Kemik suyunda lif lif ayrılan kuzu gerdan eti.",
+    "description": "Kemik suyunda lif lif ayrılan kuzu gerdan eti.",
+    "desc": "Kemik suyunda lif lif ayrılan kuzu gerdan eti.",
+    "chefNote": "Kemik suyunda lif lif ayrılan kuzu gerdan eti.",
     "price": "₺ 670",
     "priceNum": 670,
-    "calories": "650 kcal",
-    "portion": "350g",
-    "prepTime": "15 dk",
+    "image": "/dishes/firinda-gerdan.png",
+    "dishImage": "/dishes/firinda-gerdan.png",
+    "calories": "670 kcal",
+    "prepTime": "18 dk",
+    "allergens": "Alerjensiz",
     "temperature": "75°C",
-    "chefNote": "Kuzu gerdanının taş fırında nar gibi kızartılarak suyunu içine hapsetmesiyle hazırlanır.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3655054_48624_20230508013559.jpg",
-    "courseNumber": "12",
-    "meatIngredient": "Kızarmış Gerdan",
-    "garnishIngredient": "Fırın Domatesi"
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "kuzu-gerdan",
+    "category": "Yöresel",
+    "categorySlug": "yoresel",
+    "name": "Kuzu Gerdan",
+    "subtitle": "Döküm tavada köz biber ve domates eşliğinde geleneksel gerdan.",
+    "description": "Döküm tavada köz biber ve domates eşliğinde geleneksel gerdan.",
+    "desc": "Döküm tavada köz biber ve domates eşliğinde geleneksel gerdan.",
+    "chefNote": "Döküm tavada köz biber ve domates eşliğinde geleneksel gerdan.",
+    "price": "₺ 670",
+    "priceNum": 670,
+    "image": "/dishes/kuzu-gerdan.png",
+    "dishImage": "/dishes/kuzu-gerdan.png",
+    "calories": "640 kcal",
+    "prepTime": "15 dk",
+    "allergens": "Alerjensiz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "kuzu-haslama",
+    "category": "Yöresel",
+    "categorySlug": "yoresel",
+    "name": "Kuzu Haşlama",
+    "subtitle": "Şifalı ilikli et suyu, taze patates ve havuç ile haşlama.",
+    "description": "Şifalı ilikli et suyu, taze patates ve havuç ile haşlama.",
+    "desc": "Şifalı ilikli et suyu, taze patates ve havuç ile haşlama.",
+    "chefNote": "Şifalı ilikli et suyu, taze patates ve havuç ile haşlama.",
+    "price": "₺ 670",
+    "priceNum": 670,
+    "image": "/dishes/kuzu-haslama.png",
+    "dishImage": "/dishes/kuzu-haslama.png",
+    "calories": "580 kcal",
+    "prepTime": "15 dk",
+    "allergens": "Alerjensiz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "kekikli-kuzu-budu",
+    "category": "Yöresel",
+    "categorySlug": "yoresel",
+    "name": "Kekikli Kuzu Budu",
+    "subtitle": "Dağ kekiği aromalı fırınlanmış kuzu budu.",
+    "description": "Dağ kekiği aromalı fırınlanmış kuzu budu.",
+    "desc": "Dağ kekiği aromalı fırınlanmış kuzu budu.",
+    "chefNote": "Dağ kekiği aromalı fırınlanmış kuzu budu.",
+    "price": "₺ 670",
+    "priceNum": 670,
+    "image": "/dishes/kekikli-kuzu-budu.png",
+    "dishImage": "/dishes/kekikli-kuzu-budu.png",
+    "calories": "670 kcal",
+    "prepTime": "20 dk",
+    "allergens": "Alerjensiz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "kuzu-graten",
+    "category": "Yöresel",
+    "categorySlug": "yoresel",
+    "name": "Kuzu Graten",
+    "subtitle": "Fırınlanmış kaşar kabuklu kuzu eti dilimleri.",
+    "description": "Fırınlanmış kaşar kabuklu kuzu eti dilimleri.",
+    "desc": "Fırınlanmış kaşar kabuklu kuzu eti dilimleri.",
+    "chefNote": "Fırınlanmış kaşar kabuklu kuzu eti dilimleri.",
+    "price": "₺ 680",
+    "priceNum": 680,
+    "image": "/dishes/kuzu-graten.png",
+    "dishImage": "/dishes/kuzu-graten.png",
+    "calories": "730 kcal",
+    "prepTime": "20 dk",
+    "allergens": "Laktoz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "diyarbakir-kavurma",
+    "category": "Yöresel",
+    "categorySlug": "yoresel",
+    "name": "Diyarbakır Kavurma",
+    "subtitle": "Kendi yağında meşe közünde demlenen geleneksel kavurma.",
+    "description": "Kendi yağında meşe közünde demlenen geleneksel kavurma.",
+    "desc": "Kendi yağında meşe közünde demlenen geleneksel kavurma.",
+    "chefNote": "Kendi yağında meşe közünde demlenen geleneksel kavurma.",
+    "price": "₺ 660",
+    "priceNum": 660,
+    "image": "/dishes/diyarbakir-kavurma.png",
+    "dishImage": "/dishes/diyarbakir-kavurma.png",
+    "calories": "690 kcal",
+    "prepTime": "15 dk",
+    "allergens": "Alerjensiz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "sade-tandir",
+    "category": "Yöresel",
+    "categorySlug": "yoresel",
+    "name": "Sade Tandır",
+    "subtitle": "Kuyuda pişmiş tandır eti, tırnak pide ile.",
+    "description": "Kuyuda pişmiş tandır eti, tırnak pide ile.",
+    "desc": "Kuyuda pişmiş tandır eti, tırnak pide ile.",
+    "chefNote": "Kuyuda pişmiş tandır eti, tırnak pide ile.",
+    "price": "₺ 560",
+    "priceNum": 560,
+    "image": "/dishes/sade-tandir.png",
+    "dishImage": "/dishes/sade-tandir.png",
+    "calories": "620 kcal",
+    "prepTime": "15 dk",
+    "allergens": "Gluten (Pide)",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
   },
   {
     "id": "firin-guvec",
-    "category": "YÖRESEL LEZZETLER",
+    "category": "Yöresel",
     "categorySlug": "yoresel",
     "name": "Fırın Güveç",
-    "subtitle": "Toprak Kapta Mevsim Sebzeleri & Kuzu Eti",
-    "frenchTitle": "Ragoût d'Agneau en Terrine d'Argile",
+    "subtitle": "Toprak güveçte kuzu kuşbaşı, domates ve patlıcan uyumu.",
+    "description": "Toprak güveçte kuzu kuşbaşı, domates ve patlıcan uyumu.",
+    "desc": "Toprak güveçte kuzu kuşbaşı, domates ve patlıcan uyumu.",
+    "chefNote": "Toprak güveçte kuzu kuşbaşı, domates ve patlıcan uyumu.",
     "price": "₺ 480",
     "priceNum": 480,
-    "calories": "590 kcal",
-    "portion": "320g",
-    "prepTime": "14 dk",
-    "temperature": "78°C",
-    "chefNote": "Toprak güveçte kuzu kuşbaşı, patlıcan, domates ve sarımsakla ağır ateşte demlenen eşsiz lezzet.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3655063_48624_20230508013450.jpg",
-    "courseNumber": "13",
-    "meatIngredient": "Kuşbaşı Kuzu",
-    "garnishIngredient": "Toprak Kap Sebzeleri"
+    "image": "/dishes/firin-guvec.png",
+    "dishImage": "/dishes/firin-guvec.png",
+    "calories": "520 kcal",
+    "prepTime": "20 dk",
+    "allergens": "Alerjensiz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "eksili-kofte",
+    "category": "Yöresel",
+    "categorySlug": "yoresel",
+    "name": "Ekşili Köfte",
+    "subtitle": "Sumaklı yöresel sos eşliğinde konak köftesi.",
+    "description": "Sumaklı yöresel sos eşliğinde konak köftesi.",
+    "desc": "Sumaklı yöresel sos eşliğinde konak köftesi.",
+    "chefNote": "Sumaklı yöresel sos eşliğinde konak köftesi.",
+    "price": "₺ 480",
+    "priceNum": 480,
+    "image": "/dishes/eksili-kofte.png",
+    "dishImage": "/dishes/eksili-kofte.png",
+    "calories": "510 kcal",
+    "prepTime": "18 dk",
+    "allergens": "Gluten",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "etsiz-sebze-yemegi",
+    "category": "Yöresel",
+    "categorySlug": "yoresel",
+    "name": "Etsiz Sebze Yemeği",
+    "subtitle": "Mevsim sebzeleriyle hazırlanan hafif güveç.",
+    "description": "Mevsim sebzeleriyle hazırlanan hafif güveç.",
+    "desc": "Mevsim sebzeleriyle hazırlanan hafif güveç.",
+    "chefNote": "Mevsim sebzeleriyle hazırlanan hafif güveç.",
+    "price": "₺ 475",
+    "priceNum": 475,
+    "image": "/dishes/sebze-yemegi.png",
+    "dishImage": "/dishes/sebze-yemegi.png",
+    "calories": "310 kcal",
+    "prepTime": "15 dk",
+    "allergens": "Alerjensiz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "az-kavurma",
+    "category": "Yöresel",
+    "categorySlug": "yoresel",
+    "name": "Az Kavurma",
+    "subtitle": "Tek kişilik porsiyon Diyarbakır kavurması.",
+    "description": "Tek kişilik porsiyon Diyarbakır kavurması.",
+    "desc": "Tek kişilik porsiyon Diyarbakır kavurması.",
+    "chefNote": "Tek kişilik porsiyon Diyarbakır kavurması.",
+    "price": "₺ 410",
+    "priceNum": 410,
+    "image": "/dishes/az-kavurma.png",
+    "dishImage": "/dishes/az-kavurma.png",
+    "calories": "420 kcal",
+    "prepTime": "10 dk",
+    "allergens": "Alerjensiz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "az-tandir",
+    "category": "Yöresel",
+    "categorySlug": "yoresel",
+    "name": "Az Tandır",
+    "subtitle": "Tek kişilik porsiyon taş fırın tandır eti.",
+    "description": "Tek kişilik porsiyon taş fırın tandır eti.",
+    "desc": "Tek kişilik porsiyon taş fırın tandır eti.",
+    "chefNote": "Tek kişilik porsiyon taş fırın tandır eti.",
+    "price": "₺ 410",
+    "priceNum": 410,
+    "image": "/dishes/az-tandir.png",
+    "dishImage": "/dishes/az-tandir.png",
+    "calories": "390 kcal",
+    "prepTime": "10 dk",
+    "allergens": "Alerjensiz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "az-guvec",
+    "category": "Yöresel",
+    "categorySlug": "yoresel",
+    "name": "Az Güveç",
+    "subtitle": "Küçük boy toprak kapta fırın güveç.",
+    "description": "Küçük boy toprak kapta fırın güveç.",
+    "desc": "Küçük boy toprak kapta fırın güveç.",
+    "chefNote": "Küçük boy toprak kapta fırın güveç.",
+    "price": "₺ 300",
+    "priceNum": 300,
+    "image": "/dishes/az-guvec.png",
+    "dishImage": "/dishes/az-guvec.png",
+    "calories": "310 kcal",
+    "prepTime": "12 dk",
+    "allergens": "Alerjensiz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "ozel-siparis-kaburga",
+    "category": "Spesiyaller",
+    "categorySlug": "spesiyaller",
+    "name": "Özel Sipariş Kaburga",
+    "subtitle": "Özel bakır tepside bademli iç pilavlı bütün kaburga ziyafeti.",
+    "description": "Özel bakır tepside bademli iç pilavlı bütün kaburga ziyafeti.",
+    "desc": "Özel bakır tepside bademli iç pilavlı bütün kaburga ziyafeti.",
+    "chefNote": "Özel bakır tepside bademli iç pilavlı bütün kaburga ziyafeti.",
+    "price": "₺ 1.650",
+    "priceNum": 1650,
+    "image": "/dishes/ozel-siparis-kaburga.png",
+    "dishImage": "/dishes/ozel-siparis-kaburga.png",
+    "calories": "2200 kcal",
+    "prepTime": "45 dk",
+    "allergens": "Kuruyemiş (Badem), Gluten",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "beros-usulu-loqum-bonfile",
+    "category": "Spesiyaller",
+    "categorySlug": "spesiyaller",
+    "name": "Beroş Usulü Loqum Bonfile",
+    "subtitle": "Özel peynir sosu ve sote mevsim sebzeleri ile servis edilir.",
+    "description": "Özel peynir sosu ve sote mevsim sebzeleri ile servis edilir.",
+    "desc": "Özel peynir sosu ve sote mevsim sebzeleri ile servis edilir.",
+    "chefNote": "Özel peynir sosu ve sote mevsim sebzeleri ile servis edilir.",
+    "price": "₺ 920",
+    "priceNum": 920,
+    "image": "/dishes/beros-usulu-loqum-bonfile.png",
+    "dishImage": "/dishes/beros-usulu-loqum-bonfile.png",
+    "calories": "780 kcal",
+    "prepTime": "20 dk",
+    "allergens": "Laktoz (Peynir)",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "patates-yataginda-bonfile",
+    "category": "Spesiyaller",
+    "categorySlug": "spesiyaller",
+    "name": "Patates Yatağında Bonfile",
+    "subtitle": "İpeksi patates püresi üzerinde ızgara dana bonfile.",
+    "description": "İpeksi patates püresi üzerinde ızgara dana bonfile.",
+    "desc": "İpeksi patates püresi üzerinde ızgara dana bonfile.",
+    "chefNote": "İpeksi patates püresi üzerinde ızgara dana bonfile.",
+    "price": "₺ 910",
+    "priceNum": 910,
+    "image": "/dishes/patates-yataginda-bonfile.png",
+    "dishImage": "/dishes/patates-yataginda-bonfile.png",
+    "calories": "720 kcal",
+    "prepTime": "20 dk",
+    "allergens": "Laktoz (Süt/Tereyağı)",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "beros-usulu-acili-bonfile",
+    "category": "Spesiyaller",
+    "categorySlug": "spesiyaller",
+    "name": "Beroş Usulü Acılı Bonfile",
+    "subtitle": "Diyarbakır köz acı biberi soslu marine bonfile.",
+    "description": "Diyarbakır köz acı biberi soslu marine bonfile.",
+    "desc": "Diyarbakır köz acı biberi soslu marine bonfile.",
+    "chefNote": "Diyarbakır köz acı biberi soslu marine bonfile.",
+    "price": "₺ 910",
+    "priceNum": 910,
+    "image": "/dishes/beros-usulu-acili-bonfile.png",
+    "dishImage": "/dishes/beros-usulu-acili-bonfile.png",
+    "calories": "690 kcal",
+    "prepTime": "20 dk",
+    "allergens": "Alerjensiz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "loqum-bonfile",
+    "category": "Spesiyaller",
+    "categorySlug": "spesiyaller",
+    "name": "Loqum Bonfile",
+    "subtitle": "Tereyağında mühürlenmiş lokum bonfile ve kızarmış ekmek.",
+    "description": "Tereyağında mühürlenmiş lokum bonfile ve kızarmış ekmek.",
+    "desc": "Tereyağında mühürlenmiş lokum bonfile ve kızarmış ekmek.",
+    "chefNote": "Tereyağında mühürlenmiş lokum bonfile ve kızarmış ekmek.",
+    "price": "₺ 900",
+    "priceNum": 900,
+    "image": "/dishes/loqum-bonfile.png",
+    "dishImage": "/dishes/loqum-bonfile.png",
+    "calories": "650 kcal",
+    "prepTime": "18 dk",
+    "allergens": "Gluten, Laktoz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "cokertme",
+    "category": "Spesiyaller",
+    "categorySlug": "spesiyaller",
+    "name": "Çökertme",
+    "subtitle": "Çıtır kibrit patates, süzme yoğurt ve domates soslu dana bonfile.",
+    "description": "Çıtır kibrit patates, süzme yoğurt ve domates soslu dana bonfile.",
+    "desc": "Çıtır kibrit patates, süzme yoğurt ve domates soslu dana bonfile.",
+    "chefNote": "Çıtır kibrit patates, süzme yoğurt ve domates soslu dana bonfile.",
+    "price": "₺ 845",
+    "priceNum": 845,
+    "image": "/dishes/cokertme.png",
+    "dishImage": "/dishes/cokertme.png",
+    "calories": "820 kcal",
+    "prepTime": "22 dk",
+    "allergens": "Laktoz (Yoğurt), Gluten",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "beros-special-1",
+    "category": "Spesiyaller",
+    "categorySlug": "spesiyaller",
+    "name": "Beroş Special 1",
+    "subtitle": "Fırınlanmış kaşar erimesi, çıtır patates ve kuru meyveler ile.",
+    "description": "Fırınlanmış kaşar erimesi, çıtır patates ve kuru meyveler ile.",
+    "desc": "Fırınlanmış kaşar erimesi, çıtır patates ve kuru meyveler ile.",
+    "chefNote": "Fırınlanmış kaşar erimesi, çıtır patates ve kuru meyveler ile.",
+    "price": "₺ 845",
+    "priceNum": 845,
+    "image": "/dishes/beros-special-1.png",
+    "dishImage": "/dishes/beros-special-1.png",
+    "calories": "860 kcal",
+    "prepTime": "25 dk",
+    "allergens": "Laktoz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "special-kuzu-sirt",
+    "category": "Spesiyaller",
+    "categorySlug": "spesiyaller",
+    "name": "Beroş Special Kuzu Sırt",
+    "subtitle": "Lokum kıvamında marine edilmiş ızgara kuzu sırt dilimleri.",
+    "description": "Lokum kıvamında marine edilmiş ızgara kuzu sırt dilimleri.",
+    "desc": "Lokum kıvamında marine edilmiş ızgara kuzu sırt dilimleri.",
+    "chefNote": "Lokum kıvamında marine edilmiş ızgara kuzu sırt dilimleri.",
+    "price": "₺ 725",
+    "priceNum": 725,
+    "image": "/dishes/special-kuzu-sirt.png",
+    "dishImage": "/dishes/special-kuzu-sirt.png",
+    "calories": "690 kcal",
+    "prepTime": "18 dk",
+    "allergens": "Alerjensiz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "ayvali-kavurma",
+    "category": "Spesiyaller",
+    "categorySlug": "spesiyaller",
+    "name": "Diyarbakır Ayvalı Kavurma",
+    "subtitle": "Karamelize ayva dilimleri ve kuzu etinin bakır sahandaki lezzeti.",
+    "description": "Karamelize ayva dilimleri ve kuzu etinin bakır sahandaki lezzeti.",
+    "desc": "Karamelize ayva dilimleri ve kuzu etinin bakır sahandaki lezzeti.",
+    "chefNote": "Karamelize ayva dilimleri ve kuzu etinin bakır sahandaki lezzeti.",
+    "price": "₺ 725",
+    "priceNum": 725,
+    "image": "/dishes/ayvali-kavurma.png",
+    "dishImage": "/dishes/ayvali-kavurma.png",
+    "calories": "725 kcal",
+    "prepTime": "20 dk",
+    "allergens": "Alerjensiz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "sac-tava",
+    "category": "Taş Fırın & Pide",
+    "categorySlug": "tas-firin",
+    "name": "Sur Usulü Sac Tava",
+    "subtitle": "Özel sac üzerinde domates, sarımsak ve biberle demlenen et ziyafeti.",
+    "description": "Özel sac üzerinde domates, sarımsak ve biberle demlenen et ziyafeti.",
+    "desc": "Özel sac üzerinde domates, sarımsak ve biberle demlenen et ziyafeti.",
+    "chefNote": "Özel sac üzerinde domates, sarımsak ve biberle demlenen et ziyafeti.",
+    "price": "₺ 800",
+    "priceNum": 800,
+    "image": "/dishes/sac-tava.png",
+    "dishImage": "/dishes/sac-tava.png",
+    "calories": "840 kcal",
+    "prepTime": "18 dk",
+    "allergens": "Alerjensiz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "pide-1-5-kusbasili",
+    "category": "Taş Fırın & Pide",
+    "categorySlug": "tas-firin",
+    "name": "1,5 Porsiyon Kuşbaşılı Pide",
+    "subtitle": "Taş fırında çıtır pişen bol etli 1.5 porsiyon pide.",
+    "description": "Taş fırında çıtır pişen bol etli 1.5 porsiyon pide.",
+    "desc": "Taş fırında çıtır pişen bol etli 1.5 porsiyon pide.",
+    "chefNote": "Taş fırında çıtır pişen bol etli 1.5 porsiyon pide.",
+    "price": "₺ 750",
+    "priceNum": 750,
+    "image": "/dishes/pide-1-5-kusbasili.png",
+    "dishImage": "/dishes/pide-1-5-kusbasili.png",
+    "calories": "980 kcal",
+    "prepTime": "15 dk",
+    "allergens": "Gluten",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
   },
   {
     "id": "kusbasi-kasarli-pide",
-    "category": "TAŞ FIRIN & PİDE",
+    "category": "Taş Fırın & Pide",
     "categorySlug": "tas-firin",
     "name": "Kuşbaşı Kaşarlı Pide",
-    "subtitle": "Taş Fırın Meşe Ateşi • Karacadağ Kaşarı • Kuzu Kuşbaşı",
-    "frenchTitle": "Pide Artisanale à la Viande et Fromage",
+    "subtitle": "Satır kuşbaşı eti ve erimiş kaşarın taş fırındaki uyumu.",
+    "description": "Satır kuşbaşı eti ve erimiş kaşarın taş fırındaki uyumu.",
+    "desc": "Satır kuşbaşı eti ve erimiş kaşarın taş fırındaki uyumu.",
+    "chefNote": "Satır kuşbaşı eti ve erimiş kaşarın taş fırındaki uyumu.",
     "price": "₺ 595",
     "priceNum": 595,
-    "calories": "780 kcal",
-    "portion": "350g",
-    "prepTime": "12 dk",
-    "temperature": "85°C",
-    "chefNote": "Meşe odunuyla ısınan taş fırından çıkan çıtır hamur, bol kuzu kuşbaşı ve uzayan Karacadağ kaşarı.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/4375359_48624_20231109122811.jpg",
-    "courseNumber": "01",
-    "meatIngredient": "Kuzu Kuşbaşı",
-    "garnishIngredient": "Karacadağ Kaşarı"
+    "image": "/dishes/kusbasi-kasarli-pide.png",
+    "dishImage": "/dishes/kusbasi-kasarli-pide.png",
+    "calories": "880 kcal",
+    "prepTime": "15 dk",
+    "allergens": "Gluten, Laktoz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
   },
   {
     "id": "kusbasi-pide",
-    "category": "TAŞ FIRIN & PİDE",
+    "category": "Taş Fırın & Pide",
     "categorySlug": "tas-firin",
     "name": "Kuşbaşı Pide",
-    "subtitle": "Hakiki Sur Fırın Hamuru • Marine Kuzu Kuşbaşı",
-    "frenchTitle": "Pide Traditionnelle aux Dés d'Agneau",
+    "subtitle": "Geleneksel hamur ve zırh kuşbaşı harcı ile.",
+    "description": "Geleneksel hamur ve zırh kuşbaşı harcı ile.",
+    "desc": "Geleneksel hamur ve zırh kuşbaşı harcı ile.",
+    "chefNote": "Geleneksel hamur ve zırh kuşbaşı harcı ile.",
     "price": "₺ 570",
     "priceNum": 570,
-    "calories": "720 kcal",
-    "portion": "340g",
-    "prepTime": "12 dk",
-    "temperature": "85°C",
-    "chefNote": "İncecik açılmış çıtır konak hamuru üzerinde domates ve biberle marine edilmiş taze kuşbaşı eti.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/4375357_48624_20231109122733.jpg",
-    "courseNumber": "02",
-    "meatIngredient": "Marine Kuşbaşı",
-    "garnishIngredient": "Köy Biberi"
-  },
-  {
-    "id": "kiymali-yumurtali-pide",
-    "category": "TAŞ FIRIN & PİDE",
-    "categorySlug": "tas-firin",
-    "name": "Kıymalı Yumurtalı Pide",
-    "subtitle": "Zırh Kıyma Harcı • Köy Yumurtası • Taş Fırın",
-    "frenchTitle": "Pide à la Viande Hachée et Œuf Fermier",
-    "price": "₺ 535",
-    "priceNum": 535,
+    "image": "/dishes/kusbasi-pide.png",
+    "dishImage": "/dishes/kusbasi-pide.png",
     "calories": "760 kcal",
-    "portion": "360g",
-    "prepTime": "12 dk",
-    "temperature": "85°C",
-    "chefNote": "Sur usulü baharatlı zırh kıyması ve fırından çıkmadan önce kırılan taze köy yumurtası.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/4375365_48624_20231109122841.jpg",
-    "courseNumber": "03",
-    "meatIngredient": "Zırh Kıyma",
-    "garnishIngredient": "Taze Köy Yumurtası"
+    "prepTime": "15 dk",
+    "allergens": "Gluten",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
   },
   {
     "id": "kasarli-pide",
-    "category": "TAŞ FIRIN & PİDE",
+    "category": "Taş Fırın & Pide",
     "categorySlug": "tas-firin",
     "name": "Kaşarlı Pide",
-    "subtitle": "Eritilmiş Karacadağ Kaşarı • Tereyağlı Çıtır Kenar",
-    "frenchTitle": "Pide Gratinée au Fromage de Karacadağ",
+    "subtitle": "Halhalı tereyağı ve yoğun kaşar peynirli fırın klasiği.",
+    "description": "Halhalı tereyağı ve yoğun kaşar peynirli fırın klasiği.",
+    "desc": "Halhalı tereyağı ve yoğun kaşar peynirli fırın klasiği.",
+    "chefNote": "Halhalı tereyağı ve yoğun kaşar peynirli fırın klasiği.",
     "price": "₺ 560",
     "priceNum": 560,
-    "calories": "710 kcal",
-    "portion": "330g",
-    "prepTime": "10 dk",
-    "temperature": "85°C",
-    "chefNote": "Karacadağ yaylalarının tam yağlı taze kaşarıyla fırınlanan, kenarları köy tereyağıyla yağlanmış pide.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/4394392_48624_20231109122226.jpg",
-    "courseNumber": "04",
-    "meatIngredient": "Süt Kaşarı",
-    "garnishIngredient": "Köy Tereyağı"
+    "image": "/dishes/kasarli-pide.png",
+    "dishImage": "/dishes/kasarli-pide.png",
+    "calories": "790 kcal",
+    "prepTime": "12 dk",
+    "allergens": "Gluten, Laktoz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "kiymali-yumurtali-pide",
+    "category": "Taş Fırın & Pide",
+    "categorySlug": "tas-firin",
+    "name": "Kıymalı Yumurtalı Pide",
+    "subtitle": "Özel baharatlı kıyma harcı ve köy yumurtası ile.",
+    "description": "Özel baharatlı kıyma harcı ve köy yumurtası ile.",
+    "desc": "Özel baharatlı kıyma harcı ve köy yumurtası ile.",
+    "chefNote": "Özel baharatlı kıyma harcı ve köy yumurtası ile.",
+    "price": "₺ 535",
+    "priceNum": 535,
+    "image": "/dishes/kiymali-yumurtali-pide.png",
+    "dishImage": "/dishes/kiymali-yumurtali-pide.png",
+    "calories": "810 kcal",
+    "prepTime": "15 dk",
+    "allergens": "Gluten, Yumurta",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
   },
   {
     "id": "findik-lahmacun",
-    "category": "TAŞ FIRIN & PİDE",
+    "category": "Taş Fırın & Pide",
     "categorySlug": "tas-firin",
     "name": "Fındık Lahmacun",
-    "subtitle": "Çıtır Minik Hamur • Diyarbakır Usulü Zırh Harcı",
-    "frenchTitle": "Mini Lahmacun Croustillant au Feu de Bois",
+    "subtitle": "Çıtır hamurlu mini konak lahmacunu.",
+    "description": "Çıtır hamurlu mini konak lahmacunu.",
+    "desc": "Çıtır hamurlu mini konak lahmacunu.",
+    "chefNote": "Çıtır hamurlu mini konak lahmacunu.",
     "price": "₺ 85",
     "priceNum": 85,
+    "image": "/dishes/findik-lahmacun.png",
+    "dishImage": "/dishes/findik-lahmacun.png",
     "calories": "160 kcal",
-    "portion": "80g / Adet",
-    "prepTime": "8 dk",
-    "temperature": "90°C",
-    "chefNote": "Odun ateşinde 90 saniyede pişen, incecik gevrek tabanlı ve bol baharatlı zırh kıymalı fındık lahmacun.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/4391983_48624_20231109122251.jpg",
-    "courseNumber": "05",
-    "meatIngredient": "Zırh Kuzu Eti",
-    "garnishIngredient": "Sur Maydanozu & Limon"
-  },
-  {
-    "id": "kusbasili-1-5",
-    "category": "TAŞ FIRIN & PİDE",
-    "categorySlug": "tas-firin",
-    "name": "1,5 Porsiyon Kuşbaşılı Pide",
-    "subtitle": "Doyurucu Büyük Boy • Meşe Odununda Pişirim",
-    "frenchTitle": "Grande Pide Généreuse à la Viande",
-    "price": "₺ 750",
-    "priceNum": 750,
-    "calories": "980 kcal",
-    "portion": "480g",
-    "prepTime": "14 dk",
-    "temperature": "85°C",
-    "chefNote": "Taş fırının en sıcak köşesinde pişen ekstra büyük porsiyon meşe odunlu kuzu kuşbaşı pide.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/4375663_48624_20231109123825.jpg",
-    "courseNumber": "06",
-    "meatIngredient": "Bol Kuşbaşı Eti",
-    "garnishIngredient": "Köz Biber & Domates"
-  },
-  {
-    "id": "sur-sac-tava",
-    "category": "SAC TAVA",
-    "categorySlug": "sac-tava",
-    "name": "Sur Usulü Hakiki Sac Tava",
-    "subtitle": "Kızgın Sac Üzerinde • Karacadağ Kuzu Eti • Taze Köy Biberi",
-    "frenchTitle": "Sauté Traditionnel sur Plaque d'Acier",
-    "price": "₺ 800",
-    "priceNum": 800,
-    "calories": "820 kcal",
-    "portion": "400g / Tek Kişilik",
-    "prepTime": "15 dk",
-    "temperature": "88°C",
-    "chefNote": "Sur usulü dövme demir sac üzerinde yüksek harlı meşe ateşinde kuzu eti, domates ve biberlerin dansı. Yanında sıcak lavaş ile servis edilir.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/4394416_48624_20231109122117.jpg",
-    "courseNumber": "01",
-    "meatIngredient": "Zırh Kuzu Eti",
-    "garnishIngredient": "Köz Biber & Sarımsak"
-  },
-  {
-    "id": "beros-tavuk-special",
-    "category": "TAVUK ÇEŞİTLERİ",
-    "categorySlug": "tavuk",
-    "name": "Beroş Tavuk Special",
-    "subtitle": "Özel Konak Sosu • Fırınlanmış Taze Sebzeler",
-    "frenchTitle": "Volaille Spéciale Façon Beroş",
-    "price": "₺ 590",
-    "priceNum": 590,
-    "calories": "580 kcal",
-    "portion": "350g",
-    "prepTime": "14 dk",
-    "temperature": "76°C",
-    "chefNote": "Beroş mutfağına özel aromatik baharatlarla 24 saat marine edilmiş körpe tavuk göğsü dilimleri.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3655261_48624_20230508013419.jpg",
-    "courseNumber": "01",
-    "meatIngredient": "Marine Tavuk Fileto",
-    "garnishIngredient": "Mevsim Fırın Sebzeleri"
-  },
-  {
-    "id": "kori-soslu-tavuk",
-    "category": "TAVUK ÇEŞİTLERİ",
-    "categorySlug": "tavuk",
-    "name": "Köri Soslu Tavuk",
-    "subtitle": "Kremalı İpek Köri Sosu • Mantar Dilimleri",
-    "frenchTitle": "Suprême de Volaille à la Crème de Curry",
-    "price": "₺ 550",
-    "priceNum": 550,
-    "calories": "620 kcal",
-    "portion": "340g",
-    "prepTime": "12 dk",
+    "prepTime": "10 dk",
+    "allergens": "Gluten",
     "temperature": "75°C",
-    "chefNote": "Taze kültür mantarları ve özel harman köri baharatıyla kısık ateşte demlenen kremsi tavuk lezzeti.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3655264_48624_20230508013326.jpg",
-    "courseNumber": "02",
-    "meatIngredient": "Tavuk Jülyen",
-    "garnishIngredient": "Kremalı Mantar"
+    "servingTemp": "75°C"
   },
   {
-    "id": "ispanak-tavuk-bonfile",
-    "category": "TAVUK ÇEŞİTLERİ",
-    "categorySlug": "tavuk",
-    "name": "Ispanak Yatağında Tavuk Bonfile",
-    "subtitle": "Sote Taze Ispanak • Izgara Tavuk Bonfile",
-    "frenchTitle": "Filet de Poulet Grillé sur Lit d'Épinards",
-    "price": "₺ 570",
-    "priceNum": 570,
-    "calories": "510 kcal",
-    "portion": "330g",
-    "prepTime": "14 dk",
-    "temperature": "74°C",
-    "chefNote": "Köy tereyağında sarımsakla sotelenmiş dağ ıspanağı üzerinde dinlendirilmiş tavuk bonfile.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3655269_48624_20230512063642.jpg",
-    "courseNumber": "03",
-    "meatIngredient": "Tavuk Bonfile",
-    "garnishIngredient": "Sotelenmiş Dağ Ispanağı"
-  },
-  {
-    "id": "sur-mumbar",
-    "category": "ARA SICAK & MEZE",
+    "id": "mumbar",
+    "category": "Ara Sıcaklar",
     "categorySlug": "ara-sicak",
-    "name": "Sur Mumbar Dolması",
-    "subtitle": "Hakiki Konak Usulü • İlikli Pirinç & Baharat Dolumu",
-    "frenchTitle": "Tripes Farcies Traditionnelles de Sur",
+    "name": "Mumbar",
+    "subtitle": "Döküm tencerede geleneksel baharatlı pirinç dolgulu mumbar.",
+    "description": "Döküm tencerede geleneksel baharatlı pirinç dolgulu mumbar.",
+    "desc": "Döküm tencerede geleneksel baharatlı pirinç dolgulu mumbar.",
+    "chefNote": "Döküm tencerede geleneksel baharatlı pirinç dolgulu mumbar.",
     "price": "₺ 480",
     "priceNum": 480,
+    "image": "/dishes/mumbar.png",
+    "dishImage": "/dishes/mumbar.png",
     "calories": "620 kcal",
-    "portion": "300g / Porsiyon",
-    "prepTime": "10 dk",
-    "temperature": "80°C",
-    "chefNote": "Diyarbakır mutfağının en meşakkatli ve sevilen lezzeti. Özenle temizlenen kuzu mumbarı baharatlı pirinçle doldurulup 4 saat haşlanır.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3654901_48624_20230508012419.jpg",
-    "courseNumber": "01",
-    "meatIngredient": "Kuzu Mumbar",
-    "garnishIngredient": "İlikli Baharatlı Pirinç"
-  },
-  {
-    "id": "icli-kofte",
-    "category": "ARA SICAK & MEZE",
-    "categorySlug": "ara-sicak",
-    "name": "Sur Usulü Haşlama İçli Köfte",
-    "subtitle": "Cevizli Zırh Kıyma • İncecik Bulgur Kabuğu",
-    "frenchTitle": "Kébét Farcie à la Viande et Noix",
-    "price": "₺ 80",
-    "priceNum": 80,
-    "calories": "190 kcal",
-    "portion": "1 Adet",
-    "prepTime": "8 dk",
-    "temperature": "78°C",
-    "chefNote": "Zırhla çekilmiş kuzu kıyması, kavrulmuş Diyarbakır cevizi ve ince kabuğuyla konak usulü haşlama içli köfte.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3654902_48624_20230508012350.jpg",
-    "courseNumber": "02",
-    "meatIngredient": "Zırh Kıyma & Ceviz",
-    "garnishIngredient": "Köy Tereyağı Sosu"
+    "prepTime": "15 dk",
+    "allergens": "Alerjensiz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
   },
   {
     "id": "talas-boregi",
-    "category": "ARA SICAK & MEZE",
+    "category": "Ara Sıcaklar",
     "categorySlug": "ara-sicak",
     "name": "Talaş Böreği",
-    "subtitle": "Kuzu Etli Bezelyeli Milföy Bohçası • Altın Sarısı Fırınlama",
-    "frenchTitle": "Feuilleté Croustillant à la Viande d'Agneau",
+    "subtitle": "Çıtır milföy içinde kuşbaşı et ve bezelyeli konak böreği.",
+    "description": "Çıtır milföy içinde kuşbaşı et ve bezelyeli konak böreği.",
+    "desc": "Çıtır milföy içinde kuşbaşı et ve bezelyeli konak böreği.",
+    "chefNote": "Çıtır milföy içinde kuşbaşı et ve bezelyeli konak böreği.",
     "price": "₺ 220",
     "priceNum": 220,
-    "calories": "450 kcal",
-    "portion": "200g",
-    "prepTime": "10 dk",
+    "image": "/dishes/talas-boregi.png",
+    "dishImage": "/dishes/talas-boregi.png",
+    "calories": "490 kcal",
+    "prepTime": "12 dk",
+    "allergens": "Gluten, Laktoz, Yumurta",
     "temperature": "75°C",
-    "chefNote": "Kat kat açılan çıtır milföy hamurunun içinde lokum kuzu kuşbaşı ve taze bezelye harcı.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3655031_48624_20230512061454.jpg",
-    "courseNumber": "03",
-    "meatIngredient": "Kuzu Kuşbaşı",
-    "garnishIngredient": "Taze Bezelye & Havuç"
+    "servingTemp": "75°C"
   },
   {
-    "id": "kase-yogurt",
-    "category": "ARA SICAK & MEZE",
+    "id": "icli-kofte",
+    "category": "Ara Sıcaklar",
     "categorySlug": "ara-sicak",
-    "name": "Kase Yoğurt",
-    "subtitle": "Karacadağ Yayık Köy Yoğurdu • Doğal Mayalı",
-    "frenchTitle": "Yaourt Fermier Artisanal en Terrine",
-    "price": "₺ 220",
-    "priceNum": 220,
+    "name": "İçli Köfte",
+    "subtitle": "Cevizli ve zırh kıymalı altın sarısı içli köfte.",
+    "description": "Cevizli ve zırh kıymalı altın sarısı içli köfte.",
+    "desc": "Cevizli ve zırh kıymalı altın sarısı içli köfte.",
+    "chefNote": "Cevizli ve zırh kıymalı altın sarısı içli köfte.",
+    "price": "₺ 80",
+    "priceNum": 80,
+    "image": "/dishes/icli-kofte.png",
+    "dishImage": "/dishes/icli-kofte.png",
+    "calories": "280 kcal",
+    "prepTime": "10 dk",
+    "allergens": "Gluten, Kuruyemiş (Ceviz)",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "corba",
+    "category": "Ara Sıcaklar",
+    "categorySlug": "ara-sicak",
+    "name": "Günün Çorbası",
+    "subtitle": "Geleneksel tereyağlı süzme mercimek çorbası.",
+    "description": "Geleneksel tereyağlı süzme mercimek çorbası.",
+    "desc": "Geleneksel tereyağlı süzme mercimek çorbası.",
+    "chefNote": "Geleneksel tereyağlı süzme mercimek çorbası.",
+    "price": "₺ 150",
+    "priceNum": 150,
+    "image": "/dishes/corba.png",
+    "dishImage": "/dishes/corba.png",
     "calories": "180 kcal",
-    "portion": "250g",
     "prepTime": "5 dk",
-    "temperature": "6°C",
-    "chefNote": "Karacadağ eteklerinde otlayan koyunların sütünden geleneksel taş çömleklerde mayalanan kıvamlı doğal yoğurt.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3658518_48624_20230510040855.jpg",
-    "courseNumber": "04",
-    "meatIngredient": "Koyun Sütü",
-    "garnishIngredient": "Doğal Maya Kaymağı"
-  },
-  {
-    "id": "sade-pilav",
-    "category": "ARA SICAK & MEZE",
-    "categorySlug": "ara-sicak",
-    "name": "Sade Pilav",
-    "subtitle": "Hakiki Tereyağlı Karacadağ Pirinci • Tane Tane Demleme",
-    "frenchTitle": "Riz Pilaf au Beurre Fermier",
-    "price": "₺ 130",
-    "priceNum": 130,
-    "calories": "290 kcal",
-    "portion": "200g",
-    "prepTime": "5 dk",
-    "temperature": "72°C",
-    "chefNote": "Coğrafi işaretli Karacadağ pirincinin saf köy tereyağında ağır ağır demlenmesiyle hazırlanan tane tane pilav.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3658502_48624_20230512061622.jpg",
-    "courseNumber": "05",
-    "meatIngredient": "Karacadağ Pirinci",
-    "garnishIngredient": "Hakiki Köy Tereyağı"
+    "allergens": "Gluten, Laktoz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
   },
   {
     "id": "patates-cips",
-    "category": "ARA SICAK & MEZE",
+    "category": "Ara Sıcaklar",
     "categorySlug": "ara-sicak",
     "name": "Patates Cips",
-    "subtitle": "El Kesimi Taze Patates Kızartması • Özel Baharat Harcı",
-    "frenchTitle": "Pommes Frites Maison Croustillantes",
+    "subtitle": "Altın sarısı çıtır patates kızartması tabağı.",
+    "description": "Altın sarısı çıtır patates kızartması tabağı.",
+    "desc": "Altın sarısı çıtır patates kızartması tabağı.",
+    "chefNote": "Altın sarısı çıtır patates kızartması tabağı.",
     "price": "₺ 220",
     "priceNum": 220,
+    "image": "/dishes/patates-cips.png",
+    "dishImage": "/dishes/patates-cips.png",
     "calories": "380 kcal",
-    "portion": "220g",
     "prepTime": "8 dk",
-    "temperature": "80°C",
-    "chefNote": "Günlük taze patateslerin ince dilimlenip çıtır kıvamda kızartılarak özel kaya tuzu ve kekikle harmanlanması.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3658505_48624_20230512061440.jpg",
-    "courseNumber": "06",
-    "meatIngredient": "Taze Patates",
-    "garnishIngredient": "Dağ Kekiği & Toz Biber"
+    "allergens": "Alerjensiz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "sade-pilav",
+    "category": "Ara Sıcaklar",
+    "categorySlug": "ara-sicak",
+    "name": "Sade Pirinç Pilavı",
+    "subtitle": "Tereyağlı tane tane pirinç pilavı.",
+    "description": "Tereyağlı tane tane pirinç pilavı.",
+    "desc": "Tereyağlı tane tane pirinç pilavı.",
+    "chefNote": "Tereyağlı tane tane pirinç pilavı.",
+    "price": "₺ 130",
+    "priceNum": 130,
+    "image": "/dishes/sade-pilav.png",
+    "dishImage": "/dishes/sade-pilav.png",
+    "calories": "290 kcal",
+    "prepTime": "5 dk",
+    "allergens": "Laktoz (Tereyağı)",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "beros-tavuk-special",
+    "category": "Tavuk Çeşitleri",
+    "categorySlug": "tavuk",
+    "name": "Beroş Tavuk Special",
+    "subtitle": "Özel baharatlı ızgara tavuk bonfile dilimleri.",
+    "description": "Özel baharatlı ızgara tavuk bonfile dilimleri.",
+    "desc": "Özel baharatlı ızgara tavuk bonfile dilimleri.",
+    "chefNote": "Özel baharatlı ızgara tavuk bonfile dilimleri.",
+    "price": "₺ 590",
+    "priceNum": 590,
+    "image": "/dishes/tavuk-special.png",
+    "dishImage": "/dishes/tavuk-special.png",
+    "calories": "590 kcal",
+    "prepTime": "18 dk",
+    "allergens": "Alerjensiz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "ispanak-yataginda-tavuk",
+    "category": "Tavuk Çeşitleri",
+    "categorySlug": "tavuk",
+    "name": "Ispanak Yatağında Bonfile",
+    "subtitle": "Kremalı sote ıspanak üzerinde ızgara tavuk bonfile.",
+    "description": "Kremalı sote ıspanak üzerinde ızgara tavuk bonfile.",
+    "desc": "Kremalı sote ıspanak üzerinde ızgara tavuk bonfile.",
+    "chefNote": "Kremalı sote ıspanak üzerinde ızgara tavuk bonfile.",
+    "price": "₺ 570",
+    "priceNum": 570,
+    "image": "/dishes/ispanakli-tavuk.png",
+    "dishImage": "/dishes/ispanakli-tavuk.png",
+    "calories": "520 kcal",
+    "prepTime": "18 dk",
+    "allergens": "Laktoz (Krema)",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "kori-soslu-tavuk",
+    "category": "Tavuk Çeşitleri",
+    "categorySlug": "tavuk",
+    "name": "Köri Soslu Tavuk",
+    "subtitle": "Mantar, renkli biberler ve köri kremalı jülyen tavuk.",
+    "description": "Mantar, renkli biberler ve köri kremalı jülyen tavuk.",
+    "desc": "Mantar, renkli biberler ve köri kremalı jülyen tavuk.",
+    "chefNote": "Mantar, renkli biberler ve köri kremalı jülyen tavuk.",
+    "price": "₺ 550",
+    "priceNum": 550,
+    "image": "/dishes/kori-soslu-tavuk.png",
+    "dishImage": "/dishes/kori-soslu-tavuk.png",
+    "calories": "580 kcal",
+    "prepTime": "18 dk",
+    "allergens": "Laktoz (Krema)",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "kremali-mantarli-tavuk",
+    "category": "Tavuk Çeşitleri",
+    "categorySlug": "tavuk",
+    "name": "Kremalı Mantarlı Tavuk",
+    "subtitle": "Taze kültür mantarları ve yoğun krema soslu tavuk.",
+    "description": "Taze kültür mantarları ve yoğun krema soslu tavuk.",
+    "desc": "Taze kültür mantarları ve yoğun krema soslu tavuk.",
+    "chefNote": "Taze kültür mantarları ve yoğun krema soslu tavuk.",
+    "price": "₺ 550",
+    "priceNum": 550,
+    "image": "/dishes/kremali-tavuk.png",
+    "dishImage": "/dishes/kremali-tavuk.png",
+    "calories": "610 kcal",
+    "prepTime": "18 dk",
+    "allergens": "Laktoz (Krema)",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "beros-usulu-acili-tavuk",
+    "category": "Tavuk Çeşitleri",
+    "categorySlug": "tavuk",
+    "name": "Beroş Usulü Acılı Tavuk",
+    "subtitle": "Diyarbakır acı biberi harmanlı tava tavuk.",
+    "description": "Diyarbakır acı biberi harmanlı tava tavuk.",
+    "desc": "Diyarbakır acı biberi harmanlı tava tavuk.",
+    "chefNote": "Diyarbakır acı biberi harmanlı tava tavuk.",
+    "price": "₺ 540",
+    "priceNum": 540,
+    "image": "/dishes/acili-tavuk.png",
+    "dishImage": "/dishes/acili-tavuk.png",
+    "calories": "530 kcal",
+    "prepTime": "16 dk",
+    "allergens": "Alerjensiz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "izgara-kofte",
+    "category": "Çocuk Menüsü",
+    "categorySlug": "cocuk",
+    "name": "Izgara Köfte",
+    "subtitle": "Patates kızartması eşliğinde anne köftesi tabağı.",
+    "description": "Patates kızartması eşliğinde anne köftesi tabağı.",
+    "desc": "Patates kızartması eşliğinde anne köftesi tabağı.",
+    "chefNote": "Patates kızartması eşliğinde anne köftesi tabağı.",
+    "price": "₺ 550",
+    "priceNum": 550,
+    "image": "/dishes/izgara-kofte.png",
+    "dishImage": "/dishes/izgara-kofte.png",
+    "calories": "510 kcal",
+    "prepTime": "15 dk",
+    "allergens": "Gluten",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "tavuk-nugget",
+    "category": "Çocuk Menüsü",
+    "categorySlug": "cocuk",
+    "name": "Tavuk Nugget",
+    "subtitle": "Çıtır kaplamalı tavuk parçaları ve patates kızartması.",
+    "description": "Çıtır kaplamalı tavuk parçaları ve patates kızartması.",
+    "desc": "Çıtır kaplamalı tavuk parçaları ve patates kızartması.",
+    "chefNote": "Çıtır kaplamalı tavuk parçaları ve patates kızartması.",
+    "price": "₺ 510",
+    "priceNum": 510,
+    "image": "/dishes/tavuk-nugget.png",
+    "dishImage": "/dishes/tavuk-nugget.png",
+    "calories": "460 kcal",
+    "prepTime": "12 dk",
+    "allergens": "Gluten, Yumurta",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "fistik-sarma",
+    "category": "Tatlılar",
+    "categorySlug": "tatli",
+    "name": "Fıstık Sarma",
+    "subtitle": "Boz Antep fıstığından hazırlanan yoğun fıstık sarması.",
+    "description": "Boz Antep fıstığından hazırlanan yoğun fıstık sarması.",
+    "desc": "Boz Antep fıstığından hazırlanan yoğun fıstık sarması.",
+    "chefNote": "Boz Antep fıstığından hazırlanan yoğun fıstık sarması.",
+    "price": "₺ 490",
+    "priceNum": 490,
+    "image": "/dishes/fistik-sarma.png",
+    "dishImage": "/dishes/fistik-sarma.png",
+    "calories": "540 kcal",
+    "prepTime": "5 dk",
+    "allergens": "Kuruyemiş (Antep Fıstığı), Gluten, Laktoz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
   },
   {
     "id": "fistikli-baklava",
-    "category": "TATLILAR",
+    "category": "Tatlılar",
     "categorySlug": "tatli",
-    "name": "Hakiki Sade Yağlı Fıstıklı Baklava",
-    "subtitle": "Karacadağ Sade Yağı • Antep Boz Fıstık • 40 Kat Çıtır Yufka",
-    "frenchTitle": "Baklava Impériale au Beurre Clarifié et Pistaches",
+    "name": "Fıstıklı Baklava",
+    "subtitle": "Bol Antep fıstıklı, çıtır tereyağlı geleneksel baklava.",
+    "description": "Bol Antep fıstıklı, çıtır tereyağlı geleneksel baklava.",
+    "desc": "Bol Antep fıstıklı, çıtır tereyağlı geleneksel baklava.",
+    "chefNote": "Bol Antep fıstıklı, çıtır tereyağlı geleneksel baklava.",
     "price": "₺ 450",
     "priceNum": 450,
-    "calories": "520 kcal",
-    "portion": "180g / 3 Dilim",
+    "image": "/dishes/fistikli-baklava.png",
+    "dishImage": "/dishes/fistikli-baklava.png",
+    "calories": "490 kcal",
     "prepTime": "5 dk",
-    "temperature": "22°C",
-    "chefNote": "Meşe odunu fırınında altın sarısı pişen, Karacadağ eritilmiş sade yağı ve taze hasat Antep boz fıstığıyla taçlandırılmış saray klasiği.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3672485_48624_20230512061943.jpg",
-    "courseNumber": "01",
-    "meatIngredient": "Boz Antep Fıstığı",
-    "garnishIngredient": "Karacadağ Sade Yağı"
+    "allergens": "Kuruyemiş (Antep Fıstığı), Gluten, Laktoz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
   },
   {
     "id": "fistikli-kadayif",
-    "category": "TATLILAR",
+    "category": "Tatlılar",
     "categorySlug": "tatli",
-    "name": "Diyarbakır Burma Kadayıf",
-    "subtitle": "Hakiki Burma Tel Kadayıf • Bol Fıstıklı • Odun Ateşinde Kızartma",
-    "frenchTitle": "Kadaïf Roulé Traditionnel aux Pistaches",
+    "name": "Fıstıklı Burma Kadayıf",
+    "subtitle": "Diyarbakır'ın tescilli çıtır burma kadayıfı.",
+    "description": "Diyarbakır'ın tescilli çıtır burma kadayıfı.",
+    "desc": "Diyarbakır'ın tescilli çıtır burma kadayıfı.",
+    "chefNote": "Diyarbakır'ın tescilli çıtır burma kadayıfı.",
     "price": "₺ 430",
     "priceNum": 430,
-    "calories": "490 kcal",
-    "portion": "190g",
+    "image": "/dishes/fistikli-kadayif.png",
+    "dishImage": "/dishes/fistikli-kadayif.png",
+    "calories": "480 kcal",
     "prepTime": "5 dk",
-    "temperature": "35°C",
-    "chefNote": "Sur usulü incecik sarılmış tel kadayıfın meşe ateşinde çevrilerek nar gibi kızartılması ve ılık şerbetle buluşması.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3672488_48624_20230511113426.jpg",
-    "courseNumber": "02",
-    "meatIngredient": "Tel Kadayıf",
-    "garnishIngredient": "Bol Antep Fıstığı"
+    "allergens": "Kuruyemiş (Antep Fıstığı), Gluten, Laktoz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "soguk-baklava",
+    "category": "Tatlılar",
+    "categorySlug": "tatli",
+    "name": "Soğuk Baklava",
+    "subtitle": "Sütlü şerbet, bol fıstık ve Belçika çikolatası rendesi ile.",
+    "description": "Sütlü şerbet, bol fıstık ve Belçika çikolatası rendesi ile.",
+    "desc": "Sütlü şerbet, bol fıstık ve Belçika çikolatası rendesi ile.",
+    "chefNote": "Sütlü şerbet, bol fıstık ve Belçika çikolatası rendesi ile.",
+    "price": "₺ 400",
+    "priceNum": 400,
+    "image": "/dishes/soguk-baklava.png",
+    "dishImage": "/dishes/soguk-baklava.png",
+    "calories": "460 kcal",
+    "prepTime": "5 dk",
+    "allergens": "Kuruyemiş (Fıstık), Gluten, Laktoz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "kunefe",
+    "category": "Tatlılar",
+    "categorySlug": "tatli",
+    "name": "Künefe",
+    "subtitle": "Sıcak peynirli şerbetli tel kadayıf tatlısı.",
+    "description": "Sıcak peynirli şerbetli tel kadayıf tatlısı.",
+    "desc": "Sıcak peynirli şerbetli tel kadayıf tatlısı.",
+    "chefNote": "Sıcak peynirli şerbetli tel kadayıf tatlısı.",
+    "price": "₺ 260",
+    "priceNum": 260,
+    "image": "/dishes/kunefe.png",
+    "dishImage": "/dishes/kunefe.png",
+    "calories": "520 kcal",
+    "prepTime": "12 dk",
+    "allergens": "Gluten, Laktoz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "kabak-tatlisi",
+    "category": "Tatlılar",
+    "categorySlug": "tatli",
+    "name": "Kabak Tatlısı",
+    "subtitle": "Fırınlanmış bal kabağı, tahin ve iri ceviz taneleri ile.",
+    "description": "Fırınlanmış bal kabağı, tahin ve iri ceviz taneleri ile.",
+    "desc": "Fırınlanmış bal kabağı, tahin ve iri ceviz taneleri ile.",
+    "chefNote": "Fırınlanmış bal kabağı, tahin ve iri ceviz taneleri ile.",
+    "price": "₺ 240",
+    "priceNum": 240,
+    "image": "/dishes/kabak-tatlisi.png",
+    "dishImage": "/dishes/kabak-tatlisi.png",
+    "calories": "320 kcal",
+    "prepTime": "5 dk",
+    "allergens": "Susam (Tahin), Kuruyemiş (Ceviz)",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "dondurma-top",
+    "category": "Tatlılar",
+    "categorySlug": "tatli",
+    "name": "Dondurma (Top)",
+    "subtitle": "Hakiki Maraş dövme dondurması.",
+    "description": "Hakiki Maraş dövme dondurması.",
+    "desc": "Hakiki Maraş dövme dondurması.",
+    "chefNote": "Hakiki Maraş dövme dondurması.",
+    "price": "₺ 60",
+    "priceNum": 60,
+    "image": "/dishes/dondurma-top.png",
+    "dishImage": "/dishes/dondurma-top.png",
+    "calories": "140 kcal",
+    "prepTime": "3 dk",
+    "allergens": "Laktoz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "serpme-kahvalti",
+    "category": "Soğuklar",
+    "categorySlug": "soguklar",
+    "name": "Serpme Konak Kahvaltısı",
+    "subtitle": "Yöresel peynirler, kavurmalı yumurta, bal-kaymak ziyafeti.",
+    "description": "Yöresel peynirler, kavurmalı yumurta, bal-kaymak ziyafeti.",
+    "desc": "Yöresel peynirler, kavurmalı yumurta, bal-kaymak ziyafeti.",
+    "chefNote": "Yöresel peynirler, kavurmalı yumurta, bal-kaymak ziyafeti.",
+    "price": "₺ 450",
+    "priceNum": 450,
+    "image": "/dishes/serpme-kahvalti.png",
+    "dishImage": "/dishes/serpme-kahvalti.png",
+    "calories": "1200 kcal",
+    "prepTime": "10 dk",
+    "allergens": "Gluten, Laktoz, Yumurta, Susam",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "kahvalti-tabagi",
+    "category": "Soğuklar",
+    "categorySlug": "soguklar",
+    "name": "Kahvaltı Tabağı",
+    "subtitle": "Tek kişilik zengin kahvaltı tabağı.",
+    "description": "Tek kişilik zengin kahvaltı tabağı.",
+    "desc": "Tek kişilik zengin kahvaltı tabağı.",
+    "chefNote": "Tek kişilik zengin kahvaltı tabağı.",
+    "price": "₺ 350",
+    "priceNum": 350,
+    "image": "/dishes/kahvalti-tabagi.png",
+    "dishImage": "/dishes/kahvalti-tabagi.png",
+    "calories": "650 kcal",
+    "prepTime": "10 dk",
+    "allergens": "Gluten, Laktoz, Yumurta",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "kasik-salatasi",
+    "category": "Soğuklar",
+    "categorySlug": "soguklar",
+    "name": "Kaşık Salatası",
+    "subtitle": "İnce kıyım domates, ceviz ve nar ekşisi soslu salata.",
+    "description": "İnce kıyım domates, ceviz ve nar ekşisi soslu salata.",
+    "desc": "İnce kıyım domates, ceviz ve nar ekşisi soslu salata.",
+    "chefNote": "İnce kıyım domates, ceviz ve nar ekşisi soslu salata.",
+    "price": "₺ 250",
+    "priceNum": 250,
+    "image": "/dishes/kasik-salatasi.png",
+    "dishImage": "/dishes/kasik-salatasi.png",
+    "calories": "190 kcal",
+    "prepTime": "8 dk",
+    "allergens": "Kuruyemiş (Ceviz)",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
+  },
+  {
+    "id": "kase-yogurt",
+    "category": "Soğuklar",
+    "categorySlug": "soguklar",
+    "name": "Kase Süzme Yoğurt",
+    "subtitle": "Geleneksel köy sütü manda yoğurdu.",
+    "description": "Geleneksel köy sütü manda yoğurdu.",
+    "desc": "Geleneksel köy sütü manda yoğurdu.",
+    "chefNote": "Geleneksel köy sütü manda yoğurdu.",
+    "price": "₺ 220",
+    "priceNum": 220,
+    "image": "/dishes/kase-yogurt.png",
+    "dishImage": "/dishes/kase-yogurt.png",
+    "calories": "210 kcal",
+    "prepTime": "3 dk",
+    "allergens": "Laktoz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
   },
   {
     "id": "acik-ayran",
-    "category": "İÇECEKLER",
-    "categorySlug": "icecek",
-    "name": "Açık Yayık Ayranı",
-    "subtitle": "Bol Köpüklü Doğal Sur Yayık Ayranı • Bakır Maşrapada",
-    "frenchTitle": "Ayran Fermier Frais Mousseux",
+    "category": "İçecekler",
+    "categorySlug": "icecekler",
+    "name": "Yayık Açık Ayran",
+    "subtitle": "Bakır maşrapada bol köpüklü taze yayık ayranı.",
+    "description": "Bakır maşrapada bol köpüklü taze yayık ayranı.",
+    "desc": "Bakır maşrapada bol köpüklü taze yayık ayranı.",
+    "chefNote": "Bakır maşrapada bol köpüklü taze yayık ayranı.",
     "price": "₺ 75",
     "priceNum": 75,
-    "calories": "90 kcal",
-    "portion": "300ml",
+    "image": "/dishes/acik-ayran.png",
+    "dishImage": "/dishes/acik-ayran.png",
+    "calories": "95 kcal",
     "prepTime": "2 dk",
-    "temperature": "4°C",
-    "chefNote": "Doğal köy yoğurdundan meşe yayıkta çalkalanarak hazırlanan, buz gibi soğuk ve bol köpüklü geleneksel içecek.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3655682_48624_20230511101814.jpg",
-    "courseNumber": "01",
-    "meatIngredient": "Köy Yoğurdu",
-    "garnishIngredient": "Doğal Yayık Köpüğü"
+    "allergens": "Laktoz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
   },
   {
-    "id": "sise-kola",
-    "category": "İÇECEKLER",
-    "categorySlug": "icecek",
-    "name": "Şişe Coca-Cola",
-    "subtitle": "Klasik Cam Şişe • Buz Gibi Servis",
-    "frenchTitle": "Coca-Cola Bouteille en Verre",
+    "id": "kutu-mesrubat",
+    "category": "İçecekler",
+    "categorySlug": "icecekler",
+    "name": "Kutu Meşrubatlar",
+    "subtitle": "Kola, Fanta, Sprite, Zero 330 ml kutu.",
+    "description": "Kola, Fanta, Sprite, Zero 330 ml kutu.",
+    "desc": "Kola, Fanta, Sprite, Zero 330 ml kutu.",
+    "chefNote": "Kola, Fanta, Sprite, Zero 330 ml kutu.",
     "price": "₺ 80",
     "priceNum": 80,
+    "image": "/dishes/kutu-mesrubat.png",
+    "dishImage": "/dishes/kutu-mesrubat.png",
     "calories": "140 kcal",
-    "portion": "250ml",
     "prepTime": "2 dk",
-    "temperature": "3°C",
-    "chefNote": "Buz ve limon dilimi eşliğinde kristal kadehte servis edilen orijinal tat.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3655680_48624_20230511101941.jpg",
-    "courseNumber": "02",
-    "meatIngredient": "Cam Şişe İçecek",
-    "garnishIngredient": "Buz & Limon"
+    "allergens": "Alerjensiz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
   },
   {
-    "id": "kutu-kola",
-    "category": "İÇECEKLER",
-    "categorySlug": "icecek",
-    "name": "Kutu Coca-Cola",
-    "subtitle": "Soğuk Meşrubat (330ml)",
-    "frenchTitle": "Coca-Cola Canette Fraîche",
-    "price": "₺ 80",
-    "priceNum": 80,
-    "calories": "140 kcal",
-    "portion": "330ml",
-    "prepTime": "2 dk",
-    "temperature": "3°C",
-    "chefNote": "Klasik soğuk meşrubat.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3655679_48624_20230511102020.jpg",
-    "courseNumber": "03",
-    "meatIngredient": "Kutu İçecek",
-    "garnishIngredient": "Buz"
-  },
-  {
-    "id": "kutu-fanta",
-    "category": "İÇECEKLER",
-    "categorySlug": "icecek",
-    "name": "Kutu Fanta",
-    "subtitle": "Portakallı Gazoz (330ml)",
-    "frenchTitle": "Fanta Orange Canette",
-    "price": "₺ 80",
-    "priceNum": 80,
-    "calories": "135 kcal",
-    "portion": "330ml",
-    "prepTime": "2 dk",
-    "temperature": "3°C",
-    "chefNote": "Ferahlatıcı portakal aromalı meşrubat.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3655670_48624_20230511102051.jpg",
-    "courseNumber": "04",
-    "meatIngredient": "Portakal Gazozu",
-    "garnishIngredient": "Portakal Dilimi"
-  },
-  {
-    "id": "sise-fanta",
-    "category": "İÇECEKLER",
-    "categorySlug": "icecek",
-    "name": "Şişe Fanta",
-    "subtitle": "Cam Şişe Portakallı Gazoz",
-    "frenchTitle": "Fanta Orange Bouteille en Verre",
+    "id": "salgam",
+    "category": "İçecekler",
+    "categorySlug": "icecekler",
+    "name": "Adana Şalgam Suyu",
+    "subtitle": "Cam şişede geleneksel acılı veya acısız şalgam.",
+    "description": "Cam şişede geleneksel acılı veya acısız şalgam.",
+    "desc": "Cam şişede geleneksel acılı veya acısız şalgam.",
+    "chefNote": "Cam şişede geleneksel acılı veya acısız şalgam.",
     "price": "₺ 75",
     "priceNum": 75,
-    "calories": "110 kcal",
-    "portion": "200ml",
+    "image": "/dishes/salgam.png",
+    "dishImage": "/dishes/salgam.png",
+    "calories": "25 kcal",
     "prepTime": "2 dk",
-    "temperature": "3°C",
-    "chefNote": "Nostaljik cam şişede buz gibi portakal lezzeti.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3658215_48624_20230511102232.jpg",
-    "courseNumber": "05",
-    "meatIngredient": "Cam Şişe Gazoz",
-    "garnishIngredient": "Buz"
+    "allergens": "Alerjensiz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
   },
   {
-    "id": "sprite",
-    "category": "İÇECEKLER",
-    "categorySlug": "icecek",
-    "name": "Sprite",
-    "subtitle": "Limon & Misket Limonu Gazozu (330ml)",
-    "frenchTitle": "Sprite Citron-Lime Glacé",
-    "price": "₺ 80",
-    "priceNum": 80,
+    "id": "limonata",
+    "category": "İçecekler",
+    "categorySlug": "icecekler",
+    "name": "Taze Ev Yapımı Limonata",
+    "subtitle": "Taze sıkılmış nane yapraklı ev yapımı limonata.",
+    "description": "Taze sıkılmış nane yapraklı ev yapımı limonata.",
+    "desc": "Taze sıkılmış nane yapraklı ev yapımı limonata.",
+    "chefNote": "Taze sıkılmış nane yapraklı ev yapımı limonata.",
+    "price": "₺ 90",
+    "priceNum": 90,
+    "image": "/dishes/limonata.png",
+    "dishImage": "/dishes/limonata.png",
     "calories": "120 kcal",
-    "portion": "330ml",
-    "prepTime": "2 dk",
-    "temperature": "3°C",
-    "chefNote": "Yoğun ferahlatıcı misket limonu aroması.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3655683_48624_20230511101732.jpg",
-    "courseNumber": "06",
-    "meatIngredient": "Limon Gazozu",
-    "garnishIngredient": "Limon & Nane"
-  },
-  {
-    "id": "cappy",
-    "category": "İÇECEKLER",
-    "categorySlug": "icecek",
-    "name": "Cappy Meyve Suyu",
-    "subtitle": "Meyve Nektarı Çeşitleri (330ml)",
-    "frenchTitle": "Jus de Fruits Cappy Sélection",
-    "price": "₺ 80",
-    "priceNum": 80,
-    "calories": "125 kcal",
-    "portion": "330ml",
-    "prepTime": "2 dk",
-    "temperature": "4°C",
-    "chefNote": "Karışık veya vişne meyve suyu seçeneği.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3655690_48624_20230511112620.jpg",
-    "courseNumber": "07",
-    "meatIngredient": "Meyve Nektarı",
-    "garnishIngredient": "Buz"
-  },
-  {
-    "id": "fuse-tea",
-    "category": "İÇECEKLER",
-    "categorySlug": "icecek",
-    "name": "Fuse Tea Soğuk Çay",
-    "subtitle": "Şeftali & Limon Aromalı Soğuk Çay",
-    "frenchTitle": "Thé Glacé aux Pêches",
-    "price": "₺ 80",
-    "priceNum": 80,
-    "calories": "105 kcal",
-    "portion": "330ml",
-    "prepTime": "2 dk",
-    "temperature": "4°C",
-    "chefNote": "Doğal çay demi ve taze meyve aroması.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3656954_48624_20230511102121.jpg",
-    "courseNumber": "08",
-    "meatIngredient": "Soğuk Çay",
-    "garnishIngredient": "Limon & Nane"
-  },
-  {
-    "id": "sade-soda",
-    "category": "İÇECEKLER",
-    "categorySlug": "icecek",
-    "name": "Doğal Maden Suyu (Sade Soda)",
-    "subtitle": "Zengin Mineralli Doğal Kaynak Maden Suyu",
-    "frenchTitle": "Eau Minérale Naturelle Gazeuse",
-    "price": "₺ 75",
-    "priceNum": 75,
-    "calories": "0 kcal",
-    "portion": "200ml",
-    "prepTime": "2 dk",
-    "temperature": "3°C",
-    "chefNote": "Yemek sonrası hazmı kolaylaştıran doğal mineralli maden suyu.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3656955_48624_20230511112822.jpg",
-    "courseNumber": "09",
-    "meatIngredient": "Doğal Maden Suyu",
-    "garnishIngredient": "Limon Dilimi"
-  },
-  {
-    "id": "kucuk-su",
-    "category": "İÇECEKLER",
-    "categorySlug": "icecek",
-    "name": "Küçük Su",
-    "subtitle": "Cam Şişe Doğal Kaynak Suyu",
-    "frenchTitle": "Eau de Source Naturelle",
-    "price": "₺ 35",
-    "priceNum": 35,
-    "calories": "0 kcal",
-    "portion": "330ml",
-    "prepTime": "1 dk",
-    "temperature": "4°C",
-    "chefNote": "Karacadağ kaynaklarından gelen doğal yumuşak kaynak suyu.",
-    "dishImage": "https://cdn.adisyo.com/mahrezphotos/3655687_48624_20230511112712.jpg",
-    "courseNumber": "10",
-    "meatIngredient": "Doğal Kaynak Suyu",
-    "garnishIngredient": "Cam Şişe"
+    "prepTime": "3 dk",
+    "allergens": "Alerjensiz",
+    "temperature": "75°C",
+    "servingTemp": "75°C"
   }
 ];
 
@@ -1312,14 +1781,14 @@ export default function VexmoKineticBerosPage() {
       frenchTitle: dish.frenchTitle || dish.subtitle,
       price: dish.price,
       priceNum: dish.priceNum,
-      calories: dish.calories,
-      portion: dish.portion,
-      prepTime: dish.prepTime,
-      temperature: dish.temperature,
-      chefNote: dish.chefNote,
+      calories: dish.calories || "",
+      portion: dish.portion || "",
+      prepTime: dish.prepTime || "",
+      temperature: dish.temperature || dish.servingTemp || "",
+      chefNote: dish.chefNote || dish.description || "",
       allergens: ["Kuzu Eti", "Meşe Közü"],
       videoUrl: "",
-      posterUrl: dish.dishImage,
+      posterUrl: dish.dishImage || dish.image || "",
       ingredients: [
         dish.meatIngredient || "Kuzu Eti",
         dish.garnishIngredient || "Taze Baharatlar",
@@ -1360,18 +1829,6 @@ export default function VexmoKineticBerosPage() {
     }
   };
 
-  // Coverflow 3-card visible window calculation
-  const coverflowCards = useMemo(() => {
-    const len = currentDishes.length;
-    return currentDishes.map((dish, idx) => {
-      let diff = idx - activeDishIndex;
-      if (len > 1) {
-        if (diff < -Math.floor(len / 2)) diff += len;
-        if (diff > Math.floor(len / 2)) diff -= len;
-      }
-      return { dish, idx, diff };
-    });
-  }, [currentDishes, activeDishIndex]);
 
   return (
     <div
@@ -1397,20 +1854,20 @@ export default function VexmoKineticBerosPage() {
       {/* ========================================================================= */}
       {/* 1. MINIMAL FIXED ARCHITECTURAL HEADER                                     */}
       {/* ========================================================================= */}
-      <header className="fixed top-0 left-0 right-0 z-[999] px-4 sm:px-12 py-3.5 flex items-center justify-between backdrop-blur-md bg-[#080706]/85 border-b border-white/10 transition-all duration-300">
+      <header className="fixed top-0 left-0 right-0 z-[999] px-4 sm:px-12 py-3.5 flex items-center justify-between backdrop-blur-md bg-black/35 border-b border-white/10 transition-all duration-300 shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
         {/* Left: Refined Wordmark & Table Badge */}
         <div className="flex items-center gap-3">
           <button
             onClick={() => scrollToSection(0)}
             className="text-left group flex items-baseline gap-2 focus:outline-none"
           >
-            <span className="font-serif tracking-[0.32em] text-lg sm:text-xl font-light text-white group-hover:text-[#d4af37] transition-colors">
+            <span className="font-serif tracking-[0.32em] text-lg sm:text-xl font-light text-white group-hover:text-[#f0c85a] transition-colors drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
               BEROŞ
             </span>
           </button>
 
           {/* Dinamik Masa Rozeti */}
-          <div className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-[10px] font-mono text-emerald-400">
+          <div className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full border border-emerald-500/40 bg-emerald-500/15 text-[10px] font-mono text-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
             <span className="hidden sm:inline">[ SUR / DIYARBAKIR • {tableNo} ]</span>
             <span className="sm:hidden">{tableNo}</span>
@@ -1421,19 +1878,19 @@ export default function VexmoKineticBerosPage() {
         <nav className="hidden lg:flex items-center gap-8 text-[11px] font-sans tracking-[0.25em] uppercase font-light">
           <button
             onClick={() => scrollToSection(0.35)}
-            className="text-white hover:text-[#d4af37] transition-colors"
+            className="text-white hover:text-[#f0c85a] transition-colors drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
           >
             GASTRONOMİ
           </button>
           <button
             onClick={() => scrollToSection(0.0)}
-            className="text-white/40 hover:text-white transition-colors"
+            className="text-white/60 hover:text-white transition-colors drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
           >
             ASIRLIK KONAK
           </button>
           <button
             onClick={() => setIsReservationOpen(true)}
-            className="text-white/40 hover:text-white transition-colors"
+            className="text-white/60 hover:text-white transition-colors drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
           >
             REZERVASYON
           </button>
@@ -1442,7 +1899,7 @@ export default function VexmoKineticBerosPage() {
         {/* Right: Operasyonel Aksiyonlar & Turist Modu */}
         <div className="flex items-center gap-1.5 sm:gap-2.5 relative z-[150] pointer-events-auto">
           {/* 1. Turist Modu Dil Seçici (TR / EN / AR) */}
-          <div className="flex items-center rounded-full border border-white/15 bg-black/40 p-0.5 text-[10px] font-mono">
+          <div className="flex items-center rounded-full border border-white/20 bg-black/40 p-0.5 text-[10px] font-mono shadow-[0_0_15px_rgba(0,0,0,0.5)]">
             {(["TR", "EN", "AR"] as Language[]).map((l) => (
               <button
                 key={l}
@@ -1450,8 +1907,8 @@ export default function VexmoKineticBerosPage() {
                 onClick={() => setLang(l)}
                 className={`px-2 py-1 rounded-full transition-all cursor-pointer ${
                   lang === l
-                    ? "bg-[#d4af37] text-black font-bold shadow-[0_0_10px_rgba(212,175,55,0.4)]"
-                    : "text-white/60 hover:text-white"
+                    ? "bg-[#e2b34a] text-black font-bold shadow-[0_0_12px_rgba(226,179,74,0.5)]"
+                    : "text-white/70 hover:text-white"
                 }`}
               >
                 {l}
@@ -1464,7 +1921,7 @@ export default function VexmoKineticBerosPage() {
             id="btn-call-waiter"
             type="button"
             onClick={() => handleServiceCall("Garson")}
-            className="relative z-[90] pointer-events-auto cursor-pointer flex items-center gap-1 px-2.5 sm:px-3.5 py-1.5 rounded-full border border-amber-500/40 bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 text-xs font-mono tracking-wider transition-all active:scale-95"
+            className="relative z-[90] pointer-events-auto cursor-pointer flex items-center gap-1 px-2.5 sm:px-3.5 py-1.5 rounded-full border border-amber-400/50 bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 text-xs font-mono tracking-wider transition-all active:scale-95 shadow-[0_0_15px_rgba(245,158,11,0.25)]"
             title="Garson Çağır"
           >
             <Bell className="w-3.5 h-3.5" />
@@ -1476,7 +1933,7 @@ export default function VexmoKineticBerosPage() {
             id="btn-call-bill"
             type="button"
             onClick={() => handleServiceCall("Hesap İste (Kredi Kartı)")}
-            className="relative z-[90] pointer-events-auto cursor-pointer flex items-center gap-1 px-2.5 sm:px-3.5 py-1.5 rounded-full border border-sky-500/40 bg-sky-500/10 hover:bg-sky-500/20 text-sky-400 text-xs font-mono tracking-wider transition-all active:scale-95"
+            className="relative z-[90] pointer-events-auto cursor-pointer flex items-center gap-1 px-2.5 sm:px-3.5 py-1.5 rounded-full border border-sky-400/50 bg-sky-500/15 hover:bg-sky-500/25 text-sky-300 text-xs font-mono tracking-wider transition-all active:scale-95 shadow-[0_0_15px_rgba(56,189,248,0.25)]"
             title="Hesap İste"
           >
             <CreditCard className="w-3.5 h-3.5" />
@@ -1487,10 +1944,10 @@ export default function VexmoKineticBerosPage() {
           <button
             type="button"
             onClick={handleOpenGoogleReview}
-            className="relative z-[90] pointer-events-auto cursor-pointer flex items-center gap-1 px-2.5 sm:px-3.5 py-1.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 text-white/90 text-xs font-mono tracking-wider transition-all active:scale-95"
+            className="relative z-[90] pointer-events-auto cursor-pointer flex items-center gap-1 px-2.5 sm:px-3.5 py-1.5 rounded-full border border-white/20 bg-white/10 hover:bg-white/15 text-white text-xs font-mono tracking-wider transition-all active:scale-95 shadow-[0_0_15px_rgba(255,255,255,0.1)]"
             title="Google Haritalar'da Değerlendir"
           >
-            <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+            <Star className="w-3.5 h-3.5 text-amber-300 fill-amber-300" />
             <span className="hidden md:inline">{t.degerlendir}</span>
           </button>
 
@@ -1499,11 +1956,11 @@ export default function VexmoKineticBerosPage() {
             id="btn-open-tray"
             type="button"
             onClick={() => setIsCartOpen(true)}
-            className="relative z-[90] pointer-events-auto cursor-pointer px-3 sm:px-3.5 py-1.5 rounded-full border border-[#d4af37]/40 bg-[#d4af37]/15 hover:bg-[#d4af37]/25 text-[#d4af37] text-xs font-mono tracking-wider flex items-center gap-1.5 transition-all active:scale-95 shadow-[0_0_15px_rgba(212,175,55,0.2)]"
+            className="relative z-[90] pointer-events-auto cursor-pointer px-3 sm:px-3.5 py-1.5 rounded-full border border-[#e2b34a]/60 bg-[#e2b34a]/20 hover:bg-[#e2b34a]/30 text-[#f0c85a] text-xs font-mono tracking-wider flex items-center gap-1.5 transition-all active:scale-95 shadow-[0_0_20px_rgba(226,179,74,0.35)]"
           >
             <ShoppingBag className="w-3.5 h-3.5" />
             <span className="hidden xs:inline">{t.tepsi}</span>
-            <span className="px-1.5 py-0.2 rounded-full bg-[#d4af37] text-[#080706] font-bold text-[10px]">
+            <span className="px-1.5 py-0.2 rounded-full bg-[#e2b34a] text-[#080706] font-bold text-[10px]">
               {totalCartCount}
             </span>
           </button>
@@ -1531,15 +1988,18 @@ export default function VexmoKineticBerosPage() {
           className="absolute inset-0 w-full h-full"
         >
           {/* Tam Ekran Kristal Netliğinde İç Mekan */}
-          <div className="absolute inset-0 w-full h-full">
+          <div className="absolute inset-0 w-full h-full overflow-hidden">
             <img
               src={INTERIOR_HD}
               alt="Beroş Restaurant Asırlık İç Salon"
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-cover object-center filter brightness-105 contrast-105 saturate-110"
             />
-            {/* Sessiz Lüks Sinematik Gradyanlar */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#080706] via-black/35 to-[#080706]/65" />
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(8,7,6,0.65)_100%)]" />
+            {/* Sıcak ve Ferah Sinematik Atmosfer Filtresi */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-[#070504]/90" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(7,5,4,0.45)_100%)]" />
+
+            {/* Sol Pencereden Sızan Doğal Gün Işığı (Window Glow Effect) */}
+            <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-amber-50/10 via-transparent to-transparent pointer-events-none -z-10" />
           </div>
 
           {/* Sol Altta Resmi Kurumsal Editoryal Blok (berosrestaurant.com) */}
@@ -1548,19 +2008,19 @@ export default function VexmoKineticBerosPage() {
             className="relative z-10 w-full h-full flex flex-col justify-end p-8 sm:p-14 lg:p-20 pb-16 sm:pb-20"
           >
             <div className="max-w-2xl">
-              <span className="text-[10px] sm:text-xs font-mono tracking-[0.35em] text-[#d4af37] uppercase block mb-3">
-                SUR / DİYARBAKIR • M.Ö. 3000 • MASA 07
+              <span className="text-[10px] sm:text-xs font-mono tracking-[0.35em] text-[#f0c85a] uppercase block mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                SUR / DİYARBAKIR • M.Ö. 3000 • {tableNo}
               </span>
-              <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-light text-white tracking-tight leading-[1.0] uppercase">
+              <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-light text-white tracking-tight leading-[1.0] uppercase drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)]">
                 MEZOPOTAMYA&apos;NIN <br />
                 BİNLERCE YILLIK <br />
-                <span className="text-[#d4af37]">LEZZET MİRASI</span>
+                <span className="text-[#f0c85a] drop-shadow-[0_0_30px_rgba(240,200,90,0.45)]">LEZZET MİRASI</span>
               </h1>
-              <p className="mt-5 text-sm sm:text-base lg:text-lg font-serif italic text-white/75 font-light max-w-xl leading-relaxed">
+              <p className="mt-5 text-sm sm:text-base lg:text-lg font-serif italic text-white/90 font-light max-w-xl leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)]">
                 &ldquo;Ateşin, baharatın ve ustalığın buluştuğu yerdeyiz. Gelenekten ilham alıyor, çağdaş bir sofrada modern sunum ve ustalıkla fark yaratıyoruz.&rdquo;
               </p>
-              <div className="mt-4 flex items-center gap-2 text-[10px] sm:text-xs font-mono tracking-widest text-[#d4af37]/80 uppercase">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37]" />
+              <div className="mt-4 flex items-center gap-2 text-[10px] sm:text-xs font-mono tracking-widest text-[#f0c85a]/90 uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#f0c85a] animate-pulse" />
                 <span>Beroş Diyarbakır • Her masa özeldir, her tabak bir imza taşır.</span>
               </div>
             </div>
@@ -1569,7 +2029,7 @@ export default function VexmoKineticBerosPage() {
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5">
               <button
                 onClick={() => scrollToSection(0.35)}
-                className="flex items-center gap-2 text-[10px] font-mono tracking-[0.4em] uppercase text-white/60 hover:text-[#d4af37] transition-colors"
+                className="flex items-center gap-2 text-[10px] font-mono tracking-[0.4em] uppercase text-white/70 hover:text-[#f0c85a] transition-colors drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
               >
                 <span>AŞAĞI KAYDIRIN</span>
                 <span className="animate-bounce">↓</span>
@@ -1585,8 +2045,18 @@ export default function VexmoKineticBerosPage() {
           style={{ opacity: act2Opacity, scale: act2Scale, pointerEvents: act2PointerEvents }}
           className="absolute inset-0 w-full h-full flex flex-col justify-between p-4 sm:p-10 lg:p-14 pt-20 sm:pt-24 bg-[#080706] touch-pan-y"
         >
-          {/* Karanlık Volkanik Taş Zemin & Sıcak Kehribar ve Gün Işığı Ambiyansı */}
+          {/* Masif Masaüstü Zemin, Derinlik Odaklı Restoran Arka Planı (Depth of Field) & Sıcak Kehribar Ambiyans */}
           <div className="absolute inset-0 -z-10 bg-[#070504] pointer-events-none overflow-hidden">
+            {/* Derinlik Odaklı Restoran İç Mekan Arka Planı (Beroş Ambiyansı - Depth of Field Blur) */}
+            <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
+              <img
+                src={INTERIOR_HD}
+                alt="Beroş Restaurant Konak Interior Atmosphere"
+                className="w-full h-full object-cover filter blur-[14px] brightness-70 mix-blend-luminosity opacity-25 scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-[#070504]/75 via-transparent to-[#070504]/85" />
+            </div>
+
             {/* Tepe Merkez: Sarkıt Lamba Sıcak Kehribar Işık Huzmesi */}
             <div
               className="absolute inset-0 pointer-events-none -z-10"
@@ -1603,12 +2073,12 @@ export default function VexmoKineticBerosPage() {
                   "linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0%, transparent 40%)",
               }}
             />
-            {/* Merkez Odaklanmış Stüdyo Spotlight */}
+            {/* Masayı Aydınlatan Yumuşak Kehribar Masaüstü Spot Işığı */}
             <div
               className="absolute inset-0 pointer-events-none -z-10"
               style={{
                 background:
-                  "radial-gradient(circle at 50% 45%, rgba(212,175,55,0.09) 0%, rgba(255,255,255,0.02) 40%, transparent 75%)",
+                  "radial-gradient(circle at 50% 45%, rgba(245, 158, 11, 0.14) 0%, rgba(212, 175, 55, 0.06) 35%, transparent 65%)",
               }}
             />
           </div>
@@ -1712,281 +2182,119 @@ export default function VexmoKineticBerosPage() {
                 </p>
               </div>
 
-              {/* Minimalist Teknik Metrikler */}
-              <div className="flex flex-wrap items-center gap-2 text-[10px] font-mono tracking-widest text-[#d4af37] py-1.5 border-y border-white/10">
-                <span>[ {activeDish.calories} ]</span>
-                <span className="text-white/20">•</span>
-                <span>[ {activeDish.prepTime} ]</span>
-                <span className="text-white/20">•</span>
-                <span>[ {activeDish.temperature} ]</span>
+              {/* Profesyonel Lüks Rozetler: Kalori, Hazırlık Süresi, Alerjen */}
+              <div className="flex flex-wrap items-center gap-2 mt-4 font-mono text-[11px] select-none">
+                <span className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-amber-300">
+                  🔥 {activeDish.calories}
+                </span>
+                <span className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-emerald-300">
+                  ⏱️ {activeDish.prepTime}
+                </span>
+                <span className="px-2.5 py-1 rounded-lg bg-red-500/10 border border-red-500/20 text-red-300">
+                  ⚠️ Alerjen: {Array.isArray(activeDish.allergens) ? activeDish.allergens.join(", ") : activeDish.allergens}
+                </span>
               </div>
             </div>
 
-            {/* Merkez: 3D OTANTİK TEPSİ COVERFLOW & INGREDIENT REVEAL (6 cols) */}
-            <div
-              className="lg:col-span-6 relative h-[400px] sm:h-[480px] lg:h-[530px] w-full flex items-center justify-center order-1 lg:order-2 select-none pointer-events-none"
-              style={{
-                perspective: "1400px",
-                transformStyle: "preserve-3d",
-              }}
-            >
-              {/* 3D Tepsi Arkası (Aura Glow): Dönen tepsiyi öne çıkaran sıcak kehribar/altın arka ışık */}
-              <div
-                className="absolute inset-0 m-auto w-[360px] sm:w-[520px] h-[360px] sm:h-[520px] pointer-events-none -z-10 rounded-full"
-                style={{
-                  background:
-                    "radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.12), transparent 60%)",
-                }}
-              />
-
-              {/* Coverflow 3D Cards Stack */}
-              <div
-                className="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing pointer-events-none"
-                style={{ transformStyle: "preserve-3d" }}
-              >
-                {coverflowCards.map(({ dish, idx, diff }) => {
-                  const isActive = diff === 0;
-                  const isLeft = diff === -1;
-                  const isRight = diff === 1;
-                  const isFar = Math.abs(diff) > 1;
-
-                  const stepX = isMobile ? 130 : 190;
-                  const edgeX = isMobile ? 260 : 380;
-
-                  return (
-                    <motion.div
-                      key={dish.id}
-                      animate={{
-                        x: isActive ? 0 : isLeft ? -stepX : isRight ? stepX : diff > 0 ? edgeX : -edgeX,
-                        z: isActive ? 75 : isFar ? -160 : -80,
-                        rotateY: isActive ? 0 : isLeft ? (isMobile ? 18 : 24) : isRight ? (isMobile ? -18 : -24) : diff > 0 ? -35 : 35,
-                        scale: isActive ? 1.0 : isFar ? 0.65 : (isMobile ? 0.78 : 0.82),
-                        opacity: isActive ? 1.0 : isFar ? 0 : (isMobile ? 0.35 : 0.45),
-                      }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 22,
-                        mass: 0.9,
-                      }}
-                      drag={isActive ? "x" : false}
-                      dragDirectionLock={true}
-                      dragConstraints={{ left: 0, right: 0 }}
-                      dragElastic={0.25}
-                      onDragEnd={(_, info) => {
-                        if (info.offset.x < -40) handleNextDish();
-                        else if (info.offset.x > 40) handlePrevDish();
-                      }}
-                      onClick={() => {
-                        if (isLeft) handlePrevDish();
-                        if (isRight) handleNextDish();
-                      }}
-                      className={`absolute inset-0 m-auto w-full max-w-[340px] sm:max-w-xl md:max-w-2xl h-[380px] sm:h-[440px] rounded-[32px] p-6 sm:p-8 flex flex-col items-center justify-between select-none shadow-[0_30px_90px_rgba(0,0,0,0.98)] border-2 border-[#e2b34a]/40 ${
-                        isActive
-                          ? "ring-1 ring-[#e2b34a]/40 z-30 pointer-events-auto shadow-[0_0_25px_rgba(212,175,55,0.15)]"
-                          : isFar
-                          ? "pointer-events-none z-0"
-                          : "hover:border-[#e2b34a]/60 cursor-pointer z-10"
-                      }`}
-                      style={{
-                        transformStyle: "preserve-3d",
-                        width: "100%",
-                        maxWidth: isMobile ? "340px" : "672px",
-                      }}
-                    >
-                      {/* Gerçek Koyu Ceviz Ağacı Kaplaması */}
-                      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden rounded-[32px]">
-                        <img
-                          src="/wood-tray.jpg"
-                          alt="Solid Dark Walnut Wood"
-                          className="w-full h-full object-cover filter brightness-[0.75] contrast-[1.2]"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/75" />
-                        <div className="absolute inset-0 shadow-[inset_0_0_50px_rgba(0,0,0,0.9)]" />
-                      </div>
-
-                      {/* Dört Köşede Pirinç/Bronz Köşe Bağlama Süslemesi */}
-                      <GoldCorner className="top-3 left-3 z-10" />
-                      <GoldCorner className="top-3 right-3 rotate-90 z-10" />
-                      <GoldCorner className="bottom-3 right-3 rotate-180 z-10" />
-                      <GoldCorner className="bottom-3 left-3 -rotate-90 z-10" />
-
-                      {/* Kart Üst Başlığı */}
-                      <div className="w-full flex items-center justify-between border-b border-[#d4af37]/20 pb-2.5 z-10">
-                        <span className="text-[9px] sm:text-[11px] font-mono tracking-widest text-[#d4af37] uppercase">
-                          COURSE {dish.courseNumber || `0${idx + 1}`} • {dish.category}
-                        </span>
-                        {isActive && (
-                          <div className="flex items-center gap-1 text-[8px] sm:text-[9px] font-mono uppercase text-[#d4af37] bg-[#d4af37]/10 border border-[#d4af37]/30 px-2.5 py-0.5 rounded-full">
-                            <Layers className="w-2.5 h-2.5 text-[#d4af37]" />
-                            <span>DOĞAL CEVİZ AĞACI TEPSİ</span>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Görseldeki Derin Havşa Oyuğu (Recessed Carved Socket) */}
-                      <div
-                        className="w-52 h-52 sm:w-64 sm:h-64 rounded-full flex items-center justify-center relative shadow-[inset_0_24px_48px_rgba(0,0,0,0.98),inset_0_2px_8px_rgba(212,175,55,0.4),0_0_35px_rgba(0,0,0,0.9)] border-2 border-[#d4af37]/35 z-10 my-auto"
-                        style={{
-                          background:
-                            "radial-gradient(circle at 50% 50%, #030202 0%, #0b0806 55%, #19120c 100%)",
-                          boxShadow:
-                            "inset 0 24px 48px rgba(0,0,0,1.0), inset 0 4px 10px rgba(0,0,0,0.9), inset 0 -3px 8px rgba(212,175,55,0.3), 0 10px 30px rgba(0,0,0,0.85)",
-                          border: "1.5px solid rgba(212,175,55,0.45)",
-                        }}
-                      >
-                        {/* Oyuğun çevresinde ince altın işlemeli metal halka */}
-                        <div className="absolute inset-2 sm:inset-2.5 rounded-full border border-[#d4af37]/30 pointer-events-none" />
-                        <div className="absolute inset-4 rounded-full border border-dashed border-[#d4af37]/20 pointer-events-none opacity-40" />
-
-                        {/* Dinamik Zemin Kontak Gölgesi */}
-                        <div
-                          className="absolute bottom-1 inset-x-5 h-10 rounded-full pointer-events-none transition-all duration-500"
-                          style={{
-                            background:
-                              "radial-gradient(ellipse at center, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.65) 50%, transparent 80%)",
-                            filter: "blur(8px)",
-                            transform:
-                              isActive && revealStep === "landed"
-                                ? "scale(1.05)"
-                                : "scale(0.4)",
-                            opacity:
-                              isActive && revealStep === "landed" ? 0.95 : 0.2,
-                          }}
-                        />
-
-                        {/* Yemek Tabağı Görseli - translateZ(75px) */}
-                        <motion.div
-                          animate={{
-                            y:
-                              isActive && revealStep === "elevate"
-                                ? 14
-                                : 0,
-                            rotateY:
-                              isActive && revealStep === "elevate"
-                                ? -18
-                                : 0,
-                            scale:
-                              isActive && revealStep === "elevate"
-                                ? 0.95
-                                : 1.0,
-                          }}
-                          transition={{
-                            type: "spring",
-                            stiffness: 300,
-                            damping: 22,
-                          }}
-                          className="relative w-[85%] h-[85%] rounded-full overflow-hidden flex items-center justify-center pointer-events-none"
-                          style={{
-                            transformStyle: "preserve-3d",
-                            transform: "translateZ(75px)",
-                          }}
-                        >
-                          <img
-                            src={dish.dishImage}
-                            alt={dish.name}
-                            className={`w-full h-full filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.95)] drop-shadow-[0_10px_15px_rgba(0,0,0,0.7)] ${
-                              dish.isBluePlate || dish.isTransparentPng
-                                ? "object-contain p-1"
-                                : "object-cover rounded-full"
-                            }`}
-                          />
-                          {isDishOutOfStock(dish.id) && (
-                            <div className="absolute inset-0 bg-black/65 backdrop-blur-[2px] rounded-full flex flex-col items-center justify-center pointer-events-none z-30">
-                              <span className="px-3 py-1 rounded-full bg-red-500/30 border border-red-500/60 text-red-300 font-mono text-xs font-bold tracking-widest uppercase shadow-lg">
-                                TÜKENDİ
-                              </span>
-                            </div>
-                          )}
-                        </motion.div>
-
-                        {/* Canlı Buhar Patlaması */}
-                        {isActive && revealStep === "landed" && !isDishOutOfStock(dish.id) && (
-                          <SteamEffect
-                            intensity="high"
-                            className="-top-12 sm:-top-16"
-                          />
-                        )}
-
-                        {/* Ingredient Reveal Uçuşan Katmanlar */}
-                        {isActive && dish.meatIngredient && dish.garnishIngredient && !isDishOutOfStock(dish.id) && (
-                          <>
-                            <motion.div
-                              initial={{ y: 20, scale: 0.85, opacity: 0 }}
-                              animate={{
-                                y: revealStep === "elevate" ? -24 : 0,
-                                scale: revealStep === "elevate" ? 1.12 : 1.0,
-                                rotate: revealStep === "elevate" ? -3 : 0,
-                                opacity: revealStep === "elevate" ? 1 : 0,
-                              }}
-                              transition={{
-                                type: "spring",
-                                stiffness: 300,
-                                damping: 22,
-                              }}
-                              className="absolute -top-7 -left-3 sm:-left-6 z-40 pointer-events-none"
-                            >
-                              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full backdrop-blur-md bg-black/85 border border-[#d4af37]/60 shadow-[0_8px_20px_rgba(0,0,0,0.85)]">
-                                <Flame className="w-3 h-3 text-[#d4af37]" />
-                                <span className="text-[9px] sm:text-[10px] font-mono tracking-wider text-[#F5EFEB]">
-                                  {dish.meatIngredient}
-                                </span>
-                              </div>
-                            </motion.div>
-
-                            <motion.div
-                              initial={{ y: 20, scale: 0.85, opacity: 0 }}
-                              animate={{
-                                y: revealStep === "elevate" ? -34 : 0,
-                                x: revealStep === "elevate" ? 16 : 0,
-                                scale: revealStep === "elevate" ? 1.08 : 1.0,
-                                rotate: revealStep === "elevate" ? 3 : 0,
-                                opacity: revealStep === "elevate" ? 1 : 0,
-                              }}
-                              transition={{
-                                type: "spring",
-                                stiffness: 300,
-                                damping: 22,
-                                delay: 0.03,
-                              }}
-                              className="absolute -top-9 -right-2 sm:-right-4 z-40 pointer-events-none"
-                            >
-                              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full backdrop-blur-md bg-black/85 border border-[#d4af37]/60 shadow-[0_8px_20px_rgba(0,0,0,0.85)]">
-                                <Sparkles className="w-3 h-3 text-[#d4af37]" />
-                                <span className="text-[9px] sm:text-[10px] font-mono tracking-wider text-[#F5EFEB]">
-                                  {dish.garnishIngredient}
-                                </span>
-                              </div>
-                            </motion.div>
-                          </>
-                        )}
-                      </div>
-
-                      {/* Kart Alt Çubuğu - Altın Varak Kazıma Lezzet Adı ve Fiyat Kabartması */}
-                      <div className="w-full flex items-center justify-between border-t border-[#d4af37]/25 pt-2.5 text-xs font-mono z-10">
-                        <span
-                          className="text-white/80 font-serif text-sm sm:text-base font-light tracking-wide truncate max-w-[200px] sm:max-w-[320px]"
-                          style={{ textShadow: "0 0 12px rgba(212,175,55,0.4)" }}
-                        >
-                          {dish.name}
-                        </span>
-                        {isDishOutOfStock(dish.id) ? (
-                          <span className="px-2.5 py-0.5 rounded-full bg-red-500/20 border border-red-500/50 text-red-400 font-mono text-[10px] font-bold tracking-wider">
-                            TÜKENDİ
-                          </span>
-                        ) : (
-                          <span
-                            className="text-[#e2b34a] font-serif text-base sm:text-xl font-medium tracking-tight"
-                            style={{ textShadow: "0 0 15px rgba(226,179,74,0.6)" }}
-                          >
-                            {dish.price}
-                          </span>
-                        )}
-                      </div>
-                    </motion.div>
-                  );
-                })}
+            {/* ==================== DOĞAL RESTORAN MASASI SUNUMU (6 cols) ==================== */}
+            <div className="lg:col-span-6 relative w-full h-[460px] sm:h-[520px] flex items-center justify-center order-1 lg:order-2 select-none">
+              
+              {/* ==================== GERÇEK MASİF AHŞAP MASA SAHNESİ ==================== */}
+              <div className="absolute inset-0 pointer-events-none -z-10 flex items-center justify-center overflow-hidden">
+                {/* Restoran Masif Masa Yüzeyi */}
+                <div 
+                  className="absolute bottom-[-15%] w-[1100px] h-[580px] rounded-[100%] shadow-[0_-30px_100px_rgba(0,0,0,0.95)]"
+                  style={{
+                    transform: "perspective(1000px) rotateX(60deg)",
+                    backgroundImage: "url('/textures/walnut-table.jpg')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    boxShadow: "inset 0 0 120px rgba(0,0,0,0.85), 0 -20px 60px rgba(0,0,0,0.9)"
+                  }}
+                >
+                  {/* Ahşap Damarlarına Vuran Sıcak Konak Spot Işığı */}
+                  <div className="absolute inset-0 rounded-[100%] bg-[radial-gradient(circle_at_50%_45%,rgba(245,158,11,0.28)_0%,transparent_65%)] mix-blend-screen" />
+                </div>
               </div>
+
+              {/* TABAK: DOĞAL MASAÜSTÜ VE AKICI GEÇİŞ (SLIDE/SPRING) */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={filteredDishes[activeDishIndex]?.id || "dish"}
+                  initial={{ opacity: 0, x: 80 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -80 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 24 }}
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.2}
+                  onDragEnd={(_, info) => {
+                    if (info.offset.x < -40) handleNextDish();
+                    else if (info.offset.x > 40) handlePrevDish();
+                  }}
+                  className="relative z-10 flex flex-col items-center justify-center cursor-grab active:cursor-grabbing pointer-events-auto"
+                >
+                  {/* Masaya Düşen Gerçekçi Temas Gölgesi */}
+                  <div className="absolute bottom-3 sm:bottom-4 w-[300px] sm:w-[380px] h-[45px] rounded-full bg-black/90 blur-xl pointer-events-none -z-10" />
+
+                  {/* Yemeğin Kendisi - Doğal Çerçevesiz Odak */}
+                  <div 
+                    className="relative w-[300px] sm:w-[420px] h-[270px] sm:h-[350px] flex items-center justify-center"
+                    style={{
+                      maskImage: "radial-gradient(circle closest-side, black 72%, transparent 98%)",
+                      WebkitMaskImage: "radial-gradient(circle closest-side, black 72%, transparent 98%)"
+                    }}
+                  >
+                    <img
+                      src={filteredDishes[activeDishIndex]?.image || filteredDishes[activeDishIndex]?.dishImage || `/dishes/${filteredDishes[activeDishIndex]?.id}.png`}
+                      alt={filteredDishes[activeDishIndex]?.name}
+                      className="w-full h-full object-contain filter drop-shadow-[0_22px_28px_rgba(0,0,0,0.85)] brightness-105 contrast-105 pointer-events-none"
+                    />
+
+                    {/* Tükendi Rozeti */}
+                    {isDishOutOfStock(filteredDishes[activeDishIndex]?.id) && (
+                      <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px] rounded-full flex flex-col items-center justify-center pointer-events-none z-30">
+                        <span className="px-3.5 py-1 rounded-full bg-red-500/30 border border-red-500/60 text-red-300 font-mono text-xs font-bold tracking-widest uppercase shadow-lg">
+                          {t.tukendi}
+                        </span>
+                      </div>
+                    )}
+
+                    {/* Canlı Buhar Efekti */}
+                    {!isDishOutOfStock(filteredDishes[activeDishIndex]?.id) && (
+                      <SteamEffect />
+                    )}
+                  </div>
+
+                  {/* Tabağın Altındaki Doğal İsim & Fiyat Şeridi */}
+                  <div className="mt-3 px-5 py-2 rounded-full bg-black/65 backdrop-blur-md border border-white/10 text-white font-mono text-xs tracking-wider flex items-center gap-3 shadow-2xl">
+                    <span className="font-serif text-sm tracking-wide text-white">
+                      {filteredDishes[activeDishIndex]?.name}
+                    </span>
+                    <span className="text-[#d4af37] font-bold">
+                      • {filteredDishes[activeDishIndex]?.price}
+                    </span>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Sol / Sağ Doğal Navigasyon Butonları */}
+              <button
+                type="button"
+                onClick={() => setActiveDishIndex((prev) => (prev > 0 ? prev - 1 : filteredDishes.length - 1))}
+                className="absolute left-2 sm:left-4 z-30 p-3 rounded-full bg-black/50 border border-white/10 text-white/70 hover:text-white hover:border-[#d4af37] transition-all active:scale-95 cursor-pointer pointer-events-auto"
+                title="Önceki Lezzet"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveDishIndex((prev) => (prev < filteredDishes.length - 1 ? prev + 1 : 0))}
+                className="absolute right-2 sm:right-4 z-30 p-3 rounded-full bg-black/50 border border-white/10 text-white/70 hover:text-white hover:border-[#d4af37] transition-all active:scale-95 cursor-pointer pointer-events-auto"
+                title="Sonraki Lezzet"
+              >
+                ›
+              </button>
             </div>
 
             {/* Sağ Sütun: Altın Kakma Fiyat & Sipariş / AR Butonları (Stacking Context Isolation) */}
@@ -2023,7 +2331,7 @@ export default function VexmoKineticBerosPage() {
                     setIsCartOpen(true);
                   }}
                   disabled={isDishOutOfStock(filteredDishes[activeDishIndex]?.id || DISHES[0].id)}
-                  className="cursor-pointer pointer-events-auto relative z-[1000] w-full sm:w-64 py-4 px-8 rounded-2xl bg-[#d4af37] hover:bg-[#e5be46] active:scale-95 text-[#080706] font-mono text-xs uppercase font-bold transition-all shadow-[0_0_30px_rgba(212,175,55,0.4)] flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="cursor-pointer pointer-events-auto relative z-[150] w-full sm:w-64 py-4 px-8 rounded-2xl bg-[#d4af37] hover:bg-[#e5be46] active:scale-95 text-[#080706] font-mono text-xs uppercase font-bold transition-all shadow-[0_0_30px_rgba(212,175,55,0.4)] flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   <Plus className="w-4 h-4 text-[#080706]" />
                   <span>
@@ -2350,7 +2658,7 @@ export default function VexmoKineticBerosPage() {
                     handleCheckoutInSystem();
                   }}
                   disabled={cart.length === 0 || isOrderSubmitting}
-                  className="w-full py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 active:scale-[0.98] text-white font-mono text-xs tracking-wider uppercase font-bold transition-all shadow-[0_10px_25px_rgba(16,185,129,0.35)] disabled:opacity-40 disabled:pointer-events-none flex items-center justify-center gap-2 cursor-pointer relative z-[100] pointer-events-auto"
+                  className="w-full py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 active:scale-[0.98] text-white font-mono text-xs tracking-wider uppercase font-bold transition-all shadow-[0_10px_25px_rgba(16,185,129,0.35)] disabled:opacity-40 disabled:pointer-events-none flex items-center justify-center gap-2 cursor-pointer relative z-[2000] pointer-events-auto"
                 >
                   <Utensils className="w-4 h-4" />
                   <span>

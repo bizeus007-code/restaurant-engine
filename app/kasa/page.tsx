@@ -2,600 +2,349 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import {
-  Bell,
-  Check,
-  Clock,
-  Utensils,
-  RefreshCw,
-  Volume2,
-  VolumeX,
-  TrendingUp,
-  Package,
-  ArrowLeft,
-  Plus,
-  Minus,
-  Infinity as InfinityIcon,
-  Lock,
-  Unlock,
-  BarChart3
+  Bell, Check, Utensils, RefreshCw, Volume2, VolumeX,
+  CreditCard, Banknote, CheckCircle2, TrendingUp, Package, ArrowLeft,
+  BarChart3, Lock, Unlock
 } from "lucide-react";
 import Link from "next/link";
 
-interface InventoryItem {
-  count: number;
-  isUnlimited: boolean;
-  isLocked: boolean;
-}
-
-interface ReportData {
-  totalRevenue: number;
-  totalOrders: number;
-  topDishes: Array<{ name: string; count: number; total: number }>;
-  totalCalls: number;
-  completedCalls: number;
-  pendingCalls: number;
-  avgResponseSec: number;
-}
-
-export default function KasaTerminalPage() {
+export default function UnifiedKasaTerminal() {
   const [calls, setCalls] = useState<any[]>([]);
   const [orders, setOrders] = useState<any[]>([]);
-  const [inventory, setInventory] = useState<Record<string, InventoryItem>>({});
-  const [soundEnabled, setSoundEnabled] = useState(true);
-  const [activeTab, setActiveTab] = useState<"siparisler" | "stok" | "rapor">("siparisler");
-  const [reportData, setReportData] = useState<ReportData>({
-    totalRevenue: 0,
-    totalOrders: 0,
-    topDishes: [],
-    totalCalls: 0,
-    completedCalls: 0,
-    pendingCalls: 0,
-    avgResponseSec: 0,
-  });
+  const [inventory, setInventory] = useState<Record<string, any>>({});
+  const [report, setReport] = useState<any>({});
+  const [sound, setSound] = useState(true);
+  const [tab, setTab] = useState<"adisyonlar" | "stok" | "rapor">("adisyonlar");
 
-  const lastCallIdRef = useRef<string | null>(null);
-  const lastOrderIdRef = useRef<string | null>(null);
+  const lastCallId = useRef<string | null>(null);
+  const lastOrderId = useRef<string | null>(null);
 
-  const playChime = () => {
-    if (!soundEnabled) return;
+  const notify = () => {
+    if (typeof window !== "undefined" && "vibrate" in navigator) {
+      try { navigator.vibrate([200, 100, 200]); } catch {}
+    }
+    if (!sound) return;
     try {
-      const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
+      const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
+      if (!AudioCtx) return;
+      const ctx = new AudioCtx();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
       osc.type = "sine";
-      osc.frequency.setValueAtTime(587.33, audioCtx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.12);
-      gain.gain.setValueAtTime(0.35, audioCtx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.85);
+      osc.frequency.setValueAtTime(587.33, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.14);
+      gain.gain.setValueAtTime(0.4, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.85);
       osc.connect(gain);
-      gain.connect(audioCtx.destination);
+      gain.connect(ctx.destination);
       osc.start();
-      osc.stop(audioCtx.currentTime + 0.85);
+      osc.stop(ctx.currentTime + 0.85);
     } catch {}
   };
 
-  const fetchData = async () => {
+  const sync = async () => {
     try {
       const [cRes, oRes, sRes, rRes] = await Promise.all([
         fetch("/api/calls"),
         fetch("/api/orders"),
         fetch("/api/stock"),
-        fetch("/api/report"),
+        fetch("/api/report")
       ]);
-      const cData = await cRes.json();
-      const oData = await oRes.json();
-      const sData = await sRes.json();
-      const rData = await rRes.json();
+      const [cData, oData, sData, rData] = await Promise.all([
+        cRes.json(),
+        oRes.json(),
+        sRes.json(),
+        rRes.json()
+      ]);
 
-      if (cData.length > 0 && cData[0].id !== lastCallIdRef.current) {
-        if (lastCallIdRef.current !== null) playChime();
-        lastCallIdRef.current = cData[0].id;
+      if (cData.length > 0 && cData[0].id !== lastCallId.current) {
+        if (lastCallId.current !== null) notify();
+        lastCallId.current = cData[0].id;
       }
-      if (oData.length > 0 && oData[0].id !== lastOrderIdRef.current) {
-        if (lastOrderIdRef.current !== null) playChime();
-        lastOrderIdRef.current = oData[0].id;
+      if (oData.length > 0 && oData[0].id !== lastOrderId.current) {
+        if (lastOrderId.current !== null) notify();
+        lastOrderId.current = oData[0].id;
       }
 
-      setCalls(cData);
-      setOrders(oData);
+      setCalls(cData || []);
+      setOrders(oData || []);
       setInventory(sData || {});
-      setReportData(rData || {
-        totalRevenue: 0,
-        totalOrders: 0,
-        topDishes: [],
-        totalCalls: 0,
-        completedCalls: 0,
-        pendingCalls: 0,
-        avgResponseSec: 0,
-      });
+      setReport(rData || {});
     } catch {}
   };
 
   useEffect(() => {
-    fetchData();
-    const interval = setInterval(fetchData, 2000);
+    sync();
+    const interval = setInterval(sync, 2500);
     return () => clearInterval(interval);
-  }, [soundEnabled]);
+  }, [sound]);
 
-  const dismissCall = async (id: string) => {
-    await fetch(`/api/calls?id=${id}`, { method: "DELETE" });
-    fetchData();
-  };
-
-  const updateOrderStatus = async (id: string, status: string) => {
+  const updateOrderStatus = async (id: string, status: string, paymentMethod?: string) => {
     await fetch("/api/orders", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id, status }),
+      body: JSON.stringify({ id, status, paymentMethod })
     });
-    fetchData();
+    sync();
   };
 
-  const updateStockNumber = async (dishId: string, newCount: number) => {
-    const current = inventory[dishId] || { count: 50, isUnlimited: false, isLocked: false };
-    const clamped = Math.max(0, newCount);
+  const dismissCall = async (id: string) => {
+    await fetch(`/api/calls?id=${id}`, { method: "DELETE" });
+    sync();
+  };
+
+  const updateStockNumber = async (dishId: string, count: number) => {
     await fetch("/api/stock", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        dishId,
-        count: clamped,
-        isUnlimited: false,
-        isLocked: clamped === 0,
-      }),
+      body: JSON.stringify({ dishId, count: Math.max(0, count) })
     });
-    fetchData();
+    sync();
   };
 
   const toggleStockLock = async (dishId: string) => {
-    const current = inventory[dishId] || { count: 50, isUnlimited: false, isLocked: false };
+    const item = inventory[dishId] || {};
     await fetch("/api/stock", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        dishId,
-        count: current.count,
-        isUnlimited: current.isUnlimited,
-        isLocked: !current.isLocked,
-      }),
+      body: JSON.stringify({ dishId, isLocked: !item.isLocked })
     });
-    fetchData();
+    sync();
   };
-
-  const toggleStockUnlimited = async (dishId: string) => {
-    const current = inventory[dishId] || { count: 50, isUnlimited: false, isLocked: false };
-    await fetch("/api/stock", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        dishId,
-        count: current.count,
-        isUnlimited: !current.isUnlimited,
-        isLocked: false,
-      }),
-    });
-    fetchData();
-  };
-
-  const totalRevenue = orders.reduce((sum, o) => sum + (o.totalAmount || 0), 0);
-  const activeTablesCount = new Set([
-    ...calls.map((c) => c.tableNo),
-    ...orders.filter((o) => o.status !== "teslim_edildi").map((o) => o.tableNo),
-  ]).size;
-
-  const PRODUCT_LIST = [
-    { id: "special-kuzu-sirt", name: "Beroş Special Kuzu Sırt" },
-    { id: "sur-kuzu-kol-dolmasi", name: "Sur Kuzu Kol Dolması (2 Kişilik)" },
-    { id: "ayvali-kavurma", name: "Diyarbakır Ayvalı Kavurma" },
-    { id: "firinda-kuzu-incik", name: "Fırında Kuzu İncik" },
-    { id: "kekikli-kuzu-budu", name: "Kekikli Kuzu Budu" },
-    { id: "kuzu-gerdan", name: "Kuzu Gerdan" },
-    { id: "kuzu-greaten", name: "Kuzu Greaten" },
-    { id: "kuzu-haslama", name: "Kuzu Haşlama" },
-    { id: "firin-agzi", name: "Fırın Ağzı" },
-    { id: "diyarbakir-kavurma", name: "Diyarbakır Kavurma" },
-    { id: "patlican-kuzu-incik", name: "Patlıcan Yatağında Kuzu İncik" },
-    { id: "firin-guvec", name: "Fırın Güveç" },
-    { id: "kusbasi-kasarli-pide", name: "Kuşbaşı Kaşarlı Pide" },
-    { id: "kusbasi-pide", name: "Kuşbaşı Pide" },
-    { id: "kiymali-yumurtali-pide", name: "Kıymalı Yumurtalı Pide" },
-    { id: "findik-lahmacun", name: "Fındık Lahmacun" },
-    { id: "kasarli-pide", name: "Kaşarlı Pide" },
-    { id: "sur-usulu-sac-tava", name: "Sur Usulü Hakiki Sac Tava" },
-    { id: "beros-tavuk-special", name: "Beroş Tavuk Special" },
-    { id: "kori-soslu-tavuk", name: "Köri Soslu Tavuk" },
-    { id: "ispanak-tavuk-bonfile", name: "Ispanak Yatağında Tavuk Bonfile" },
-    { id: "mumbar", name: "Geleneksel Sur Mumbarı" },
-    { id: "icli-kofte", name: "Diyarbakır Usulü İçli Köfte" },
-    { id: "talas-boregi", name: "Talaş Böreği" },
-    { id: "kase-yogurt", name: "Kase Köy Yoğurdu" },
-    { id: "fistikli-baklava", name: "Hakiki Fıstıklı Baklava" },
-    { id: "fistikli-kadayif", name: "Diyarbakır Burma Kadayıf" },
-    { id: "acik-ayran", name: "Yayık Açık Ayran" },
-    { id: "kutu-mesrubat", name: "Soğuk Meşrubat Çeşitleri" },
-    { id: "turk-kahvesi", name: "Közde Türk Kahvesi" },
-  ];
 
   return (
-    <div className="min-h-screen bg-[#070504] text-white p-4 sm:p-8 font-sans">
-      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-6 mb-8 gap-4">
-        <div>
-          <div className="flex items-center gap-3">
-            <Link className="p-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/15 text-white/70 hover:text-white transition-all" href="/" title="Menüye Dön">
-              <ArrowLeft className="w-4 h-4"/>
-            </Link>
-            <span className="text-xs font-mono tracking-[0.3em] text-[#d4af37] uppercase">
-              BEROŞ RESTAURANT • OPERASYON YÖNETİMİ
-            </span>
+    <div className="min-h-screen bg-[#070504] text-white p-3 sm:p-6 font-sans select-none">
+      {/* BAŞLIK & CİRO */}
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-white/10 pb-4 mb-6 gap-3">
+        <div className="flex items-center gap-3">
+          <Link className="p-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-white/70" href="/">
+            <ArrowLeft className="w-4 h-4"/>
+          </Link>
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-mono tracking-[0.25em] text-[#d4af37] uppercase">BEROŞ RESTAURANT</span>
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            </div>
+            <h1 className="text-xl sm:text-2xl font-serif text-white">Canlı Yönetici & Kasa Terminali</h1>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-serif font-light text-white mt-1 flex items-center gap-3">
-            <span>Canlı Kasa & Mutfak Terminali</span>
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-          </h1>
         </div>
 
-        <div className="flex items-center gap-3 flex-wrap">
-          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-xs font-mono text-emerald-400">
+        <div className="flex items-center gap-2.5 flex-wrap">
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-bold">
             <TrendingUp className="w-3.5 h-3.5"/>
-            <span>Ciro: ₺{totalRevenue.toLocaleString("tr-TR")}</span>
-          </div>
-          <div className="px-3.5 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs font-mono text-white/70">
-            Aktif Masa: {activeTablesCount}
+            <span>Ciro: ₺{(report.totalRevenue || 0).toLocaleString("tr-TR")}</span>
           </div>
           <button
-            onClick={() => setSoundEnabled(!soundEnabled)}
-            className={`p-2.5 rounded-full border transition-all ${
-              soundEnabled
-                ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-400"
-                : "border-white/10 bg-white/5 text-white/40"
+            onClick={() => setSound(!sound)}
+            className={`p-2 rounded-full border transition-all ${
+              sound ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-400" : "border-white/10 bg-white/5 text-white/40"
             }`}
-            title="Sesli Servis Zili"
+            title="Sesli Uyarı Aç/Kapat"
           >
-            {soundEnabled ? <Volume2 className="w-4 h-4"/> : <VolumeX className="w-4 h-4"/>}
+            {sound ? <Volume2 className="w-4 h-4"/> : <VolumeX className="w-4 h-4"/>}
           </button>
-          <button
-            onClick={fetchData}
-            className="p-2.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/15 text-white/80 transition-all"
-            title="Yenile"
-          >
+          <button onClick={sync} className="p-2 rounded-full border border-white/10 bg-white/5 text-white/80">
             <RefreshCw className="w-4 h-4"/>
           </button>
         </div>
       </div>
 
+      {/* SEKME SEÇİMİ */}
       <div className="max-w-7xl mx-auto flex gap-2 mb-6">
         <button
-          onClick={() => setActiveTab("siparisler")}
-          className={`px-5 py-2.5 rounded-full text-xs font-mono tracking-wider transition-all ${
-            activeTab === "siparisler"
-              ? "bg-[#d4af37] text-black font-bold shadow-[0_0_15px_rgba(212,175,55,0.4)]"
-              : "bg-white/5 text-white/60 hover:text-white"
+          onClick={() => setTab("adisyonlar")}
+          className={`px-4 py-2 rounded-xl text-xs font-mono tracking-wider transition-all ${
+            tab === "adisyonlar" ? "bg-[#d4af37] text-black font-bold" : "bg-white/5 text-white/60"
           }`}
         >
-          SİPARİŞLER & ÇAĞRILAR ({orders.length + calls.length})
+          SİPARİŞ & ÇAĞRILAR ({orders.filter(o => o.status !== "kapandi").length + calls.length})
         </button>
         <button
-          onClick={() => setActiveTab("stok")}
-          className={`px-5 py-2.5 rounded-full text-xs font-mono tracking-wider transition-all flex items-center gap-2 ${
-            activeTab === "stok"
-              ? "bg-[#d4af37] text-black font-bold shadow-[0_0_15px_rgba(212,175,55,0.4)]"
-              : "bg-white/5 text-white/60 hover:text-white"
+          onClick={() => setTab("stok")}
+          className={`px-4 py-2 rounded-xl text-xs font-mono tracking-wider transition-all flex items-center gap-1.5 ${
+            tab === "stok" ? "bg-[#d4af37] text-black font-bold" : "bg-white/5 text-white/60"
           }`}
         >
           <Package className="w-3.5 h-3.5"/>
-          <span>MUTFAK STOK KONTROLÜ</span>
+          <span>STOK KONTROL</span>
         </button>
         <button
-          onClick={() => setActiveTab("rapor")}
-          className={`px-5 py-2.5 rounded-full text-xs font-mono tracking-wider transition-all flex items-center gap-2 ${
-            activeTab === "rapor"
-              ? "bg-[#d4af37] text-black font-bold shadow-[0_0_15px_rgba(212,175,55,0.4)]"
-              : "bg-white/5 text-white/60 hover:text-white"
+          onClick={() => setTab("rapor")}
+          className={`px-4 py-2 rounded-xl text-xs font-mono tracking-wider transition-all flex items-center gap-1.5 ${
+            tab === "rapor" ? "bg-[#d4af37] text-black font-bold" : "bg-white/5 text-white/60"
           }`}
         >
           <BarChart3 className="w-3.5 h-3.5"/>
-          <span>GÜN SONU & PERFORMANS RAPORU</span>
+          <span>GÜN SONU RAPORU</span>
         </button>
       </div>
 
-      {activeTab === "siparisler" && (
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* BEKLEYEN MASA ÇAĞRILARI */}
-          <div className="lg:col-span-5 space-y-4">
-            <div className="flex items-center justify-between border-b border-white/10 pb-2">
-              <h2 className="text-sm font-mono tracking-wider text-amber-400 flex items-center gap-2">
-                <Bell className="w-4 h-4"/>
-                <span>MASA ÇAĞRILARI ({calls.length})</span>
-              </h2>
-            </div>
-
-            <div className="space-y-3">
-              {calls.length === 0 ? (
-                <div className="p-8 text-center text-white/30 border border-white/5 rounded-2xl font-mono text-xs">
-                  Bekleyen garson veya hesap çağrısı yok.
-                </div>
-              ) : (
-                calls.map((c) => (
-                  <div
-                    key={c.id}
-                    className="p-4 rounded-2xl bg-amber-500/10 border-2 border-amber-500/50 flex items-center justify-between shadow-[0_0_25px_rgba(245,158,11,0.2)] animate-pulse"
-                  >
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xl font-serif font-bold text-white tracking-wide">
-                          {c.tableNo}
-                        </span>
-                        <span className="text-xs px-2.5 py-0.5 rounded-full bg-amber-500 text-black font-mono font-bold">
-                          {c.serviceType}
-                        </span>
-                      </div>
-                      <div className="text-xs font-mono text-white/60 flex items-center gap-1">
-                        <Clock className="w-3.5 h-3.5"/>
-                        <span>{c.time}</span>
-                      </div>
-                    </div>
-
-                    <button
-                      onClick={() => dismissCall(c.id)}
-                      className="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-mono text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 shadow-md"
-                    >
-                      <Check className="w-4 h-4"/>
-                      <span>Gidildi</span>
-                    </button>
+      {/* 1. SEKME: ADİSYONLAR VE ÇAĞRILAR */}
+      {tab === "adisyonlar" && (
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div className="lg:col-span-4 space-y-3">
+            <h2 className="text-xs font-mono tracking-wider text-amber-400 flex items-center gap-1.5 border-b border-white/10 pb-2">
+              <Bell className="w-4 h-4"/> BEKLEYEN MASA ÇAĞRILARI ({calls.length})
+            </h2>
+            {calls.length === 0 ? (
+              <div className="p-6 text-center text-xs font-mono text-white/30 border border-white/5 rounded-2xl">
+                Bekleyen çağrı bulunmuyor.
+              </div>
+            ) : (
+              calls.map((c) => (
+                <div key={c.id} className="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/50 flex justify-between items-center animate-pulse">
+                  <div>
+                    <span className="text-lg font-serif font-bold text-white mr-2">{c.tableNo}</span>
+                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-amber-500 text-black font-mono font-bold">{c.serviceType}</span>
+                    <span className="text-[11px] font-mono text-white/50 block mt-1">{c.time}</span>
                   </div>
-                ))
-              )}
-            </div>
-          </div>
-
-          {/* GELEN SİPARİŞ ADİSYONLARI */}
-          <div className="lg:col-span-7 space-y-4">
-            <div className="flex items-center justify-between border-b border-white/10 pb-2">
-              <h2 className="text-sm font-mono tracking-wider text-emerald-400 flex items-center gap-2">
-                <Utensils className="w-4 h-4"/>
-                <span>GELEN SİPARİŞLER ({orders.length})</span>
-              </h2>
-            </div>
-
-            <div className="space-y-4">
-              {orders.length === 0 ? (
-                <div className="p-8 text-center text-white/30 border border-white/5 rounded-2xl font-mono text-xs">
-                  Henüz verilmiş bir sipariş bulunmuyor.
+                  <button onClick={() => dismissCall(c.id)} className="px-3.5 py-1.5 rounded-xl bg-amber-500 text-black font-mono text-xs font-bold hover:bg-amber-400">
+                    Gidildi ✓
+                  </button>
                 </div>
-              ) : (
-                orders.map((ord) => (
-                  <div
-                    key={ord.id}
-                    className={`p-5 rounded-2xl border transition-all ${
-                      ord.status === "teslim_edildi"
-                        ? "bg-white/[0.02] border-white/10 opacity-50"
-                        : "bg-[#14100c] border-[#d4af37]/40 shadow-[0_10px_35px_rgba(0,0,0,0.85)]"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
-                      <div className="flex items-center gap-3">
-                        <span className="text-2xl font-serif text-[#d4af37] font-semibold">
-                          {ord.tableNo}
-                        </span>
-                        <span className="text-xs font-mono text-white/50">{ord.time}</span>
-                      </div>
-
-                      <div className="flex items-center gap-3">
-                        <span className="font-mono text-base font-bold text-white">
-                          ₺{ord.totalAmount}
-                        </span>
-                        {ord.status === "teslim_edildi" ? (
-                          <span className="text-xs px-3 py-1 rounded-full bg-white/10 text-white/60 font-mono">
-                            Teslim Edildi ✓
-                          </span>
-                        ) : (
-                          <button
-                            onClick={() => updateOrderStatus(ord.id, "teslim_edildi")}
-                            className="px-3.5 py-1.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-black font-mono text-xs font-bold transition-all active:scale-95 shadow-md"
-                          >
-                            Teslim Et
-                          </button>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className="space-y-1.5 font-mono text-xs">
-                      {ord.items.map((item: any, idx: number) => (
-                        <div key={idx} className="flex justify-between text-white/85">
-                          <span>
-                            <strong className="text-emerald-400 font-bold">{item.quantity}x</strong>{" "}
-                            {item.name}
-                          </span>
-                          <span className="text-white/40">₺{item.price * item.quantity}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))
-              )}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* SAYISAL STOK YÖNETİMİ */}
-      {activeTab === "stok" && (
-        <div className="max-w-7xl mx-auto space-y-4">
-          <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 text-xs text-white/70 font-mono">
-            💡 Mutfaktaki adetleri girin. Müşteriler sipariş verdikçe stok otomatik azalır; 0 adede indiğinde menüde doğrudan <strong className="text-red-400 font-bold">&ldquo;TÜKENDİ&rdquo;</strong> olarak kilitlenir.
+              ))
+            )}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-            {PRODUCT_LIST.map((prod) => {
-              const item = inventory[prod.id] || { count: 50, isUnlimited: false, isLocked: false };
-              const isFinished = !item.isUnlimited && (item.count <= 0 || item.isLocked);
-
-              return (
-                <div
-                  key={prod.id}
-                  className={`p-4 rounded-2xl border transition-all ${
-                    isFinished
-                      ? "bg-red-950/20 border-red-500/40"
-                      : "bg-[#120e0b] border-white/10 hover:border-[#d4af37]/40"
-                  }`}
-                >
-                  <div className="flex items-start justify-between gap-2 mb-3">
+          <div className="lg:col-span-8 space-y-3">
+            <h2 className="text-xs font-mono tracking-wider text-emerald-400 flex items-center gap-1.5 border-b border-white/10 pb-2">
+              <Utensils className="w-4 h-4"/> AKTİF MASALAR & SİPARİŞLER
+            </h2>
+            {orders.filter(o => o.status !== "kapandi").length === 0 ? (
+              <div className="p-8 text-center text-xs font-mono text-white/30 border border-white/5 rounded-2xl">
+                Aktif sipariş bulunmuyor.
+              </div>
+            ) : (
+              orders.filter(o => o.status !== "kapandi").map((ord) => (
+                <div key={ord.id} className="p-4 rounded-2xl bg-[#14100c] border border-white/10 space-y-3">
+                  <div className="flex justify-between items-center border-b border-white/10 pb-2.5">
                     <div>
-                      <h4 className="font-serif text-sm text-white font-medium">{prod.name}</h4>
-                      <span className="text-[11px] font-mono text-white/40">ID: {prod.id}</span>
+                      <span className="text-2xl font-serif text-[#d4af37] font-semibold">{ord.tableNo}</span>
+                      <span className="text-xs font-mono text-white/50 ml-3">{ord.time}</span>
                     </div>
-
-                    <span
-                      className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-full ${
-                        isFinished
-                          ? "bg-red-500/20 text-red-400 border border-red-500/40"
-                          : item.isUnlimited
-                          ? "bg-blue-500/20 text-blue-400 border border-blue-500/40"
-                          : "bg-emerald-500/20 text-emerald-400 border border-emerald-500/40"
-                      }`}
-                    >
-                      {isFinished ? "TÜKENDİ" : item.isUnlimited ? "SINIRSIZ" : `${item.count} ADET`}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-base font-mono font-bold text-white">₺{ord.totalAmount}</span>
+                      <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full ${
+                        ord.status === "servis_edildi" ? "bg-blue-500/20 text-blue-400" : "bg-amber-500/20 text-amber-400"
+                      }`}>
+                        {ord.status === "servis_edildi" ? "SERVİS EDİLDİ" : "HAZIRLANIYOR"}
+                      </span>
+                    </div>
                   </div>
 
-                  <div className="flex items-center justify-between gap-2 pt-2 border-t border-white/5">
-                    {item.isUnlimited ? (
-                      <span className="text-xs font-mono text-white/50 flex items-center gap-1.5 py-1">
-                        <InfinityIcon className="w-4 h-4 text-blue-400"/>
-                        <span>Sipariş Limiti Yok</span>
-                      </span>
-                    ) : (
-                      <div className="flex items-center gap-2">
-                        <button
-                          onClick={() => updateStockNumber(prod.id, item.count - 5)}
-                          className="px-2 py-1 rounded-lg bg-white/5 hover:bg-white/15 text-white/70 font-mono text-xs"
-                          title="5 Azalt"
-                        >
-                          -5
-                        </button>
-                        <button
-                          onClick={() => updateStockNumber(prod.id, item.count - 1)}
-                          className="w-7 h-7 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center text-white"
-                          title="1 Azalt"
-                        >
-                          <Minus className="w-3.5 h-3.5"/>
-                        </button>
-                        <input
-                          type="number"
-                          value={item.count}
-                          onChange={(e) => updateStockNumber(prod.id, parseInt(e.target.value) || 0)}
-                          className="w-14 bg-black/60 border border-white/20 rounded-lg py-1 text-center font-mono text-xs text-white"
-                        />
-                        <button
-                          onClick={() => updateStockNumber(prod.id, item.count + 1)}
-                          className="w-7 h-7 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center text-white"
-                          title="1 Arttır"
-                        >
-                          <Plus className="w-3.5 h-3.5"/>
-                        </button>
-                        <button
-                          onClick={() => updateStockNumber(prod.id, item.count + 10)}
-                          className="px-2 py-1 rounded-lg bg-white/5 hover:bg-white/15 text-white/70 font-mono text-xs"
-                          title="10 Ekle"
-                        >
-                          +10
-                        </button>
+                  <div className="space-y-1 font-mono text-xs">
+                    {ord.items.map((it: any, idx: number) => (
+                      <div key={idx} className="flex justify-between text-white/80">
+                        <span><b className="text-emerald-400">{it.quantity}x</b> {it.name}</span>
+                        <span className="text-white/40">₺{it.price * it.quantity}</span>
                       </div>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-white/5">
+                    {ord.status === "hazirlaniyor" && (
+                      <button
+                        onClick={() => updateOrderStatus(ord.id, "servis_edildi")}
+                        className="px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-mono text-xs font-bold flex items-center gap-1.5"
+                      >
+                        <Check className="w-3.5 h-3.5"/> Masaya Servis Et
+                      </button>
+                    )}
+                    {ord.status === "servis_edildi" && (
+                      <span className="text-xs font-mono text-emerald-400 flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-500/10">
+                        <CheckCircle2 className="w-3.5 h-3.5"/> Masada Tüketiliyor
+                      </span>
                     )}
 
-                    <div className="flex items-center gap-1">
+                    <div className="ml-auto flex items-center gap-2">
                       <button
-                        onClick={() => toggleStockUnlimited(prod.id)}
-                        className={`p-1.5 rounded-lg border transition-all ${
-                          item.isUnlimited
-                            ? "border-blue-500/40 bg-blue-500/20 text-blue-400"
-                            : "border-white/10 bg-white/5 text-white/40 hover:text-white"
-                        }`}
-                        title="Sınırsız / Adetli Değiştir"
+                        onClick={() => updateOrderStatus(ord.id, "kapandi", "Nakit")}
+                        className="px-3 py-1.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-mono text-xs font-bold flex items-center gap-1"
                       >
-                        <InfinityIcon className="w-4 h-4"/>
+                        <Banknote className="w-3.5 h-3.5"/> Nakit Kapat
                       </button>
                       <button
-                        onClick={() => toggleStockLock(prod.id)}
-                        className={`p-1.5 rounded-lg border transition-all ${
-                          item.isLocked
-                            ? "border-red-500/40 bg-red-500/20 text-red-400"
-                            : "border-white/10 bg-white/5 text-white/40 hover:text-white"
-                        }`}
-                        title={item.isLocked ? "Kilidi Aç" : "Hemen Bitir"}
+                        onClick={() => updateOrderStatus(ord.id, "kapandi", "Kredi Kartı")}
+                        className="px-3 py-1.5 rounded-xl bg-sky-700 hover:bg-sky-600 text-white font-mono text-xs font-bold flex items-center gap-1"
                       >
-                        {item.isLocked ? <Lock className="w-4 h-4"/> : <Unlock className="w-4 h-4"/>}
+                        <CreditCard className="w-3.5 h-3.5"/> Kart Kapat
                       </button>
                     </div>
                   </div>
                 </div>
-              );
-            })}
+              ))
+            )}
           </div>
         </div>
       )}
 
-      {/* GÜN SONU & PERFORMANS RAPORU */}
-      {activeTab === "rapor" && (
+      {/* 2. SEKME: STOK KONTROLÜ */}
+      {tab === "stok" && (
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          {Object.entries(inventory).map(([key, item]: [string, any]) => (
+            <div key={key} className={`p-4 rounded-2xl border ${item.count <= 0 || item.isLocked ? "bg-red-950/20 border-red-500/40" : "bg-[#120e0b] border-white/10"}`}>
+              <div className="flex items-start justify-between mb-2">
+                <span className="font-serif text-sm text-white capitalize">{key.replace(/-/g, " ")}</span>
+                <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full ${item.count <= 0 || item.isLocked ? "bg-red-500/20 text-red-400" : "bg-emerald-500/20 text-emerald-400"}`}>
+                  {item.isLocked ? "KİLİTLİ" : item.isUnlimited ? "SINIRSIZ" : `${item.count} ADET`}
+                </span>
+              </div>
+              <div className="flex items-center justify-between pt-2 border-t border-white/5">
+                <div className="flex items-center gap-2">
+                  <button onClick={() => updateStockNumber(key, item.count - 1)} className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center font-bold text-sm">-</button>
+                  <span className="font-mono text-xs w-8 text-center">{item.count}</span>
+                  <button onClick={() => updateStockNumber(key, item.count + 1)} className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center font-bold text-sm">+</button>
+                </div>
+                <button onClick={() => toggleStockLock(key)} className="p-2 rounded-lg border border-white/10 text-xs">
+                  {item.isLocked ? <Lock className="w-4 h-4 text-red-400"/> : <Unlock className="w-4 h-4 text-white/50"/>}
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* 3. SEKME: GÜN SONU VE RAPORLAR */}
+      {tab === "rapor" && (
         <div className="max-w-7xl mx-auto space-y-6">
-          {/* Üst Özet Kartları */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="p-5 rounded-2xl bg-[#120e0b] border border-white/10">
               <span className="text-xs font-mono text-white/50 block">GÜNLÜK TOPLAM CİRO</span>
-              <span className="text-2xl sm:text-3xl font-serif text-[#d4af37] font-bold mt-1 block">
-                ₺{reportData.totalRevenue?.toLocaleString("tr-TR") || 0}
-              </span>
+              <span className="text-3xl font-serif text-[#d4af37] font-bold mt-1 block">₺{(report.totalRevenue || 0).toLocaleString("tr-TR")}</span>
+              <span className="text-[11px] font-mono text-emerald-400 mt-1 block">Kapanan: ₺{(report.closedRevenue || 0).toLocaleString("tr-TR")}</span>
             </div>
-
             <div className="p-5 rounded-2xl bg-[#120e0b] border border-white/10">
-              <span className="text-xs font-mono text-white/50 block">TOPLAM SİPARİŞ</span>
-              <span className="text-2xl sm:text-3xl font-serif text-white font-bold mt-1 block">
-                {reportData.totalOrders || 0} Adisyon
-              </span>
+              <span className="text-xs font-mono text-white/50 block">TOPLAM ADİSYON</span>
+              <span className="text-3xl font-serif text-white font-bold mt-1 block">{report.totalOrders || 0} Adet</span>
+              <span className="text-[11px] font-mono text-amber-400 mt-1 block">Açık: {report.activeOrders || 0} / Kapanan: {report.closedOrders || 0}</span>
             </div>
-
             <div className="p-5 rounded-2xl bg-[#120e0b] border border-white/10">
-              <span className="text-xs font-mono text-white/50 block">GARSON ORT. YANIT SÜRESİ</span>
-              <span className="text-2xl sm:text-3xl font-serif text-emerald-400 font-bold mt-1 block">
-                {reportData.avgResponseSec > 60
-                  ? `${Math.floor(reportData.avgResponseSec / 60)} dk ${reportData.avgResponseSec % 60} sn`
-                  : `${reportData.avgResponseSec} sn`}
-              </span>
+              <span className="text-xs font-mono text-white/50 block">GARSON ORTALAMA YANIT</span>
+              <span className="text-3xl font-serif text-emerald-400 font-bold mt-1 block">{report.avgResponseSec || 0} Saniye</span>
+              <span className="text-[11px] font-mono text-white/40 mt-1 block">Hızlı servis standardı</span>
             </div>
-
             <div className="p-5 rounded-2xl bg-[#120e0b] border border-white/10">
-              <span className="text-xs font-mono text-white/50 block">TOPLAM MASA ÇAĞRISI</span>
-              <span className="text-2xl sm:text-3xl font-serif text-amber-400 font-bold mt-1 block">
-                {reportData.totalCalls || 0} Çağrı
-              </span>
+              <span className="text-xs font-mono text-white/50 block">TOPLAM SERVİS ÇAĞRISI</span>
+              <span className="text-3xl font-serif text-amber-400 font-bold mt-1 block">{report.totalCalls || 0} Çağrı</span>
+              <span className="text-[11px] font-mono text-white/40 mt-1 block">Bekleyen: {report.activeCalls || 0}</span>
             </div>
           </div>
 
-          {/* En Çok Satanlar Lider Tablosu */}
-          <div className="p-6 rounded-2xl bg-[#120e0b] border border-white/10 space-y-4">
-            <h3 className="text-sm font-mono tracking-wider text-[#d4af37] uppercase flex items-center gap-2">
-              <span>🏆 EN ÇOK SATAN LEZZETLER (LİDER TABLOSU)</span>
-            </h3>
-
+          <div className="p-6 rounded-2xl bg-[#120e0b] border border-white/10 space-y-3">
+            <h3 className="text-xs font-mono tracking-wider text-[#d4af37] uppercase">🏆 EN ÇOK SATAN LEZZETLER</h3>
             <div className="divide-y divide-white/5">
-              {(reportData.topDishes || []).length === 0 ? (
-                <div className="py-6 text-center text-white/40 font-mono text-xs">
-                  Henüz kaydedilmiş sipariş verisi yok.
-                </div>
+              {(report.topDishes || []).length === 0 ? (
+                <div className="text-xs font-mono text-white/40 py-4">Henüz sipariş kaydı oluşmadı.</div>
               ) : (
-                (reportData.topDishes || []).map((dish: any, idx: number) => (
-                  <div key={idx} className="py-3 flex items-center justify-between text-xs font-mono">
+                report.topDishes.map((d: any, idx: number) => (
+                  <div key={idx} className="py-3 flex justify-between items-center text-xs font-mono">
                     <div className="flex items-center gap-3">
-                      <span className="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center text-[#d4af37] font-bold">
-                        {idx + 1}
-                      </span>
-                      <span className="text-white text-sm font-serif">{dish.name}</span>
+                      <span className="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center text-[#d4af37] font-bold">{idx + 1}</span>
+                      <span className="text-white text-sm font-serif">{d.name}</span>
                     </div>
                     <div className="flex items-center gap-6">
-                      <span className="text-emerald-400 font-bold">{dish.count} Porsiyon Satıldı</span>
-                      <span className="text-white/60 font-semibold w-24 text-right">
-                        ₺{dish.total?.toLocaleString("tr-TR")}
-                      </span>
+                      <span className="text-emerald-400 font-bold">{d.count} Porsiyon</span>
+                      <span className="text-white/70 w-24 text-right">₺{d.total?.toLocaleString("tr-TR")}</span>
                     </div>
                   </div>
                 ))
