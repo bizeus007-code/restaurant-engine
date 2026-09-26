@@ -1,0 +1,2474 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>LOQUM ET — Bitişik Çift A4 Masa Menüsü (A3 Landscape 420x297 mm • Manuel Fiyatlı Matbaa Baskı)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    @page {
+      size: 420mm 297mm;
+      margin: 0;
+    }
+
+    html, body {
+      width: 420mm;
+      height: 297mm;
+      margin: 0;
+      padding: 0;
+      background-color: #FAF8F5;
+      font-family: 'Montserrat', sans-serif;
+      color: #1A1A1A;
+      -webkit-font-smoothing: antialiased;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      overflow: hidden;
+    }
+
+    /* A3 Landscape Spread Container (420 x 297 mm) */
+    .master-sheet {
+      width: 420mm;
+      height: 297mm;
+      max-width: 420mm;
+      max-height: 297mm;
+      display: flex;
+      position: relative;
+      background: #FAF8F5;
+      overflow: hidden;
+    }
+
+    /* Background texture overlay */
+    .master-sheet::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 25% 30%, rgba(255,255,255,0.7) 0%, transparent 60%),
+                  radial-gradient(circle at 75% 70%, rgba(255,255,255,0.6) 0%, transparent 60%),
+                  linear-gradient(180deg, rgba(122,92,40,0.015) 0%, rgba(122,92,40,0.035) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Central Folding Axis Guide (Exactly at 210mm) */
+    .crease-axis {
+      position: absolute;
+      left: 210mm;
+      top: 5mm;
+      bottom: 5mm;
+      width: 0;
+      border-left: 0.75px dashed rgba(122, 92, 40, 0.4);
+      z-index: 40;
+      pointer-events: none;
+    }
+    .crease-mark-top {
+      position: absolute;
+      left: 210mm;
+      top: 1.2mm;
+      transform: translateX(-50%);
+      font-size: 5.5px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      color: #7A5C28;
+      text-transform: uppercase;
+      z-index: 41;
+      white-space: nowrap;
+    }
+    .crease-mark-bottom {
+      position: absolute;
+      left: 210mm;
+      bottom: 1.2mm;
+      transform: translateX(-50%);
+      font-size: 5.5px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      color: #7A5C28;
+      text-transform: uppercase;
+      z-index: 41;
+      white-space: nowrap;
+    }
+
+    /* Individual Wings (210 x 297 mm each) */
+    .wing {
+      width: 210mm;
+      height: 297mm;
+      flex: 0 0 210mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      z-index: 2;
+      box-sizing: border-box;
+      padding: 2.8mm 5.5mm 2.2mm 5.5mm;
+      overflow: hidden;
+    }
+
+    /* Inner Framing Border for each Wing */
+    .wing-frame {
+      position: absolute;
+      inset: 2.0mm;
+      border: 0.5px solid rgba(122, 92, 40, 0.28);
+      pointer-events: none;
+      z-index: 3;
+    }
+    .wing-corner {
+      position: absolute;
+      color: #7A5C28;
+      font-size: 5.5px;
+      line-height: 1;
+      z-index: 4;
+    }
+    .corner-tl { top: 1.2mm; left: 1.2mm; }
+    .corner-tr { top: 1.2mm; right: 1.2mm; }
+    .corner-bl { bottom: 1.2mm; left: 1.2mm; }
+    .corner-br { bottom: 1.2mm; right: 1.2mm; }
+
+    /* Wing Header */
+    .wing-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 0.7px solid rgba(122, 92, 40, 0.4);
+      padding-bottom: 0.8mm;
+      margin-bottom: 0.8mm;
+      position: relative;
+      z-index: 5;
+    }
+    .brand-box {
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 11.5px;
+      font-weight: 800;
+      letter-spacing: 1.0px;
+      color: #1A1A1A;
+      line-height: 1.05;
+    }
+    .brand-title span {
+      color: #7A5C28;
+    }
+    .brand-sub {
+      font-size: 4.8px;
+      font-weight: 700;
+      letter-spacing: 1.3px;
+      color: #7A5C28;
+      text-transform: uppercase;
+      margin-top: 0.2px;
+    }
+    .header-center-info {
+      text-align: center;
+      flex: 1;
+      padding: 0 2.5mm;
+    }
+    .badge-pill {
+      display: inline-block;
+      font-size: 4.8px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      color: #7A5C28;
+      background: rgba(122, 92, 40, 0.08);
+      border: 0.5px solid rgba(122, 92, 40, 0.35);
+      border-radius: 8px;
+      padding: 0.4px 4px;
+      text-transform: uppercase;
+      margin-bottom: 0.3px;
+    }
+    .header-main-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 6.8px;
+      font-weight: 700;
+      color: #2C2523;
+      letter-spacing: 0.2px;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+    .header-sub-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5.8px;
+      font-style: italic;
+      color: #554D40;
+      margin-top: 0.2px;
+      line-height: 1.05;
+    }
+    .header-meta-box {
+      text-align: right;
+      font-size: 4.8px;
+      color: #5A5244;
+      line-height: 1.25;
+    }
+    .header-meta-box strong {
+      color: #1A1A1A;
+      font-weight: 700;
+    }
+
+    /* 3-Column Grid inside Wing (6 wide columns total across sheet, ~61mm each) */
+    .columns-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 3.2mm;
+      flex: 1;
+      min-height: 0;
+      align-content: stretch;
+      position: relative;
+      z-index: 5;
+    }
+    .menu-col {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      justify-content: flex-start;
+    }
+
+    /* Category Blocks */
+    .cat-block {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0.6mm;
+    }
+    .cat-block:last-child {
+      margin-bottom: 0;
+    }
+    .cat-heading {
+      display: flex;
+      align-items: center;
+      gap: 2.5px;
+      border-bottom: 0.55px solid rgba(122, 92, 40, 0.35);
+      padding-bottom: 0.3px;
+      margin-bottom: 0.4mm;
+      margin-top: 0.3mm;
+    }
+    .cat-block:first-child .cat-heading {
+      margin-top: 0;
+    }
+    .cat-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 5.9px;
+      font-weight: 800;
+      color: #7A5C28;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+    .cat-line {
+      flex: 1;
+      height: 0.5px;
+      background: linear-gradient(to right, rgba(122, 92, 40, 0.4), transparent);
+    }
+
+    /* Item Row (Full Content, ZERO Truncation, 60mm column width) */
+    .item-row {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0.28mm;
+      position: relative;
+    }
+    .item-row:last-child {
+      margin-bottom: 0;
+    }
+    .item-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 2px;
+      width: 100%;
+    }
+    .item-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 7.0px;
+      font-weight: 700;
+      color: #1A1A1A;
+      letter-spacing: 0.05px;
+      text-transform: uppercase;
+      line-height: 1.1;
+      white-space: normal;
+    }
+    .item-dots {
+      flex-grow: 1;
+      border-bottom: 0.5px dotted rgba(122, 92, 40, 0.3);
+      margin: 0 1.5px 1.5px 1.5px;
+      min-width: 3px;
+    }
+    .manual-slot {
+      font-family: 'Montserrat', monospace, sans-serif;
+      font-size: 5.6px;
+      font-weight: 700;
+      color: #7A5C28;
+      letter-spacing: 0.4px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      background: rgba(122, 92, 40, 0.04);
+      border: 0.5px solid rgba(122, 92, 40, 0.4);
+      border-radius: 1.5px;
+      padding: 0.1px 2px;
+      text-align: center;
+    }
+    .item-desc {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 5.4px;
+      line-height: 1.12;
+      color: #4A4237;
+      margin-top: 0.1mm;
+      word-break: break-word;
+    }
+    .item-meta-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2px;
+      margin-top: 0.1mm;
+      font-size: 4.6px;
+    }
+    .item-gramaj-cal {
+      color: #756D60;
+      font-weight: 500;
+      font-size: 4.6px;
+    }
+    .item-allergen {
+      font-size: 4.6px;
+      font-weight: 700;
+      color: #8C2525;
+      background: rgba(122, 92, 40, 0.06);
+      border: 0.5px solid rgba(122, 92, 40, 0.35);
+      padding: 0.1px 2px;
+      border-radius: 1.5px;
+      white-space: nowrap;
+    }
+
+    /* Wing Footer */
+    .wing-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 0.6px solid rgba(122, 92, 40, 0.3);
+      padding-top: 0.7mm;
+      margin-top: 0.7mm;
+      font-size: 4.9px;
+      color: #635A4D;
+      position: relative;
+      z-index: 5;
+    }
+    .footer-left {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+    .footer-right {
+      font-weight: 700;
+      color: #7A5C28;
+      letter-spacing: 0.4px;
+    }
+
+    @media print {
+      body {
+        background: transparent !important;
+        padding: 0 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="master-sheet">
+    <!-- Central Crease Axis Guide -->
+    <div class="crease-axis"></div>
+    <div class="crease-mark-top">▲ KATLAMA ÇİZGİSİ (210 MM) ▲</div>
+    <div class="crease-mark-bottom">▼ KATLAMA ÇİZGİSİ (210 MM) ▼</div>
+
+    <!-- LEFT WING (210 x 297 mm) -->
+    <section class="wing left-wing">
+      <div class="wing-frame"></div>
+      <div class="wing-corner corner-tl">✦</div>
+      <div class="wing-corner corner-tr">✦</div>
+      <div class="wing-corner corner-bl">✦</div>
+      <div class="wing-corner corner-br">✦</div>
+
+      <!-- Header -->
+      <header class="wing-header">
+        <div class="brand-box">
+          <div class="brand-title">LOQUM <span>ET</span></div>
+          <div class="brand-sub">GELENEKSEL TAŞ FIRIN & ET RESTORANI</div>
+        </div>
+        <div class="header-center-info">
+          <div class="badge-pill">SOL KANAT (ÖN PANEL • 210×297 MM)</div>
+          <div class="header-main-title">GELENEKSEL TAŞ FIRIN, KÖY KAHVALTISI & ZIRH KEBAPLARI</div>
+          <div class="header-sub-desc">Doğal Şarküteri • İtalyan Makarnaları & Taze Salatalar • Taş Fırın Pideleri • Zırh Kıyma Kebapları</div>
+        </div>
+        <div class="header-meta-box">
+          <strong>KURUMSAL MENÜ</strong><br>KAYAPINAR / DİYARBAKIR
+        </div>
+      </header>
+
+      <!-- 3-Column Content Body -->
+      <main class="columns-grid">
+        <!-- Column 1 -->
+        <div class="menu-col">
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">SERPME KÖY KAHVALTISI & ÖZEL YUMURTALAR (5)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KAVURMA">KAVURMA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Bakır tavada kendi doğal yağında ağır ateşte kavrulmuş geleneksel kuzu/dana kavurma, tırnak pide eşliğinde.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">180 gr • 520 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="OMLET">OMLET</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Taze çiftlik yumurtaları ve halis tereyağı ile tavada kabartılarak hazırlanan taptaze omlet, domates ve salatalık ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">160 gr • 300 kcal</span>
+                <span class="item-allergen">[Yumurta, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="MENEMEN">MENEMEN</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Bakır tavada ince kıyılmış tatlı köy biberi, sulu tarla domatesi ve tereyağında pişirilen köy yumurtası ile geleneksel menemen.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">200 gr • 280 kcal</span>
+                <span class="item-allergen">[Yumurta, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ÇOCUK MENÜSÜ">ÇOCUK MENÜSÜ</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Çocuklar için özel hazırlanmış 3 adet mini ızgara kasap köfte, çıtır patates kızartması ve meyve suyu eşliğinde.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">180 gr • 500 kcal</span>
+                <span class="item-allergen">[Gluten, Yumurta]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SERPME KAHVALTI">SERPME KAHVALTI</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Aşk reçeli, çilek reçeli, vişne reçeli, doğal petek bal, yayık tereyağı, kaymak, peynir çeşitleri, zeytinler, taş fırın pidesi ve sınırsız çay.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">2 Kişilik • 1100 kcal</span>
+                <span class="item-allergen">[Süt, Yumurta]</span>
+              </div>
+            </div>
+          </div>
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">MAKARNALAR & TAZE GURME SALATALAR (12)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="FETTUCCİNE ALFREDO ETLİ">FETTUCCİNE ALFREDO ETLİ</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">İtalyan fettuccine makarna, jülyen dana bonfile şeritleri, taze mantar, krema sosu ve toz parmesan.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">300 gr • 760 kcal</span>
+                <span class="item-allergen">[Gluten, Süt, Mantar]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="FETTUCCİNE ALFREDO TAVUKLU">FETTUCCİNE ALFREDO TAVUKLU</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Fettuccine makarna, ızgara tavuk fileto parçaları, mantar, sarımsaklı krema sosu ve parmesan peyniri.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">300 gr • 680 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="BONFİLE PARÇACIKLI LOGOTONİ">BONFİLE PARÇACIKLI LOGOTONİ</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Rigatoni boru makarna, sotelenmiş dana bonfile parçaları, fesleğenli domates sosu ve parmesan.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">280 gr • 640 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="RİGOTONİ BOLONEZ">RİGOTONİ BOLONEZ</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Rigatoni makarna, geleneksel ağır ateşte pişen dana kıymalı bolonez sos ve parmesan peyniri.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">280 gr • 600 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="BONFİLE SALATA">BONFİLE SALATA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Taze roka, kuzu kulağı, nar ekşisi, sızma zeytinyağı sosu ve sıcak ızgara bonfile dilimleri.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">280 gr • 450 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="TAVUKLU SEZAR SALATA">TAVUKLU SEZAR SALATA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Gevrek marul yaprakları, ızgara tavuk göğsü, fırınlanmış kruton ekmek, parmesan ve orijinal Sezar sosu.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">260 gr • 420 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="STEAK SALATA">STEAK SALATA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Akdeniz yeşillikleri, çeri domates, taze roka, ceviz, parmesan pulları ve ızgara dilim dana steak parçaları.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">280 gr • 470 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="IZGARA TAVUKLU SALATA">IZGARA TAVUKLU SALATA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Mevsim yeşillikleri, çeri domates, taze roka, salatalık ve ızgara marine tavuk dilimleri, zeytinyağı limon ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">260 gr • 360 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="IZGARA HELLİM PEYNİRLİ SALATA">IZGARA HELLİM PEYNİRLİ SALATA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Izgarada hafif kızartılmış Kıbrıs hellim peyniri dilimleri, Akdeniz yeşillikleri, çeri domates ve balzamik sos.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">240 gr • 390 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="PATATES CİPSİ">PATATES CİPSİ</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Altın sarısı çıtır patates kızartması, özel baharat çeşnisi ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">200 gr • 410 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SEZAR SALATA">SEZAR SALATA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Taze marul, çıtır kruton ekmekler, Sezar sos ve rende parmesan peyniri.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">220 gr • 340 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="TON BALIKLI SALATA">TON BALIKLI SALATA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Taze Akdeniz yeşillikleri, tane mısır, çeri domates, zeytin, kapari ve lezzetli ton balığı parçaları.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">250 gr • 380 kcal</span>
+                <span class="item-allergen">[Balık]</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Column 2 -->
+        <div class="menu-col">
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">TAŞ FIRIN KUZULAR (6 SAAT DEMLEME) (2)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KUZU KOL">KUZU KOL</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Taş fırında odun ateşinde 6 saat ağır ağır pişen kemikli kuzu kol, tel tel ayrılan lokum kıvamında; fırın patates ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">1200 gr • 1850 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KUZU GERDAN">KUZU GERDAN</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Taş fırında nar gibi kızarmış, yumuşacık sulu kuzu gerdan eti, fırınlanmış kök sebzeler ve taze kekik ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">1200 gr • 1750 kcal</span>
+                <span></span>
+              </div>
+            </div>
+          </div>
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">ODUN ATEŞİNDE TAŞ TABANLI PİDELER & ÇITIR LAHMACUNLAR (14)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="LAHMACUN (1 ADET)">LAHMACUN (1 ADET)</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">İncecik çıtır taş fırın hamuru üzerine zırhta çekilmiş dana/kuzu kıyma, kapya biber, maydanoz, domates ve özel baharatlar.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">1 Adet (120 gr) • 260 kcal</span>
+                <span class="item-allergen">[Gluten]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KARIŞIK LAHMACUN">KARIŞIK LAHMACUN</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Özel zırh kıyması, ekstra baharatlar ve sarımsak dokunuşuyla hazırlanan bol malzemeli lahmacun.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">1 Adet (140 gr) • 290 kcal</span>
+                <span class="item-allergen">[Gluten]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KIYMALI PİDE">KIYMALI PİDE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Taş fırında uzatılmış çıtır mayalı hamur, zırh dana kıyma, soğan, biber ve taze domates harcı.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">1 Porsiyon • 580 kcal</span>
+                <span class="item-allergen">[Gluten]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KAŞARLI PİDE">KAŞARLI PİDE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Taş fırında uzatılmış çıtır pide hamuru üzerinde nar gibi erimiş bol yağlı kaşar peyniri ve tereyağı kenarlar.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">1 Porsiyon • 640 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KUŞBAŞI PİDE">KUŞBAŞI PİDE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Bıçak arası doğranmış marine dana but eti parçaları, yeşil biber, domates ve baharatlar ile taş fırında pişen pide.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">1 Porsiyon • 610 kcal</span>
+                <span class="item-allergen">[Gluten]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KARIŞIK PİDE">KARIŞIK PİDE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Kıymalı, kuşbaşılı ve bol kaşarlı harçların tek pidede buluştuğu zengin taş fırın pidesi.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">1 Porsiyon • 710 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SUCUKLU PİDE">SUCUKLU PİDE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Dilimlenmiş yerli kasap sucuğu ile fırınlanan çıtır pide.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">1 Porsiyon • 590 kcal</span>
+                <span class="item-allergen">[Gluten]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SUCUKLU KAŞARLI PİDE">SUCUKLU KAŞARLI PİDE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Yerli kasap sucuğu dilimleri ve erimiş bol kaşar peynirinin fırından sıcak lezzeti.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">1 Porsiyon • 680 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="FINDIK LAHMACUN">FINDIK LAHMACUN</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Atıştırmalık ve kebap öncesi için taş fırında çıtır pişirilen minik fındık lahmacun (1 adet).</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">1 Adet (50 gr) • 110 kcal</span>
+                <span class="item-allergen">[Gluten]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KAVURMALI KAŞARLI PİDE">KAVURMALI KAŞARLI PİDE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Geleneksel kuzu/dana kavurma parçaları ve bol erimiş kaşar peyniri ile taş fırında pişen efsane lezzet.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">1 Porsiyon • 720 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KARIŞIK TABAK ALTI">KARIŞIK TABAK ALTI</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Kebapların altına serilen fındık lahmacun ve minik çıtır lavaş tabağı.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">50 gr • 110 kcal</span>
+                <span class="item-allergen">[Gluten]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KIYMALI KAŞARLI PİDE">KIYMALI KAŞARLI PİDE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Zırh dana kıyma harcı ve üzerinde uzayan eritilmiş kaşar peyniri.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">1 Porsiyon • 660 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="LOQUM PİDE">LOQUM PİDE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Dana kuşbaşı, kavurma, eritilmiş kaşar peyniri, renkli biberler ve şefin özel baharatlarıyla hazırlanan imza pide.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">1 Porsiyon • 740 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KAŞARLI KUŞBAŞI PİDE">KAŞARLI KUŞBAŞI PİDE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Bıçak arası dana eti parçaları ve üzerinde erimiş bol kaşar peynirinin taş fırında mükemmel buluşması.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">1 Porsiyon • 690 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Column 3 -->
+        <div class="menu-col">
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">GELENEKSEL ZIRH KEBAPLARI (KLASİK & ŞİŞLER) (18)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ÇITIR YAĞLI KARA">ÇITIR YAĞLI KARA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">280-300 gr kuzu sırtının yağlı çıtır kısmı kömürde nar gibi kızartılır, hafif yoğurt sos, mantar sos ve taze domates ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">280-300 gr • 700 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ADANA">ADANA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Zırhta çekilmiş erkek kuzu kaburga eti, kuyruk yağı, taze kapya biberi ve kaya tuzu. Közlenmiş biber, sumaklı soğan ve lavaş ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">200 gr • 560 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SADE KEBAP">SADE KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Saf zırh kuzu eti ve kuyruk yağı ile yoğrulmuş sade kömür ateşi kebabı; köz biber, sumaklı soğan ve sıcak lavaş ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">200 gr • 540 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="BEYTİ KEBAP">BEYTİ KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Zırh kuzu kıyması, kapya biber ve sarımsak harmanı, kömür ızgarasında pişirilip közlenmiş domates ve biber ile servis edilir.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">200 gr • 580 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ADANA DOLAMA">ADANA DOLAMA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">İncecik lavaşa sarılarak odun kömüründe nar gibi kızartılan kuzu zırh kebabı, üzerine kızdırılmış köy tereyağı ve köz biber ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">220 gr • 700 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="DOMATESLİ KEBAP">DOMATESLİ KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Şişte sulu tarla domatesleri arasına dizilmiş zırh kuzu eti köfteleri, kömür ateşi lezzeti ve tırnak pide ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">220 gr • 550 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="YOĞURTLU KEBAP">YOĞURTLU KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Kızarmış tırnak pide yatağında zırh kuzu kebabı, çırpılmış süzme yoğurt ve kızgın tereyağlı domates sosu ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">240 gr • 720 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="URFA">URFA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Zırhta çekilmiş erkek kuzu eti, kuyruk yağı ve kaya tuzu ile hazırlanan acısız geleneksel kebap, köz sebzeler ve tırnak pide ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">200 gr • 560 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SARMA BEYTİ">SARMA BEYTİ</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Çıtır tırnak lavaşa sarılmış zırh kuzu kebabı, üzerine özel domates sosu, közlenmiş biber ve süzme yoğurt eşliğinde.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">220 gr • 700 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ALTI EZMELİ KEBAP">ALTI EZMELİ KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Közlenmiş domates, sarımsak ve acı biber ezmesi yatağında kömür ateşinde pişmiş zırh kuzu kebabı.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">220 gr • 550 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SEBZELİ KEBAP">SEBZELİ KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Renkli taze biberler, sarımsak ve maydanoz ile zırhta harmanlanmış kuzu eti kebabı, köz domates ve lavaşla.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">200 gr • 540 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="BEĞENDİLİ KEBAP">BEĞENDİLİ KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Köz patlıcan, süt ve kaşarla hazırlanan ipeksi hünkar beğendi yatağında zırh kuzu kebabı.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">240 gr • 720 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="PATLICANLI KEBAP">PATLICANLI KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Kömür ızgarasında dilim patlıcanlar arasına dizilmiş zırh kuzu köfteleri, tırnak pide ve sumaklı soğan ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">220 gr • 560 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="LOQUM KEBAP">LOQUM KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Kuzu kaburga ve zırh eti, renkli taze biberler ve şefin özel baharat karışımı ile mangalda mühürlenmiş özel lezzet.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">220 gr • 580 kcal</span>
+                <span class="item-allergen">[Sert Kabuklu Meyveler]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="YOĞURTLU KUŞBAŞI">YOĞURTLU KUŞBAŞI</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Pide üzerinde marine kuzu but kuşbaşı şiş etleri, tava tereyağı, domates sosu ve süzme yoğurt.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">220 gr • 720 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KÖZLÜ KEBAP">KÖZLÜ KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Közde pişmiş sarımsak, kapya biber ve arpacık soğan garnitürüyle sunulan zırh kuzu kebabı.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">200 gr • 540 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="FIRINDA KAŞARLI SARMA BEYTİ">FIRINDA KAŞARLI SARMA BEYTİ</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Lavaş içinde zırh kebap, taş fırında eritilmiş bol kaşar peyniri ve tereyağlı domates sosu ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">250 gr • 780 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="BEĞENDİLİ KUŞBAŞI">BEĞENDİLİ KUŞBAŞI</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Ağır ateşte sotelenmiş yumuşacık kuzu but kuşbaşı parçaları, ipeksi köz patlıcan beğendi yatağında.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">240 gr • 760 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+          </div>
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">GELENEKSEL ZIRH KEBAPLARI (SPESİYAL & KUZULAR) (18)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KUZU SIRT">KUZU SIRT</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Süt kuzusunun en yumuşak sırt bölgesinden kömür ızgarasında mühürlenmiş lokum et dilimleri, köz biber ve lavaşla.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">220 gr • 560 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KUZU KÜLBASTI">KUZU KÜLBASTI</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">İnce dilimlenmiş marine süt kuzusu külbastı etleri, odun kömüründe hafif kızartılmış, sumaklı soğan ve domatesle.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">220 gr • 540 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="HALEP İŞİ KEBAP">HALEP İŞİ KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Zırh kuzu eti, nar ekşisi sosu, taze kıyılmış nane ve arpacık soğan ezmesi eşliğinde Halep usulü sunum.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">200 gr • 550 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="MANTARLI KAŞARLI SARMA">MANTARLI KAŞARLI SARMA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Lavaş sarılı zırh kuzu eti, sotelenmiş taze kültür mantarı, erimiş kaşar peyniri ve tereyağı dokunuşu.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">250 gr • 790 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="LOQUM LEBLEBİ">LOQUM LEBLEBİ</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Marine dana bonfile lokum parçacıkları ve kuzu kuyruk yağı dokunuşu ile şişte közlenen minik gurme lezzet.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">250 gr • 620 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KUZU PİRZOLA">KUZU PİRZOLA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Taze kekik ve zeytinyağı ile marine edilmiş 4 kalem süt kuzusu pirzola, kömür ızgarasında sulu sulu pişirilir.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">250-280 gr • 620 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KUZU ŞİŞ">KUZU ŞİŞ</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Süt kuzusu but etinden terbiye edilmiş lokum gibi yumuşak kuşbaşı parçalar, köz domates ve sumaklı taze soğanla.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">200 gr • 540 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="İSKENDER USULÜ KEBAP">İSKENDER USULÜ KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Kızarmış tırnak pide üzerine zırh kebap dilimleri, domates sosu, kızdırılmış köy tereyağı ve süzme yoğurt.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">240 gr • 760 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="UFO KEBAP">UFO KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">İki kat çıtır lavaş arasına zırh kuzu eti, renkli biberler ve erimiş kaşar peyniri kapatılarak közde pişirilen ufo şeklinde özel kebap.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">250 gr • 800 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KUZU KÜŞLEME">KUZU KÜŞLEME</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Kuzunun omurga altından çıkan en yumuşak, yağsız ve lifsiz eti, kömür ateşinde hafif mühürlenerek sulu servis edilir.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">200 gr • 520 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KUZU TARAKLIK">KUZU TARAKLIK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Kuzu kaburga sırtının özel tarak kesimi, kemikli ve hafif yağlı yapısıyla mangalda çıtır çıtır pişen gurme lezzet.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">250 gr • 640 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KARIŞIK KEBAP">KARIŞIK KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Adana kebap, kuzu şiş, tavuk şiş, kuzu pirzola ve mini lahmacun kombinasyonu; köz biber, domates ve sumaklı soğanla.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">380 gr • 880 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="TAVUKSUZ KARIŞIK KEBAP">TAVUKSUZ KARIŞIK KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Tamamen kırmızı et: Adana kebap, kuzu şiş, kuzu pirzola, kuzu külbastı ve fındık lahmacun.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">400 gr • 920 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ALİNAZİK">ALİNAZİK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Közlenmiş sarımsaklı süzme yoğurtlu patlıcan yatağında kömürde pişmiş zırh kıyma kebabı ve kızgın tereyağı sosu.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">240 gr • 690 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SIRALI KEBAP">SIRALI KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Şiş üzerinde zırh kıyma, kuzu et parçası ve köz sebzelerin ardışık sıralandığı özel porsiyonluk kebap.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">180 gr • 510 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KARIŞIK KARNAVAL (3 KİŞİLİK)">KARIŞIK KARNAVAL (3 KİŞİLİK)</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">3 kişilik devasa sunum tahtasında Adana kebap, kuzu pirzola, kuzu şiş, tavuk kanat, kuzu külbastı, lahmacunlar ve köz sebzeler.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">950 gr • 2150 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="TRİO KEBAP">TRİO KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Adana kebap, kuzu şiş ve tavuk şiş üçlüsünün tek tabakta sıcak lavaş ve köz garnitürlerle buluşması.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">300 gr • 740 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="CIZIR CIZIR TAVADA KUZU SIRT">CIZIR CIZIR TAVADA KUZU SIRT</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Sıcak döküm tavada tereyağı ve kekikle cızırdayarak masanıza gelen lokum kıvamında süt kuzusu sırt dilimleri.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">220-270 gr • 690 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="wing-footer">
+
+        <div class="footer-left">
+          <span>📍 75. Yol Ana Şube, Kayapınar / Diyarbakır</span>
+          <span>•</span>
+          <span>📞 +90 412 503 04 05</span>
+          <span>•</span>
+          <span>✓ Tarım ve Orman Bakanlığı 14 Alerjen Tebliği Uyumlu</span>
+        </div>
+        <div class="footer-right">
+          SOL KANAT • SAYFA 1/2 (210×297 MM)
+        </div>
+
+      </footer>
+    </section>
+
+    <!-- RIGHT WING (210 x 297 mm) -->
+    <section class="wing right-wing">
+      <div class="wing-frame"></div>
+      <div class="wing-corner corner-tl">✦</div>
+      <div class="wing-corner corner-tr">✦</div>
+      <div class="wing-corner corner-bl">✦</div>
+      <div class="wing-corner corner-br">✦</div>
+
+      <!-- Header -->
+      <header class="wing-header">
+        <div class="brand-box">
+          <div class="brand-title">LOQUM <span>ET</span></div>
+          <div class="brand-sub">STEAKHOUSE & OCAKBAŞI</div>
+        </div>
+        <div class="header-center-info">
+          <div class="badge-pill">SAĞ KANAT (ARKA PANEL • 210×297 MM)</div>
+          <div class="header-main-title">DİNLENDİRİLMİŞ STEAKLER, SAÇ TAVALARI, TATLILAR VE İÇECEKLER</div>
+          <div class="header-sub-desc">28 Gün Dry-Aged Spesiyalleri • Bakır Saç Tavaları • Gurme Burgerler • Kadim Tatlılar & Doğal İçecekler</div>
+        </div>
+        <div class="header-meta-box">
+          <strong>ÖZEL REÇETELER</strong><br>%100 DANA & KUZU ETİ
+        </div>
+      </header>
+
+      <!-- 3-Column Content Body -->
+      <main class="columns-grid">
+        <!-- Column 1 -->
+        <div class="menu-col">
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">DİNLENDİRİLMİŞ DRY-AGED STEAKLER (11)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="NEWYORK STEAK">NEWYORK STEAK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Kemiksiz dana kontrfile kesimi, kenarındaki ince yağ şeridiyle döküm ızgarada karamelize edilerek pişirilir.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">280 - 300 gr • 650 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="DANA PİRZOLA">DANA PİRZOLA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Özel 28 gün kuru dinlendirilmiş kemikli dana pirzola, döküm ızgarada mühürlenmiş, deniz tuzu ve taze biberiye ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">400 - 450 gr • 850 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="LOQUM">LOQUM</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Dana bonfilenin en yumuşak orta göbeğinden kesilen, ağızda eriyen mühürlenmiş bonfile lokum dilimleri.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">280 - 300 gr • 580 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ŞATOBÜRYAN">ŞATOBÜRYAN</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">2 kişilik servis: Dana bonfilenin en kalın baş kısmından hazırlanan, masada tereyağında cızırdayarak dilimlenen efsanevi steak.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">550 - 600 gr • 1150 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KUZU KAFES">KUZU KAFES</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">2 kişilik servis: Bütün kuzu kaburga ve pirzolalarının fırında ve ızgarada nar gibi kızartılmasıyla masaya gelen görkemli sunum.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">1100 - 1400 gr • 1600 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="DANA ŞAŞLIK">DANA ŞAŞLIK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">İnce dilimlenmiş dana bonfile ve taze soğan halkalarının özel terbiye ile şişte közlenmesi.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">280 - 300 gr • 620 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="HARDAL SOSLU LOQUM">HARDAL SOSLU LOQUM</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Yumuşacık dana bonfile lokum dilimleri, özel Fransız tane hardalı sosu ile marine edilerek servis edilir.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">280 - 300 gr • 620 kcal</span>
+                <span class="item-allergen">[Hardal, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="BİFTEK">BİFTEK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Özel dinlendirilmiş dana biftek kesimi, döküm ızgarada mühürlenerek taze çekilmiş tane karabiberle tatlandırılır.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">280 - 300 gr • 590 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="MEXİCAN STEAK">MEXİCAN STEAK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Marine dana steak, acı jalapeno biberleri, mısır ve taze baharatlı özel salsa sosu ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">280 - 300 gr • 630 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="PAPER STEAK">PAPER STEAK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Taze çekilmiş yeşil ve siyah tane biberlerle kaplanarak döküm tavada mühürlenen dana steak.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">280 - 300 gr • 610 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="DİYET ANTRİKOT">DİYET ANTRİKOT</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Yağsız ızgara dana antrikot, yağsız haşlanmış basmati pirinci, fırın patates ve pancar salatası ile sağlıklı protein menüsü.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">250 gr • 520 kcal</span>
+                <span></span>
+              </div>
+            </div>
+          </div>
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">GURME SOSLU STEAKLER (10)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ANTRİKOT">ANTRİKOT</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Mermersi yağ dokusu mükemmel dana antrikot kesimi, odun kömüründe sulu sulu mühürlenir.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">280 - 300 gr • 700 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="MANTAR KREMALI STEAK">MANTAR KREMALI STEAK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Izgara dana bonfile steak dilimleri, taze kültür mantarı ve ipeksi beyaz krema sosu eşliğinde.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">280 - 300 gr • 710 kcal</span>
+                <span class="item-allergen">[Süt, Mantar]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KASAP SUCUK (250GR.)">KASAP SUCUK (250GR.)</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Loqum Et'in kendi imalatı %100 dana eti ve özel baharatlarla doldurulan ızgara kasap sucuk halkaları.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">250 gr • 760 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="CHEDDAR SOSLU ANTRİKOT">CHEDDAR SOSLU ANTRİKOT</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Mermersi yağ dokulu dana antrikot, üzerine eritilmiş sıcak akışkan cheddar peyniri sosu ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">280 - 300 gr • 790 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="MANTAR SOSLU ANTRİKOT">MANTAR SOSLU ANTRİKOT</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Izgara dana antrikot, sotelenmiş taze mantarlar ve kremalı sos dokunuşu ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">280 - 300 gr • 740 kcal</span>
+                <span class="item-allergen">[Süt, Mantar]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="CHEDDAR SOSLU LOQUM">CHEDDAR SOSLU LOQUM</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Ağızda eriyen dana bonfile lokum dilimleri ve üzerinde sıcak eritilmiş cheddar peyniri şelalesi.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">280 - 300 gr • 720 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="MANTAR SOSLU STEAK">MANTAR SOSLU STEAK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Odun kömüründe mühürlenmiş dana steak eti, tereyağında sotelenmiş mantarlar ve krema sosu.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">280 - 300 gr • 720 kcal</span>
+                <span class="item-allergen">[Süt, Mantar]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="HARDAL SOSLU ANTRİKOT">HARDAL SOSLU ANTRİKOT</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Yağ dokusu dengeli dana antrikot, özel tane hardal ve bal sosu eşliğinde.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">280 - 300 gr • 690 kcal</span>
+                <span class="item-allergen">[Hardal, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="T-BONE">T-BONE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Bir tarafı yumuşak bonfile, diğer tarafı lezzetli kontrfileden oluşan T kemikli 28 gün dinlendirilmiş efsane kesim.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">400 - 450 gr • 850 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SOS KARNAVALLI ŞAŞLIK">SOS KARNAVALLI ŞAŞLIK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Marine dana bonfile dilimleri, hardal, mantar ve barbekü sos kombinasyonu ile zenginleştirilmiş gurme şaşlık.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">280 - 300 gr • 720 kcal</span>
+                <span class="item-allergen">[Hardal, Süt, Mantar]</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Column 2 -->
+        <div class="menu-col">
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">CIZIRDAYAN FAJİTALAR & SAÇ TAVALARI (11)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ÇOBAN KAVURMA">ÇOBAN KAVURMA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Bakır tavada süt kuzu but eti, arpacık soğan, yeşil köy biberi, domates ve sarımsak ile ağır ateşte pişen kavurma.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">280 gr • 680 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="CHEDDAR SOSLU BONFİLE TAVA">CHEDDAR SOSLU BONFİLE TAVA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Bakır tavada sotelenmiş lokum dana bonfile parçaları, akışkan eritilmiş sıcak cheddar peyniri sosu ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">260 gr • 720 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="MANTAR SOSLU BONFİLE TAVA">MANTAR SOSLU BONFİLE TAVA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Bakır tavada sotelenmiş dana bonfile eti, taze kültür mantarları ve leziz krema sosu ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">260 gr • 700 kcal</span>
+                <span class="item-allergen">[Süt, Mantar]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="HARDAL SOSLU BONFİLE TAVA">HARDAL SOSLU BONFİLE TAVA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Dana bonfile dilimleri, bakır tavada ballı hardal sosu ve taze baharatlarla sotelenir.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">260 gr • 660 kcal</span>
+                <span class="item-allergen">[Hardal, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ACILI MANTARLI BONFİLE TAVA">ACILI MANTARLI BONFİLE TAVA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Dana bonfile eti, taze mantarlar ve biberiye taneli acı peper sosu ile sıcak bakır tavada.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">260 gr • 620 kcal</span>
+                <span class="item-allergen">[Süt, Mantar]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KONTRAFİLE SASA">KONTRAFİLE SASA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">İnce jülyen doğranmış marine dana kontrfile, renkli biberler, soğan ve soya dokunuşuyla wok tava lezzeti.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">260 gr • 620 kcal</span>
+                <span class="item-allergen">[Süt, Soya]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="FIRINDA PEYNİRLİ MANTAR">FIRINDA PEYNİRLİ MANTAR</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Güveçte taze mantarlar, köy tereyağı, eritilmiş cheddar ve kaşar peyniri harmanı ile nar gibi fırınlanır.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">200 gr • 480 kcal</span>
+                <span class="item-allergen">[Süt, Mantar]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SEBZELİ BONFİLE TAVA">SEBZELİ BONFİLE TAVA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Sotelenmiş dana bonfile dilimleri, basmati pirinç pilavı, fırın patates ve pancar salatası eşliğinde.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">260 gr • 640 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ET FAJİTA">ET FAJİTA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Kızgın döküm tavada cızırdayan marine dana bonfile şeritleri, renkli biberler, karamelize soğan, salsa sos ve sıcak tortilla.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">250 gr • 650 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="TAVUK FAJİTA">TAVUK FAJİTA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Kızgın döküm tavada marine tavuk göğüs şeritleri, jülyen renkli biberler, soğan ve sıcak tortilla ekmekleri.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">250 gr • 550 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="CUMBO FAJİTA">CUMBO FAJİTA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Döküm tavada marine dana bonfile ve tavuk fileto kombinasyonu, renkli biberler, soğan ve sıcak tortilla ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">300 gr • 620 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+          </div>
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">ÖZEL KÖFTELER & YÖRESEL TENCERELER (20)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="LOQUM TAVA">LOQUM TAVA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Geleneksel Diyarbakır fırın tavası; zırh kuzu but eti, kuyruk yağı, tarla domatesi, sivri biber ve sarımsak ile taş fırında fokurdayarak pişer.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">280 gr • 750 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ŞAŞLIK TAVA">ŞAŞLIK TAVA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Marine dana kontrfile dilimleri ve ince arpacık soğan katmanlarının bakır tavada harmanlanması.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">300 gr • 780 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ASÇI TABAĞI">ASÇI TABAĞI</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Loqum Et şefinin günlük hazırladığı yöresel tandır, tava ve tencere yemeklerinden oluşan seçme ziyafet tabağı.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">350 gr • 850 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="PİLAV ÜSTÜ KUZU TANDIR">PİLAV ÜSTÜ KUZU TANDIR</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Taş fırında saatlerce pişerek tel tel ayrılan kuzu kol eti, geleneksel içli pilav üzerinde sıcak servis edilir.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">280 gr • 820 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ÇÖMLEKTE KUZU TANDIR">ÇÖMLEKTE KUZU TANDIR</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Toprak çömlek içerisinde kuzu but eti, halis köy tereyağı ve doğal yayla baharatları ile taş fırında ağır ağır demlendirilir.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">260 gr • 760 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="BEĞENDİ İNCİK">BEĞENDİ İNCİK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Fırında lokum gibi pişen kuzu incik, közlenmiş patlıcanlı, un ve sütle bağlanan nefis hünkar beğendi üzerinde.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">320 gr • 800 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="FIRIN İNCİK">FIRIN İNCİK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Taş fırında nar gibi kızarmış kuzu incik, eritilmiş kaşar peyniri, domates ve biber sosu ile fırınlanarak servis edilir.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">320 gr • 780 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ÇORBA">ÇORBA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Günün taze hazırlanan geleneksel mercimek veya ezogelin çorbası, tereyağlı pul biber sosu ve limon dilimi ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">250 ml • 180 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="PİLAV">PİLAV</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Tane tane dökülen tereyağlı geleneksel pirinç pilavı.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">180 gr • 280 kcal</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="FIRINDA KAPAMA DANA ŞAŞLIK">FIRINDA KAPAMA DANA ŞAŞLIK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Taş fırında güveç kabında soğan ve baharatlarla kapatılarak kendi buharında pişen marine dana şaşlık.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">300 gr • 760 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ARPA ŞEHRİYELİ KUZU İNCİK">ARPA ŞEHRİYELİ KUZU İNCİK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Taş fırında et suyuyla demlenmiş fırın arpa şehriyesi yatağında lokum gibi yumuşacık kuzu incik.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">350 gr • 820 kcal</span>
+                <span class="item-allergen">[Gluten]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="FIRINDA KAPAMA ÇÖMLEKTE PİRZOLA">FIRINDA KAPAMA ÇÖMLEKTE PİRZOLA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Toprak çömlek içerisinde kuzu pirzola, sarımsak, arpacık soğan ve taze domatesle taş fırında kapama usulü.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">280 gr • 720 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ARPA ŞEHRİYELİ KUZU TANDIR">ARPA ŞEHRİYELİ KUZU TANDIR</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Fırında et suyuyla pişirilmiş arpa şehriye pilavı üzerinde tel tel ayrılan kuzu tandır eti.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">300 gr • 800 kcal</span>
+                <span class="item-allergen">[Gluten]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KAVURMA">KAVURMA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Diyarbakır yayla kuzusunun kendi yağıyla ağır ateşte kavrulmasıyla hazırlanan geleneksel lokum kavurma.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">200 gr • 520 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KALKAN KÖFTE">KALKAN KÖFTE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Renkli biberler ve eritilmiş cheddar peyniri dolgulu kalkan şeklinde ızgara köfte.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">240 gr • 700 kcal</span>
+                <span class="item-allergen">[Gluten, Yumurta, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="BOHÇA KÖFTE">BOHÇA KÖFTE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">İçi erimiş kaşar peyniriyle doldurulup bohça şeklinde kapatılan sulu ızgara dana köfte.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">240 gr • 700 kcal</span>
+                <span class="item-allergen">[Gluten, Yumurta, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KASAP KOFTE">KASAP KOFTE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Dana kıyma ve taze baharatlarla yoğrulmuş ızgara kasap köftesi, patates kızartması ve köz biberle.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">220 gr • 620 kcal</span>
+                <span class="item-allergen">[Gluten, Yumurta]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="BEĞENDİLİ IZGARA KÖFTE">BEĞENDİLİ IZGARA KÖFTE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">İpeksi köz patlıcanlı hünkar beğendi üzerinde kömürde pişmiş ızgara kasap köfteleri ve tereyağlı sos.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">240 gr • 740 kcal</span>
+                <span class="item-allergen">[Gluten, Yumurta, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="YARIM KASAP KÖFTE (3 Adet)">YARIM KASAP KÖFTE (3 Adet)</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">3 adet ızgara kasap köfte, patates cipsi ve köz sebzeler ile hafif porsiyon.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">130 gr • 390 kcal</span>
+                <span class="item-allergen">[Gluten, Yumurta]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="İÇLİ KÖFTE">İÇLİ KÖFTE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">İncecik çıtır bulgur kabuğu içerisinde baharatlı cevizli dana kıyma harcı ile haşlama veya kızartma içli köfte.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">80 gr (1 Adet) • 220 kcal</span>
+                <span class="item-allergen">[Gluten, Yumurta, Sert Kabuklu Meyveler]</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Column 3 -->
+        <div class="menu-col">
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">GURME BURGERLER (ÖZEL BRİOCHE) (7)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="LOQUM KLASİK BURGER">LOQUM KLASİK BURGER</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">180 gr özel kıyma burger köftesi, karamelize soğan, kornişon turşu, taze marul ve çıtır patates cipsi eşliğinde.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">180 gr • 720 kcal</span>
+                <span class="item-allergen">[Gluten, Süt, Susam]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="LOQUM DOUBLE BURGER">LOQUM DOUBLE BURGER</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Çift katlı 300 gr dana burger köftesi, duble karamelize soğan, özel burger sosu ve baharatlı patates cipsi.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">300 gr • 980 kcal</span>
+                <span class="item-allergen">[Gluten, Süt, Susam]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ENFES LOQUM BURGER">ENFES LOQUM BURGER</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Özel marine edilmiş dana bonfile lokum dilimleri, karamelize soğan, eritilmiş cheddar peyniri ve patates cipsi.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">200 gr Bonfile • 820 kcal</span>
+                <span class="item-allergen">[Gluten, Süt, Susam]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="LOQUM CHEESE BURGER">LOQUM CHEESE BURGER</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">180 gr burger köftesi, eritilmiş çift dilim cheddar peyniri, karamelize soğan ve çıtır patates cipsi.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">180 gr • 780 kcal</span>
+                <span class="item-allergen">[Gluten, Süt, Susam]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="3\'LÜ MİNİ BURGER">3\'LÜ MİNİ BURGER</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">3 adet nefis mini burger köftesi (toplam 180 gr), karamelize soğan, özel ev yapımı soslar ve patates cipsi.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">3 x 60 gr • 740 kcal</span>
+                <span class="item-allergen">[Gluten, Süt, Susam]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="TAVUK BURGER">TAVUK BURGER</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Çıtır marine tavuk göğüs filetosu, taze domates dilimleri, gevrek marul, özel sos ve patates cipsi.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">180 gr • 610 kcal</span>
+                <span class="item-allergen">[Gluten, Süt, Susam]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KAPALI LOQUM BURGER">KAPALI LOQUM BURGER</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Taş fırın hamuru içinde mühürlenmiş sulu burger köftesi, eritilmiş cheddar peyniri, kornişon turşu ve özel sos.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">200 gr • 810 kcal</span>
+                <span class="item-allergen">[Gluten, Süt, Susam]</span>
+              </div>
+            </div>
+          </div>
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">LOQUM PİLİÇ SEÇKİLERİ (ÖZEL MARİNE) (10)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="TAVUK ÇÖPŞİŞ">TAVUK ÇÖPŞİŞ</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Küçük tahta şişlerde nar gibi kızarmış terbiyeli tavuk parçaları, basmati pirinç pilavı ve pancar salatası ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">220 gr • 510 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="TAVUK ŞİŞ">TAVUK ŞİŞ</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Özel zeytinyağı ve baharat sosunda dinlendirilmiş tavuk göğsü şişleri, köz biber, basmati pilav ve lavaşla.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">220 gr • 480 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="TAVUK KANAT">TAVUK KANAT</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Çıtır nar gibi kızarmış marine tavuk kanatları, köz domates ve biber eşliğinde.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">250 gr • 560 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SEBZELİ TAVUK">SEBZELİ TAVUK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Renkli biberler ve taze sebzelerle sotelenmiş tavuk göğüs filetosu, basmati pirinç ve pancar salatası ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">240 gr • 490 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="TAVUK KÜLBASTI">TAVUK KÜLBASTI</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">İnce dövülmüş marine tavuk but külbastı ızgarası, közlenmiş sebzelerle.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">220 gr • 470 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KÖRİ SOSLU TAVUK">KÖRİ SOSLU TAVUK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Jülyen tavuk fileto, kültür mantarı, taze krema ve özel Hint köri baharatı sosu ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">240 gr • 610 kcal</span>
+                <span class="item-allergen">[Süt, Mantar]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SOYA SOSLU TAVUK">SOYA SOSLU TAVUK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Wok tavada sotelenmiş tavuk fileto, kültür mantarı, renkli biberler ve taze soya sosu.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">240 gr • 520 kcal</span>
+                <span class="item-allergen">[Süt, Soya, Mantar]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ACILI MANTARLI TAVUK">ACILI MANTARLI TAVUK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Sotelenmiş tavuk şeritleri, taze mantar ve acı biber sosu harmanı.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">240 gr • 510 kcal</span>
+                <span class="item-allergen">[Süt, Mantar]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="MANTAR SOSLU TAVUK">MANTAR SOSLU TAVUK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Tavuk göğüs filetosu, taze mantarlar ve ipeksi beyaz krema sosu ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">240 gr • 590 kcal</span>
+                <span class="item-allergen">[Süt, Mantar]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SOYA SOSLU TAVUK FİLETO">SOYA SOSLU TAVUK FİLETO</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Soya sosuyla dinlendirilmiş tavuk göğüs filetosu, tam buğday makarna ve sote sebzeler ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">250 gr • 530 kcal</span>
+                <span class="item-allergen">[Gluten, Süt, Soya]</span>
+              </div>
+            </div>
+          </div>
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">GELENEKSEL GURME TATLILAR (5)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="CENNET ÇAMURU">CENNET ÇAMURU</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">İnce tel kadayıf, bol Antep fıstığı, özel şerbet ve üzerinde hakiki manda sütü kaymağı ile efsanevi geleneksel tatlı.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">180 gr • 540 kcal</span>
+                <span class="item-allergen">[Gluten, Süt, Sert Kabuklu Meyveler]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="İNCİR TATLISI">İNCİR TATLISI</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Ağır ateşte cevizle doldurularak pişirilmiş doğal dağ incirleri, yanında taze kaymak ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">160 gr • 390 kcal</span>
+                <span class="item-allergen">[Süt, Sert Kabuklu Meyveler]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SOĞUK BAKLAVA">SOĞUK BAKLAVA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">İncecik çıtır baklava yufkaları arasında bol Antep fıstığı, soğuk sütlü hafif şerbet ve üzerinde rendelenmiş Belçika çikolatası.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">180 gr • 460 kcal</span>
+                <span class="item-allergen">[Gluten, Süt, Sert Kabuklu Meyveler]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KATMER">KATMER</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Taş fırında çıtırdayan el açması incecik yufka, halis süt kaymağı ve bol zümrüt yeşili Antep fıstığı ile sıcak servis edilir.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">180 gr • 560 kcal</span>
+                <span class="item-allergen">[Gluten, Süt, Sert Kabuklu Meyveler]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KABAK TATLISI">KABAK TATLISI</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Fırında karamelize edilen Hatay bal kabağı dilimleri, üzerinde süzme tahin ve kıyılmış taze ceviz ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">180 gr • 380 kcal</span>
+                <span class="item-allergen">[Susam, Sert Kabuklu Meyveler]</span>
+              </div>
+            </div>
+          </div>
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">SOĞUK MEŞRUBATLAR & DOĞAL İÇECEKLER (15)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="PORTAKAL SUYU">PORTAKAL SUYU</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Günlük taze sıkılmış %100 doğal portakal suyu.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">330 ml • 145 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="COCA COLA">COCA COLA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Orijinal kutu kola, buz ve limon dilimi ile.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">330 ml • 139 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="COCA COLA ZERO">COCA COLA ZERO</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Şekersiz ve kalorisiz kutu kola.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">330 ml • 1 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="FANTA">FANTA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Kutu portakallı gazoz.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">330 ml • 145 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KARIŞIK MEYVE SUYU">KARIŞIK MEYVE SUYU</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Kutu karışık meyve nektarı.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">330 ml • 150 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ÇORÇIL">ÇORÇIL</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Doğal maden suyu, taze sıkılmış limon suyu ve kaya tuzu ile hazırlanan ferahlatıcı klasik kokteyl.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">250 ml • 10 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="GAZOZ">GAZOZ</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Geleneksel cam şişe gazoz.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">250 ml • 110 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SADE SODA">SADE SODA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Doğal zengin mineralli kaynak suyu maden sodası.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">200 ml • 0 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="LİMONLU SODA">LİMONLU SODA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Taze limon aromalı mineralli maden suyu.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">200 ml • 10 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ICE TEA">ICE TEA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Şeftali veya limon aromalı soğuk çay.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">330 ml • 90 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="AYRAN">AYRAN</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Geleneksel köpüklü taze yayık ayranı.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">300 ml • 95 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KAPALI AYRAN">KAPALI AYRAN</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Ambalajlı bardak yayık ayranı.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">250 ml • 80 kcal</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ŞALGAM">ŞALGAM</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Adana usulü acılı veya acısız geleneksel fermente mor havuç şalgam suyu.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">330 ml • 25 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="BÜYÜK SU">BÜYÜK SU</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Doğal kaynak suyu cam şişe.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">750 ml • 0 kcal</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KÜÇÜK SU">KÜÇÜK SU</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <p class="item-desc">Doğal kaynak suyu.</p>
+              <div class="item-meta-line">
+                <span class="item-gramaj-cal">330 ml • 0 kcal</span>
+                <span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="wing-footer">
+
+        <div class="footer-left">
+          <span>🌐 www.loqumet.com</span>
+          <span>•</span>
+          <span>📸 Instagram: @loqumdiyarbakir</span>
+          <span>•</span>
+          <span>✓ Fiyatlar et borsasına göre el ile yazılmaktadır</span>
+        </div>
+        <div class="footer-right">
+          SAĞ KANAT • SAYFA 2/2 (210×297 MM)
+        </div>
+
+      </footer>
+    </section>
+  </div>
+</body>
+</html>

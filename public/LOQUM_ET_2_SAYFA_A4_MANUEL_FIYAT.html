@@ -1,0 +1,2219 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>LOQUM ET — 2 Sayfa A4 Yatay Menü (Açık Krem Mermer • Manuel Fiyatlı Matbaa Baskı)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    @page {
+      size: 297mm 210mm;
+      margin: 0;
+    }
+    body {
+      background-color: #E8E3D9;
+      font-family: 'Montserrat', sans-serif;
+      color: #1A1A1A;
+      -webkit-font-smoothing: antialiased;
+    }
+    .page-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      padding: 24px 0;
+    }
+    .sheet {
+      width: 297mm;
+      height: 210mm;
+      background-color: #FAF7F2;
+      background-image: radial-gradient(circle at 50% 35%, #FFFFFF 0%, #FAF7F2 60%, #F3EDE3 100%);
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+      padding: 7mm 8mm 6mm 8mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+    }
+    
+    /* Double Gold Luxury Border (Açık Menü Standardı) */
+    .outer-border {
+      position: absolute;
+      top: 3.5mm;
+      bottom: 3.5mm;
+      left: 3.5mm;
+      right: 3.5mm;
+      border: 1.2px solid rgba(140, 109, 55, 0.45);
+      pointer-events: none;
+    }
+    .outer-border::after {
+      content: '';
+      position: absolute;
+      top: 1.5mm;
+      bottom: 1.5mm;
+      left: 1.5mm;
+      right: 1.5mm;
+      border: 0.5px solid rgba(140, 109, 55, 0.22);
+    }
+    .corner-crest {
+      position: absolute;
+      color: #8C6D37;
+      font-size: 8px;
+      line-height: 1;
+    }
+    .crest-tl { top: 2.2mm; left: 2.2mm; }
+    .crest-tr { top: 2.2mm; right: 2.2mm; }
+    .crest-bl { bottom: 2.2mm; left: 2.2mm; }
+    .crest-br { bottom: 2.2mm; right: 2.2mm; }
+
+    /* Top Header */
+    .header-bar {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 1px solid rgba(140, 109, 55, 0.35);
+      padding-bottom: 2mm;
+      margin-bottom: 2.5mm;
+      flex-shrink: 0;
+    }
+    .logo-block {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .logo-text {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 16px;
+      font-weight: 800;
+      color: #1A1A1A;
+      letter-spacing: 2px;
+    }
+    .logo-text span {
+      color: #8C6D37;
+    }
+    .logo-sub {
+      font-size: 7.5px;
+      font-weight: 700;
+      color: #8C6D37;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .header-center {
+      text-align: center;
+    }
+    .wing-badge {
+      font-size: 7.5px;
+      font-weight: 800;
+      color: #8C6D37;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .wing-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 10.5px;
+      font-style: italic;
+      color: #554D40;
+      letter-spacing: 0.5px;
+    }
+    .header-meta {
+      text-align: right;
+      font-size: 7.5px;
+      color: #554D40;
+      letter-spacing: 0.5px;
+    }
+    .header-meta strong {
+      color: #8C6D37;
+      font-weight: 700;
+    }
+
+    /* 4-Column Grid */
+    .columns-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 4.5mm;
+      flex: 1;
+      height: 178mm;
+      overflow: hidden;
+    }
+    .menu-col {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      border-right: 0.5px solid rgba(140, 109, 55, 0.2);
+      padding-right: 4.5mm;
+    }
+    .menu-col:last-child {
+      border-right: none;
+      padding-right: 0;
+    }
+
+    /* Category Section */
+    .cat-block {
+      margin-bottom: 2mm;
+    }
+    .cat-block:last-child {
+      margin-bottom: 0;
+    }
+    .cat-heading {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      border-bottom: 1px solid rgba(140, 109, 55, 0.4);
+      padding-bottom: 1.2px;
+      margin-bottom: 1.5mm;
+    }
+    .cat-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 7.2px;
+      font-weight: 800;
+      color: #8C6D37;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cat-line {
+      flex: 1;
+      height: 0.5px;
+      background: linear-gradient(to right, rgba(140, 109, 55, 0.4), transparent);
+    }
+
+    /* Item Row */
+    .item-row {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1.2mm;
+    }
+    .item-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 3px;
+    }
+    .item-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 7.8px;
+      font-weight: 700;
+      color: #1A1A1A;
+      letter-spacing: 0.2px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 44mm;
+    }
+    .item-dots {
+      flex: 1;
+      border-bottom: 0.5px dotted rgba(140, 109, 55, 0.35);
+      margin: 0 2px 2px 2px;
+    }
+    .manual-slot {
+      font-family: 'Montserrat', monospace, sans-serif;
+      font-size: 7.5px;
+      font-weight: 700;
+      color: #8C6D37;
+      letter-spacing: 0.8px;
+      white-space: nowrap;
+      background: rgba(140, 109, 55, 0.05);
+      border: 0.6px dashed rgba(140, 109, 55, 0.45);
+      border-radius: 2px;
+      padding: 0.5px 3.5px;
+    }
+    .item-sub {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 4px;
+      margin-top: 0.3px;
+    }
+    .item-desc {
+      font-size: 6.2px;
+      color: #554D40;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 45mm;
+      line-height: 1.1;
+    }
+    .item-allergen {
+      font-size: 5.8px;
+      font-weight: 700;
+      color: #8C2525;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+      background: rgba(140, 37, 37, 0.06);
+      border: 0.5px solid rgba(140, 37, 37, 0.25);
+      padding: 0.5px 2.5px;
+      border-radius: 2px;
+    }
+
+    /* Bottom Status Footer */
+    .footer-bar {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 0.5px solid rgba(140, 109, 55, 0.25);
+      padding-top: 1.5mm;
+      margin-top: 2mm;
+      font-size: 6.5px;
+      color: #6E6556;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .footer-bar .gold {
+      color: #8C6D37;
+      font-weight: 700;
+    }
+
+    @media print {
+      body {
+        background: transparent !important;
+        padding: 0 !important;
+      }
+      .page-wrapper {
+        gap: 0 !important;
+        padding: 0 !important;
+      }
+      .sheet {
+        box-shadow: none !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        width: 297mm !important;
+        height: 210mm !important;
+      }
+      .sheet:last-child {
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+
+    <!-- SAYFA 1: BÖLÜM 01 -->
+    <div class="sheet">
+      <div class="outer-border"></div>
+      <div class="corner-crest crest-tl">✦</div>
+      <div class="corner-crest crest-tr">✦</div>
+      <div class="corner-crest crest-bl">✦</div>
+      <div class="corner-crest crest-br">✦</div>
+
+      <!-- Header -->
+      <header class="header-bar">
+        <div class="logo-block">
+          <div class="logo-text">LOQUM <span>ET</span></div>
+          <div class="logo-sub">Steakhouse & Gastronomi</div>
+        </div>
+        <div class="header-center">
+          <div class="wing-badge">✦ BÖLÜM 01 • RESMÎ GURME MENÜSÜ ✦</div>
+          <div class="wing-subtitle">ÖN KANAT • KÖY KAHVALTISI, TAŞ FIRIN LEZZETLERİ, PİDELER VE ZIRH KEBAPLARI</div>
+        </div>
+        <div class="header-meta">
+          Diyarbakır • 75. Yol Ana Şube<br>
+          Rezervasyon: <strong>+90 412 503 04 05</strong>
+        </div>
+      </header>
+
+      <!-- 4-Column Layout -->
+      <main class="columns-grid">
+        <div class="menu-col col-1">
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">SERPME KÖY KAHVALTISI & ÖZEL YUMURTALAR (5)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KAVURMA">KAVURMA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Bakır tavada kendi doğal yağında ağır ateşte kavrulmuş geleneksel kuzu/dana kavurma, tırnak pide eşliğinde.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="OMLET">OMLET</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Taze çiftlik yumurtaları ve halis tereyağı ile tavada kabartılarak hazırlanan taptaze omlet, domates ve salatalık ile.</span>
+                <span class="item-allergen">[Yumurta, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="MENEMEN">MENEMEN</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Bakır tavada ince kıyılmış tatlı köy biberi, sulu tarla domatesi ve tereyağında pişirilen köy yumurtası ile geleneksel menemen.</span>
+                <span class="item-allergen">[Yumurta, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ÇOCUK MENÜSÜ">ÇOCUK MENÜSÜ</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Çocuklar için özel hazırlanmış 3 adet mini ızgara kasap köfte, çıtır patates kızartması ve meyve suyu eşliğinde.</span>
+                <span class="item-allergen">[Gluten, Yumurta]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SERPME KAHVALTI">SERPME KAHVALTI</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Aşk reçeli, çilek reçeli, vişne reçeli, doğal petek bal, yayık tereyağı, kaymak, peynir çeşitleri, zeytinler, taş fırın pidesi ve sınırsız çay.</span>
+                <span class="item-allergen">[Süt, Yumurta]</span>
+              </div>
+            </div>
+          </div>
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">MAKARNALAR & TAZE GURME SALATALAR (12)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="FETTUCCİNE ALFREDO ETLİ">FETTUCCİNE ALFREDO ETLİ</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">İtalyan fettuccine makarna, jülyen dana bonfile şeritleri, taze mantar, krema sosu ve toz parmesan.</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="FETTUCCİNE ALFREDO TAVUKLU">FETTUCCİNE ALFREDO TAVUKLU</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Fettuccine makarna, ızgara tavuk fileto parçaları, mantar, sarımsaklı krema sosu ve parmesan peyniri.</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="BONFİLE PARÇACIKLI LOGOTONİ">BONFİLE PARÇACIKLI LOGOTONİ</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Rigatoni boru makarna, sotelenmiş dana bonfile parçaları, fesleğenli domates sosu ve parmesan.</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="RİGOTONİ BOLONEZ">RİGOTONİ BOLONEZ</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Rigatoni makarna, geleneksel ağır ateşte pişen dana kıymalı bolonez sos ve parmesan peyniri.</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="BONFİLE SALATA">BONFİLE SALATA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Taze roka, kuzu kulağı, nar ekşisi, sızma zeytinyağı sosu ve sıcak ızgara bonfile dilimleri.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="TAVUKLU SEZAR SALATA">TAVUKLU SEZAR SALATA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Gevrek marul yaprakları, ızgara tavuk göğsü, fırınlanmış kruton ekmek, parmesan ve orijinal Sezar sosu.</span>
+                <span class="item-allergen">[Gluten, Süt, Yumurta]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="STEAK SALATA">STEAK SALATA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Akdeniz yeşillikleri, çeri domates, taze roka, ceviz, parmesan pulları ve ızgara dilim dana steak parçaları.</span>
+                <span class="item-allergen">[Süt, Sert Kabuklu Meyveler]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="IZGARA TAVUKLU SALATA">IZGARA TAVUKLU SALATA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Mevsim yeşillikleri, çeri domates, taze roka, salatalık ve ızgara marine tavuk dilimleri, zeytinyağı limon ile.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="IZGARA HELLİM PEYNİRLİ SALATA">IZGARA HELLİM PEYNİRLİ SALATA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Izgarada hafif kızartılmış Kıbrıs hellim peyniri dilimleri, Akdeniz yeşillikleri, çeri domates ve balzamik sos.</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="PATATES CİPSİ">PATATES CİPSİ</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Altın sarısı çıtır patates kızartması, özel baharat çeşnisi ile.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SEZAR SALATA">SEZAR SALATA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Taze marul, çıtır kruton ekmekler, Sezar sos ve rende parmesan peyniri.</span>
+                <span class="item-allergen">[Gluten, Süt, Yumurta]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="TON BALIKLI SALATA">TON BALIKLI SALATA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Taze Akdeniz yeşillikleri, tane mısır, çeri domates, zeytin, kapari ve lezzetli ton balığı parçaları.</span>
+                <span class="item-allergen">[Balık]</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="menu-col col-2">
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">TAŞ FIRIN KUZULAR (6 SAAT DEMLEME) (2)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KUZU KOL">KUZU KOL</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Taş fırında odun ateşinde 6 saat ağır ağır pişen kemikli kuzu kol, tel tel ayrılan lokum kıvamında; fırın patates ile.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KUZU GERDAN">KUZU GERDAN</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Taş fırında nar gibi kızarmış, yumuşacık sulu kuzu gerdan eti, fırınlanmış kök sebzeler ve taze kekik ile.</span>
+                
+              </div>
+            </div>
+          </div>
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">ODUN ATEŞİNDE TAŞ TABANLI PİDELER & ÇITIR LAHMACUNLAR (14)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="LAHMACUN (1 ADET)">LAHMACUN (1 ADET)</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">İncecik çıtır taş fırın hamuru üzerine zırhta çekilmiş dana/kuzu kıyma, kapya biber, maydanoz, domates ve özel baharatlar.</span>
+                <span class="item-allergen">[Gluten]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KARIŞIK LAHMACUN">KARIŞIK LAHMACUN</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Özel zırh kıyması, ekstra baharatlar ve sarımsak dokunuşuyla hazırlanan bol malzemeli lahmacun.</span>
+                <span class="item-allergen">[Gluten]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KIYMALI PİDE">KIYMALI PİDE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Taş fırında uzatılmış çıtır mayalı hamur, zırh dana kıyma, soğan, biber ve taze domates harcı.</span>
+                <span class="item-allergen">[Gluten]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KAŞARLI PİDE">KAŞARLI PİDE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Taş fırında uzatılmış çıtır pide hamuru üzerinde nar gibi erimiş bol yağlı kaşar peyniri ve tereyağı kenarlar.</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KUŞBAŞI PİDE">KUŞBAŞI PİDE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Bıçak arası doğranmış marine dana but eti parçaları, yeşil biber, domates ve baharatlar ile taş fırında pişen pide.</span>
+                <span class="item-allergen">[Gluten]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KARIŞIK PİDE">KARIŞIK PİDE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Kıymalı, kuşbaşılı ve bol kaşarlı harçların tek pidede buluştuğu zengin taş fırın pidesi.</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SUCUKLU PİDE">SUCUKLU PİDE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Dilimlenmiş yerli kasap sucuğu ile fırınlanan çıtır pide.</span>
+                <span class="item-allergen">[Gluten]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SUCUKLU KAŞARLI PİDE">SUCUKLU KAŞARLI PİDE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Yerli kasap sucuğu dilimleri ve erimiş bol kaşar peynirinin fırından sıcak lezzeti.</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="FINDIK LAHMACUN">FINDIK LAHMACUN</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Atıştırmalık ve kebap öncesi için taş fırında çıtır pişirilen minik fındık lahmacun (1 adet).</span>
+                <span class="item-allergen">[Gluten]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KAVURMALI KAŞARLI PİDE">KAVURMALI KAŞARLI PİDE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Geleneksel kuzu/dana kavurma parçaları ve bol erimiş kaşar peyniri ile taş fırında pişen efsane lezzet.</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KARIŞIK TABAK ALTI">KARIŞIK TABAK ALTI</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Kebapların altına serilen fındık lahmacun ve minik çıtır lavaş tabağı.</span>
+                <span class="item-allergen">[Gluten]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KIYMALI KAŞARLI PİDE">KIYMALI KAŞARLI PİDE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Zırh dana kıyma harcı ve üzerinde uzayan eritilmiş kaşar peyniri.</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="LOQUM PİDE">LOQUM PİDE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Dana kuşbaşı, kavurma, eritilmiş kaşar peyniri, renkli biberler ve şefin özel baharatlarıyla hazırlanan imza pide.</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KAŞARLI KUŞBAŞI PİDE">KAŞARLI KUŞBAŞI PİDE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Bıçak arası dana eti parçaları ve üzerinde erimiş bol kaşar peynirinin taş fırında mükemmel buluşması.</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="menu-col col-3">
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">GELENEKSEL ZIRH KEBAPLARI (KLASİK & ŞİŞLER) (18)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ÇITIR YAĞLI KARA">ÇITIR YAĞLI KARA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">280-300 gr kuzu sırtının yağlı çıtır kısmı kömürde nar gibi kızartılır, hafif yoğurt sos, mantar sos ve taze domates ile.</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ADANA">ADANA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Zırhta çekilmiş erkek kuzu kaburga eti, kuyruk yağı, taze kapya biberi ve kaya tuzu. Közlenmiş biber, sumaklı soğan ve lavaş ile.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SADE KEBAP">SADE KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Saf zırh kuzu eti ve kuyruk yağı ile yoğrulmuş sade kömür ateşi kebabı; köz biber, sumaklı soğan ve sıcak lavaş ile.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="BEYTİ KEBAP">BEYTİ KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Zırh kuzu kıyması, kapya biber ve sarımsak harmanı, kömür ızgarasında pişirilip közlenmiş domates ve biber ile servis edilir.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ADANA DOLAMA">ADANA DOLAMA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">İncecik lavaşa sarılarak odun kömüründe nar gibi kızartılan kuzu zırh kebabı, üzerine kızdırılmış köy tereyağı ve köz biber ile.</span>
+                <span class="item-allergen">[Gluten]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="DOMATESLİ KEBAP">DOMATESLİ KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Şişte sulu tarla domatesleri arasına dizilmiş zırh kuzu eti köfteleri, kömür ateşi lezzeti ve tırnak pide ile.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="YOĞURTLU KEBAP">YOĞURTLU KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Kızarmış tırnak pide yatağında zırh kuzu kebabı, çırpılmış süzme yoğurt ve kızgın tereyağlı domates sosu ile.</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="URFA">URFA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Zırhta çekilmiş erkek kuzu eti, kuyruk yağı ve kaya tuzu ile hazırlanan acısız geleneksel kebap, köz sebzeler ve tırnak pide ile.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SARMA BEYTİ">SARMA BEYTİ</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Çıtır tırnak lavaşa sarılmış zırh kuzu kebabı, üzerine özel domates sosu, közlenmiş biber ve süzme yoğurt eşliğinde.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ALTI EZMELİ KEBAP">ALTI EZMELİ KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Közlenmiş domates, sarımsak ve acı biber ezmesi yatağında kömür ateşinde pişmiş zırh kuzu kebabı.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SEBZELİ KEBAP">SEBZELİ KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Renkli taze biberler, sarımsak ve maydanoz ile zırhta harmanlanmış kuzu eti kebabı, köz domates ve lavaşla.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="BEĞENDİLİ KEBAP">BEĞENDİLİ KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Köz patlıcan, süt ve kaşarla hazırlanan ipeksi hünkar beğendi yatağında zırh kuzu kebabı.</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="PATLICANLI KEBAP">PATLICANLI KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Kömür ızgarasında dilim patlıcanlar arasına dizilmiş zırh kuzu köfteleri, tırnak pide ve sumaklı soğan ile.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="LOQUM KEBAP">LOQUM KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Kuzu kaburga ve zırh eti, renkli taze biberler ve şefin özel baharat karışımı ile mangalda mühürlenmiş özel lezzet.</span>
+                <span class="item-allergen">[Sert Kabuklu Meyveler]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="YOĞURTLU KUŞBAŞI">YOĞURTLU KUŞBAŞI</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Pide üzerinde marine kuzu but kuşbaşı şiş etleri, tava tereyağı, domates sosu ve süzme yoğurt.</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KÖZLÜ KEBAP">KÖZLÜ KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Közde pişmiş sarımsak, kapya biber ve arpacık soğan garnitürüyle sunulan zırh kuzu kebabı.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="FIRINDA KAŞARLI SARMA BEYTİ">FIRINDA KAŞARLI SARMA BEYTİ</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Lavaş içinde zırh kebap, taş fırında eritilmiş bol kaşar peyniri ve tereyağlı domates sosu ile.</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="BEĞENDİLİ KUŞBAŞI">BEĞENDİLİ KUŞBAŞI</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Ağır ateşte sotelenmiş yumuşacık kuzu but kuşbaşı parçaları, ipeksi köz patlıcan beğendi yatağında.</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="menu-col col-4">
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">GELENEKSEL ZIRH KEBAPLARI (SPESİYAL & KUZULAR) (18)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KUZU SIRT">KUZU SIRT</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Süt kuzusunun en yumuşak sırt bölgesinden kömür ızgarasında mühürlenmiş lokum et dilimleri, köz biber ve lavaşla.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KUZU KÜLBASTI">KUZU KÜLBASTI</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">İnce dilimlenmiş marine süt kuzusu külbastı etleri, odun kömüründe hafif kızartılmış, sumaklı soğan ve domatesle.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="HALEP İŞİ KEBAP">HALEP İŞİ KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Zırh kuzu eti, nar ekşisi sosu, taze kıyılmış nane ve arpacık soğan ezmesi eşliğinde Halep usulü sunum.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="MANTARLI KAŞARLI SARMA">MANTARLI KAŞARLI SARMA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Lavaş sarılı zırh kuzu eti, sotelenmiş taze kültür mantarı, erimiş kaşar peyniri ve tereyağı dokunuşu.</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="LOQUM LEBLEBİ">LOQUM LEBLEBİ</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Marine dana bonfile lokum parçacıkları ve kuzu kuyruk yağı dokunuşu ile şişte közlenen minik gurme lezzet.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KUZU PİRZOLA">KUZU PİRZOLA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Taze kekik ve zeytinyağı ile marine edilmiş 4 kalem süt kuzusu pirzola, kömür ızgarasında sulu sulu pişirilir.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KUZU ŞİŞ">KUZU ŞİŞ</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Süt kuzusu but etinden terbiye edilmiş lokum gibi yumuşak kuşbaşı parçalar, köz domates ve sumaklı taze soğanla.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="İSKENDER USULÜ KEBAP">İSKENDER USULÜ KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Kızarmış tırnak pide üzerine zırh kebap dilimleri, domates sosu, kızdırılmış köy tereyağı ve süzme yoğurt.</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="UFO KEBAP">UFO KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">İki kat çıtır lavaş arasına zırh kuzu eti, renkli biberler ve erimiş kaşar peyniri kapatılarak közde pişirilen ufo şeklinde özel kebap.</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KUZU KÜŞLEME">KUZU KÜŞLEME</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Kuzunun omurga altından çıkan en yumuşak, yağsız ve lifsiz eti, kömür ateşinde hafif mühürlenerek sulu servis edilir.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KUZU TARAKLIK">KUZU TARAKLIK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Kuzu kaburga sırtının özel tarak kesimi, kemikli ve hafif yağlı yapısıyla mangalda çıtır çıtır pişen gurme lezzet.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KARIŞIK KEBAP">KARIŞIK KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Adana kebap, kuzu şiş, tavuk şiş, kuzu pirzola ve mini lahmacun kombinasyonu; köz biber, domates ve sumaklı soğanla.</span>
+                <span class="item-allergen">[Gluten]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="TAVUKSUZ KARIŞIK KEBAP">TAVUKSUZ KARIŞIK KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Tamamen kırmızı et: Adana kebap, kuzu şiş, kuzu pirzola, kuzu külbastı ve fındık lahmacun.</span>
+                <span class="item-allergen">[Gluten]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ALİNAZİK">ALİNAZİK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Közlenmiş sarımsaklı süzme yoğurtlu patlıcan yatağında kömürde pişmiş zırh kıyma kebabı ve kızgın tereyağı sosu.</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SIRALI KEBAP">SIRALI KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Şiş üzerinde zırh kıyma, kuzu et parçası ve köz sebzelerin ardışık sıralandığı özel porsiyonluk kebap.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KARIŞIK KARNAVAL (3 KİŞİLİK)">KARIŞIK KARNAVAL (3 KİŞİLİK)</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">3 kişilik devasa sunum tahtasında Adana kebap, kuzu pirzola, kuzu şiş, tavuk kanat, kuzu külbastı, lahmacunlar ve köz sebzeler.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="TRİO KEBAP">TRİO KEBAP</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Adana kebap, kuzu şiş ve tavuk şiş üçlüsünün tek tabakta sıcak lavaş ve köz garnitürlerle buluşması.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="CIZIR CIZIR TAVADA KUZU SIRT">CIZIR CIZIR TAVADA KUZU SIRT</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Sıcak döküm tavada tereyağı ve kekikle cızırdayarak masanıza gelen lokum kıvamında süt kuzusu sırt dilimleri.</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer-bar">
+        <span>Loqum Et Steakhouse • Resmî Baskı Menüsü (Matbaa / Asetat Dolum Kataloğu)</span>
+        <span class="gold">Sayfa 1 / 2 • BÖLÜM 01</span>
+      </footer>
+    </div>
+
+    <!-- SAYFA 2: BÖLÜM 02 -->
+    <div class="sheet">
+      <div class="outer-border"></div>
+      <div class="corner-crest crest-tl">✦</div>
+      <div class="corner-crest crest-tr">✦</div>
+      <div class="corner-crest crest-bl">✦</div>
+      <div class="corner-crest crest-br">✦</div>
+
+      <!-- Header -->
+      <header class="header-bar">
+        <div class="logo-block">
+          <div class="logo-text">LOQUM <span>ET</span></div>
+          <div class="logo-sub">Steakhouse & Gastronomi</div>
+        </div>
+        <div class="header-center">
+          <div class="wing-badge">✦ BÖLÜM 02 • RESMÎ GURME MENÜSÜ ✦</div>
+          <div class="wing-subtitle">ARKA KANAT • STEAKLER, FAJİTALAR, KÖFTELER, PİLİÇLER, TATLILAR VE İÇECEKLER</div>
+        </div>
+        <div class="header-meta">
+          Diyarbakır • 75. Yol Ana Şube<br>
+          Rezervasyon: <strong>+90 412 503 04 05</strong>
+        </div>
+      </header>
+
+      <!-- 4-Column Layout -->
+      <main class="columns-grid">
+        <div class="menu-col col-1">
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">DİNLENDİRİLMİŞ STEAKLER & DRY-AGED SPESİYALLER (11)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="NEWYORK STEAK">NEWYORK STEAK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Kemiksiz dana kontrfile kesimi, kenarındaki ince yağ şeridiyle döküm ızgarada karamelize edilerek pişirilir.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="DANA PİRZOLA">DANA PİRZOLA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Özel 28 gün kuru dinlendirilmiş kemikli dana pirzola, döküm ızgarada mühürlenmiş, deniz tuzu ve taze biberiye ile.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="LOQUM">LOQUM</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Dana bonfilenin en yumuşak orta göbeğinden kesilen, ağızda eriyen mühürlenmiş bonfile lokum dilimleri.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ŞATOBÜRYAN">ŞATOBÜRYAN</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">2 kişilik servis: Dana bonfilenin en kalın baş kısmından hazırlanan, masada tereyağında cızırdayarak dilimlenen efsanevi steak.</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KUZU KAFES">KUZU KAFES</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">2 kişilik servis: Bütün kuzu kaburga ve pirzolalarının fırında ve ızgarada nar gibi kızartılmasıyla masaya gelen görkemli sunum.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="DANA ŞAŞLIK">DANA ŞAŞLIK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">İnce dilimlenmiş dana bonfile ve taze soğan halkalarının özel terbiye ile şişte közlenmesi.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="HARDAL SOSLU LOQUM">HARDAL SOSLU LOQUM</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Yumuşacık dana bonfile lokum dilimleri, özel Fransız tane hardalı sosu ile marine edilerek servis edilir.</span>
+                <span class="item-allergen">[Hardal]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="BİFTEK">BİFTEK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Özel dinlendirilmiş dana biftek kesimi, döküm ızgarada mühürlenerek taze çekilmiş tane karabiberle tatlandırılır.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="MEXİCAN STEAK">MEXİCAN STEAK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Marine dana steak, acı jalapeno biberleri, mısır ve taze baharatlı özel salsa sosu ile.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="PAPER STEAK">PAPER STEAK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Taze çekilmiş yeşil ve siyah tane biberlerle kaplanarak döküm tavada mühürlenen dana steak.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="DİYET ANTRİKOT">DİYET ANTRİKOT</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Yağsız ızgara dana antrikot, yağsız haşlanmış basmati pirinci, fırın patates ve pancar salatası ile sağlıklı protein menüsü.</span>
+                
+              </div>
+            </div>
+          </div>
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">GURME SOSLU STEAKLER (10)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ANTRİKOT">ANTRİKOT</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Mermersi yağ dokusu mükemmel dana antrikot kesimi, odun kömüründe sulu sulu mühürlenir.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="MANTAR KREMALI STEAK">MANTAR KREMALI STEAK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Izgara dana bonfile steak dilimleri, taze kültür mantarı ve ipeksi beyaz krema sosu eşliğinde.</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KASAP SUCUK (250GR.)">KASAP SUCUK (250GR.)</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Loqum Et'in kendi imalatı %100 dana eti ve özel baharatlarla doldurulan ızgara kasap sucuk halkaları.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="CHEDDAR SOSLU ANTRİKOT">CHEDDAR SOSLU ANTRİKOT</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Mermersi yağ dokulu dana antrikot, üzerine eritilmiş sıcak akışkan cheddar peyniri sosu ile.</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="MANTAR SOSLU ANTRİKOT">MANTAR SOSLU ANTRİKOT</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Izgara dana antrikot, sotelenmiş taze mantarlar ve kremalı sos dokunuşu ile.</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="CHEDDAR SOSLU LOQUM">CHEDDAR SOSLU LOQUM</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Ağızda eriyen dana bonfile lokum dilimleri ve üzerinde sıcak eritilmiş cheddar peyniri şelalesi.</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="MANTAR SOSLU STEAK">MANTAR SOSLU STEAK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Odun kömüründe mühürlenmiş dana steak eti, tereyağında sotelenmiş mantarlar ve krema sosu.</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="HARDAL SOSLU ANTRİKOT">HARDAL SOSLU ANTRİKOT</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Yağ dokusu dengeli dana antrikot, özel tane hardal ve bal sosu eşliğinde.</span>
+                <span class="item-allergen">[Hardal]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="T-BONE">T-BONE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Bir tarafı yumuşak bonfile, diğer tarafı lezzetli kontrfileden oluşan T kemikli 28 gün dinlendirilmiş efsane kesim.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SOS KARNAVALLI ŞAŞLIK">SOS KARNAVALLI ŞAŞLIK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Marine dana bonfile dilimleri, hardal, mantar ve barbekü sos kombinasyonu ile zenginleştirilmiş gurme şaşlık.</span>
+                <span class="item-allergen">[Hardal, Süt]</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="menu-col col-2">
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">CIZIRDAYAN FAJİTALAR & SAÇ TAVALARI (11)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ÇOBAN KAVURMA">ÇOBAN KAVURMA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Bakır tavada süt kuzu but eti, arpacık soğan, yeşil köy biberi, domates ve sarımsak ile ağır ateşte pişen kavurma.</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="CHEDDAR SOSLU BONFİLE TAVA">CHEDDAR SOSLU BONFİLE TAVA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Bakır tavada sotelenmiş lokum dana bonfile parçaları, akışkan eritilmiş sıcak cheddar peyniri sosu ile.</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="MANTAR SOSLU BONFİLE TAVA">MANTAR SOSLU BONFİLE TAVA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Bakır tavada sotelenmiş dana bonfile eti, taze kültür mantarları ve leziz krema sosu ile.</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="HARDAL SOSLU BONFİLE TAVA">HARDAL SOSLU BONFİLE TAVA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Dana bonfile dilimleri, bakır tavada ballı hardal sosu ve taze baharatlarla sotelenir.</span>
+                <span class="item-allergen">[Hardal]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ACILI MANTARLI BONFİLE TAVA">ACILI MANTARLI BONFİLE TAVA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Dana bonfile eti, taze mantarlar ve biberiye taneli acı peper sosu ile sıcak bakır tavada.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KONTRAFİLE SASA">KONTRAFİLE SASA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">İnce jülyen doğranmış marine dana kontrfile, renkli biberler, soğan ve soya dokunuşuyla wok tava lezzeti.</span>
+                <span class="item-allergen">[Soya]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="FIRINDA PEYNİRLİ MANTAR">FIRINDA PEYNİRLİ MANTAR</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Güveçte taze mantarlar, köy tereyağı, eritilmiş cheddar ve kaşar peyniri harmanı ile nar gibi fırınlanır.</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SEBZELİ BONFİLE TAVA">SEBZELİ BONFİLE TAVA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Sotelenmiş dana bonfile dilimleri, basmati pirinç pilavı, fırın patates ve pancar salatası eşliğinde.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ET FAJİTA">ET FAJİTA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Kızgın döküm tavada cızırdayan marine dana bonfile şeritleri, renkli biberler, karamelize soğan, salsa sos ve sıcak tortilla.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="TAVUK FAJİTA">TAVUK FAJİTA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Kızgın döküm tavada marine tavuk göğüs şeritleri, jülyen renkli biberler, soğan ve sıcak tortilla ekmekleri.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="CUMBO FAJİTA">CUMBO FAJİTA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Döküm tavada marine dana bonfile ve tavuk fileto kombinasyonu, renkli biberler, soğan ve sıcak tortilla ile.</span>
+                
+              </div>
+            </div>
+          </div>
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">GURME BURGERLER (ÖZEL BRİOCHE) (7)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="LOQUM KLASİK BURGER">LOQUM KLASİK BURGER</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">180 gr özel kıyma burger köftesi, karamelize soğan, kornişon turşu, taze marul ve çıtır patates cipsi eşliğinde.</span>
+                <span class="item-allergen">[Gluten, Süt, Susam]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="LOQUM DOUBLE BURGER">LOQUM DOUBLE BURGER</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Çift katlı 300 gr dana burger köftesi, duble karamelize soğan, özel burger sosu ve baharatlı patates cipsi.</span>
+                <span class="item-allergen">[Gluten, Süt, Susam]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ENFES LOQUM BURGER">ENFES LOQUM BURGER</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Özel marine edilmiş dana bonfile lokum dilimleri, karamelize soğan, eritilmiş cheddar peyniri ve patates cipsi.</span>
+                <span class="item-allergen">[Gluten, Süt, Susam]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="LOQUM CHEESE BURGER">LOQUM CHEESE BURGER</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">180 gr burger köftesi, eritilmiş çift dilim cheddar peyniri, karamelize soğan ve çıtır patates cipsi.</span>
+                <span class="item-allergen">[Gluten, Süt, Susam]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="3\'LÜ MİNİ BURGER">3\'LÜ MİNİ BURGER</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">3 adet nefis mini burger köftesi (toplam 180 gr), karamelize soğan, özel ev yapımı soslar ve patates cipsi.</span>
+                <span class="item-allergen">[Gluten, Süt, Susam]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="TAVUK BURGER">TAVUK BURGER</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Çıtır marine tavuk göğüs filetosu, taze domates dilimleri, gevrek marul, özel sos ve patates cipsi.</span>
+                <span class="item-allergen">[Gluten, Süt, Susam]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KAPALI LOQUM BURGER">KAPALI LOQUM BURGER</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Taş fırın hamuru içinde mühürlenmiş sulu burger köftesi, eritilmiş cheddar peyniri, kornişon turşu ve özel sos.</span>
+                <span class="item-allergen">[Gluten, Süt, Susam]</span>
+              </div>
+            </div>
+          </div>
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">GELENEKSEL GURME TATLILAR (5)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="CENNET ÇAMURU">CENNET ÇAMURU</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">İnce tel kadayıf, bol Antep fıstığı, özel şerbet ve üzerinde hakiki manda sütü kaymağı ile efsanevi geleneksel tatlı.</span>
+                <span class="item-allergen">[Gluten, Süt, Sert Kabuklu Meyveler]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="İNCİR TATLISI">İNCİR TATLISI</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Ağır ateşte cevizle doldurularak pişirilmiş doğal dağ incirleri, yanında taze kaymak ile.</span>
+                <span class="item-allergen">[Süt, Sert Kabuklu Meyveler]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SOĞUK BAKLAVA">SOĞUK BAKLAVA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">İncecik çıtır baklava yufkaları arasında bol Antep fıstığı, soğuk sütlü hafif şerbet ve üzerinde rendelenmiş Belçika çikolatası.</span>
+                <span class="item-allergen">[Gluten, Süt, Sert Kabuklu Meyveler]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KATMER">KATMER</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Taş fırında çıtırdayan el açması incecik yufka, halis süt kaymağı ve bol zümrüt yeşili Antep fıstığı ile sıcak servis edilir.</span>
+                <span class="item-allergen">[Gluten, Süt, Sert Kabuklu Meyveler]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KABAK TATLISI">KABAK TATLISI</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Fırında karamelize edilen Hatay bal kabağı dilimleri, üzerinde süzme tahin ve kıyılmış taze ceviz ile.</span>
+                <span class="item-allergen">[Susam, Sert Kabuklu Meyveler]</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="menu-col col-3">
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">ÖZEL KÖFTELER & LOQUM YÖRESEL GASTRONOMİ (20)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="LOQUM TAVA">LOQUM TAVA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Geleneksel Diyarbakır fırın tavası; zırh kuzu but eti, kuyruk yağı, tarla domatesi, sivri biber ve sarımsak ile taş fırında fokurdayarak pişer.</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ŞAŞLIK TAVA">ŞAŞLIK TAVA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Marine dana kontrfile dilimleri ve ince arpacık soğan katmanlarının bakır tavada harmanlanması.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ASÇI TABAĞI">ASÇI TABAĞI</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Loqum Et şefinin günlük hazırladığı yöresel tandır, tava ve tencere yemeklerinden oluşan seçme ziyafet tabağı.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="PİLAV ÜSTÜ KUZU TANDIR">PİLAV ÜSTÜ KUZU TANDIR</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Taş fırında saatlerce pişerek tel tel ayrılan kuzu kol eti, geleneksel içli pilav üzerinde sıcak servis edilir.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ÇÖMLEKTE KUZU TANDIR">ÇÖMLEKTE KUZU TANDIR</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Toprak çömlek içerisinde kuzu but eti, halis köy tereyağı ve doğal yayla baharatları ile taş fırında ağır ağır demlendirilir.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="BEĞENDİ İNCİK">BEĞENDİ İNCİK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Fırında lokum gibi pişen kuzu incik, közlenmiş patlıcanlı, un ve sütle bağlanan nefis hünkar beğendi üzerinde.</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="FIRIN İNCİK">FIRIN İNCİK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Taş fırında nar gibi kızarmış kuzu incik, eritilmiş kaşar peyniri, domates ve biber sosu ile fırınlanarak servis edilir.</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ÇORBA">ÇORBA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Günün taze hazırlanan geleneksel mercimek veya ezogelin çorbası, tereyağlı pul biber sosu ve limon dilimi ile.</span>
+                <span class="item-allergen">[Gluten, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="PİLAV">PİLAV</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Tane tane dökülen tereyağlı geleneksel pirinç pilavı.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="FIRINDA KAPAMA DANA ŞAŞLIK">FIRINDA KAPAMA DANA ŞAŞLIK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Taş fırında güveç kabında soğan ve baharatlarla kapatılarak kendi buharında pişen marine dana şaşlık.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ARPA ŞEHRİYELİ KUZU İNCİK">ARPA ŞEHRİYELİ KUZU İNCİK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Taş fırında et suyuyla demlenmiş fırın arpa şehriyesi yatağında lokum gibi yumuşacık kuzu incik.</span>
+                <span class="item-allergen">[Gluten]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="FIRINDA KAPAMA ÇÖMLEKTE PİRZOLA">FIRINDA KAPAMA ÇÖMLEKTE PİRZOLA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Toprak çömlek içerisinde kuzu pirzola, sarımsak, arpacık soğan ve taze domatesle taş fırında kapama usulü.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ARPA ŞEHRİYELİ KUZU TANDIR">ARPA ŞEHRİYELİ KUZU TANDIR</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Fırında et suyuyla pişirilmiş arpa şehriye pilavı üzerinde tel tel ayrılan kuzu tandır eti.</span>
+                <span class="item-allergen">[Gluten]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KAVURMA">KAVURMA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Diyarbakır yayla kuzusunun kendi yağıyla ağır ateşte kavrulmasıyla hazırlanan geleneksel lokum kavurma.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KALKAN KÖFTE">KALKAN KÖFTE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Renkli biberler ve eritilmiş cheddar peyniri dolgulu kalkan şeklinde ızgara köfte.</span>
+                <span class="item-allergen">[Gluten, Yumurta, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="BOHÇA KÖFTE">BOHÇA KÖFTE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">İçi erimiş kaşar peyniriyle doldurulup bohça şeklinde kapatılan sulu ızgara dana köfte.</span>
+                <span class="item-allergen">[Gluten, Yumurta, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KASAP KOFTE">KASAP KOFTE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Dana kıyma ve taze baharatlarla yoğrulmuş ızgara kasap köftesi, patates kızartması ve köz biberle.</span>
+                <span class="item-allergen">[Gluten, Yumurta]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="BEĞENDİLİ IZGARA KÖFTE">BEĞENDİLİ IZGARA KÖFTE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">İpeksi köz patlıcanlı hünkar beğendi üzerinde kömürde pişmiş ızgara kasap köfteleri ve tereyağlı sos.</span>
+                <span class="item-allergen">[Gluten, Yumurta, Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="YARIM KASAP KÖFTE (3 Adet)">YARIM KASAP KÖFTE (3 Adet)</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">3 adet ızgara kasap köfte, patates cipsi ve köz sebzeler ile hafif porsiyon.</span>
+                <span class="item-allergen">[Gluten, Yumurta]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="İÇLİ KÖFTE">İÇLİ KÖFTE</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">İncecik çıtır bulgur kabuğu içerisinde baharatlı cevizli dana kıyma harcı ile haşlama veya kızartma içli köfte.</span>
+                <span class="item-allergen">[Gluten, Yumurta, Sert Kabuklu Meyveler]</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="menu-col col-4">
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">LOQUM PİLİÇ SEÇKİLERİ (ÖZEL MARİNE) (10)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="TAVUK ÇÖPŞİŞ">TAVUK ÇÖPŞİŞ</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Küçük tahta şişlerde nar gibi kızarmış terbiyeli tavuk parçaları, basmati pirinç pilavı ve pancar salatası ile.</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="TAVUK ŞİŞ">TAVUK ŞİŞ</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Özel zeytinyağı ve baharat sosunda dinlendirilmiş tavuk göğsü şişleri, köz biber, basmati pilav ve lavaşla.</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="TAVUK KANAT">TAVUK KANAT</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Çıtır nar gibi kızarmış marine tavuk kanatları, köz domates ve biber eşliğinde.</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SEBZELİ TAVUK">SEBZELİ TAVUK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Renkli biberler ve taze sebzelerle sotelenmiş tavuk göğüs filetosu, basmati pirinç ve pancar salatası ile.</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="TAVUK KÜLBASTI">TAVUK KÜLBASTI</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">İnce dövülmüş marine tavuk but külbastı ızgarası, közlenmiş sebzelerle.</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KÖRİ SOSLU TAVUK">KÖRİ SOSLU TAVUK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Jülyen tavuk fileto, kültür mantarı, taze krema ve özel Hint köri baharatı sosu ile.</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SOYA SOSLU TAVUK">SOYA SOSLU TAVUK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Wok tavada sotelenmiş tavuk fileto, kültür mantarı, renkli biberler ve taze soya sosu.</span>
+                <span class="item-allergen">[Gluten, Süt, Soya]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ACILI MANTARLI TAVUK">ACILI MANTARLI TAVUK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Sotelenmiş tavuk şeritleri, taze mantar ve acı biber sosu harmanı.</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="MANTAR SOSLU TAVUK">MANTAR SOSLU TAVUK</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Tavuk göğüs filetosu, taze mantarlar ve ipeksi beyaz krema sosu ile.</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SOYA SOSLU TAVUK FİLETO">SOYA SOSLU TAVUK FİLETO</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Soya sosuyla dinlendirilmiş tavuk göğüs filetosu, tam buğday makarna ve sote sebzeler ile.</span>
+                <span class="item-allergen">[Gluten, Süt, Soya]</span>
+              </div>
+            </div>
+          </div>
+          <div class="cat-block">
+            <div class="cat-heading">
+              <span class="cat-title">SOĞUK MEŞRUBATLAR & DOĞAL İÇECEKLER (15)</span>
+              <span class="cat-line"></span>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="PORTAKAL SUYU">PORTAKAL SUYU</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Günlük taze sıkılmış %100 doğal portakal suyu.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="COCA COLA">COCA COLA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Orijinal kutu kola, buz ve limon dilimi ile.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="COCA COLA ZERO">COCA COLA ZERO</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Şekersiz ve kalorisiz kutu kola.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="FANTA">FANTA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Kutu portakallı gazoz.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KARIŞIK MEYVE SUYU">KARIŞIK MEYVE SUYU</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Kutu karışık meyve nektarı.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ÇORÇIL">ÇORÇIL</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Doğal maden suyu, taze sıkılmış limon suyu ve kaya tuzu ile hazırlanan ferahlatıcı klasik kokteyl.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="GAZOZ">GAZOZ</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Geleneksel cam şişe gazoz.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="SADE SODA">SADE SODA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Doğal zengin mineralli kaynak suyu maden sodası.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="LİMONLU SODA">LİMONLU SODA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Taze limon aromalı mineralli maden suyu.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ICE TEA">ICE TEA</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Şeftali veya limon aromalı soğuk çay.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="AYRAN">AYRAN</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Geleneksel köpüklü taze yayık ayranı.</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KAPALI AYRAN">KAPALI AYRAN</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Ambalajlı bardak yayık ayranı.</span>
+                <span class="item-allergen">[Süt]</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="ŞALGAM">ŞALGAM</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Adana usulü acılı veya acısız geleneksel fermente mor havuç şalgam suyu.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="BÜYÜK SU">BÜYÜK SU</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Doğal kaynak suyu cam şişe.</span>
+                
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-top">
+                <span class="item-name" title="KÜÇÜK SU">KÜÇÜK SU</span>
+                <span class="item-dots"></span>
+                <span class="manual-slot">[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₺ ]</span>
+              </div>
+              <div class="item-sub">
+                <span class="item-desc">Doğal kaynak suyu.</span>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer-bar">
+        <span>Loqum Et Steakhouse • Resmî Baskı Menüsü (Matbaa / Asetat Dolum Kataloğu)</span>
+        <span class="gold">Sayfa 2 / 2 • BÖLÜM 02</span>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

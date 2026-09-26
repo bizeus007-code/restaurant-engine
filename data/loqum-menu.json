@@ -1,0 +1,155 @@
+{
+  "restaurant": {
+    "name": "LOQUM ET",
+    "location": "Diyarbakır",
+    "baseUrl": "https://www.rvdesign.com.tr/loqum-et-diyarbakir/files/"
+  },
+  "categories": [
+    {
+      "id": 20,
+      "order": 1,
+      "slug": "kahvalti",
+      "name": "KAHVALTI",
+      "fileName": "441365086.jpg",
+      "remoteUrl": "https://www.rvdesign.com.tr/loqum-et-diyarbakir/files/441365086.jpg",
+      "localPath": "/images/loqum/categories/441365086.jpg",
+      "items": []
+    },
+    {
+      "id": 21,
+      "order": 2,
+      "slug": "kebaplar",
+      "name": "KEBAPLAR",
+      "fileName": "616384444.jpg",
+      "remoteUrl": "https://www.rvdesign.com.tr/loqum-et-diyarbakir/files/616384444.jpg",
+      "localPath": "/images/loqum/categories/616384444.jpg",
+      "items": []
+    },
+    {
+      "id": 26,
+      "order": 3,
+      "slug": "lahmacun-ve-pide",
+      "name": "LAHMACUN VE PİDE",
+      "fileName": "1246642627.jpg",
+      "remoteUrl": "https://www.rvdesign.com.tr/loqum-et-diyarbakir/files/1246642627.jpg",
+      "localPath": "/images/loqum/categories/1246642627.jpg",
+      "items": [
+        {
+          "name": "Cevizli Çıtır Lahmacun",
+          "price": 210.0,
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "order": 4,
+      "slug": "burgerler",
+      "name": "BURGERLER",
+      "fileName": "1.jpg",
+      "remoteUrl": "https://www.rvdesign.com.tr/loqum-et-diyarbakir/files/1.jpg",
+      "localPath": "/images/loqum/categories/1.jpg",
+      "items": []
+    },
+    {
+      "id": 23,
+      "order": 5,
+      "slug": "loqum-pilicler",
+      "name": "LOQUM PİLİÇLER",
+      "fileName": "9321048.jpg",
+      "remoteUrl": "https://www.rvdesign.com.tr/loqum-et-diyarbakir/files/9321048.jpg",
+      "localPath": "/images/loqum/categories/9321048.jpg",
+      "items": []
+    },
+    {
+      "id": 22,
+      "order": 6,
+      "slug": "kofteler",
+      "name": "KÖFTELER",
+      "fileName": "1528239950.jpg",
+      "remoteUrl": "https://www.rvdesign.com.tr/loqum-et-diyarbakir/files/1528239950.jpg",
+      "localPath": "/images/loqum/categories/1528239950.jpg",
+      "items": []
+    },
+    {
+      "id": 25,
+      "order": 7,
+      "slug": "makarnalar-ve-salatalar",
+      "name": "MAKARNALAR VE SALATALAR",
+      "fileName": "2033295443.jpg",
+      "remoteUrl": "https://www.rvdesign.com.tr/loqum-et-diyarbakir/files/2033295443.jpg",
+      "localPath": "/images/loqum/categories/2033295443.jpg",
+      "items": []
+    },
+    {
+      "id": 28,
+      "order": 8,
+      "slug": "tavalar",
+      "name": "TAVALAR",
+      "fileName": "1391174000.jpg",
+      "remoteUrl": "https://www.rvdesign.com.tr/loqum-et-diyarbakir/files/1391174000.jpg",
+      "localPath": "/images/loqum/categories/1391174000.jpg",
+      "items": []
+    },
+    {
+      "id": 24,
+      "order": 9,
+      "slug": "loqum-yoresel",
+      "name": "LOQUM YÖRESEL",
+      "fileName": "1046935357.jpg",
+      "remoteUrl": "https://www.rvdesign.com.tr/loqum-et-diyarbakir/files/1046935357.jpg",
+      "localPath": "/images/loqum/categories/1046935357.jpg",
+      "items": []
+    },
+    {
+      "id": 19,
+      "order": 10,
+      "slug": "firin-etler",
+      "name": "FIRIN ETLER",
+      "fileName": "227478014.jpg",
+      "remoteUrl": "https://www.rvdesign.com.tr/loqum-et-diyarbakir/files/227478014.jpg",
+      "localPath": "/images/loqum/categories/227478014.jpg",
+      "items": []
+    },
+    {
+      "id": 18,
+      "order": 11,
+      "slug": "fajitalar",
+      "name": "FAJİTALAR",
+      "fileName": "1166646167.jpg",
+      "remoteUrl": "https://www.rvdesign.com.tr/loqum-et-diyarbakir/files/1166646167.jpg",
+      "localPath": "/images/loqum/categories/1166646167.jpg",
+      "items": []
+    },
+    {
+      "id": 27,
+      "order": 12,
+      "slug": "steak",
+      "name": "STEAK",
+      "fileName": "1234963298.jpg",
+      "remoteUrl": "https://www.rvdesign.com.tr/loqum-et-diyarbakir/files/1234963298.jpg",
+      "localPath": "/images/loqum/categories/1234963298.jpg",
+      "items": []
+    },
+    {
+      "id": 29,
+      "order": 13,
+      "slug": "tatlilar",
+      "name": "TATLILAR",
+      "fileName": "971078932.jpg",
+      "remoteUrl": "https://www.rvdesign.com.tr/loqum-et-diyarbakir/files/971078932.jpg",
+      "localPath": "/images/loqum/categories/971078932.jpg",
+      "items": []
+    },
+    {
+      "id": 30,
+      "order": 14,
+      "slug": "icecekler",
+      "name": "İÇECEKLER",
+      "fileName": "1436262436.jpg",
+      "remoteUrl": "https://www.rvdesign.com.tr/loqum-et-diyarbakir/files/1436262436.jpg",
+      "localPath": "/images/loqum/categories/1436262436.jpg",
+      "items": []
+    }
+  ]
+}

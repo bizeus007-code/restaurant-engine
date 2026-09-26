@@ -1,0 +1,27 @@
+{
+  "logos": {
+    "headerLogo": {
+      "fileName": "loqumet-logo.png",
+      "remoteUrl": "https://www.rvdesign.com.tr/loqum-et-diyarbakir/files/loqumet-logo.png",
+      "localPath": "/images/loqum/assets/loqumet-logo.png"
+    },
+    "sidebarLogo": {
+      "fileName": "loqumet-logo-2.png",
+      "remoteUrl": "https://www.rvdesign.com.tr/loqum-et-diyarbakir/files/loqumet-logo-2.png",
+      "localPath": "/images/loqum/assets/loqumet-logo-2.png"
+    }
+  },
+  "icons": [
+    { "key": "menu", "fileName": "menu-icon.png", "remoteUrl": "https://www.rvdesign.com.tr/loqum-et-diyarbakir/files/menu-icon.png", "localPath": "/images/loqum/assets/menu-icon.png" },
+    { "key": "about", "fileName": "about-icon.png", "remoteUrl": "https://www.rvdesign.com.tr/loqum-et-diyarbakir/files/about-icon.png", "localPath": "/images/loqum/assets/about-icon.png" },
+    { "key": "video", "fileName": "play-icon.png", "remoteUrl": "https://www.rvdesign.com.tr/loqum-et-diyarbakir/files/play-icon.png", "localPath": "/images/loqum/assets/play-icon.png" },
+    { "key": "hours", "fileName": "clock-icon.png", "remoteUrl": "https://www.rvdesign.com.tr/loqum-et-diyarbakir/files/clock-icon.png", "localPath": "/images/loqum/assets/clock-icon.png" },
+    { "key": "contact", "fileName": "map-icon.png", "remoteUrl": "https://www.rvdesign.com.tr/loqum-et-diyarbakir/files/map-icon.png", "localPath": "/images/loqum/assets/map-icon.png" }
+  ],
+  "socialMedia": [
+    { "platform": "Instagram", "url": "https://www.instagram.com/loqumdiyarbakir/" },
+    { "platform": "Facebook", "url": "https://www.facebook.com/loqumdiyarbakir/" },
+    { "platform": "YouTube", "url": "https://www.youtube.com/channel/UCzzBhGW2orfS1c4XsnVB9aQ/" }
+  ]
+}
+
