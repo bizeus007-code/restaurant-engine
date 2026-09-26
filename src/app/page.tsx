@@ -1050,15 +1050,53 @@ export default function HomePage() {
         businessWhatsapp={businessWhatsapp}
         onSaveBusinessWhatsapp={handleSaveBusinessWhatsapp}
         products={products}
-        onUpdatePrice={(prodId, price) => {
-          const updated = products.map((p) => (p.id === prodId ? { ...p, price } : p));
-          saveProductsToStorage(updated);
-          fetch("/api/stock", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ dishId: prodId, price }),
-          }).catch(console.error);
-        }}
+        onUpdatePrice={async (prodId, price) => {
+  const updated = products.map((p) =>
+    p.id === prodId ? { ...p, price } : p
+  );
+
+  saveProductsToStorage(updated);
+
+  try {
+    const res = await fetch("/api/products", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updated),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok || !data.success) {
+      throw new Error(data.error || "Ürün fiyatı kaydedilemedi");
+    }
+
+    const verifyRes = await fetch("/api/products", {
+      method: "GET",
+      cache: "no-store",
+    });
+
+    const verifyList = await verifyRes.json();
+
+    if (!Array.isArray(verifyList)) {
+      throw new Error("Sunucudan dönen ürün listesi geçersiz.");
+    }
+
+    const verifiedProduct = verifyList.find((p) => p.id === prodId);
+
+    if (!verifiedProduct || Number(verifiedProduct.price) !== Number(price)) {
+      throw new Error(
+        `Sunucu doğrulaması başarısız. Beklenen: ${price}, gelen: ${verifiedProduct?.price}`
+      );
+    }
+
+    console.log("✅ Fiyat Supabase veritabanına doğrulayarak kaydedildi:", {
+      id: prodId,
+      price,
+    });
+  } catch (error) {
+    console.error("❌ Fiyat kaydetme hatası:", error);
+  }
+}}
         onAddProduct={(newProd) => {
           saveProductsToStorage([newProd, ...products]);
           fetch("/api/stock", {
