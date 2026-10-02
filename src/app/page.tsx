@@ -200,27 +200,31 @@ export default function HomePage() {
         setReservations([]);
       }
 
-      // Sunucu JSON verisi ile senkronize et
-      fetch('/api/reservations')
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.businessWhatsapp) {
-            const clean = normalizeWhatsAppNumber(data.businessWhatsapp);
-            if (clean === '905061763321' || !clean) {
-              setBusinessWhatsapp('904125030405');
-            } else {
-              setBusinessWhatsapp(clean);
+      // Sunucu rezervasyon verisi ile canlı senkronizasyon (15 saniyede bir otomatik polling)
+      const fetchLiveReservations = () => {
+        fetch('/api/reservations', { cache: 'no-store' })
+          .then((res) => res.json())
+          .then((data) => {
+            const rawList = Array.isArray(data) ? data : (data.reservations && Array.isArray(data.reservations) ? data.reservations : []);
+            if (data && data.businessWhatsapp) {
+              const clean = normalizeWhatsAppNumber(data.businessWhatsapp);
+              if (clean === '905061763321' || !clean) {
+                setBusinessWhatsapp('904125030405');
+              } else {
+                setBusinessWhatsapp(clean);
+              }
             }
-          }
-          if (data.reservations && Array.isArray(data.reservations)) {
-            const serverClean = data.reservations.filter(
-              (r: ReservationRecord) => !deletedIds.includes(r.id) && !isMockReservation(r)
-            );
-            if (serverClean.length > 0) {
+            if (rawList.length > 0) {
+              const serverClean = rawList.filter(
+                (r: ReservationRecord) => !deletedIds.includes(r.id) && !isMockReservation(r)
+              );
               setReservations((prev) => {
                 const combined = [...prev];
                 serverClean.forEach((sr: ReservationRecord) => {
-                  if (!combined.some(c => c.id === sr.id) && !deletedIds.includes(sr.id)) {
+                  const idx = combined.findIndex((c) => c.id === sr.id);
+                  if (idx >= 0) {
+                    combined[idx] = sr;
+                  } else if (!deletedIds.includes(sr.id)) {
                     combined.push(sr);
                   }
                 });
@@ -230,9 +234,12 @@ export default function HomePage() {
                 return combined;
               });
             }
-          }
-        })
-        .catch(() => {});
+          })
+          .catch(() => {});
+      };
+
+      fetchLiveReservations();
+      const resInterval = setInterval(fetchLiveReservations, 15000);
 
       // Sync settings
       fetch('/api/settings')
@@ -252,6 +259,10 @@ export default function HomePage() {
           }
         })
         .catch(() => {});
+
+      return () => {
+        clearInterval(resInterval);
+      };
     }
   }, []);
 
