@@ -895,12 +895,35 @@ export default function HomePage() {
                       onChange={(e) => setReservationData({ ...reservationData, time: e.target.value })}
                       className="w-full bg-[#080808] border border-white/20 rounded-xl px-4 py-3 text-base sm:text-sm text-white focus:outline-none focus:border-[#C8982B] transition-colors"
                     >
+                      <option>10:00</option>
+                      <option>10:30</option>
+                      <option>11:00</option>
+                      <option>11:30</option>
+                      <option>12:00</option>
+                      <option>12:30</option>
+                      <option>13:00</option>
+                      <option>13:30</option>
+                      <option>14:00</option>
+                      <option>14:30</option>
+                      <option>15:00</option>
+                      <option>15:30</option>
+                      <option>16:00</option>
+                      <option>16:30</option>
+                      <option>17:00</option>
+                      <option>17:30</option>
+                      <option>18:00</option>
                       <option>18:30</option>
-                      <option>19:45</option>
+                      <option>19:00</option>
+                      <option>19:30</option>
                       <option>20:00</option>
+                      <option>20:30</option>
                       <option>21:00</option>
-                      <option>22:15</option>
-                    </select>
+                      <option>21:30</option>
+                      <option>22:00</option>
+                      <option>22:30</option>
+                      <option>23:00</option>
+                      <option>23:30</option>
+</select>
                   </div>
 
                   <div className="sm:col-span-2">
