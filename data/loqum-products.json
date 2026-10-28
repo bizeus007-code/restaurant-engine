@@ -1,34 +1,91 @@
 [
   {
-    "id": "steak-newyork-steak",
-    "categoryId": 27,
-    "categorySlug": "steak",
-    "name": "NEWYORK STEAK",
-    "tag": "Dry Aged",
-    "gramaj": "280 - 300 gr",
-    "description": "Kemiksiz dana kontrfile kesimi, kenarındaki ince yağ şeridiyle döküm ızgarada karamelize edilerek pişirilir.",
-    "price": 1690,
-    "calories": 650,
-    "prepTime": "18-20 dk",
-    "stock": 22,
-    "allergens": [],
-    "image": "/images/menu/steak/newyork-steak.jpg",
+    "id": "yoresel-kuru-patlican-biber-dolma",
+    "categoryId": 24,
+    "categorySlug": "yoresel",
+    "name": "KURU PATLICAN BİBER DOLMA",
+    "tag": "Yöresel",
+    "gramaj": "250 gr",
+    "description": "Geleneksel usulde hazırlanan sumaklı, süzme yoğurt eşliğinde kuru patlıcan ve biber dolması.",
+    "price": 330,
+    "calories": 520,
+    "prepTime": "15-20 dk",
+    "stock": 30,
+    "allergens": [
+      "Gluten",
+      "Laktoz / Süt"
+    ],
+    "image": "/images/menu/yoresel/7.jpeg",
     "isPopular": true
   },
   {
-    "id": "steak-dana-pirzola",
-    "categoryId": 27,
-    "categorySlug": "steak",
-    "name": "DANA PİRZOLA",
-    "tag": "Dry Aged 28 Gün",
-    "gramaj": "400 - 450 gr",
-    "description": "Özel 28 gün kuru dinlendirilmiş kemikli dana pirzola, döküm ızgarada mühürlenmiş, deniz tuzu ve taze biberiye ile.",
-    "price": 1840,
-    "calories": 850,
-    "prepTime": "20-25 dk",
-    "stock": 20,
+    "id": "yoresel-kuru-kavurma",
+    "categoryId": 24,
+    "categorySlug": "yoresel",
+    "name": "KURU KAVURMA",
+    "tag": "Yöresel",
+    "gramaj": "250 gr",
+    "description": "Kendi suyunda ağır ateşte lokum kıvamında pişirilmiş geleneksel Diyarbakır kuru kavurma.",
+    "price": 730,
+    "calories": 680,
+    "prepTime": "15-20 dk",
+    "stock": 30,
     "allergens": [],
-    "image": "/images/menu/steak/dana-pirzola.jpg",
+    "image": "/images/menu/yoresel/5.jpeg",
+    "isPopular": true
+  },
+  {
+    "id": "yoresel-incik-haslama",
+    "categoryId": 24,
+    "categorySlug": "yoresel",
+    "name": "İNCİK HAŞLAMA",
+    "tag": "Şefin Seçimi",
+    "gramaj": "350 - 400 gr",
+    "description": "Kemikli kuzu incikten, kök sebzeler ve kendi iliğiyle ağır ateşte dinlendirilerek hazırlanmış haşlama.",
+    "price": 850,
+    "calories": 720,
+    "prepTime": "20-25 dk",
+    "stock": 25,
+    "allergens": [],
+    "image": "/images/menu/yoresel/4.jpeg",
+    "isPopular": true
+  },
+  {
+    "id": "yoresel-kaburga-dolma",
+    "categoryId": 24,
+    "categorySlug": "yoresel",
+    "name": "KABURGA DOLMA",
+    "tag": "İmza Yöresel",
+    "gramaj": "400 gr",
+    "description": "Özel baharatlı iç pilav ile doldurulup ağır ateşte nar gibi kızartılmış geleneksel kuzu kaburga dolması.",
+    "price": 1000,
+    "calories": 840,
+    "prepTime": "20-25 dk",
+    "stock": 25,
+    "allergens": [
+      "Gluten",
+      "Doğal Baharat"
+    ],
+    "image": "/images/menu/yoresel/2.jpeg",
+    "isPopular": true
+  },
+  {
+    "id": "lahmacun-loqum-cevizli",
+    "categoryId": 26,
+    "categorySlug": "lahmacun-pide",
+    "name": "LOQUM CEVİZLİ LAHMACUN",
+    "tag": "Taş Fırın",
+    "gramaj": "1 Adet",
+    "description": "Taş fırında pişirilmiş, zırh kıyması ve bol cevizli özel Loqum lahmacun.",
+    "price": 210,
+    "calories": 480,
+    "prepTime": "12-15 dk",
+    "stock": 50,
+    "allergens": [
+      "Gluten",
+      "Fıstık / Kuruyemiş"
+    ],
+    "image": "/images/menu/yoresel/6.jpeg",
     "isPopular": true
   },
   {
@@ -166,22 +223,6 @@
     "isPopular": true
   },
   {
-    "id": "steak-antrikot",
-    "categoryId": 27,
-    "categorySlug": "steak",
-    "name": "ANTRİKOT",
-    "tag": "Mermersi Doku",
-    "gramaj": "280 - 300 gr",
-    "description": "Mermersi yağ dokusu mükemmel dana antrikot kesimi, odun kömüründe sulu sulu mühürlenir.",
-    "price": 1690,
-    "calories": 700,
-    "prepTime": "18-20 dk",
-    "stock": 25,
-    "allergens": [],
-    "image": "/images/menu/steak/antrikot.jpg",
-    "isPopular": true
-  },
-  {
     "id": "steak-dana-saslik",
     "categoryId": 27,
     "categorySlug": "steak",
@@ -217,26 +258,10 @@
     "isPopular": false
   },
   {
-    "id": "steak-biftek",
-    "categoryId": 27,
-    "categorySlug": "steak",
-    "name": "BİFTEK",
-    "tag": "Izgara Biftek",
-    "gramaj": "280 - 300 gr",
-    "description": "Özel dinlendirilmiş dana biftek kesimi, döküm ızgarada mühürlenerek taze çekilmiş tane karabiberle tatlandırılır.",
-    "price": 1840,
-    "calories": 590,
-    "prepTime": "18-20 dk",
-    "stock": 20,
-    "allergens": [],
-    "image": "/images/menu/steak/biftek.jpg",
-    "isPopular": false
-  },
-  {
     "id": "steak-mexican-steak",
     "categoryId": 27,
     "categorySlug": "steak",
-    "name": "MEXİCAN STEAK",
+    "name": "MEXİCAN LOQUM",
     "tag": "Acılı & Baharatlı",
     "gramaj": "280 - 300 gr",
     "description": "Marine dana steak, acı jalapeno biberleri, mısır ve taze baharatlı özel salsa sosu ile.",
@@ -252,7 +277,7 @@
     "id": "steak-paper-steak",
     "categoryId": 27,
     "categorySlug": "steak",
-    "name": "PAPER STEAK",
+    "name": "PAPER LOQUM",
     "tag": "Tane Biberli",
     "gramaj": "280 - 300 gr",
     "description": "Taze çekilmiş yeşil ve siyah tane biberlerle kaplanarak döküm tavada mühürlenen dana steak.",
@@ -268,7 +293,7 @@
     "id": "steak-mantar-kremali-steak",
     "categoryId": 27,
     "categorySlug": "steak",
-    "name": "MANTAR KREMALI STEAK",
+    "name": "MANTAR KREMALI LOQUM",
     "tag": "Kremalı Mantarlı",
     "gramaj": "280 - 300 gr",
     "description": "Izgara dana bonfile steak dilimleri, taze kültür mantarı ve ipeksi beyaz krema sosu eşliğinde.",
@@ -300,43 +325,6 @@
     "isPopular": false
   },
   {
-    "id": "steak-cheddar-soslu-antrikot",
-    "categoryId": 27,
-    "categorySlug": "steak",
-    "name": "CHEDDAR SOSLU ANTRİKOT",
-    "tag": "Sıcak Cheddar",
-    "gramaj": "280 - 300 gr",
-    "description": "Mermersi yağ dokulu dana antrikot, üzerine eritilmiş sıcak akışkan cheddar peyniri sosu ile.",
-    "price": 1790,
-    "calories": 790,
-    "prepTime": "18-20 dk",
-    "stock": 22,
-    "allergens": [
-      "Süt"
-    ],
-    "image": "/images/menu/steak/cheddar-soslu-antrikot.jpg",
-    "isPopular": false
-  },
-  {
-    "id": "steak-mantar-soslu-antrikot",
-    "categoryId": 27,
-    "categorySlug": "steak",
-    "name": "MANTAR SOSLU ANTRİKOT",
-    "tag": "Kremalı Mantarlı",
-    "gramaj": "280 - 300 gr",
-    "description": "Izgara dana antrikot, sotelenmiş taze mantarlar ve kremalı sos dokunuşu ile.",
-    "price": 1790,
-    "calories": 740,
-    "prepTime": "18-20 dk",
-    "stock": 22,
-    "allergens": [
-      "Süt",
-      "Mantar"
-    ],
-    "image": "/images/menu/steak/mantar-soslu-antrikot.jpg",
-    "isPopular": false
-  },
-  {
     "id": "steak-cheddar-soslu-loqum",
     "categoryId": 27,
     "categorySlug": "steak",
@@ -353,60 +341,6 @@
     ],
     "image": "/images/menu/steak/cheddar-soslu-loqum.jpg",
     "isPopular": false
-  },
-  {
-    "id": "steak-mantar-soslu-steak",
-    "categoryId": 27,
-    "categorySlug": "steak",
-    "name": "MANTAR SOSLU STEAK",
-    "tag": "Mantar Soslu",
-    "gramaj": "280 - 300 gr",
-    "description": "Odun kömüründe mühürlenmiş dana steak eti, tereyağında sotelenmiş mantarlar ve krema sosu.",
-    "price": 1940,
-    "calories": 720,
-    "prepTime": "18-20 dk",
-    "stock": 20,
-    "allergens": [
-      "Süt",
-      "Mantar"
-    ],
-    "image": "/images/menu/steak/mantar-soslu-steak.jpg",
-    "isPopular": false
-  },
-  {
-    "id": "steak-hardal-soslu-antrikot",
-    "categoryId": 27,
-    "categorySlug": "steak",
-    "name": "HARDAL SOSLU ANTRİKOT",
-    "tag": "Hardallı",
-    "gramaj": "280 - 300 gr",
-    "description": "Yağ dokusu dengeli dana antrikot, özel tane hardal ve bal sosu eşliğinde.",
-    "price": 1790,
-    "calories": 690,
-    "prepTime": "18-20 dk",
-    "stock": 20,
-    "allergens": [
-      "Hardal",
-      "Süt"
-    ],
-    "image": "/images/menu/steak/hardal-soslu-antrikot.jpg",
-    "isPopular": false
-  },
-  {
-    "id": "steak-t-bone",
-    "categoryId": 27,
-    "categorySlug": "steak",
-    "name": "T-BONE",
-    "tag": "Dry Aged 28 Gün",
-    "gramaj": "400 - 450 gr",
-    "description": "Bir tarafı yumuşak bonfile, diğer tarafı lezzetli kontrfileden oluşan T kemikli 28 gün dinlendirilmiş efsane kesim.",
-    "price": 1840,
-    "calories": 850,
-    "prepTime": "20-25 dk",
-    "stock": 20,
-    "allergens": [],
-    "image": "/images/menu/steak/t-bone.jpg",
-    "isPopular": true
   },
   {
     "id": "steak-sos-karnavalli-saslik",
@@ -426,22 +360,6 @@
       "Mantar"
     ],
     "image": "/images/menu/steak/sos-karnavalli-saslik.jpg",
-    "isPopular": false
-  },
-  {
-    "id": "steak-diyet-antrikot",
-    "categoryId": 27,
-    "categorySlug": "steak",
-    "name": "DİYET ANTRİKOT",
-    "tag": "Fit & Sağlıklı",
-    "gramaj": "250 gr",
-    "description": "Yağsız ızgara dana antrikot, yağsız haşlanmış basmati pirinci, fırın patates ve pancar salatası ile sağlıklı protein menüsü.",
-    "price": 1740,
-    "calories": 520,
-    "prepTime": "15-18 dk",
-    "stock": 25,
-    "allergens": [],
-    "image": "/images/menu/steak/diyet-antrikot.jpg",
     "isPopular": false
   },
   {
@@ -1045,24 +963,6 @@
     "isPopular": true
   },
   {
-    "id": "tavalar-cheddar-soslu-bonfile-tava",
-    "categoryId": 28,
-    "categorySlug": "tavalar",
-    "name": "CHEDDAR SOSLU BONFİLE TAVA",
-    "tag": "Cheddarlı Bonfile",
-    "gramaj": "260 gr",
-    "description": "Bakır tavada sotelenmiş lokum dana bonfile parçaları, akışkan eritilmiş sıcak cheddar peyniri sosu ile.",
-    "price": 970,
-    "calories": 720,
-    "prepTime": "18-20 dk",
-    "stock": 22,
-    "allergens": [
-      "Süt"
-    ],
-    "image": "/images/menu/tavalar/cheddar-soslu-bonfile-tava.jpg",
-    "isPopular": false
-  },
-  {
     "id": "tavalar-mantar-soslu-bonfile-tava",
     "categoryId": 28,
     "categorySlug": "tavalar",
@@ -1082,63 +982,6 @@
     "isPopular": false
   },
   {
-    "id": "tavalar-hardal-soslu-bonfile-tava",
-    "categoryId": 28,
-    "categorySlug": "tavalar",
-    "name": "HARDAL SOSLU BONFİLE TAVA",
-    "tag": "Ballı Hardallı",
-    "gramaj": "260 gr",
-    "description": "Dana bonfile dilimleri, bakır tavada ballı hardal sosu ve taze baharatlarla sotelenir.",
-    "price": 970,
-    "calories": 660,
-    "prepTime": "18-20 dk",
-    "stock": 20,
-    "allergens": [
-      "Hardal",
-      "Süt"
-    ],
-    "image": "/images/menu/tavalar/hardal-soslu-bonfile-tava.jpg",
-    "isPopular": false
-  },
-  {
-    "id": "tavalar-acili-mantarli-bonfile-tava",
-    "categoryId": 28,
-    "categorySlug": "tavalar",
-    "name": "ACILI MANTARLI BONFİLE TAVA",
-    "tag": "Acılı Peper Sos",
-    "gramaj": "260 gr",
-    "description": "Dana bonfile eti, taze mantarlar ve biberiye taneli acı peper sosu ile sıcak bakır tavada.",
-    "price": 970,
-    "calories": 620,
-    "prepTime": "18-20 dk",
-    "stock": 20,
-    "allergens": [
-      "Süt",
-      "Mantar"
-    ],
-    "image": "/images/menu/tavalar/acili-mantarli-bonfile-tava.jpg",
-    "isPopular": false
-  },
-  {
-    "id": "tavalar-kontrafile-sasa",
-    "categoryId": 28,
-    "categorySlug": "tavalar",
-    "name": "KONTRAFİLE SASA",
-    "tag": "Jülyen Kontrafile",
-    "gramaj": "260 gr",
-    "description": "İnce jülyen doğranmış marine dana kontrfile, renkli biberler, soğan ve soya dokunuşuyla wok tava lezzeti.",
-    "price": 970,
-    "calories": 620,
-    "prepTime": "18-20 dk",
-    "stock": 20,
-    "allergens": [
-      "Süt",
-      "Soya"
-    ],
-    "image": "/images/menu/tavalar/kontrafile-sasa.jpg",
-    "isPopular": false
-  },
-  {
     "id": "tavalar-firinda-peynirli-mantar",
     "categoryId": 28,
     "categorySlug": "tavalar",
@@ -1155,24 +998,6 @@
       "Mantar"
     ],
     "image": "/images/menu/tavalar/firinda-peynirli-mantar.jpg",
-    "isPopular": false
-  },
-  {
-    "id": "tavalar-sebzeli-bonfile-tava",
-    "categoryId": 28,
-    "categorySlug": "tavalar",
-    "name": "SEBZELİ BONFİLE TAVA",
-    "tag": "Sebzeli Denge",
-    "gramaj": "260 gr",
-    "description": "Sotelenmiş dana bonfile dilimleri, basmati pirinç pilavı, fırın patates ve pancar salatası eşliğinde.",
-    "price": 930,
-    "calories": 640,
-    "prepTime": "18-20 dk",
-    "stock": 25,
-    "allergens": [
-      "Süt"
-    ],
-    "image": "/images/menu/tavalar/sebzeli-bonfile-tava.jpg",
     "isPopular": false
   },
   {
@@ -1397,7 +1222,7 @@
     "id": "loqum-yoresel-kavurma",
     "categoryId": 24,
     "categorySlug": "loqum-yoresel",
-    "name": "KAVURMA",
+    "name": "SULU KAVURMA",
     "tag": "Geleneksel Kavurma",
     "gramaj": "200 gr",
     "description": "Diyarbakır yayla kuzusunun kendi yağıyla ağır ateşte kavrulmasıyla hazırlanan geleneksel lokum kavurma.",
@@ -2410,7 +2235,7 @@
     "id": "kahvalti-kavurma",
     "categoryId": 20,
     "categorySlug": "kahvalti",
-    "name": "KAVURMA",
+    "name": "SULU KAVURMA",
     "tag": "Geleneksel Kavurma",
     "gramaj": "180 gr",
     "description": "Bakır tavada kendi doğal yağında ağır ateşte kavrulmuş geleneksel kuzu/dana kavurma, tırnak pide eşliğinde.",
@@ -2839,5 +2664,21 @@
     "allergens": [],
     "image": "/images/menu/icecekler/kucuk-su.jpg",
     "isPopular": false
+  },
+  {
+    "id": "yoresel-parmak-kaburga",
+    "categoryId": 24,
+    "categorySlug": "yoresel",
+    "name": "PARMAK KABURGA",
+    "tag": "Yöresel",
+    "gramaj": "280 - 300 gr",
+    "description": "Özel sebze garnitürü ve fırın patates eşliğinde döküm ızgarada mühürlenmiş parmak kaburga.",
+    "price": 850,
+    "calories": 740,
+    "prepTime": "18-20 dk",
+    "stock": 25,
+    "allergens": [],
+    "image": "/images/menu/steak/newyork-steak.jpg",
+    "isPopular": true
   }
 ]

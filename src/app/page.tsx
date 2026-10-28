@@ -122,7 +122,7 @@ export default function HomePage() {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       let loadedProds = initialProducts as MenuItemProduct[];
-      const menuVersion = '2026_10_28_v22';
+      const menuVersion = '2026_10_28_final_149';
       const savedVersion = localStorage.getItem('loqum_menu_version');
       if (savedVersion !== menuVersion) {
         localStorage.setItem('loqum_products', JSON.stringify(initialProducts));
