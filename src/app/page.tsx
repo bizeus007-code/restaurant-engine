@@ -122,7 +122,7 @@ export default function HomePage() {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       let loadedProds = initialProducts as MenuItemProduct[];
-      const menuVersion = '2026_09_25_prices_v3';
+      const menuVersion = '2026_10_28_restored_v15';
       const savedVersion = localStorage.getItem('loqum_menu_version');
       if (savedVersion !== menuVersion) {
         localStorage.setItem('loqum_products', JSON.stringify(initialProducts));
@@ -1145,7 +1145,7 @@ export default function HomePage() {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              items: updatedList.map((p) => ({ id: p.id, name: p.name, price: p.price })),
+              items: updatedList,
             }),
           }).catch(console.error);
         }}
