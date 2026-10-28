@@ -12,9 +12,12 @@ function heal(curr: any[], inc: any[]) {
       ...m, ...c, ...x,
       price: Number(x?.price) > 0 ? Number(x.price) : Number(c.price || m.price || 0),
       categoryId: Number(x?.categoryId) > 0 ? Number(x.categoryId) : Number(c.categoryId || m.categoryId || 27),
+      categorySlug: x?.categorySlug || c.categorySlug || m.categorySlug || "steak",
+      tag: x?.tag || c.tag || m.tag || "Loqum Özel",
       image: x?.image || c.image || m.image || "/images/menu/steak/loqum.jpg",
       gramaj: x?.gramaj || c.gramaj || m.gramaj || "250 gr",
       calories: Number(x?.calories) > 0 ? Number(x.calories) : Number(c.calories || m.calories || 650),
+      prepTime: x?.prepTime || c.prepTime || m.prepTime || "15-20 dk",
       description: x?.description || c.description || m.description || "",
       allergens: Array.isArray(x?.allergens) ? x.allergens : (c.allergens || m.allergens || [])
     };
@@ -32,6 +35,8 @@ export async function POST(req: Request) {
   const { data } = await supabase.from("products").select("data").eq("id", "main").single();
   const curr = Array.isArray(data?.data) ? data.data : (data?.data?.items || []);
   const saved = heal(curr, inc);
-  await supabase.from("products").upsert({ id: "main", data: saved, updated_at: new Date().toISOString() });
-  return NextResponse.json({ success: true, items: saved });
+  const now = new Date().toISOString();
+  await supabase.from("products").upsert({ id: "main", data: saved, updated_at: now });
+  await supabase.from("products").upsert({ id: "main_menu", data: saved, updated_at: now });
+  return NextResponse.json({ success: true, count: saved.length, items: saved });
 }

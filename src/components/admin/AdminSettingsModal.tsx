@@ -700,7 +700,7 @@ export const AdminSettingsModal: React.FC<AdminSettingsModalProps> = ({
     }
 
     // Kalıcı API DELETE isteği
-    fetch(`/api/stock?id=${encodeURIComponent(productId)}`, { method: "DELETE" }).catch(() => {});
+    
 
     // Eğer silinen ürün formda açıksa, sonraki ürünü seç
     if (selectedProdForEdit === productId) {
