@@ -122,7 +122,7 @@ export default function HomePage() {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       let loadedProds = initialProducts as MenuItemProduct[];
-      const menuVersion = '2026_10_28_restored_v15';
+      const menuVersion = '2026_10_28_v21';
       const savedVersion = localStorage.getItem('loqum_menu_version');
       if (savedVersion !== menuVersion) {
         localStorage.setItem('loqum_products', JSON.stringify(initialProducts));
@@ -1132,11 +1132,12 @@ export default function HomePage() {
   }
 }}
         onAddProduct={(newProd) => {
-          saveProductsToStorage([newProd, ...products]);
-          fetch("/api/stock", {
+          const updated = [newProd, ...products];
+          saveProductsToStorage(updated);
+          fetch("/api/products", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ dishId: newProd.id, price: newProd.price }),
+            body: JSON.stringify(updated),
           }).catch(console.error);
         }}
         onUpdateProduct={(updatedList) => {
@@ -1144,16 +1145,16 @@ export default function HomePage() {
           fetch("/api/products", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              items: updatedList,
-            }),
+            body: JSON.stringify(updatedList),
           }).catch(console.error);
         }}
         onDeleteProduct={(prodId) => {
-          const updated = products.filter((p) => p.id !== prodId);
+          const updated = products.filter((item) => item.id !== prodId);
           saveProductsToStorage(updated);
-          fetch(`/api/stock?id=${encodeURIComponent(prodId)}`, {
-            method: "DELETE",
+          fetch("/api/products", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(updated),
           }).catch(console.error);
         }}
         campaignText={campaignText}
